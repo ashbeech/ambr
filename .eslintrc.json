@@ -1,0 +1,6 @@
+{
+  "extends": "next/core-web-vitals",
+  "globals": {
+    "globalThis": true // means it is not writeable
+  }
+}

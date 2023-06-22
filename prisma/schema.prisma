@@ -1,0 +1,98 @@
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Room {
+  roomId               String   @id @default(dbgenerated("substr(uuid_generate_v4()::text, 1, 5)")) @map(name: "room_id")
+  key                  String?
+  idHash               String
+  fileHash             String?
+  title                String?
+  public               Boolean?
+  readerToken          String?
+  salt                 String?
+  expiresAtTimestampMs String?  @default(dbgenerated("cast(extract(epoch from now() + interval '1 day') * 1000 as string)"))
+  maxDownloads         Int?     @default(100)
+  lifetime             Int?     @default(86400)
+  remainingDownloads   Int?     @default(100)
+  encryptedTorrentFile String?
+  sizeMb               Float?
+  multiFile            Boolean?
+  cloudState           String?
+  mintState            String?
+  cid                  String?
+  txHash               String?
+
+  @@unique([roomId, idHash])
+}
+
+// Define the user model
+model User {
+  id                     Int       @id @default(sequence())
+  idHash                 String?   @unique
+  email                  String?
+  fileTransfersRemaining Int       @default(5)
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  payments               Payment[]
+}
+
+model Payment {
+  id          Int      @id @default(sequence())
+  amount      Int?     @default(0)
+  transfers   Int?     @default(0)
+  description String?  @default("")
+  currency    String?  @default("usd")
+  status      String?  @default("pending")
+  paymentId   String   @unique
+  user        User?    @relation(fields: [idHash], references: [idHash])
+  idHash      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// model Room {
+//   roomId               String    @id @default(dbgenerated("substr(uuid_generate_v4()::text, 1, 5)")) @map(name: "room_id")
+//   key                  String?
+//   idHash               String?
+//   fileHash             String?
+//   title                String?
+//   public               Boolean?
+//   readerToken          String?
+//   salt                 String?
+//   expiresAtTimestampMs String?   @default(dbgenerated("cast(extract(epoch from now() + interval '1 day') * 1000 as string)"))
+//   maxDownloads         Int?      @default(100)
+//   lifetime             Int?      @default(86400)
+//   remainingDownloads   Int?      @default(100)
+//   encryptedTorrentFile String?
+//   sizeMb               Float?
+//   multiFile            Boolean?
+//   cloudState           String?
+//   mintState            String?
+//   cid                  String?
+//   txHash               String?
+//   creators             Creator[]
+//   client               String?
+//   concept              String?
+//   emails               Email[]
+//   size                 Float?
+// }
+
+// model Creator {
+//   id      Int       @id @default(sequence())
+//   creator String
+//   room    Room   @relation(fields: [roomId], references: [roomId])
+//   roomId  String
+// }
+
+// model Email {
+//   id     Int       @id @default(sequence())
+//   email  String
+//   room   Room   @relation(fields: [roomId], references: [roomId])
+//   roomId String
+// }

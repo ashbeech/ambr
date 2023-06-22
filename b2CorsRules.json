@@ -1,0 +1,83 @@
+b2 update-bucket --corsRules '[
+    {
+        "corsRuleName": "downloadFromAnyOriginWithUpload",
+        "allowedOrigins": [
+            "*"
+        ],
+        "allowedHeaders": [
+            "Authorization",
+            "Content-Type",
+            "Range",
+            "X-Bz-File-Name",
+            "X-Bz-Content-Sha1",
+            "Access-Control-Allow-Origin",
+            "Access-Control-Allow-Credentials"
+        ],
+        "allowedOperations": [
+            "b2_download_file_by_id",
+            "b2_download_file_by_name",
+            "b2_upload_file",
+            "b2_upload_part"
+        ],
+        "maxAgeSeconds": 3600
+    }
+]' ambr-dev allPublic
+
+b2 update-bucket --corsRules '[
+  {
+      "corsRuleName": "downloadFromAnyOriginWithUpload",
+      "allowedOrigins": [
+          "*"
+      ],
+      "allowedHeaders": [
+          "Authorization",
+          "Content-Type",
+          "Range",
+          "X-Bz-File-Name",
+          "X-Bz-Content-Sha1",
+          "Access-Control-Allow-Origin",
+          "Access-Control-Allow-Credentials"
+      ],
+      "allowedOperations": [
+          "b2_download_file_by_id",
+          "b2_download_file_by_name",
+          "b2_upload_file",
+          "b2_upload_part"
+      ],
+      "maxAgeSeconds": 3600
+  }
+]' ambr-prod allPublic
+
+---
+
+Example Upload:
+X-Bz-Content-Sha1: 576c3ed9fa30b58de291f514b2e6350476850419
+X-Bz-File-Name: 74rj4/0
+
+{
+    "accountId": "10df77dac8a2",
+    "action": "upload",
+    "bucketId": "a160ed1fa777fdea7c780a12",
+    "contentLength": 188586,
+    "contentMd5": "d8d3e8b4841db92f7953a2c03edb09eb",
+    "contentSha1": "576c3ed9fa30b58de291f514b2e6350476850419",
+    "contentType": "application/octet-stream",
+    "fileId": "4_za160ed1fa777fdea7c780a12_f119d710f3eda169a_d20220529_m001025_c000_v0001069_t0009_u01653783025975",
+    "fileInfo": {},
+    "fileName": "74rj4/0",
+    "fileRetention": {
+      "isClientAuthorizedToRead": false,
+      "value": null
+    },
+    "legalHold": {
+      "isClientAuthorizedToRead": false,
+      "value": null
+    },
+    "serverSideEncryption": {
+      "algorithm": "AES256",
+      "mode": "SSE-B2"
+    },
+    "uploadTimestamp": 1653783025975
+  }
+
+  content-security-policy: default-src 'self' ; connect-src 'self' blob: wss://ambr.app https://*.backblaze.com https://*.backblazeb2.com ; img-src 'self' blob: data: ; media-src 'self' blob: ; object-src 'none' ; script-src 'self' ; style-src 'self' 'unsafe-inline' ; base-uri 'none' ; frame-ancestors 'self' ; form-action 'self' ;
