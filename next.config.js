@@ -13,7 +13,6 @@ const nextConfig = {
   env: {
     REACT_APP_NODE_ENV: process.env.REACT_APP_NODE_ENV,
     REACT_APP_ADMIN_PK: process.env.REACT_APP_ADMIN_PK,
-    REACT_APP_JWT_SK: process.env.REACT_APP_JWT_SK,
     REACT_APP_CONTRACT_ADDRESS: process.env.REACT_APP_CONTRACT_ADDRESS,
     REACT_APP_RPC_URL: process.env.REACT_APP_RPC_URL,
     REACT_APP_RPC_CHAIN_ID: process.env.REACT_APP_RPC_CHAIN_ID,
