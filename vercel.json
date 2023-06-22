@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "builds": [
+    { "src": "next.config.js", "use": "@vercel/next" },
+    { "src": "prisma", "use": "@prisma/cli" }
+  ],
+  "routes": [{ "src": "/api/(.*)", "dest": "/pages/api/$1" }],
   "crons": [
     {
       "path": "/api/cron",
