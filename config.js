@@ -60,7 +60,7 @@ export const tagline = "Share ideas worth protecting";
 
 // Description of the site
 export const siteDescription =
-  "Transfer files instantly with verifiable proof-of-ownership.";
+  "File transfers that simultaneously add a layer of protection.";
 
 // Twitter username of the site
 export const socialHandle = "ambrlink";
@@ -134,8 +134,8 @@ if (isRender) {
   if (isPr) {
     // The service name is a unique slug per PR
     b2Config = {
-      bucketName: "ambr-dev",
-      bucketId: "aa3eff1811a5ec608f070d1b",
+      bucketName: "ambr-prod",
+      bucketId: "4a5eff4831157c208f270d1b",
       pathPrefix: null,
     };
   } else {
@@ -154,6 +154,3 @@ if (isRender) {
   };
 }
 export { b2Config };
-
-// Content-Security-Policy reporting URL
-//export const cspReportUrl = `https://o555220.ingest.sentry.io/api/5684834/security/?sentry_key=a47523bda986460eb5242137b48829e0&sentry_release=${release}&sentry_environment=${environment}`;
