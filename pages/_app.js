@@ -20,6 +20,7 @@ import { theme } from "../theme/index";
 //import SmallWithSocial from "../components/SmallWithSocial";
 import "../theme/global.css";
 import {
+  origin,
   siteTitle,
   socialHandle,
   siteDescription,
@@ -101,26 +102,29 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta name="application-name" content={siteTitle} />
                       <link
                         rel="shortcut icon"
-                        href="/android-chrome-192x192.png"
+                        href={origin + "/android-chrome-192x192.png"}
                       />
                       <link
                         rel="apple-touch-icon"
                         sizes="180x180"
-                        href="/apple-touch-icon.png"
+                        href={origin + "/apple-touch-icon.png"}
                       />
                       <link
                         rel="icon"
                         type="image/png"
                         sizes="32x32"
-                        href="/favicon-32x32.png"
+                        href={origin + "/favicon-32x32.png"}
                       />
                       <link
                         rel="icon"
                         type="image/png"
                         sizes="16x16"
-                        href="/favicon-16x16.png"
+                        href={origin + "/favicon-16x16.png"}
                       />
-                      <link rel="manifest" href="/site.webmanifest" />
+                      <link
+                        rel="manifest"
+                        href={origin + "/site.webmanifest"}
+                      />
                       {/*<link
                     rel="mask-icon"
                     href="/safari-pinned-tab.svg"
@@ -136,9 +140,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta property="og:description" content={description} />
                       <meta
                         property="og:image"
-                        content={
-                          "https://ambr.link/images/social-share-home.png"
-                        }
+                        content={origin + "/images/social-share-home.png"}
                       />
                       <meta property="og:site_name" content={siteTitle} />
                       <meta property="og:type" content="website" />
@@ -147,13 +149,11 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta name="twitter:title" content={title} />
                       <meta
                         name="twitter:image"
-                        content={
-                          "https://ambr.link/images/social-share-home.png"
-                        }
+                        content={origin + "/images/social-share-home.png"}
                       />
                       <meta name="twitter:image:alt" content={description} />
                       <meta name="twitter:card" content="summary_large_image" />
-                      <link rel="icon" href="/favicon.ico" />
+                      <link rel="icon" href={origin + "/favicon.ico"} />
                     </Head>
                   </AmbrContext.Provider>
                 </VStack>
