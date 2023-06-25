@@ -593,7 +593,7 @@ export const PayPanel = ({
                           w={"100%"}
                           h={"100%"}
                         >
-                          <Heading
+                          {/*                           <Heading
                             as={"h3"}
                             zIndex={998}
                             textAlign={"left"}
@@ -601,7 +601,7 @@ export const PayPanel = ({
                             h={"6%"}
                           >
                             Pay by Card
-                          </Heading>
+                          </Heading> */}
                           <Box
                             pos={"relative"}
                             overflowY={["auto", "scroll"]}
