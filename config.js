@@ -10,9 +10,10 @@ export const isPr = process.env.REACT_APP_IS_PULL_REQUEST === "true";
 // Is the site running on Render?
 export const isRender = process.env.REACT_APP_RENDER === "true";
 
-// Enable test keyboard shortcuts?
-export const enableTestShortcuts =
-  !isProd || process.env.REACT_APP_ENABLE_TEST_SHORTCUTS === "true";
+// Stripe products
+export const stripeProducts = !isProd
+  ? ["prod_O1IwO8cwxTjNGp"]
+  : ["prod_O98lNwyT3aRI9u"];
 
 // The git commit of the running site
 export const release = process.env.REACT_APP_RENDER_GIT_COMMIT || "development";
