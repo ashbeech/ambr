@@ -319,6 +319,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
+  const _image_src = image_src.replace(/http:\/\/localhost:3000\//g, origin);
 
   const isExpired =
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||
@@ -363,7 +364,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
                 />
                 <Img
                   h="80px"
-                  src={image_src}
+                  src={_image_src}
                   objectFit={"contain !important"}
                   alt="Ambr Stone"
                   className="file-stone"
