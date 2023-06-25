@@ -31,7 +31,7 @@ export default function Navigation({
   const filePage =
     !isLoggedIn &&
     currentPage !== "files" &&
-    currentPage !== "boost" &&
+    currentPage !== "top-up" &&
     currentPage !== "";
 
   const disabled =
@@ -39,11 +39,11 @@ export default function Navigation({
     mintState !== "Sealed" &&
     mintState !== "Signing Failed";
 
-  const showBoost =
-    (currentPage !== "boost" &&
+  const showTopup =
+    (currentPage !== "top-up" &&
       currentPage !== "" &&
       fileTransfersRemaining <= 0) ||
-    (currentPage !== "boost" && fileTransfersRemaining >= 1);
+    (currentPage !== "top-up" && fileTransfersRemaining >= 1);
 
   const showLogo = isLoggedIn || (currentPage === "" && !isLoggedIn);
 
@@ -133,12 +133,12 @@ export default function Navigation({
                               My Files
                             </MenuItem>
                           )}
-                          {showBoost && (
+                          {showTopup && (
                             <MenuItem
                               isDisabled={disabled}
                               fontSize={"md"}
                               onClick={() => {
-                                handlePageChange("boost");
+                                handlePageChange("top-up");
                               }}
                             >
                               {fileTransfersRemaining <= 0 && (
@@ -193,12 +193,12 @@ export default function Navigation({
                             My Files
                           </Link>
                         )}
-                        {showBoost && (
+                        {showTopup && (
                           <Link
                             pr={6}
-                            className={disabled ? "boost disabled" : "boost"}
+                            className={disabled ? "top-up disabled" : "top-up"}
                             onClick={() => {
-                              handlePageChange("boost");
+                              handlePageChange("top-up");
                             }}
                           >
                             {fileTransfersRemaining <= 0 && (

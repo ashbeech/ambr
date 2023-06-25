@@ -195,7 +195,7 @@ export function ControlPanel() {
       _mode !== SHARE_MODE
     ) {
       setMode(null);
-      setPath("/boost");
+      setPath("/top-up");
     }
 
     console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
@@ -278,7 +278,7 @@ export function ControlPanel() {
   }, [downloadProgress]);
 
   useEffect(() => {
-    if (_path === "/boost" || _path === "/files") {
+    if (_path === "/top-up" || _path === "/files") {
       console.log("Setting mode to: null");
       setMode(null);
     }
@@ -414,14 +414,14 @@ export function ControlPanel() {
       (fileTransfersRemaining !== -999 &&
         fileTransfersRemaining >= 1 &&
         _path !== "/files" &&
-        _path !== "/boost" &&
+        _path !== "/top-up" &&
         _isAuthenticated &&
         _mode !== JOIN_MODE &&
         _mode !== VERIFY_MODE) ||
       (fileTransfersRemaining !== -999 &&
         fileTransfersRemaining >= 1 &&
         _path !== "/files" &&
-        _path !== "/boost" &&
+        _path !== "/top-up" &&
         _isAuthenticated &&
         _mode !== JOIN_MODE &&
         _mode !== VERIFY_MODE);
@@ -431,22 +431,22 @@ export function ControlPanel() {
         _mode === JOIN_MODE &&
         _key &&
         _roomId !== "files" &&
-        _roomId !== "boost") ||
+        _roomId !== "top-up") ||
       (_mode !== CREATE_MODE &&
         _mode === VERIFY_MODE &&
         _key &&
         _roomId !== "files" &&
-        _roomId !== "boost");
+        _roomId !== "top-up");
     const showFilePanel =
       magic !== null && _isAuthenticated && _path === "/files";
     const showSubFilePanel1 = magic !== null && _path === "/files";
-    const showBoost =
+    const showTopup =
       (fileTransfersRemaining !== -999 &&
         fileTransfersRemaining <= 0 &&
         _isAuthenticated &&
         _path === "/" &&
         _mode !== SHARE_MODE) ||
-      (magic !== null && _isAuthenticated && _path === "/boost");
+      (magic !== null && _isAuthenticated && _path === "/top-up");
     const showHomeStone = magic !== null && !_key && !_isAuthenticated;
     const isExpired =
       (roomMeta !== null && roomMeta.expiresAtTimestampMs < Date.now()) ||
@@ -804,8 +804,8 @@ export function ControlPanel() {
                       </Box>
                     </Fade>
                   )}
-                  {showBoost && (
-                    <Fade in={showBoost} unmountOnExit>
+                  {showTopup && (
+                    <Fade in={showTopup} unmountOnExit>
                       <Box
                         w={"100%"}
                         maxW={["100%", "100%"]}

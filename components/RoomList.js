@@ -289,9 +289,8 @@ export const RoomList = ({ onChange = () => {} }) => {
                         as={"p"}
                         mb={4}
                       >
-                        No files to show now, but this is where you&apos;ll be
-                        able to refer back to, and manage, your previous file
-                        transfers.
+                        No files yet, but this is where you&apos;ll be able to
+                        refer back to, and manage, your previous file transfers.
                       </Text>
                     </Box>
 

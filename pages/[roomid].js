@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
         notFound: true,
       };
     }
-    if (roomId !== "files" && roomId !== "boost") {
+    if (roomId !== "files" && roomId !== "top-up") {
       //console.log(`Lets go: ${origin}/api/room/${roomId}`);
       // Get room data from the server-side database using the imported function
       // call the server-side database to retrieve expiresAtTimestampMs and remainingDownloads
