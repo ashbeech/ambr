@@ -461,8 +461,8 @@ export function ControlPanel() {
 
     return (
       <>
-        {/*         <Text>{`ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`}</Text>
-         */}
+        <Text>{`ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`}</Text>
+
         {loading && (
           <Fade in={loading}>
             <Box
