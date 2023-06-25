@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { origin } from "../config.js";
+import { origin } from "../../../../config.js";
 
 export default async function handler(req, res) {
   const { to, from, subject, filename, size, time, link } = req.body;
