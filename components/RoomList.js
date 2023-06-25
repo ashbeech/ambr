@@ -319,6 +319,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
+  // TODO: Make this dynamic; not localhost, hard-coded.
   const _image_src = image_src.replace(
     /http:\/\/localhost:3000\//g,
     origin + "/"

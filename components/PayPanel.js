@@ -55,9 +55,10 @@ export const PayPanel = ({
   const appearance = {
     theme: "flat",
     variables: {
+      colorPrimary: "#FF5C00",
       fontSizeBase: "0.85rem",
       colorBackground: "#F8F8F8",
-      colorDanger: "#FF4809",
+      colorDanger: "#FF5C00",
       colorText: "#929292",
       spacingUnit: "0.23rem",
       borderRadius: "10px",
