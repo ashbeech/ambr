@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { origin } from "../config.js";
 
 export default async function handler(req, res) {
   const { to, from, subject, filename, size, time, link } = req.body;
@@ -185,7 +186,7 @@ export default async function handler(req, res) {
           <img
             width="125px"
             class="logo"
-            src="http://localhost:3000/ambr-logo-white.png"
+            src="${origin}/ambr-logo-white.png"
             alt="Ambr"
           />
         </a>
