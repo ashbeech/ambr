@@ -124,6 +124,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <link
                         rel="manifest"
                         href={origin + "/site.webmanifest"}
+                        crossOrigin="use-credentials"
                       />
                       {/*<link
                     rel="mask-icon"
