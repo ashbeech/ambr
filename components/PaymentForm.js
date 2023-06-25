@@ -113,7 +113,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
                   {message}
                 </Box>
               )}
-              <Box mt={4}>
+              <Box>
                 <PaymentElement
                   id="payment-element"
                   options={paymentElementOptions}

@@ -606,7 +606,7 @@ export const PayPanel = ({
                             pos={"relative"}
                             overflowY={["auto", "scroll"]}
                             overflowX={"hidden"}
-                            h={"94%"}
+                            h={"100%"}
                             pr={"1px"}
                           >
                             <Elements options={options} stripe={stripePromise}>
