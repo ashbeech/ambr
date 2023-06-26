@@ -83,14 +83,9 @@ export const FilePanel = ({
   let cidLink = "";
   let readableTimeStamp = "...";
   let creators = "...";
-  //let recipients = "...";
+  let _image_src = null;
   let key_concept = "...";
   let client = "...";
-  // TODO: Make this dynamic; not localhost, hard-coded.
-  const _image_src = roomMeta.image_src.replace(
-    /http:\/\/localhost:3000\//g,
-    origin + "/"
-  );
 
   const isExpired =
     isDisabled ||
@@ -158,9 +153,13 @@ export const FilePanel = ({
     //contractAddressExt = `${blockExplorer}/address/${contractAddress}`;
     cid = roomMeta.cid ? roomMeta.cid : null;
     cidLink = `${ipfsViewer}${cid}`;
+    // TODO: Make this dynamic; not localhost, hard-coded.
+    _image_src = roomMeta.image_src.replace(
+      /http:\/\/localhost:3000\//g,
+      origin + "/"
+    );
 
     //console.log(roomMeta);
-
     //const isUserMatch = roomMeta.isUserMatch ? roomMeta.isUserMatch : false;
 
     const d = new Date(roomMeta.readableMetadata.timestamp);
