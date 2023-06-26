@@ -44,10 +44,11 @@ export default ControlPanel;
 
 export async function getServerSideProps(context) {
   try {
-    //console.log("[roomid] | context.params: ", context.params);
+    console.log("[roomid] | context.params: ", context.params);
     const roomId = context.params?.roomid || null;
 
     if (!roomId) {
+      console.error("No room ID present");
       return {
         notFound: true,
       };
