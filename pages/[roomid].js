@@ -59,24 +59,20 @@ export async function getServerSideProps(context) {
 
       console.log(`Lets go: ${origin}/api/room/${roomId}`);
 
-      const room = await fetcher.get(`${origin}/api/room/${roomId}`, {
+      /*       const room = await fetcher.get(`${origin}/api/room/${roomId}`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
         retry: false,
       });
+ */
+      //console.log("[roomid] | res: ", room);
 
-      console.log("[roomid] | res: ", room);
-
-      if (!room) {
+      /* if (!room) {
         throw new Error("Failed to fetch room data");
-      } else {
-        // Check if the room is expired
-        /*         const isExpired =
-          room.expiresAtTimestampMs < Date.now() ||
-          room.remainingDownloads === 0; // if you decide to save/use milliseconds in the database */
-
-        const isExpired =
+      } else { */
+      // Check if the room is expired
+      /*         const isExpired =
           (room !== null &&
             new Date(room.expiresAtTimestampMs).getTime() < Date.now()) ||
           (room !== null && room.remainingDownloads === 0);
@@ -85,19 +81,19 @@ export async function getServerSideProps(context) {
           return {
             notFound: true,
           };
-        }
+        } */
 
-        return {
+      /*         return {
           props: {
-            socialImage: `${origin}/images/social-share-file.jpg`,
-            /* room.multiFile
+            socialImage: `${origin}/images/social-share-file.jpg`, */
+      /* room.multiFile
             ? `${origin}/images/social-share-files.jpg`
             : `${origin}/images/social-share-file.jpg`, */
-            id: roomId,
+      /*             id: roomId,
             //isExpired: isExpired,
           },
         };
-      }
+      } */
     }
   } catch (error) {
     console.error(error);
