@@ -60,6 +60,9 @@ export async function getServerSideProps(context) {
       console.log(`Lets go: ${origin}/api/room/${roomId}`);
 
       const room = await fetcher.get(`${origin}/api/room/${roomId}`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
         retry: false,
       });
 
