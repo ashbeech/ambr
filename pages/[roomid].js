@@ -56,12 +56,19 @@ export async function getServerSideProps(context) {
     if (roomId !== "files" && roomId !== "top-up") {
       // Get room data from the server-side database using the imported function
       // call the server-side database to retrieve expiresAtTimestampMs and remainingDownloads
-      const room = await fetcher.get(`${origin}/api/room/${roomId}`, {
+
+      console.log(`Lets go: ${origin}/api/room/${roomId}`);
+
+      //const room = await fetcher.get(`${origin}/api/room/${roomId}`, {
+      const room = await fetcher.get(`/api/room/${roomId}`, {
+        headers: {
+          //Authorization: await this.keychain.authHeader(),
+          "Access-Control-Allow-Origin": "*",
+        },
         retry: false,
       });
 
       console.log("[roomid] | res: ", room);
-      console.log(`Lets go: ${origin}/api/room/${roomId}`);
 
       if (!room) {
         throw new Error("Failed to fetch room data");
