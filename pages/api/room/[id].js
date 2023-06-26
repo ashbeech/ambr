@@ -24,7 +24,7 @@ export default async function handler(request, response) {
   async function retrieveRecord(roomId) {
     //, userIdHash) {
     try {
-      console.log("userIdHash:", userIdHash);
+      //console.log("userIdHash:", userIdHash);
       const room = await prisma.room.findUnique({
         where: { roomId },
       });
@@ -83,15 +83,10 @@ export default async function handler(request, response) {
     }
   }
 
-  console.warn("DEV DEBUG | [ID] BODY: ", request.body);
-  console.warn(
-    "DEV DEBUG | ID, HASH: ",
-    request.query.id,
-    request.query.userIdHash
-  );
-
   try {
     let record;
+    console.warn("DEV DEBUG | [ID] BODY: ", request.body);
+    console.warn("DEV DEBUG | ID, HASH: ", request.query.id);
     if (request.body.encryptedTorrentFile != null) {
       record = await updateRecord(request.body, request.query);
     } else if (request.query.userIdHash != null) {

@@ -30,9 +30,10 @@ const renderHostname = isPr
   : process.env.REACT_APP_HOSTNAME;
 
 // Website hostname + port
+//export const host = isRender ? renderHostname : `localhost:${port}`;
 export const host = isRender
   ? renderHostname
-  : `ambr-git-dev-ashbeech.vercel.app`; //`localhost:${port}`;
+  : `https://ambr-git-dev-ashbeech.vercel.app`;
 
 export const ipfsGateway = process.env.REACT_APP_IPFSGATEWAY;
 
