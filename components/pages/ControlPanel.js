@@ -33,8 +33,7 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import { tagline } from "../../config.js";
-//import path from "path";
+import { tagline, isProd } from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -459,10 +458,15 @@ export function ControlPanel() {
       roomMeta !== null &&
       roomMeta.idHash === idHash;
 
+    // NOTE: For dev use
+    const dev_readout =
+      isProd === "development"
+        ? `ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`
+        : "";
+
     return (
       <>
-        <Text>{`ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`}</Text>
-
+        <Text>{dev_readout}</Text>
         {loading && (
           <Fade in={loading}>
             <Box
