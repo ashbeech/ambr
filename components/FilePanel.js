@@ -86,6 +86,11 @@ export const FilePanel = ({
   //let recipients = "...";
   let key_concept = "...";
   let client = "...";
+  // TODO: Make this dynamic; not localhost, hard-coded.
+  const _image_src = roomMeta.image_src.replace(
+    /http:\/\/localhost:3000\//g,
+    origin + "/"
+  );
 
   const isExpired =
     isDisabled ||
@@ -296,7 +301,7 @@ export const FilePanel = ({
                             w={["100%", "175%", "150%"]}
                             //h={["100%", "175%", "150%"]}
                           >
-                            <IPFSImage image_src={roomMeta.image_src} />
+                            <IPFSImage image_src={_image_src} />
                           </Box>
                         </Flex>
                       )}
@@ -345,7 +350,7 @@ export const FilePanel = ({
                             w={["75%", "150%"]}
                             h={["100%", "150%"]}
                           >
-                            <IPFSImage image_src={roomMeta.image_src} />
+                            <IPFSImage image_src={_image_src} />
                           </Box>
                         </Flex>
                       </Box>
@@ -413,7 +418,7 @@ export const FilePanel = ({
                               w={["100%", "150%"]}
                               h={["100%", "150%"]}
                             >
-                              <IPFSImage image_src={roomMeta.image_src} />
+                              <IPFSImage image_src={_image_src} />
                             </Box>
                           </Box>
                         </Flex>
