@@ -85,6 +85,12 @@ export default async function handler(request, response) {
 
   try {
     let record;
+    console.log("DEV DEBUG | [ID] BODY: ", request.body);
+    console.log(
+      "DEV DEBUG | ID, HASH: ",
+      request.query.id,
+      request.query.userIdHash
+    );
     if (request.body.encryptedTorrentFile != null) {
       record = await updateRecord(request.body, request.query);
     } else if (request.query.userIdHash != null) {
