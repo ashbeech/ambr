@@ -33,7 +33,7 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import { tagline, isProd } from "../../config.js";
+import { tagline, environment } from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -460,7 +460,7 @@ export function ControlPanel() {
 
     // NOTE: For dev use
     const dev_readout =
-      isProd === "development"
+      environment === "development"
         ? `ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`
         : "";
 
