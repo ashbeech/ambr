@@ -54,7 +54,7 @@ export function FileRecordPanel({
               w={"full"}
               alignItems="center"
               justifyContent="space-between"
-              mb={[4, 2]}
+              mb={[0, 0]}
             >
               <HStack left={"-2px"} pos={"relative"}>
                 <SealIcon boxSize={"1.4rem"} />
