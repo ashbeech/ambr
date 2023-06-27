@@ -316,19 +316,25 @@ export const SendPanel = ({
                   justifyContent="center"
                   position={"relative"}
                   w={"100%"}
-                  h={"100%"}
+                  h={"270px"}
                 >
-                  <Img
-                    w={["80%", "100%"]}
-                    h={"100%"}
-                    ml={["0.8em", 0]}
-                    objectFit={"none !important"}
-                    src={`/images/amber-7.png`}
-                    position={"relative"}
+                  <Box
                     overflow={"visible"}
-                    alt={`Ambr Stone`}
-                    className="file-stone"
-                  />
+                    width={"24rem"}
+                    height={"24rem"}
+                    pos={"absolute"}
+                  >
+                    <Img
+                      w={["100%", "100%"]}
+                      h={"100%"}
+                      ml={[0, 0]}
+                      objectFit={"none !important"}
+                      src={`/images/amber-7.png`}
+                      position={"relative"}
+                      alt={`Ambr Stone`}
+                      className="file-stone"
+                    />
+                  </Box>
                 </Box>
               </Box>
             </Flex>
