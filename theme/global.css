@@ -1,20 +1,13 @@
-._aI {
-  display: none !important;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
 
 #__next {
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   overscroll-behavior: none;
+}
+
+._aI {
+  display: none !important;
 }
 
  @-webkit-keyframes dash {
