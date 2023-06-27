@@ -199,9 +199,10 @@ export const theme = extendTheme(
               color: "orange.400",
               borderColor: "orange.400",
               _disabled: {
+                borderWidth: "1px 3px 3px 1px",
                 color: "gray.600",
                 opacity: "1",
-                borderWidth: "1px 3px 3px 1px",
+                borderColor: "gray.600",
               },
             },
             _focus: {},

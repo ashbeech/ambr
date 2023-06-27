@@ -121,7 +121,7 @@ export default function Navigation({
                         >
                           Menu
                         </MenuButton>
-                        <MenuList pos={"relative"} top={"-0.2rem"}>
+                        <MenuList pos={"relative"} top={"-0.2rem"} zIndex={999}>
                           {currentPage !== "files" && (
                             <MenuItem
                               isDisabled={disabled}

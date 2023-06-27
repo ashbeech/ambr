@@ -43,7 +43,7 @@ export const styles = {
     "h2.fancy": {
       fontFamily: "fancy",
       fontSize: "3xl !important",
-      letterSpacing: "widest !important",
+      letterSpacing: "wide !important",
       fontWeight: "bold !important",
     },
     h2: {
