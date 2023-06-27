@@ -72,7 +72,7 @@ export const FilePicker = ({ onFiles = () => {}, description, ...rest }) => {
       display="flex"
       alignItems="center"
       justifyContent={"center"}
-      overflow={"hidden"}
+      overflow={"visible"}
       h={drag ? ["100%", "full"] : ["auto", "full"]}
       borderStyle={drag && "dashed"}
       borderColor={drag && "black.500"}
@@ -95,12 +95,6 @@ export const FilePicker = ({ onFiles = () => {}, description, ...rest }) => {
           <Text>{description ? description : "Upload File Here"}</Text>
           {fileInput}
         </Button>
-        {/*         <Box textAlign={"center"} p={2}>
-          <Text fontSize={"sm"}>
-            The expired download link can be refreshed by re-uploading the
-            original file here.
-          </Text>
-        </Box> */}
       </Box>
     </Box>
   );

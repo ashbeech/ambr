@@ -168,7 +168,7 @@ export const SendPanel = ({
             w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
             sx={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
             h={"100%"}
-            my={0}
+            mb={[2, 0]}
             position={"relative"}
           >
             <Flex
@@ -176,8 +176,6 @@ export const SendPanel = ({
               alignItems="center"
               justifyContent="center"
               h="100%"
-              mt={[2, 0]}
-              mb={[2, 0]}
             >
               <Fade
                 in={mode === CREATE_MODE || mode === SHARE_MODE}
@@ -190,7 +188,7 @@ export const SendPanel = ({
                 >
                   <Text
                     w={"100%"}
-                    sx={{
+                    style={{
                       transition: "width 0.1s ease-in, height 0.1s ease-in",
                     }}
                     fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
@@ -231,8 +229,9 @@ export const SendPanel = ({
                 <Box zIndex={999} h={"100%"} mr={[0, 3]}>
                   <Fade
                     in={mode === null}
-                    style={{ height: "100%", width: "100%" }}
-                    sx={{
+                    style={{
+                      height: "100%",
+                      width: "100%",
                       transition: "height 0.1s ease-in, width 0.1s ease-in",
                     }}
                     unmountOnExit
@@ -244,8 +243,10 @@ export const SendPanel = ({
                   </Fade>
                   <Fade
                     in={mode === CREATE_MODE || mode === SHARE_MODE}
-                    style={{ height: "100%", width: "100%", zIndex: -999 }}
-                    sx={{
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      zIndex: -999,
                       transition: "height 0.1s ease-in, width 0.1s ease-in",
                     }}
                     unmountOnExit
