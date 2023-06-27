@@ -25,7 +25,7 @@ import {
   removeRoomByIdServer,
 } from "../lib/RoomStorageManagerServer.js";
 import { logEvent } from "../lib/analytics.js";
-import { origin } from "../config.js";
+import { origin, environment } from "../config.js";
 import { fetcher } from "../lib/fetcher.js";
 import { shouldReportError } from "../lib/errors.js";
 import { ButtonLink } from "./ButtonLink.js";
@@ -35,17 +35,6 @@ import { MagicContext } from "../components/MagicContext";
 import { ipfsGateway } from "../config.js";
 
 const REFRESH_RATE = 300_000; // 5 minutes
-
-// LOCAL CRON TEST
-// NOTE: Triggers Class C transaction--B2 list_filenames cap: https://help.backblaze.com/hc/en-us/articles/224378407-Why-am-I-Reaching-Class-C-Transaction-Caps-with-Synology-
-/* const deleteExpiredFiles = async () => {
-  try {
-    const response = await fetcher.get(`${origin}/api/cron`);
-    console.log("deleteExpiredFiles res: ", response || "Nothing to report.");
-  } catch (error) {
-    console.error(error);
-  }
-}; */
 
 const getFileFromIPFS = async (_url) => {
   try {
@@ -230,41 +219,7 @@ export const RoomList = ({ onChange = () => {} }) => {
       >
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
-            {loading && (
-              <>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-              </>
-            )}
-            {!loading && rooms !== null && rooms.length !== 0 && (
+            {rooms !== null && rooms.length !== 0 && (
               <Fade in={rooms.length > 0}>
                 <Stack spacing={[4, 4]} px={[0, 0]}>
                   {rooms.length > 0 &&
@@ -300,7 +255,7 @@ export const RoomList = ({ onChange = () => {} }) => {
                       colorScheme="black"
                       size="md"
                     >
-                      Begin File Transferring
+                      Transfer a File
                     </ButtonLink>
                   </VStack>
                 </Center>
@@ -315,28 +270,52 @@ export const RoomList = ({ onChange = () => {} }) => {
 
 export const RoomItem = ({ room, onClose = () => {} }) => {
   const { roomId, title, key, image_src } = room;
-  const [deleting, setDeleting] = useState(false);
+  //const [deleting, setDeleting] = useState(false);
+  const [loading, setLoading] = useState(true); // Track the loading state of IPFS data
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
-  // TODO: Make this dynamic; not localhost, hard-coded.
-  const _image_src = image_src.replace(
-    /http:\/\/localhost:3000\//g,
-    origin + "/"
-  );
+  const _image_src =
+    environment === "development"
+      ? image_src
+      : image_src.replace(/http:\/\/localhost:3000\//g, origin + "/");
 
   const isExpired =
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||
     (room !== null && room.remainingDownloads < 1);
 
+  useEffect(() => {
+    // Fetch IPFS data and update the loading state
+    const fetchIPFSData = async () => {
+      try {
+        setLoading(true);
+
+        const IPFSdata = await getFileFromIPFS(
+          `https://${room.cid}.ipfs.${ipfsGateway}`
+        );
+
+        if (IPFSdata !== null && IPFSdata.image !== null) {
+          room.image_src = IPFSdata.image ? IPFSdata.image : "";
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setLoading(false); // Set loading to false in case of an error
+      }
+    };
+
+    fetchIPFSData(); // Fetch IPFS data when the component mounts
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleClickCopy = () => {
     logEvent("share", { type: "copy" });
   };
 
-  const handleClickDelete = async () => {
+  /*   const handleClickDelete = async () => {
     setDeleting(true);
     onClose(room);
-  };
+  }; */
 
   return (
     <>
@@ -347,108 +326,182 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
         borderColor="blackAlpha.600"
         borderRadius="3xl"
       >
-        <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
-          <Box pos="relative" flex={1}>
-            <Link href={path} colorScheme="black" size="sm">
-              <Flex
-                direction={"column"}
-                alignItems={"center"}
-                justifyContent={"center"}
-                h={"100%"}
-                minW={"80px"}
-                px={1}
-              >
-                <Icon
-                  pos="absolute"
-                  as={VscFile}
-                  boxSize={8}
-                  zIndex={998}
-                  blendMode="overlay"
-                  objectFit={["contain !important"]}
-                />
-                <Img
-                  h="80px"
-                  src={_image_src}
-                  objectFit={"contain !important"}
-                  alt="Ambr Stone"
-                  className="file-stone"
-                />
-              </Flex>
-            </Link>
-          </Box>
-
-          <VStack
-            className={"info"}
-            flex={4}
-            maxW={"50%"}
-            w={["33%", "90%"]}
-            pl={[0, 4]}
-          >
-            <Text
-              as={"a"}
-              w="full"
-              href={[path]}
-              cursor={"pointer"}
-              align="left"
-              noOfLines={1}
-              fontSize={["lg", "xl"]}
-              fontWeight="normal !important"
-            >
-              {title}
-            </Text>
-            <Text
-              w="full"
-              align="left"
-              color="black.500"
-              fontSize={["sm", "sm"]}
-            >
-              {!isExpired ? (
-                <>
-                  Download available for{" "}
-                  <RelativeTime
-                    to={Number(room.expiresAtTimestampMs)}
-                    onlyText={true}
+        {loading ? ( // Display skeleton loading state while loading IPFS data
+          <Skeleton
+            startColor="gray.500"
+            endColor="gray.600"
+            height="8rem"
+            borderRadius={"xl"}
+            mb={4}
+            w={"100%"}
+          />
+        ) : (
+          <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
+            <Box pos="relative" flex={1}>
+              <Link href={path} colorScheme="black" size="sm">
+                <Flex
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  h={"100%"}
+                  minW={"80px"}
+                  px={1}
+                >
+                  <Icon
+                    pos="absolute"
+                    as={VscFile}
+                    boxSize={8}
+                    zIndex={998}
+                    blendMode="overlay"
+                    objectFit={["contain !important"]}
                   />
-                  .
-                </>
-              ) : (
-                <>Historic record.</>
-              )}
-            </Text>
-          </VStack>
+                  <Img
+                    h="80px"
+                    src={_image_src}
+                    objectFit={"contain !important"}
+                    alt="Ambr Stone"
+                    className="file-stone"
+                  />
+                </Flex>
+              </Link>
+            </Box>
 
-          <Flex
-            flex={[1, 2]}
-            direction={["row"]}
-            alignContent={"right"}
-            align={"right"}
-            flexDirection={["column", "row-reverse"]}
-            alignItems={"center"}
-          >
-            <CopyButton
-              onClick={handleClickCopy}
-              text={url}
-              colorScheme="black"
-              size={"md"}
-              ml={[0, 2]}
-            />
-            <ButtonLink
-              display={["none", "inherit"]}
-              href={path}
-              colorScheme="black"
-              size="md"
+            <VStack
+              className={"info"}
+              flex={4}
+              maxW={"50%"}
+              w={["33%", "90%"]}
+              pl={[0, 4]}
             >
-              View
-            </ButtonLink>
+              <Text
+                as={"a"}
+                w="full"
+                href={[path]}
+                cursor={"pointer"}
+                align="left"
+                noOfLines={1}
+                fontSize={["lg", "xl"]}
+                fontWeight="normal !important"
+              >
+                {title}
+              </Text>
+              <Text
+                w="full"
+                align="left"
+                color="black.500"
+                fontSize={["sm", "sm"]}
+              >
+                {!isExpired ? (
+                  <>
+                    Download available for{" "}
+                    <RelativeTime
+                      to={Number(room.expiresAtTimestampMs)}
+                      onlyText={true}
+                    />
+                    .
+                  </>
+                ) : (
+                  <>Historic record.</>
+                )}
+              </Text>
+            </VStack>
+
+            <Flex
+              flex={[1, 2]}
+              direction={["row"]}
+              alignContent={"right"}
+              align={"right"}
+              flexDirection={["column", "row-reverse"]}
+              alignItems={"center"}
+            >
+              <CopyButton
+                onClick={handleClickCopy}
+                text={url}
+                colorScheme="black"
+                size={"md"}
+                ml={[0, 2]}
+              />
+              <ButtonLink
+                display={["none", "inherit"]}
+                href={path}
+                colorScheme="black"
+                size="md"
+              >
+                View
+              </ButtonLink>
+            </Flex>
           </Flex>
-        </Flex>
+        )}
       </Box>
-      {/* </Link> */}
     </>
   );
 };
 
 {
+  // LOCAL CRON TEST
+  // NOTE: Triggers Class C transaction--B2 list_filenames cap: https://help.backblaze.com/hc/en-us/articles/224378407-Why-am-I-Reaching-Class-C-Transaction-Caps-with-Synology-
+  /* const deleteExpiredFiles = async () => {
+  try {
+    const response = await fetcher.get(`${origin}/api/cron`);
+    console.log("deleteExpiredFiles res: ", response || "Nothing to report.");
+  } catch (error) {
+    console.error(error);
+  }
+}; */
+
+  {
+    /* {loading && (
+              <>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={4}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={4}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={4}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+              </>
+            )} */
+  }
+  {
+    /*             {!loading && rooms !== null && rooms.length !== 0 && (
+              <Fade in={rooms.length > 0}>
+                <Stack spacing={[4, 4]} px={[0, 0]}>
+                  {rooms.length > 0 &&
+                    rooms.map((room) => (
+                      <RoomItem
+                        key={room.roomId}
+                        room={room}
+                        onClose={handleClose}
+                      />
+                    ))}
+                </Stack>
+              </Fade>
+            )} */
+  }
+
   /*<Flex justify={"right"} align="right">
          <Box w={"full"} align="right" alignSelf="end">
           <Button

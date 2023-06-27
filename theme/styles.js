@@ -85,7 +85,6 @@ export const styles = {
     },
     "img.file-stone": {
       objectFit: "cover",
-      overflow: "visible !important",
       position: "relative",
     },
     ".container": {

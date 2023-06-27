@@ -5,7 +5,6 @@ import {
   Stack,
   HStack,
   Text,
-  Wrap,
   Flex,
   Heading,
   Img,
@@ -780,7 +779,7 @@ const TopRightPanel = React.memo(
           roomMeta.expiresAtTimestampMs != null &&
           roomMeta.remainingDownloads != null && (
             <Fade in>
-              <Wrap overflow={"hidden"} mb={[2, 0]} spacing={0}>
+              <Box overflow={"hidden"} mb={[2, 0]} spacing={0}>
                 <Text fontSize={"sm"} zIndex={999} noOfLines={[3, 2]}>
                   Shared <RelativeTime to={d} />.{" "}
                   {!isExpired && (
@@ -807,7 +806,7 @@ const TopRightPanel = React.memo(
                     </>
                   )}
                 </Text>
-              </Wrap>
+              </Box>
             </Fade>
           )}
         {/*       {!isExpired && (
@@ -821,7 +820,7 @@ const TopRightPanel = React.memo(
       )} */}
         {!isExpired && (
           <Box justify="space-between" align="center">
-            <Wrap
+            <Stack
               overflow={"hidden"}
               spacing={2}
               mb={[0, 4]}
@@ -839,7 +838,7 @@ const TopRightPanel = React.memo(
                   </Text>
                 </Button>
               )}
-            </Wrap>
+            </Stack>
           </Box>
         )}
       </Stack>
