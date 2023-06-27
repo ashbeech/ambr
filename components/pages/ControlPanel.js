@@ -466,7 +466,7 @@ export function ControlPanel() {
 
     return (
       <>
-        <Text>{dev_readout}</Text>
+        {/* <Text>{dev_readout}</Text> */}
         {loading && (
           <Fade in={loading}>
             <Box
@@ -495,7 +495,7 @@ export function ControlPanel() {
               minH="100vh"
               h={"100vh"}
               overflowX={"hidden"}
-              overflowY={"scroll"}
+              overflowY={showHomeStone ? "hidden" : "scroll"}
             >
               <Box>
                 <Navigation
@@ -904,8 +904,8 @@ export function ControlPanel() {
                   {showHomeStone && (
                     <Fade in={showHomeStone} unmountOnExit>
                       <VStack
-                        w={"100%"}
-                        h={130}
+                        w={"96%"}
+                        h={220}
                         position="absolute"
                         px={8}
                         top={0}
@@ -913,12 +913,12 @@ export function ControlPanel() {
                         left={0}
                         bottom={0}
                         margin="auto"
-                        spacing={4}
+                        spacing={[3, 5]}
                       >
                         <Img src={`images/ambr.svg`} />
                         <Text
                           letterSpacing={["normal", "wide"]}
-                          fontSize={["xl"]}
+                          fontSize={["lg", "xl"]}
                         >
                           {tagline + "."}
                         </Text>

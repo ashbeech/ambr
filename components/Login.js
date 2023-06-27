@@ -92,7 +92,7 @@ function Login() {
           <Button
             flex={!visitedBefore ? ["", ""] : ["", 2]}
             overflow={"hidden"}
-            top={[0, "-2px"]}
+            top={[1, "-2px"]}
             w={["full", ""]}
             size={"md"}
             onClick={handleLogin}

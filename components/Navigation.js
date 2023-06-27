@@ -45,7 +45,7 @@ export default function Navigation({
       fileTransfersRemaining <= 0) ||
     (currentPage !== "top-up" && fileTransfersRemaining >= 1);
 
-  const showLogo = isLoggedIn || (currentPage === "" && !isLoggedIn);
+  const showLogo = isLoggedIn || (currentPage !== "" && !isLoggedIn);
 
   const handlePageChange = (page) => {
     if (!disabled) {
