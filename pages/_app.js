@@ -87,7 +87,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta charSet="UTF-8" />
                       <meta
                         name="viewport"
-                        content="width=device-width, initial-scale=1, viewport-fit=cover"
+                        content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
                       />
                       <meta name="description" content={description} />
                       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
