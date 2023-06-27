@@ -166,7 +166,7 @@ export const SendPanel = ({
         >
           <Box
             w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
-            sx={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
+            style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
             h={"100%"}
             mb={[2, 0]}
             position={"relative"}
