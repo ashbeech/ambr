@@ -168,7 +168,7 @@ export const SendPanel = ({
             w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
             style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
             h={"100%"}
-            mb={[2, 0]}
+            mb={[3, 0]}
             position={"relative"}
           >
             <Flex
@@ -316,7 +316,7 @@ export const SendPanel = ({
                   justifyContent="center"
                   position={"relative"}
                   w={"100%"}
-                  h={"270px"}
+                  h={["18rem", "100%"]}
                 >
                   <Box
                     overflow={"visible"}
@@ -327,7 +327,7 @@ export const SendPanel = ({
                     <Img
                       w={["100%", "100%"]}
                       h={"100%"}
-                      ml={[0, 0]}
+                      ml={["0.8em", 0]}
                       objectFit={"none !important"}
                       src={`/images/amber-7.png`}
                       position={"relative"}
@@ -687,9 +687,10 @@ const CreateProgress = ({ mode, progress }) => {
               thickness="0.4px"
               capIsRound={true}
               min={1}
-              w={mode === SHARE_MODE ? ["45%", "65%"] : ["45%", "80%"]}
-              minW={["9rem", ""]}
-              mt={["5%", 0]}
+              w={mode === SHARE_MODE ? ["68%", "65%"] : ["68%", "80%"]}
+              minW={["11rem", ""]}
+              maxW={["13rem"]}
+              mt={["2rem", 0]}
             >
               <CircularProgressLabel
                 color="black.500"

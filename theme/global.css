@@ -36,5 +36,18 @@
             animation: dash 1.75s linear 0s forwards infinite;
   }
   
-
+/*   @media screen and (min-width: 18rem) and (max-width: 40rem) and (orientation: landscape) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: center;
+      width: 100vh;
+      height: 100vw;
+      overflow-x: hidden;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -50vw;
+      margin-left: -50vh;
+    }
+  } */
   
