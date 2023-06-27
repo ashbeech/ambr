@@ -76,7 +76,7 @@ export function FileRecordPanel({
                 size="sm"
                 variant={"rounded"}
               >
-                <Icon as={VscClose} boxSize={4} />
+                <Icon top={"1px"} pos={"relative"} as={VscClose} boxSize={4} />
               </Button>
             </Flex>
           </Flex>
