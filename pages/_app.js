@@ -76,6 +76,8 @@ export default function AmbrApp({ Component, pageProps, err }) {
           <Fonts />
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Div100vh>
+            {" "}
+            {/* 100vh on mobile */}
             <ChakraProvider theme={theme}>
               <Box>
                 <Grid>
