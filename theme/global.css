@@ -9,6 +9,10 @@
   display: none !important;
 }
 
+.main-container {
+  min-height: calc(100vh - 160px); /* Adjust the value based on your header and footer height */
+}
+
  @-webkit-keyframes dash {
     0% {
       stroke-dasharray: 375,089;

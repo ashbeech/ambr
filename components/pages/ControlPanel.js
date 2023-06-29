@@ -488,7 +488,11 @@ export function ControlPanel() {
               justify={"space-between"}
               align-items="center"
               justify-content="center"
-              className={!_key && !_isAuthenticated ? "home-stone" : ""}
+              className={
+                !_key && !_isAuthenticated
+                  ? "home-stone main-container"
+                  : "main-container"
+              }
               position="relative"
               backgroundSize={"cover !important"}
               minW="100vw"
