@@ -488,11 +488,7 @@ export function ControlPanel() {
               justify={"space-between"}
               align-items="center"
               justify-content="center"
-              className={
-                !_key && !_isAuthenticated
-                  ? "home-stone main-container"
-                  : "main-container"
-              }
+              className={!_key && !_isAuthenticated ? "home-stone" : ""}
               position="relative"
               backgroundSize={"cover !important"}
               minW="100vw"
@@ -507,7 +503,7 @@ export function ControlPanel() {
                   mintState={mintState}
                   chainState={chainState}
                 />
-                <Box pb={20}>
+                <Box pb={[8, 20]}>
                   {lockedState && (
                     <Box display={""} pr={4} spacing={4} w={"100%"}>
                       <HStack
