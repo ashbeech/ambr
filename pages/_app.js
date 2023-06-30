@@ -26,7 +26,6 @@ import {
   siteDescription,
   tagline,
 } from "../config.js";
-import Div100vh from "react-div-100vh";
 
 const { primaryColor } = theme?.site ?? "#FFF";
 
@@ -56,7 +55,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
   }, []);
 
   return (
-    <Div100vh>
+    <>
       {loading && (
         <Box
           display={"flex"}
@@ -165,7 +164,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
           </ChakraProvider>
         </MagicProvider>
       )}
-    </Div100vh>
+    </>
   );
 }
 
