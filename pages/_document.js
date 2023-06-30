@@ -5,7 +5,7 @@ class AmbrApp extends Document {
     return (
       <Html>
         <Head />
-        <body style={{ minH: "-webkit-fill-available", height: "100vh" }}>
+        <body style={{ minHeight: "-webkit-fill-available", height: "100vh" }}>
           <Main />
           <NextScript />
         </body>
