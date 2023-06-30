@@ -34,7 +34,6 @@ import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
 import { tagline, environment } from "../../config.js";
-import Div100vh from "react-div-100vh";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -484,465 +483,452 @@ export function ControlPanel() {
         )}
         {!loading && (
           <>
-            <Div100vh>
-              <Flex
-                direction="column"
-                justify={"space-between"}
-                align-items="center"
-                justify-content="center"
-                className={!_key && !_isAuthenticated ? "home-stone" : ""}
-                position="relative"
-                backgroundSize={"cover !important"}
-                minW="100vw"
-                minH="100vh"
-                h={"100vh"}
-                overflowX={"hidden"}
-                overflowY={showHomeStone ? "hidden" : "scroll"}
-              >
-                <Box>
-                  <Navigation
-                    fileTransfersRemaining={fileTransfersRemaining}
-                    mintState={mintState}
-                    chainState={chainState}
-                  />
-                  <Box pb={[8, 20]}>
-                    {lockedState && (
-                      <Box display={""} pr={4} spacing={4} w={"100%"}>
-                        <HStack
-                          alignContent={"center"}
-                          flexDirection={"row-reverse"}
-                          pl={2}
-                          py={4}
-                        >
-                          <Img
-                            src={"/images/logo.svg"}
-                            alt="Ambr — Sharing Ideas Worth Protecting"
-                            height={10}
-                          />
-                          {_path !== "/files" && (
-                            <Text
-                              w={"100%"}
-                              alignSelf="flex-end"
-                              align={"left"}
-                              as={"h1"}
-                              fontSize={"2xl"}
-                              noOfLines={1}
-                              m={0}
-                            >
-                              {!_key ? "Share your file" : "You`ve got a file"}
-                            </Text>
-                          )}
-                        </HStack>
-                      </Box>
-                    )}
-                    {showPanel && (
-                      <Fade in={showPanel}>
-                        <Box
+            <Flex
+              direction="column"
+              justify={"space-between"}
+              align-items="center"
+              justify-content="center"
+              className={!_key && !_isAuthenticated ? "home-stone" : ""}
+              position="relative"
+              backgroundSize={"cover !important"}
+              minW="100vw"
+              minH="100vh"
+              h={"100vh"}
+              overflowX={"hidden"}
+              overflowY={showHomeStone ? "hidden" : "scroll"}
+            >
+              <Box>
+                <Navigation
+                  fileTransfersRemaining={fileTransfersRemaining}
+                  mintState={mintState}
+                  chainState={chainState}
+                />
+                <Box pb={[8, 20]}>
+                  {lockedState && (
+                    <Box display={""} pr={4} spacing={4} w={"100%"}>
+                      <HStack
+                        alignContent={"center"}
+                        flexDirection={"row-reverse"}
+                        pl={2}
+                        py={4}
+                      >
+                        <Img
+                          src={"/images/logo.svg"}
+                          alt="Ambr — Sharing Ideas Worth Protecting"
+                          height={10}
+                        />
+                        {_path !== "/files" && (
+                          <Text
+                            w={"100%"}
+                            alignSelf="flex-end"
+                            align={"left"}
+                            as={"h1"}
+                            fontSize={"2xl"}
+                            noOfLines={1}
+                            m={0}
+                          >
+                            {!_key ? "Share your file" : "You`ve got a file"}
+                          </Text>
+                        )}
+                      </HStack>
+                    </Box>
+                  )}
+                  {showPanel && (
+                    <Fade in={showPanel}>
+                      <Box
+                        w={"100%"}
+                        h={"100%"}
+                        maxW={["90%", "100%"]}
+                        display={["", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
                           w={"100%"}
                           h={"100%"}
-                          maxW={["90%", "100%"]}
-                          display={["", "flex"]}
-                          alignItems="center"
-                          justifyContent="center"
-                          position={["relative", "absolute"]}
-                          top={0}
-                          right={0}
-                          left={0}
-                          bottom={0}
-                          margin="auto"
+                          maxW={["3xl", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
                         >
-                          <SafeContainer
-                            position={"relative"}
-                            display={"block"}
-                            w={"100%"}
-                            h={"100%"}
-                            maxW={["3xl", "3xl", "5xl"]}
-                            sx={{
-                              paddingInlineStart: "0 !important",
-                              paddingInlineEnd: "0 !important",
-                            }}
-                          >
-                            <HStack w={"100%"} h={"100%"}>
-                              <Box w={"100%"} h={"100%"} overflow={"visible"}>
-                                <SendPanel
-                                  mode={_mode}
-                                  creator={publicAddress}
-                                  handleFiles={handleFiles}
-                                  cloudState={cloudState}
-                                  peerState={peerState}
-                                  createProgress={createProgress}
-                                  createMintProgress={createMintProgress}
-                                  roomMeta={roomMeta}
-                                  fileName={fileName}
-                                  shareUrl={shareUrl}
-                                  filesLength={files?.length ?? 0}
-                                  handleRoomLifetimeChange={
-                                    handleRoomLifetimeChange
-                                  }
-                                  handleMaxRoomDownloadsChange={
-                                    handleMaxRoomDownloadsChange
-                                  }
-                                  onMint={handleMint}
-                                  chainState={chainState}
-                                  mintState={mintState}
-                                />
-                              </Box>
-                              <Box
-                                display={["none", "block", "block"]}
-                                p={8}
-                                spacing={4}
-                                minW={"33%"}
-                                maxW={"33%"}
-                              >
-                                <Text
-                                  as={"h1"}
-                                  className={"fancy"}
-                                  noOfLines={3}
-                                >
-                                  Protect
-                                  <br />
-                                  your pitch
-                                  <br />
-                                  in a pinch.
-                                </Text>
-                                <Text as={"p"} mb={4}>
-                                  Sharing your work through Ambr affords a
-                                  robust layer of protection to your
-                                  intellectual property.
-                                </Text>
-                                <OrderedList>
-                                  <ListItem>Upload your file</ListItem>
-                                  <ListItem>
-                                    Describe the file&apos;s contents (this will
-                                    be private unless you decide to make it
-                                    public).
-                                  </ListItem>
-                                  <ListItem>Share your download link</ListItem>
-                                </OrderedList>
-                              </Box>
-                            </HStack>
-                          </SafeContainer>
-                        </Box>
-                      </Fade>
-                    )}
-                    {showDownloadPanel && (
-                      <Fade in={showDownloadPanel}>
-                        <Box
+                          <HStack w={"100%"} h={"100%"}>
+                            <Box w={"100%"} h={"100%"} overflow={"visible"}>
+                              <SendPanel
+                                mode={_mode}
+                                creator={publicAddress}
+                                handleFiles={handleFiles}
+                                cloudState={cloudState}
+                                peerState={peerState}
+                                createProgress={createProgress}
+                                createMintProgress={createMintProgress}
+                                roomMeta={roomMeta}
+                                fileName={fileName}
+                                shareUrl={shareUrl}
+                                filesLength={files?.length ?? 0}
+                                handleRoomLifetimeChange={
+                                  handleRoomLifetimeChange
+                                }
+                                handleMaxRoomDownloadsChange={
+                                  handleMaxRoomDownloadsChange
+                                }
+                                onMint={handleMint}
+                                chainState={chainState}
+                                mintState={mintState}
+                              />
+                            </Box>
+                            <Box
+                              display={["none", "block", "block"]}
+                              p={8}
+                              spacing={4}
+                              minW={"33%"}
+                              maxW={"33%"}
+                            >
+                              <Text as={"h1"} className={"fancy"} noOfLines={3}>
+                                Protect
+                                <br />
+                                your pitch
+                                <br />
+                                in a pinch.
+                              </Text>
+                              <Text as={"p"} mb={4}>
+                                Sharing your work through Ambr affords a robust
+                                layer of protection to your intellectual
+                                property.
+                              </Text>
+                              <OrderedList>
+                                <ListItem>Upload your file</ListItem>
+                                <ListItem>
+                                  Describe the file&apos;s contents (this will
+                                  be private unless you decide to make it
+                                  public).
+                                </ListItem>
+                                <ListItem>Share your download link</ListItem>
+                              </OrderedList>
+                            </Box>
+                          </HStack>
+                        </SafeContainer>
+                      </Box>
+                    </Fade>
+                  )}
+                  {showDownloadPanel && (
+                    <Fade in={showDownloadPanel}>
+                      <Box
+                        w={"100%"}
+                        maxW={["100%", "100%"]}
+                        display={["block", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                        px={6}
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
                           w={"100%"}
-                          maxW={["100%", "100%"]}
-                          display={["block", "flex"]}
-                          alignItems="center"
-                          justifyContent="center"
-                          position={["relative", "absolute"]}
-                          top={0}
-                          right={0}
-                          left={0}
-                          bottom={0}
-                          margin="auto"
-                          px={6}
+                          maxW={["", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
                         >
-                          <SafeContainer
-                            position={"relative"}
-                            display={"block"}
-                            w={"100%"}
-                            maxW={["", "3xl", "5xl"]}
-                            sx={{
-                              paddingInlineStart: "0 !important",
-                              paddingInlineEnd: "0 !important",
-                            }}
-                          >
-                            <HStack w={"100%"} maxW={"full"}>
-                              <Box w={"100%"}>
-                                <FilePanel
-                                  roomMeta={roomMeta}
-                                  files={files}
-                                  verifyFiles={verifyFiles}
-                                  verifyState={verifyState}
-                                  isDisabled={peerState === "Idle"}
-                                  onDownload={handleDownload}
-                                  onDownloadAll={handleDownloadAll}
-                                  isAuthenticated={_isAuthenticated}
-                                  downloadState={downloadState}
-                                  downloadProgress={downloadProgress}
-                                  isUserMatch={isUserMatch}
-                                />
-                              </Box>
-                              <Box
-                                display={["none", "none", "block", "block", ""]}
-                                p={8}
-                                spacing={4}
-                                minW={"33%"}
-                                maxW={"33%"}
-                              >
-                                {_isAuthenticated &&
-                                  isExpired &&
-                                  !isUserMatch && (
+                          <HStack w={"100%"} maxW={"full"}>
+                            <Box w={"100%"}>
+                              <FilePanel
+                                roomMeta={roomMeta}
+                                files={files}
+                                verifyFiles={verifyFiles}
+                                verifyState={verifyState}
+                                isDisabled={peerState === "Idle"}
+                                onDownload={handleDownload}
+                                onDownloadAll={handleDownloadAll}
+                                isAuthenticated={_isAuthenticated}
+                                downloadState={downloadState}
+                                downloadProgress={downloadProgress}
+                                isUserMatch={isUserMatch}
+                              />
+                            </Box>
+                            <Box
+                              display={["none", "none", "block", "block", ""]}
+                              p={8}
+                              spacing={4}
+                              minW={"33%"}
+                              maxW={"33%"}
+                            >
+                              {_isAuthenticated &&
+                                isExpired &&
+                                !isUserMatch && (
+                                  <>
+                                    <Text as={"h1"} className={"fancy"}>
+                                      Share ideas fearlessly
+                                    </Text>
+                                    <Text as={"p"}>
+                                      Ambr files have an unchangeable historic
+                                      record that can remain private or made
+                                      public by the creator if required.
+                                    </Text>
+                                  </>
+                                )}
+                              {isExpired && isUserMatch && (
+                                <>
+                                  <Text
+                                    as={"h1"}
+                                    className={"fancy"}
+                                    noOfLines={3}
+                                  >
+                                    Re-share
+                                    <br />
+                                    your pitch
+                                    <br />
+                                    in a pinch.
+                                  </Text>
+                                  <OrderedList>
+                                    <ListItem>
+                                      <Text noOfLines={2}>
+                                        Re-upload the original file.
+                                      </Text>
+                                    </ListItem>
+                                    <ListItem>
+                                      <Text noOfLines={2}>
+                                        Keep the file&apos;s recorded history
+                                        private or make it publically visible.
+                                      </Text>
+                                    </ListItem>
+                                    <ListItem>
+                                      <Text noOfLines={2}>
+                                        Share the file&apos;s link for others to
+                                        download.
+                                      </Text>
+                                    </ListItem>
+                                  </OrderedList>
+                                </>
+                              )}
+                              {!isExpired && (
+                                <>
+                                  {isUserMatch && (
                                     <>
-                                      <Text as={"h1"} className={"fancy"}>
-                                        Share ideas fearlessly
+                                      <Text
+                                        as={"h1"}
+                                        className={"fancy"}
+                                        noOfLines={2}
+                                      >
+                                        Ready to share
                                       </Text>
-                                      <Text as={"p"}>
-                                        Ambr files have an unchangeable historic
-                                        record that can remain private or made
-                                        public by the creator if required.
-                                      </Text>
+                                      <UnorderedList>
+                                        <ListItem>
+                                          <Text noOfLines={3}>
+                                            Share the file&apos;s link for
+                                            others to download.
+                                          </Text>
+                                        </ListItem>
+                                        <ListItem>
+                                          <Text noOfLines={5}>
+                                            Set the file&apos;s recorded history
+                                            to be private or made publically
+                                            visible.
+                                          </Text>
+                                        </ListItem>
+                                      </UnorderedList>
                                     </>
                                   )}
-                                {isExpired && isUserMatch && (
+                                </>
+                              )}
+                              {!_isAuthenticated &&
+                                !isExpired &&
+                                !isUserMatch && (
                                   <>
+                                    <Text as={"h1"} className={"fancy"}>
+                                      You&apos;ve
+                                      <br />
+                                      got a file
+                                    </Text>
+                                    <Text fontSize={"md"}>
+                                      This file&apos;s been shared with you,
+                                      <br />
+                                      ready to download.
+                                    </Text>
+                                  </>
+                                )}
+                            </Box>
+                          </HStack>
+                        </SafeContainer>
+                      </Box>
+                    </Fade>
+                  )}
+                  {showFilePanel && (
+                    <Fade in={showSubFilePanel1}>
+                      <Box
+                        w={"100%"}
+                        h={"100vh"}
+                        display={isMobile ? "" : "flex"}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={"absolute"}
+                        top={isMobile ? null : 0}
+                        right={isMobile ? null : 0}
+                        left={isMobile ? null : 0}
+                        bottom={isMobile ? null : 0}
+                        margin="auto"
+                      >
+                        <SafeContainer
+                          pb={[8, 0]}
+                          minW={"100% !important"}
+                          maxW="8xl"
+                        >
+                          <Box>
+                            <Panel className="glass" pt={[8, 10]} pb={[8, 10]}>
+                              <VStack
+                                display={"flex"}
+                                alignItems="center"
+                                justifyContent="flex-start"
+                                minW={"100%"}
+                                minH={"24rem"}
+                                maxW={["100%", "100%"]}
+                                maxH={[null, "24rem"]}
+                                pt={[0]}
+                              >
+                                <RoomList />
+                              </VStack>
+                            </Panel>
+                          </Box>
+                        </SafeContainer>
+                      </Box>
+                    </Fade>
+                  )}
+                  {showTopup && (
+                    <Fade in={showTopup} unmountOnExit>
+                      <Box
+                        w={"100%"}
+                        maxW={["100%", "100%"]}
+                        display={["block", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                        px={6}
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
+                          w={"100%"}
+                          maxW={["", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
+                        >
+                          <HStack w={"100%"} maxW={"full"}>
+                            <Box w={"100%"}>
+                              <PayPanel
+                                mode={_mode}
+                                fileTransfersRemaining={fileTransfersRemaining}
+                                onUpdateFileTransfersRemaining={
+                                  handleFileTransfersRemainingUpdate
+                                }
+                                setPath={setPath}
+                                publicAddress={publicAddress}
+                              />
+                            </Box>
+                            <Box
+                              display={["none", "none", "block", "block", ""]}
+                              p={8}
+                              spacing={4}
+                              minW={"33%"}
+                              maxW={"33%"}
+                            >
+                              {showFileTransfer && (
+                                <>
+                                  {fileTransfersRemaining <= 0 && (
                                     <Text
                                       as={"h1"}
                                       className={"fancy"}
                                       noOfLines={3}
                                     >
-                                      Re-share
+                                      We&apos;d love
                                       <br />
-                                      your pitch
+                                      to share
                                       <br />
-                                      in a pinch.
+                                      more.
                                     </Text>
-                                    <OrderedList>
-                                      <ListItem>
-                                        <Text noOfLines={2}>
-                                          Re-upload the original file.
-                                        </Text>
-                                      </ListItem>
-                                      <ListItem>
-                                        <Text noOfLines={2}>
-                                          Keep the file&apos;s recorded history
-                                          private or make it publically visible.
-                                        </Text>
-                                      </ListItem>
-                                      <ListItem>
-                                        <Text noOfLines={2}>
-                                          Share the file&apos;s link for others
-                                          to download.
-                                        </Text>
-                                      </ListItem>
-                                    </OrderedList>
-                                  </>
-                                )}
-                                {!isExpired && (
-                                  <>
-                                    {isUserMatch && (
-                                      <>
-                                        <Text
-                                          as={"h1"}
-                                          className={"fancy"}
-                                          noOfLines={2}
-                                        >
-                                          Ready to share
-                                        </Text>
-                                        <UnorderedList>
-                                          <ListItem>
-                                            <Text noOfLines={3}>
-                                              Share the file&apos;s link for
-                                              others to download.
-                                            </Text>
-                                          </ListItem>
-                                          <ListItem>
-                                            <Text noOfLines={5}>
-                                              Set the file&apos;s recorded
-                                              history to be private or made
-                                              publically visible.
-                                            </Text>
-                                          </ListItem>
-                                        </UnorderedList>
-                                      </>
-                                    )}
-                                  </>
-                                )}
-                                {!_isAuthenticated &&
-                                  !isExpired &&
-                                  !isUserMatch && (
-                                    <>
-                                      <Text as={"h1"} className={"fancy"}>
-                                        You&apos;ve
-                                        <br />
-                                        got a file
-                                      </Text>
-                                      <Text fontSize={"md"}>
-                                        This file&apos;s been shared with you,
-                                        <br />
-                                        ready to download.
-                                      </Text>
-                                    </>
                                   )}
-                              </Box>
-                            </HStack>
-                          </SafeContainer>
-                        </Box>
-                      </Fade>
-                    )}
-                    {showFilePanel && (
-                      <Fade in={showSubFilePanel1}>
-                        <Box
-                          w={"100%"}
-                          h={"100vh"}
-                          display={isMobile ? "" : "flex"}
-                          alignItems="center"
-                          justifyContent="center"
-                          position={"absolute"}
-                          top={isMobile ? null : 0}
-                          right={isMobile ? null : 0}
-                          left={isMobile ? null : 0}
-                          bottom={isMobile ? null : 0}
-                          margin="auto"
-                        >
-                          <SafeContainer
-                            pb={[8, 0]}
-                            minW={"100% !important"}
-                            maxW="8xl"
-                          >
-                            <Box>
-                              <Panel
-                                className="glass"
-                                pt={[8, 10]}
-                                pb={[8, 10]}
-                              >
-                                <VStack
-                                  display={"flex"}
-                                  alignItems="center"
-                                  justifyContent="flex-start"
-                                  minW={"100%"}
-                                  minH={"24rem"}
-                                  maxW={["100%", "100%"]}
-                                  maxH={[null, "24rem"]}
-                                  pt={[0]}
-                                >
-                                  <RoomList />
-                                </VStack>
-                              </Panel>
-                            </Box>
-                          </SafeContainer>
-                        </Box>
-                      </Fade>
-                    )}
-                    {showTopup && (
-                      <Fade in={showTopup} unmountOnExit>
-                        <Box
-                          w={"100%"}
-                          maxW={["100%", "100%"]}
-                          display={["block", "flex"]}
-                          alignItems="center"
-                          justifyContent="center"
-                          position={["relative", "absolute"]}
-                          top={0}
-                          right={0}
-                          left={0}
-                          bottom={0}
-                          margin="auto"
-                          px={6}
-                        >
-                          <SafeContainer
-                            position={"relative"}
-                            display={"block"}
-                            w={"100%"}
-                            maxW={["", "3xl", "5xl"]}
-                            sx={{
-                              paddingInlineStart: "0 !important",
-                              paddingInlineEnd: "0 !important",
-                            }}
-                          >
-                            <HStack w={"100%"} maxW={"full"}>
-                              <Box w={"100%"}>
-                                <PayPanel
-                                  mode={_mode}
-                                  fileTransfersRemaining={
-                                    fileTransfersRemaining
-                                  }
-                                  onUpdateFileTransfersRemaining={
-                                    handleFileTransfersRemainingUpdate
-                                  }
-                                  setPath={setPath}
-                                  publicAddress={publicAddress}
-                                />
-                              </Box>
-                              <Box
-                                display={["none", "none", "block", "block", ""]}
-                                p={8}
-                                spacing={4}
-                                minW={"33%"}
-                                maxW={"33%"}
-                              >
-                                {showFileTransfer && (
-                                  <>
-                                    {fileTransfersRemaining <= 0 && (
-                                      <Text
-                                        as={"h1"}
-                                        className={"fancy"}
-                                        noOfLines={3}
-                                      >
-                                        We&apos;d love
-                                        <br />
-                                        to share
-                                        <br />
-                                        more.
-                                      </Text>
-                                    )}
-                                    {fileTransfersRemaining >= 1 && (
-                                      <Text
-                                        as={"h1"}
-                                        className={"fancy"}
-                                        noOfLines={3}
-                                      >
-                                        Share
-                                        <br />
-                                        more ideas
-                                        <br />
-                                        fearlessly.
-                                      </Text>
-                                    )}
-                                    <Text fontSize={"md"} noOfLines={12}>
-                                      Every file shared through{" "}
-                                      <Text as="span" fontStyle="italic">
-                                        Ambr
-                                      </Text>{" "}
-                                      generates an immutable, historic record of
-                                      your work within, affording a robust layer
-                                      of protection to your intellectual
-                                      property when sharing with clients,
-                                      simultaneosly ensuring definitive proof of
-                                      origin in an age of artificial
-                                      intelligence.
+                                  {fileTransfersRemaining >= 1 && (
+                                    <Text
+                                      as={"h1"}
+                                      className={"fancy"}
+                                      noOfLines={3}
+                                    >
+                                      Share
+                                      <br />
+                                      more ideas
+                                      <br />
+                                      fearlessly.
                                     </Text>
-                                  </>
-                                )}
-                              </Box>
-                            </HStack>
-                          </SafeContainer>
-                        </Box>
-                      </Fade>
-                    )}
-                    {showHomeStone && (
-                      <Fade in={showHomeStone} unmountOnExit>
-                        <VStack
-                          w={"96%"}
-                          h={220}
-                          position="absolute"
-                          px={8}
-                          top={0}
-                          right={0}
-                          left={0}
-                          bottom={0}
-                          margin="auto"
-                          spacing={[3, 5]}
+                                  )}
+                                  <Text fontSize={"md"} noOfLines={12}>
+                                    Every file shared through{" "}
+                                    <Text as="span" fontStyle="italic">
+                                      Ambr
+                                    </Text>{" "}
+                                    generates an immutable, historic record of
+                                    your work within, affording a robust layer
+                                    of protection to your intellectual property
+                                    when sharing with clients, simultaneosly
+                                    ensuring definitive proof of origin in an
+                                    age of artificial intelligence.
+                                  </Text>
+                                </>
+                              )}
+                            </Box>
+                          </HStack>
+                        </SafeContainer>
+                      </Box>
+                    </Fade>
+                  )}
+                  {showHomeStone && (
+                    <Fade in={showHomeStone} unmountOnExit>
+                      <VStack
+                        w={"96%"}
+                        h={220}
+                        position="absolute"
+                        px={8}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                        spacing={[3, 5]}
+                      >
+                        <Img src={`images/ambr.svg`} />
+                        <Text
+                          letterSpacing={["normal", "wide"]}
+                          fontSize={["lg", "xl"]}
                         >
-                          <Img src={`images/ambr.svg`} />
-                          <Text
-                            letterSpacing={["normal", "wide"]}
-                            fontSize={["lg", "xl"]}
-                          >
-                            {tagline + "."}
-                          </Text>
-                          <Login />
-                        </VStack>
-                      </Fade>
-                    )}
-                  </Box>
+                          {tagline + "."}
+                        </Text>
+                        <Login />
+                      </VStack>
+                    </Fade>
+                  )}
                 </Box>
-              </Flex>
-            </Div100vh>
+              </Box>
+            </Flex>
           </>
         )}
       </>
