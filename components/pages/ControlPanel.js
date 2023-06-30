@@ -473,7 +473,8 @@ export function ControlPanel() {
               display="flex"
               alignItems="center"
               justifyContent="center"
-              height="100vh"
+              minH={"-webkit-fill-available"}
+              h={"100%"}
             >
               <Center h="100%">
                 <LogoLoader />
@@ -492,8 +493,8 @@ export function ControlPanel() {
               position="relative"
               backgroundSize={"cover !important"}
               minW="100vw"
-              minH="100vh"
-              h={"100vh"}
+              minH={"-webkit-fill-available"}
+              h={"100%"}
               overflowX={"hidden"}
               overflowY={showHomeStone ? "hidden" : "scroll"}
             >
@@ -772,7 +773,8 @@ export function ControlPanel() {
                     <Fade in={showSubFilePanel1}>
                       <Box
                         w={"100%"}
-                        h={"100vh"}
+                        minH={"-webkit-fill-available"}
+                        h={"100%"}
                         display={isMobile ? "" : "flex"}
                         alignItems="center"
                         justifyContent="center"

@@ -61,7 +61,8 @@ export default function AmbrApp({ Component, pageProps, err }) {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
-          h={"100vh"}
+          minH={"-webkit-fill-available"}
+          h={"100%"}
           overflowX={"hidden"}
           overflowY={"scroll"}
         >
