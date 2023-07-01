@@ -505,6 +505,7 @@ export function ControlPanel() {
               //minW="100vw"
               //minH="100vh"
               //h={"100vh"}
+              h={"100%"}
               //overflowX={"hidden"}
               //overflowY={showHomeStone ? "hidden" : "scroll"}
               minH={"100%"}

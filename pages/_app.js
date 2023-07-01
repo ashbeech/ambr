@@ -63,12 +63,14 @@ export default function AmbrApp({ Component, pageProps, err }) {
           //justifyContent={"center"}
           minH={"100%"}
           //h={"100vh"}
+          //overflowX={"hidden"}
+          //overflowY={"scroll"}
+
           pos={"fixed"}
           inset={0}
+          overflow={"hidden"}
           display={"grid"}
           place-items={"center"}
-          overflowX={"hidden"}
-          overflowY={"scroll"}
         >
           <Center h={"100%"}>
             <LogoLoader />
