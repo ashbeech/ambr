@@ -473,7 +473,7 @@ export function ControlPanel() {
               display="flex"
               alignItems="center"
               justifyContent="center"
-              h="100vh"
+              height="100vh"
             >
               <Center h="100%">
                 <LogoLoader />
@@ -492,8 +492,8 @@ export function ControlPanel() {
               position="relative"
               backgroundSize={"cover !important"}
               minW="100vw"
-              minH="100%"
-              h={"100%"}
+              minH="100vh"
+              h={"100vh"}
               overflowX={"hidden"}
               overflowY={showHomeStone ? "hidden" : "scroll"}
             >
