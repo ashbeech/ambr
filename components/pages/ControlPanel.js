@@ -495,18 +495,25 @@ export function ControlPanel() {
         {!loading && (
           <>
             <Flex
-              direction="column"
-              justify={"space-between"}
-              align-items="center"
-              justify-content="center"
+              //direction="column"
+              //justify={"space-between"}
+              //align-items="center"
+              //justify-content="center"
               className={!_key && !_isAuthenticated ? "home-stone" : ""}
-              position="relative"
+              //position="relative"
               backgroundSize={"cover !important"}
-              minW="100vw"
-              minH="100vh"
-              h={"100vh"}
-              overflowX={"hidden"}
-              overflowY={showHomeStone ? "hidden" : "scroll"}
+              //minW="100vw"
+              //minH="100vh"
+              //h={"100vh"}
+              //overflowX={"hidden"}
+              //overflowY={showHomeStone ? "hidden" : "scroll"}
+
+              minH={"100%"}
+              pos={"fixed"}
+              inset={0}
+              overflow={"auto"}
+              display={"grid"}
+              place-items={"center"}
             >
               <Box>
                 <Navigation
