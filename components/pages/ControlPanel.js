@@ -482,7 +482,7 @@ export function ControlPanel() {
               //h={"100vh"}
               pos={"fixed"}
               inset={0}
-              overflow={"auto"}
+              overflow={"hidden"}
               display={"grid"}
               place-items={"center"}
             >
@@ -507,11 +507,10 @@ export function ControlPanel() {
               //h={"100vh"}
               //overflowX={"hidden"}
               //overflowY={showHomeStone ? "hidden" : "scroll"}
-
               minH={"100%"}
               pos={"fixed"}
               inset={0}
-              overflow={"auto"}
+              overflow={"hidden"}
               display={"grid"}
               place-items={"center"}
             >

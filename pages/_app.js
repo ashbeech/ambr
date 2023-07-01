@@ -65,7 +65,6 @@ export default function AmbrApp({ Component, pageProps, err }) {
           //h={"100vh"}
           pos={"fixed"}
           inset={0}
-          overflow={"auto"}
           display={"grid"}
           place-items={"center"}
           overflowX={"hidden"}
