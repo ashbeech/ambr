@@ -470,10 +470,21 @@ export function ControlPanel() {
         {loading && (
           <Fade in={loading}>
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              height="100vh"
+              //display="flex"
+              //alignItems="center"
+              //justifyContent="center"
+              //h="100vh"
+
+              //display={"flex"}
+              //alignItems={"center"}
+              //justifyContent={"center"}
+              minH={"100%"}
+              //h={"100vh"}
+              pos={"fixed"}
+              inset={0}
+              overflow={"auto"}
+              display={"grid"}
+              place-items={"center"}
             >
               <Center h="100%">
                 <LogoLoader />
