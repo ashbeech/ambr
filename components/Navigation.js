@@ -66,7 +66,13 @@ export default function Navigation({
   return (
     <Box zIndex={999} position={"relative"}>
       <Container w={"100%"} px={[6, 6, 6, 6, 8]} py={[2, 6]} maxW={"8xl"}>
-        <Flex as="header" py={4} justify={{ md: "space-between" }} w={"100%"}>
+        <Flex
+          as="header"
+          pt={[2, 4]}
+          pb={[1, 4]}
+          justify={{ md: "space-between" }}
+          w={"100%"}
+        >
           <Box w={"100%"}>
             <HStack
               display={"flex"}
