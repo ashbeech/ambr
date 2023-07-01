@@ -506,12 +506,12 @@ export function ControlPanel() {
               //minH="100vh"
               //h={"100vh"}
               h={"100%"}
-              //overflowX={"hidden"}
-              //overflowY={showHomeStone ? "hidden" : "scroll"}
+              overflowX={"hidden"}
+              overflowY={showHomeStone ? "hidden" : "scroll"}
               minH={"100%"}
               pos={"fixed"}
               inset={0}
-              overflow={"hidden"}
+              //overflow={"hidden"}
               display={"grid"}
               place-items={"center"}
             >
