@@ -492,8 +492,8 @@ export function ControlPanel() {
               position="relative"
               backgroundSize={"cover !important"}
               minW="100vw"
-              minH="100vh"
-              h={"100vh"}
+              minH="100%"
+              h={"100%"}
               overflowX={"hidden"}
               overflowY={showHomeStone ? "hidden" : "scroll"}
             >
