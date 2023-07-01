@@ -90,8 +90,8 @@ export default function Navigation({
                     }}
                   >
                     <Icon
-                      w={"70px"}
-                      h={"70px"}
+                      w={"65px"}
+                      h={"65px"}
                       as={LogoIcon}
                       _hover={{ color: "orange.400" }}
                       color="black.500"
