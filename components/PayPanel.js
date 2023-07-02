@@ -357,7 +357,7 @@ export const PayPanel = ({
                       >
                         You&apos;ve unlocked 25 additional file transfers to use
                         sharing your amazing work with {fileTransfersRemaining}{" "}
-                        total.
+                        file transfers total.
                       </Text>
                       <Box w={"100%"} h={"100%"}>
                         <Flex
