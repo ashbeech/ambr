@@ -788,13 +788,13 @@ export function ControlPanel() {
                   )}
                   {showFilePanel && (
                     <Fade in={showSubFilePanel1}>
-                      <Box
+                      {/*                       <Box
                         w={"100%"}
                         h={"100vh"}
                         display={isMobile ? "" : "flex"}
                         alignItems="center"
                         justifyContent="center"
-                        position={"absolute"}
+                        position={"relative"}
                         top={isMobile ? null : 0}
                         right={isMobile ? null : 0}
                         left={isMobile ? null : 0}
@@ -805,8 +805,36 @@ export function ControlPanel() {
                           pb={[8, 0]}
                           minW={"100% !important"}
                           maxW="8xl"
+                        > */}
+                      <Box
+                        w={"100%"}
+                        h={"100%"}
+                        maxW={["90%", "100%"]}
+                        display={["", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
+                          w={"100%"}
+                          h={"100%"}
+                          pb={[8, 0]}
+                          minW={"100% !important"}
+                          //maxW="8xl"
+                          maxW={["xs", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
                         >
-                          <Box>
+                          <Box w={"100%"} h={"100%"} overflow={"visible"}>
                             <Panel className="glass" pt={[8, 10]} pb={[8, 10]}>
                               <VStack
                                 display={"flex"}

@@ -65,14 +65,18 @@ export default function Navigation({
 
   return (
     <Box zIndex={999} position={"relative"}>
-      <Container w={"100%"} px={[6, 6, 6, 6, 8]} py={[2, 6]} maxW={"8xl"}>
-        <Flex
-          as="header"
-          pt={[2, 4]}
-          pb={[1, 4]}
-          justify={{ md: "space-between" }}
-          w={"100%"}
-        >
+      <Container
+        w={["100%"]}
+        //px={[0, 6, 6, 6, 8]}
+        pt={[2, 8]}
+        pb={[2, 6]}
+        maxW={["90%", "90%"]}
+        sx={{
+          paddingInlineStart: [0, 6, 0],
+          paddingInlineEnd: [0, 6, 0],
+        }}
+      >
+        <Flex as="header" justify={{ md: "space-between" }} w={"100%"}>
           <Box w={"100%"}>
             <HStack
               display={"flex"}
@@ -90,15 +94,15 @@ export default function Navigation({
                     }}
                   >
                     <Icon
-                      w={"65px"}
-                      h={"65px"}
+                      className={"logo"}
+                      w={"60px"}
+                      h={"60px"}
                       as={LogoIcon}
-                      _hover={{ color: "orange.400" }}
-                      color="black.500"
-                      sx={{
+                      _hover={{ color: disabled ? "gray.500" : "orange.400" }}
+                      color={disabled ? "gray.500" : "black.500"}
+                      style={{
                         transition: "color 0.15s ease-in",
                       }}
-                      pr={2}
                     />
                   </Link>
                 </Box>
