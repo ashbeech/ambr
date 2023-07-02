@@ -50,12 +50,7 @@ export function FileRecordPanel({
       >
         {publicView && (
           <Flex w="full" zIndex={998}>
-            <Flex
-              w={"full"}
-              alignItems="center"
-              justifyContent="space-between"
-              mb={[0, 0]}
-            >
+            <Flex w={"full"} alignItems="center" justifyContent="space-between">
               <HStack left={"-2px"} pos={"relative"}>
                 <SealIcon boxSize={"1.4rem"} />
                 <Heading

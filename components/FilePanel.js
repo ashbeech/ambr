@@ -432,7 +432,7 @@ export const FilePanel = ({
               overflow="visible"
               maxWidth="100%"
               w="100%"
-              h={["", "100%"]}
+              h={["auto", "100%"]}
               pl={[0, 6]}
             >
               {!fullyLoaded && (
@@ -598,8 +598,13 @@ export const FilePanel = ({
                 </Box>
               )}
               {roomMeta && !isUserMatch && roomMeta.isPublic && (
-                <>
-                  <HStack pb={3} overflow={"visible"}>
+                <Box
+                  mt={2}
+                  w={"100%"}
+                  h={["80%", "auto"]}
+                  overflow={["auto", "hidden"]}
+                >
+                  <HStack h={"18%"} maxH={"18%"} pb={3} overflow={"visible"}>
                     <SealIcon boxSize={"1.4rem"} />
                     <Heading
                       as={"h3"}
@@ -617,9 +622,9 @@ export const FilePanel = ({
                     position={"relative"}
                     maxH={isExpired ? "100%" : ["100%", "auto"]}
                     w={"100%"}
-                    h={isExpired ? ["100%", "auto"] : ["100%", "auto"]}
+                    h={isExpired ? ["100%", "82%"] : ["100%", "auto"]}
                     sx={{ marginTop: "0 !important" }}
-                    pt={isExPublic ? [6, 0] : [0, 0]}
+                    pt={isExPublic ? [0, 0] : [0, 0]}
                     overflow="auto"
                     //backgroundColor={["", "#f2f2f2"]}
                     //borderRadius={"xl"}
@@ -654,14 +659,14 @@ export const FilePanel = ({
                       />
                     </Box>
                   </Box>
-                </>
+                </Box>
               )}
               {verifyOpen &&
                 isAuthenticated &&
                 roomMeta &&
                 roomMeta.readableMetadata &&
                 isUserMatch && (
-                  <Box w={"100%"} h={["", "100%"]}>
+                  <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
                     <FileRecordPanel
                       title={
                         roomMeta?.readableMetadata.title

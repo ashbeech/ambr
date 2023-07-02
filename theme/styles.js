@@ -38,13 +38,13 @@ export const styles = {
       textAlign: "left",
       lineHeight: "short",
       marginBottom: "0.42em",
-      letterSpacing: "0.015em !important",
+      letterSpacing: "0.015em",
     },
     "h2.fancy": {
       fontFamily: "fancy",
       fontSize: "3xl !important",
-      letterSpacing: "wide !important",
-      fontWeight: "bold !important",
+      letterSpacing: "wide",
+      fontWeight: "bold",
     },
     h2: {
       fontSize: "2xl !important",

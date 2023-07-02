@@ -588,11 +588,15 @@ export function ControlPanel() {
                                   as={"h2"}
                                   className={"fancy"}
                                   noOfLines={3}
-                                  mt={"0.42em!important"}
+                                  mt={1}
                                   mb={"0.42em!important"}
                                   textAlign={"center"}
+                                  letterSpacing={[
+                                    "wide !important",
+                                    "wider !important",
+                                  ]}
                                 >
-                                  Share a file
+                                  Share a File
                                 </Text>
                               </Box>
 
@@ -655,7 +659,7 @@ export function ControlPanel() {
                   )}
                   {showDownloadPanel && (
                     <Fade in={showDownloadPanel}>
-                      <Box
+                      {/*                       <Box
                         w={"100%"}
                         maxW={["100%", "100%"]}
                         display={["block", "flex"]}
@@ -673,7 +677,32 @@ export function ControlPanel() {
                           position={"relative"}
                           display={"block"}
                           w={"100%"}
-                          maxW={["", "3xl", "5xl"]}
+                          maxW={["xs", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
+                        > */}
+                      <Box
+                        w={"100%"}
+                        h={"100%"}
+                        maxW={["90%", "100%"]}
+                        display={["", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
+                          w={"100%"}
+                          h={"100%"}
+                          maxW={["3xl", "3xl", "5xl"]}
                           sx={{
                             paddingInlineStart: "0 !important",
                             paddingInlineEnd: "0 !important",
@@ -872,7 +901,7 @@ export function ControlPanel() {
                   )}
                   {showTopup && (
                     <Fade in={showTopup} unmountOnExit>
-                      <Box
+                      {/*                <Box
                         w={"100%"}
                         maxW={["100%", "100%"]}
                         display={["block", "flex"]}
@@ -891,6 +920,31 @@ export function ControlPanel() {
                           display={"block"}
                           w={"100%"}
                           maxW={["", "3xl", "5xl"]}
+                          sx={{
+                            paddingInlineStart: "0 !important",
+                            paddingInlineEnd: "0 !important",
+                          }}
+                        > */}
+                      <Box
+                        w={"100%"}
+                        h={"100%"}
+                        maxW={["90%", "100%"]}
+                        display={["", "flex"]}
+                        alignItems="center"
+                        justifyContent="center"
+                        position={["relative", "absolute"]}
+                        top={0}
+                        right={0}
+                        left={0}
+                        bottom={0}
+                        margin="auto"
+                      >
+                        <SafeContainer
+                          position={"relative"}
+                          display={"block"}
+                          w={"100%"}
+                          h={"100%"}
+                          maxW={["3xl", "3xl", "5xl"]}
                           sx={{
                             paddingInlineStart: "0 !important",
                             paddingInlineEnd: "0 !important",
