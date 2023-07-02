@@ -294,11 +294,7 @@ export const FilePanel = ({
                               progress={downloadProgress}
                             />
                           </Box>
-                          <Box
-                            position="relative"
-                            w={["100%", "175%", "150%"]}
-                            //h={["100%", "175%", "150%"]}
-                          >
+                          <Box position="relative" w={["100%", "175%", "150%"]}>
                             <IPFSImage image_src={_image_src} />
                           </Box>
                         </Flex>
@@ -310,18 +306,12 @@ export const FilePanel = ({
                       in={unVerified}
                       style={{ height: "100%", width: "100%" }}
                     >
-                      <Box
-                        w={"100%"}
-                        h={"100%"}
-                        my={0}
-                        position={["relative", "relative"]}
-                      >
+                      <Box w={"100%"} h={"100%"} position={["relative"]}>
                         <Flex
                           direction="column"
                           alignItems="center"
                           justifyContent="center"
                           h="100%"
-                          mb={[6, 0]}
                         >
                           <Box
                             position="absolute"
@@ -531,7 +521,8 @@ export const FilePanel = ({
                   w={"100%"}
                   h={["", "auto"]}
                   maxH={["", "100%"]}
-                  mb={isExPublic && formModeLink ? 0 : ".8em"}
+                  mt={[6, 0]}
+                  mb={isExPublic && formModeLink ? 0 : [2]}
                 >
                   <TopRightPanel
                     isExpired={isExpired}
@@ -824,7 +815,7 @@ const TopRightPanel = React.memo(
               overflow={"hidden"}
               spacing={2}
               mb={[0, 4]}
-              mt={!isExpired ? [4, 3] : [4, 0]}
+              mt={!isExpired ? [0, 3] : [4, 0]}
             >
               {downloadAllSupported && (
                 <Button

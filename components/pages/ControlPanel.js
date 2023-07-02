@@ -580,6 +580,22 @@ export function ControlPanel() {
                         >
                           <HStack w={"100%"} h={"100%"}>
                             <Box w={"100%"} h={"100%"} overflow={"visible"}>
+                              <Box
+                                display={["block", "none", "none"]}
+                                minW={"100%"}
+                              >
+                                <Text
+                                  as={"h2"}
+                                  className={"fancy"}
+                                  noOfLines={3}
+                                  mt={"0.42em!important"}
+                                  mb={"0.42em!important"}
+                                  textAlign={"center"}
+                                >
+                                  Share a file
+                                </Text>
+                              </Box>
+
                               <SendPanel
                                 mode={_mode}
                                 creator={publicAddress}
