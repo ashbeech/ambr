@@ -626,8 +626,6 @@ export const FilePanel = ({
                     sx={{ marginTop: "0 !important" }}
                     pt={isExPublic ? [0, 0] : [0, 0]}
                     overflow="auto"
-                    //backgroundColor={["", "#f2f2f2"]}
-                    //borderRadius={"xl"}
                     borderBottom={["", "1px"]}
                   >
                     <Box
