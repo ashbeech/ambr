@@ -16,7 +16,7 @@ const handler = async (req, res) => {
     }
 
     const buf = await buffer(req);
-    const sig = req.headers["stripe-signature"];
+    const sig = req.headers.get("stripe-signature");
 
     let event;
 
