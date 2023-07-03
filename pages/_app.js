@@ -54,6 +54,26 @@ export default function AmbrApp({ Component, pageProps, err }) {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    // Add an event listener for the 'change' event on screen.orientation
+    function handleOrientationChange() {
+      // Lock the screen orientation to portrait mode if the device is turned landscape
+      if (screen.orientation.type.includes("landscape")) {
+        screen.orientation.lock("portrait").catch((err) => {
+          console.error("Error locking screen orientation:", err);
+        });
+      }
+    }
+
+    // Attach the event listener
+    screen.orientation.addEventListener("change", handleOrientationChange);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      screen.orientation.removeEventListener("change", handleOrientationChange);
+    };
+  }, []); // Make sure to pass an empty dependency array to run this effect only once
+
   return (
     <>
       {loading && (
@@ -185,27 +205,6 @@ export default function AmbrApp({ Component, pageProps, err }) {
 const App = (props) => {
   const browser = useBrowser();
   const toast = useToast();
-  const isLandscape = () =>
-      window.matchMedia("(orientation:landscape)").matches,
-    [orientation, setOrientation] = useState(
-      isLandscape() ? "landscape" : "portrait"
-    ),
-    onWindowResize = () => {
-      clearTimeout(window.resizeLag);
-      window.resizeLag = setTimeout(() => {
-        delete window.resizeLag;
-        setOrientation(isLandscape() ? "landscape" : "portrait");
-      }, 200);
-    };
-
-  useEffect(
-    () => (
-      onWindowResize(),
-      window.addEventListener("resize", onWindowResize),
-      () => window.removeEventListener("resize", onWindowResize)
-    ),
-    []
-  );
 
   // Periodically check if this release is bad so we can reload the browser
   useEffect(() => {
