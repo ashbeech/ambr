@@ -25,7 +25,7 @@ import {
   removeRoomByIdServer,
 } from "../lib/RoomStorageManagerServer.js";
 import { logEvent } from "../lib/analytics.js";
-import { origin, environment } from "../config.js";
+import { origin } from "../config.js";
 import { fetcher } from "../lib/fetcher.js";
 import { shouldReportError } from "../lib/errors.js";
 import { ButtonLink } from "./ButtonLink.js";
@@ -220,6 +220,41 @@ export const RoomList = ({ onChange = () => {} }) => {
       >
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
+            {/* {rooms === null && (
+              <>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={1}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={1}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+                <Skeleton
+                  startColor="gray.500"
+                  endColor="gray.600"
+                  height="8rem"
+                  borderRadius={"xl"}
+                  mb={1}
+                  w={"100%"}
+                >
+                  Fetching File
+                </Skeleton>
+              </>
+            )} */}
+
             {rooms !== null && rooms.length !== 0 && (
               <Fade in={rooms.length > 0}>
                 <Stack spacing={[4, 4]} px={[0, 0]}>
@@ -272,7 +307,6 @@ export const RoomList = ({ onChange = () => {} }) => {
 export const RoomItem = ({ room, onClose = () => {} }) => {
   const { roomId, title, key, image_src } = room;
   //const [deleting, setDeleting] = useState(false);
-  const [loading, setLoading] = useState(true); // Track the loading state of IPFS data
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
@@ -290,8 +324,6 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
     // Fetch IPFS data and update the loading state
     const fetchIPFSData = async () => {
       try {
-        setLoading(true);
-
         const IPFSdata = await getFileFromIPFS(
           `https://${room.cid}.ipfs.${ipfsGateway}`
         );
@@ -299,11 +331,9 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
         if (IPFSdata !== null && IPFSdata.image !== null) {
           room.image_src = IPFSdata.image ? IPFSdata.image : "";
         }
-
-        setLoading(false);
       } catch (err) {
+        room.image_src = null;
         console.error(err);
-        setLoading(false); // Set loading to false in case of an error
       }
     };
 
@@ -321,23 +351,22 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   return (
     <>
-      <Box
-        py={[4, 4]}
-        px={[0, 4]}
-        borderWidth={1}
-        borderColor="blackAlpha.600"
-        borderRadius="3xl"
-      >
-        {loading ? ( // Display skeleton loading state while loading IPFS data
-          <Skeleton
-            startColor="gray.500"
-            endColor="gray.600"
-            height="8rem"
-            borderRadius={"xl"}
-            mb={4}
-            w={"100%"}
-          />
-        ) : (
+      {!_image_src || _image_src === null ? ( // Display skeleton loading state while loading IPFS data
+        <Skeleton
+          startColor="gray.500"
+          endColor="gray.600"
+          height="7.2rem"
+          borderRadius={"3xl"}
+          w={"100%"}
+        />
+      ) : (
+        <Box
+          py={[4, 4]}
+          px={[0, 4]}
+          borderWidth={1}
+          borderColor="blackAlpha.600"
+          borderRadius="3xl"
+        >
           <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
             <Box pos="relative" flex={1}>
               <Link href={path} colorScheme="black" size="sm">
@@ -433,8 +462,8 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
               </ButtonLink>
             </Flex>
           </Flex>
-        )}
-      </Box>
+        </Box>
+      )}
     </>
   );
 };

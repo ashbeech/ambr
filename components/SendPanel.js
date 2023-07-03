@@ -569,7 +569,7 @@ export const SendPanel = ({
                   justifyContent={["left", "center"]}
                   alignItems={["left", "center"]}
                   display={["", "flex"]}
-                  pt={mode === SHARE_MODE ? [0, "3.33%"] : [0, 0]}
+                  pt={mode === SHARE_MODE ? [0, "8%"] : [0, 0]}
                 >
                   <CreateMintProgress
                     peerState={peerState}
