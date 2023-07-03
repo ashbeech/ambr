@@ -8,6 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
+// TEMP: SHould not be in production
 console.warn("STRIPE_SECRET_KEY:", process.env.STRIPE_SECRET_KEY);
 console.warn("STRIPE_WEBHOOK_SECRET:", webhookSecret);
 
