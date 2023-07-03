@@ -96,6 +96,10 @@ export default function AmbrApp({ Component, pageProps, err }) {
                         name="viewport"
                         content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
                       />
+                      <meta
+                        httpEquiv="ScreenOrientation"
+                        content="autoRotate:disabled"
+                      ></meta>
                       <meta name="description" content={description} />
                       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                       <meta
