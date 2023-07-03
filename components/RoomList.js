@@ -220,14 +220,13 @@ export const RoomList = ({ onChange = () => {} }) => {
       >
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
-            {/* {rooms === null && (
+            {rooms === null && (
               <>
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={1}
+                  height="7.2rem"
+                  borderRadius={"3xl"}
                   w={"100%"}
                 >
                   Fetching File
@@ -235,9 +234,8 @@ export const RoomList = ({ onChange = () => {} }) => {
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={1}
+                  height="7.2rem"
+                  borderRadius={"3xl"}
                   w={"100%"}
                 >
                   Fetching File
@@ -245,15 +243,14 @@ export const RoomList = ({ onChange = () => {} }) => {
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={1}
+                  height="7.2rem"
+                  borderRadius={"3xl"}
                   w={"100%"}
                 >
                   Fetching File
                 </Skeleton>
               </>
-            )} */}
+            )}
 
             {rooms !== null && rooms.length !== 0 && (
               <Fade in={rooms.length > 0}>
