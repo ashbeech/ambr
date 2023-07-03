@@ -388,7 +388,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
                 />
                 <Img
                   h="80px"
-                  src={_image_src ? _image_src : origin + "/images/ambr-1.png"}
+                  src={_image_src ? _image_src : origin + "/images/amber-1.png"}
                   objectFit={"contain !important"}
                   alt="Ambr Stone"
                   className="file-stone"
