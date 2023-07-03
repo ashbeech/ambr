@@ -64,7 +64,7 @@ html, body {
   }}
 
    /* Handling mobile landscape */
-   @media not all and (min-resolution:.001dpcm) and (orientation: landscape) { @media {
+   @media not all and (min-resolution:.001dpcm) and (orientation: portrait) { @media {
     html {
       transform: rotate(-90deg) !important;
       transform-origin: left top !important;
