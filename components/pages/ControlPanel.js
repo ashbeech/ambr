@@ -277,7 +277,11 @@ export function ControlPanel() {
   }, [downloadProgress]);
 
   useEffect(() => {
-    if (_path === "/top-up" || _path === "/files" || _path === "/") {
+    if (
+      _path === "/top-up" ||
+      _path === "/files" ||
+      (_path === "/" && _mode === JOIN_MODE)
+    ) {
       console.log("Setting mode to: null");
       setMode(null);
     }
