@@ -276,10 +276,11 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
-  const _image_src = image_src.replace(
-    /http:\/\/localhost:3000\//g,
-    origin + "/"
-  );
+  // TODO: Make this dynamic; not localhost, hard-coded.
+  // THIS IS TEMP FOR LOCALHOST DEV ONLY PRE-BETA
+  const _image_src = image_src
+    ? image_src.replace(/http:\/\/localhost:3000\//g, origin + "/")
+    : "";
 
   const isExpired =
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||
