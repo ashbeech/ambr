@@ -9,6 +9,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 const handler = async (req, res) => {
+  console.log("STRIPE_SECRET_KEY:", process.env.STRIPE_SECRET_KEY);
+  console.log("STRIPE_WEBHOOK_SECRET:", webhookSecret);
+
   try {
     if (req.method !== "POST") {
       res.setHeader("Allow", "POST");
