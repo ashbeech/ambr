@@ -220,8 +220,8 @@ export const RoomList = ({ onChange = () => {} }) => {
       >
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
-            {rooms === null && (
-              <>
+            {rooms === null && rooms.length <= 0 && (
+              <Stack spacing={[4, 4]} px={[0, 0]}>
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
@@ -249,7 +249,7 @@ export const RoomList = ({ onChange = () => {} }) => {
                 >
                   Fetching File
                 </Skeleton>
-              </>
+              </Stack>
             )}
 
             {rooms !== null && rooms.length !== 0 && (
