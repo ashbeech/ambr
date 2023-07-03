@@ -185,6 +185,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
 const App = (props) => {
   const browser = useBrowser();
   const toast = useToast();
+  screen.orientation.lock("portrait");
 
   // Periodically check if this release is bad so we can reload the browser
   useEffect(() => {

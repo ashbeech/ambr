@@ -65,7 +65,7 @@ html, body {
 
    /* Handling mobile landscape */
    @media only screen and (pointer: coarse) and (min-width: 320px) and (min-resolution:.001dpcm) and (orientation: landscape) { @media {
-    html {
+/*     html {
       transform: rotate(90deg) !important;
       transform-origin: right top !important;
       width: 100vh !important;
@@ -90,5 +90,5 @@ html, body {
       z-index: "-9999";
       opacity: "0.8";
       background-repeat: "repeat";
-    }
+    } */
   }}
