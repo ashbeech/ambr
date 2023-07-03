@@ -276,10 +276,10 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
-  const _image_src =
-    environment === "development"
-      ? image_src
-      : image_src.replace(/http:\/\/localhost:3000\//g, origin + "/");
+  const _image_src = image_src.replace(
+    /http:\/\/localhost:3000\//g,
+    origin + "/"
+  );
 
   const isExpired =
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||

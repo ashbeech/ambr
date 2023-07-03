@@ -153,6 +153,7 @@ export const FilePanel = ({
     cid = roomMeta.cid ? roomMeta.cid : null;
     cidLink = `${ipfsViewer}${cid}`;
     // TODO: Make this dynamic; not localhost, hard-coded.
+    // THIS IS TEMP FOR LOCALHOST DEV ONLY PRE-BETA
     _image_src = roomMeta.image_src.replace(
       /http:\/\/localhost:3000\//g,
       origin + "/"
