@@ -220,7 +220,7 @@ export const RoomList = ({ onChange = () => {} }) => {
       >
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
-            {rooms === null && rooms.length <= 0 && (
+            {rooms === null && (
               <Stack spacing={[4, 4]} px={[0, 0]}>
                 <Skeleton
                   startColor="gray.500"
