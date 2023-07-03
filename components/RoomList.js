@@ -223,7 +223,7 @@ export const RoomList = ({ onChange = () => {} }) => {
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
             {rooms === null && (
-              <Stack spacing={[2, 4]} px={[0, 0]}>
+              <Stack spacing={[2, 4]}>
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
@@ -256,7 +256,7 @@ export const RoomList = ({ onChange = () => {} }) => {
 
             {rooms !== null && rooms.length !== 0 && (
               <Fade in={rooms.length > 0}>
-                <Stack spacing={[4, 4]} px={[0, 0]}>
+                <Stack spacing={[2, 4]}>
                   {rooms.length > 0 &&
                     rooms.map((room) => (
                       <RoomItem
