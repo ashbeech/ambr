@@ -69,15 +69,12 @@ html, body {
   812px - for iphone x
 */
 
-@viewport {  
-  orientation: portrait;  
-}  
-
 @media only screen and (orientation: landscape) {
   html {
     transform: rotate(-90deg) !important;
     transform-origin: left top !important;
     width: 100vh !important;
+    height: 100vw;
     overflow-x: hidden !important;
     position: absolute !important;
     top: 100% !important;
