@@ -49,3 +49,17 @@ html, body {
     -webkit-animation: dash 1.75s linear 0s forwards infinite;
             animation: dash 1.75s linear 0s forwards infinite;
   }
+
+  /* Safari 7.1+ */
+  _::-webkit-full-page-media, _:future, :root .p-m-btn {
+    padding: 0px 0px 0px 0px !important;
+  }
+
+  /* Safari 10.1+ */
+
+  @media not all and (min-resolution:.001dpcm) { @media {
+
+    .p-m-btn { 
+      padding: 0px 0px 0px 0px !important;
+    }
+  }}

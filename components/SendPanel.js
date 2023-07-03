@@ -432,6 +432,7 @@ export const SendPanel = ({
                                           onClick={() =>
                                             arrayHelpers.remove(index)
                                           } // remove a creator from the list
+                                          className={"m-btn p-m-btn"}
                                         >
                                           −
                                         </Button>
@@ -444,6 +445,7 @@ export const SendPanel = ({
                                         onClick={() =>
                                           arrayHelpers.insert(index, "")
                                         } // insert an empty string at a position
+                                        className={"p-btn p-m-btn"}
                                       >
                                         +
                                       </Button>
@@ -490,6 +492,7 @@ export const SendPanel = ({
                                             onClick={() =>
                                               arrayHelpers.remove(index)
                                             } // remove a creator from the list
+                                            className={"m-btn p-m-btn"}
                                           >
                                             −
                                           </Button>
@@ -502,6 +505,7 @@ export const SendPanel = ({
                                           onClick={() =>
                                             arrayHelpers.insert(index, "")
                                           } // insert an empty string at a position
+                                          className={"p-btn p-m-btn"}
                                         >
                                           +
                                         </Button>

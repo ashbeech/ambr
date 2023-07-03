@@ -554,7 +554,7 @@ export const FilePanel = ({
                             w="full"
                             overflow={"hidden"}
                           >
-                            {"View Record"}
+                            {"Certificate"}
                           </Button>
                         </Box>
                         <Box
@@ -587,7 +587,7 @@ export const FilePanel = ({
                                   as={formModeLink ? PublicIcon : PrivateIcon}
                                   boxSize={"1.85rem"}
                                 />
-                                <Text fontWeight={"medium"}>
+                                <Text fontWeight={"medium"} noOfLines={1}>
                                   {formModeLink ? "Public" : "Private"}
                                 </Text>
                               </HStack>
@@ -616,7 +616,7 @@ export const FilePanel = ({
                       w={"full"}
                       sx={isExpired ? {} : { marginTop: "0 !important" }}
                     >
-                      File&apos;s Record:
+                      File&apos;s Certificate:
                     </Heading>
                   </HStack>
                   <Box
@@ -797,7 +797,7 @@ const TopRightPanel = React.memo(
                     <>
                       {" "}
                       This file&apos;s original download link has expired, but
-                      historic record remains.
+                      historic record remains permanent.
                     </>
                   )}
                 </Text>

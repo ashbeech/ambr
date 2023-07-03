@@ -91,13 +91,18 @@ export default function Navigation({
                     onClick={() => {
                       handlePageChange("");
                     }}
+                    disabled={disabled}
                   >
                     <Icon
                       className={"logo"}
-                      w={"60px"}
-                      h={"60px"}
+                      w={"50px"}
+                      h={"50px"}
                       as={LogoIcon}
-                      _hover={{ color: disabled ? "gray.500" : "orange.400" }}
+                      _hover={
+                        currentPage === ""
+                          ? { color: "black.500" }
+                          : { color: disabled ? "gray.500" : "orange.400" }
+                      }
                       color={disabled ? "gray.500" : "black.500"}
                       style={{
                         transition: "color 0.15s ease-in",

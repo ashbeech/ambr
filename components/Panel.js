@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 
 export const Panel = (props) => (
   <Box
-    px={[6, 10]}
+    px={[4, 10]}
     backgroundColor={"whiteAlpha.400"}
     py={[6, 10]}
     pb={[6, null]}

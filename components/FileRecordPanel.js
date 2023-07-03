@@ -62,7 +62,7 @@ export function FileRecordPanel({
                   noOfLines={1}
                   w={"full"}
                 >
-                  File&apos;s Record:
+                  File&apos;s Certificate:
                 </Heading>
               </HStack>
               <Button
@@ -162,7 +162,13 @@ export function FileRecordPanel({
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={2}>
                 {"Metadata: "}
               </Text>
-              <Link w="full" href={cidLink} noOfLines={1} isExternal>
+              <Link
+                w="full"
+                href={cidLink}
+                noOfLines={1}
+                target={"_blank"}
+                isExternal
+              >
                 {cid}
               </Link>
               <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} />
@@ -178,7 +184,13 @@ export function FileRecordPanel({
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={2}>
                 {"Transaction: "}
               </Text>
-              <Link w="full" href={txHash} noOfLines={1} isExternal>
+              <Link
+                w="full"
+                href={txHash}
+                noOfLines={1}
+                target={"_blank"}
+                isExternal
+              >
                 {txHashRaw}
               </Link>
               <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} />
@@ -241,7 +253,7 @@ export function FileRecordPanel({
                       as={formModeLink ? PublicIcon : PrivateIcon}
                       boxSize={"1.85rem"}
                     />
-                    <Text fontWeight={"medium"}>
+                    <Text fontWeight={"medium"} noOfLines={1}>
                       {formModeLink ? "Public" : "Private"}
                     </Text>
                   </HStack>

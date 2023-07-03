@@ -363,7 +363,8 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
       ) : ( */}
       <Box
         py={[4, 4]}
-        px={[0, 4]}
+        pr={[3, 4]}
+        pl={[0, 4]}
         borderWidth={1}
         borderColor="blackAlpha.600"
         borderRadius="3xl"
