@@ -351,7 +351,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   return (
     <>
-      {!_image_src || _image_src === null ? ( // Display skeleton loading state while loading IPFS data
+      {!room.image_src || room.image_src === null ? ( // Display skeleton loading state while loading IPFS data
         <Skeleton
           startColor="gray.500"
           endColor="gray.600"
