@@ -592,7 +592,7 @@ export function ControlPanel() {
                                   mb={"0.42em!important"}
                                   textAlign={"center"}
                                   letterSpacing={[
-                                    "wide !important",
+                                    "normal !important",
                                     "wider !important",
                                   ]}
                                 >
