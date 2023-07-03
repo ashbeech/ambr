@@ -14,6 +14,7 @@ import {
   Fade,
   Img,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import {
   AddIcon,
   // ViewIcon, DeleteIcon,
@@ -57,6 +58,7 @@ export const RoomList = ({ onChange = () => {} }) => {
   const { publicAddress } = useContext(MagicContext);
   const [rooms, setRooms] = useState(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const updateRooms = async (rooms) => {
     try {
@@ -260,6 +262,7 @@ export const RoomList = ({ onChange = () => {} }) => {
                       <RoomItem
                         key={room.roomId}
                         room={room}
+                        router={router}
                         onClose={handleClose}
                       />
                     ))}
@@ -301,12 +304,13 @@ export const RoomList = ({ onChange = () => {} }) => {
   );
 };
 
-export const RoomItem = ({ room, onClose = () => {} }) => {
+export const RoomItem = ({ room, router, onClose = () => {} }) => {
   const { roomId, title, key, image_src } = room;
   //const [deleting, setDeleting] = useState(false);
 
   const path = `/${roomId}#${key}`;
   const url = `${origin}${path}`;
+
   // TODO: Make this dynamic; not localhost, hard-coded.
   // THIS IS TEMP FOR LOCALHOST DEV ONLY PRE-BETA
   const _image_src = image_src
@@ -366,7 +370,14 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
       >
         <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
           <Box pos="relative" flex={1}>
-            <Link href={path} colorScheme="black" size="sm">
+            <Link
+              //href={path}
+              onClick={() => {
+                router.push(path, undefined, { shallow: true });
+              }}
+              colorScheme="black"
+              size="sm"
+            >
               <Flex
                 direction={"column"}
                 alignItems={"center"}
@@ -402,9 +413,12 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
             pl={[0, 4]}
           >
             <Text
-              as={"a"}
+              //as={"a"}
               w="full"
-              href={[path]}
+              //href={path}
+              onClick={() => {
+                router.push(path, undefined, { shallow: true });
+              }}
               cursor={"pointer"}
               align="left"
               noOfLines={1}
