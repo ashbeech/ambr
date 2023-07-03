@@ -466,7 +466,7 @@ export function ControlPanel() {
 
     return (
       <>
-        <Text>{dev_readout}</Text>
+        {/* <Text>{dev_readout}</Text> */}
         {loading && (
           <Fade in={loading}>
             <Box
