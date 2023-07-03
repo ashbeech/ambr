@@ -67,7 +67,6 @@ export default function Navigation({
     <Box zIndex={999} position={"relative"}>
       <Container
         w={["100%"]}
-        //px={[0, 6, 6, 6, 8]}
         pt={[2, 8]}
         pb={[2, 6]}
         maxW={["90%", "90%"]}
