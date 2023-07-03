@@ -600,7 +600,7 @@ export function ControlPanel() {
                                     "wider !important",
                                   ]}
                                 >
-                                  Share a File
+                                  Share Your Work
                                 </Text>
                               </Box>
 

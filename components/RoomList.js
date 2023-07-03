@@ -223,7 +223,7 @@ export const RoomList = ({ onChange = () => {} }) => {
         <Box gridColumn={1} gridRow={1}>
           <Box w={"100%"} minW={"100%"}>
             {rooms === null && (
-              <Stack spacing={[4, 4]} px={[0, 0]}>
+              <Stack spacing={[2, 4]} px={[0, 0]}>
                 <Skeleton
                   startColor="gray.500"
                   endColor="gray.600"
