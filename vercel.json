@@ -20,7 +20,7 @@
       ]
     },
     {
-      "source": "/api/payment-outcome*",
+      "source": "/api/payment-outcome",
       "has": [
         {
           "type": "query",
