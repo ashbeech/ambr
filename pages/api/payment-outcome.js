@@ -8,10 +8,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-const handler = async (req, res) => {
-  console.log("STRIPE_SECRET_KEY:", process.env.STRIPE_SECRET_KEY);
-  console.log("STRIPE_WEBHOOK_SECRET:", webhookSecret);
+console.warn("STRIPE_SECRET_KEY:", process.env.STRIPE_SECRET_KEY);
+console.warn("STRIPE_WEBHOOK_SECRET:", webhookSecret);
 
+const handler = async (req, res) => {
   try {
     if (req.method !== "POST") {
       res.setHeader("Allow", "POST");
@@ -21,8 +21,8 @@ const handler = async (req, res) => {
     const buf = await buffer(req);
     const sig = req.headers["stripe-signature"];
 
-    console.log("BUFFER:", buf);
-    console.log("SIG:", sig);
+    console.warn("BUFFER:", buf);
+    console.warn("SIG:", sig);
 
     let event;
 
