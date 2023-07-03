@@ -61,7 +61,7 @@ export const tagline = "Share ideas worth protecting";
 
 // Description of the site
 export const siteDescription =
-  "File transfers that simultaneously add a layer of protection.";
+  "File transfers that provide a robust layer of protection for the copyright of your work.";
 
 // Twitter username of the site
 export const socialHandle = "ambrlink";

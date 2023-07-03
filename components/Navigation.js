@@ -136,21 +136,37 @@ export default function Navigation({
                           Menu
                         </MenuButton>
                         <MenuList pos={"relative"} top={"-0.2rem"} zIndex={999}>
+                          {currentPage !== "" && (
+                            <MenuItem
+                              isDisabled={disabled}
+                              fontSize={"md"}
+                              className={disabled ? "share disabled" : "share"}
+                              onClick={() => {
+                                handlePageChange("");
+                              }}
+                            >
+                              Share Your Work
+                            </MenuItem>
+                          )}
                           {currentPage !== "files" && (
                             <MenuItem
                               isDisabled={disabled}
                               fontSize={"md"}
+                              className={disabled ? "files disabled" : "files"}
                               onClick={() => {
                                 handlePageChange("files");
                               }}
                             >
-                              My Files
+                              Your Files
                             </MenuItem>
                           )}
                           {showTopup && (
                             <MenuItem
                               isDisabled={disabled}
                               fontSize={"md"}
+                              className={
+                                disabled ? "top-up disabled" : "top-up"
+                              }
                               onClick={() => {
                                 handlePageChange("top-up");
                               }}
@@ -196,6 +212,17 @@ export default function Navigation({
                         alignItems={"center"}
                         justifyContent={"start"}
                       >
+                        {currentPage !== "" && (
+                          <Link
+                            pr={6}
+                            className={disabled ? "share disabled" : "share"}
+                            onClick={() => {
+                              handlePageChange("");
+                            }}
+                          >
+                            Send a File
+                          </Link>
+                        )}
                         {currentPage !== "files" && (
                           <Link
                             pr={6}
@@ -204,7 +231,7 @@ export default function Navigation({
                               handlePageChange("files");
                             }}
                           >
-                            My Files
+                            Your Files
                           </Link>
                         )}
                         {showTopup && (

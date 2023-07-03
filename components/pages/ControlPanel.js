@@ -643,8 +643,8 @@ export function ControlPanel() {
                               </Text>
                               <Text as={"p"} mb={4}>
                                 Sharing your work through Ambr affords a robust
-                                layer of protection to your intellectual
-                                property.
+                                layer of protection for the copyright of your
+                                work.
                               </Text>
                               <OrderedList>
                                 <ListItem>Upload your file</ListItem>
@@ -1008,10 +1008,10 @@ export function ControlPanel() {
                                     </Text>{" "}
                                     generates an immutable, historic record of
                                     your work within, affording a robust layer
-                                    of protection to your intellectual property
+                                    of protection for the copyright of your work
                                     when sharing with clients, simultaneosly
                                     ensuring definitive proof of origin in an
-                                    age of artificial intelligence.
+                                    age of artificial intelligence (AI).
                                   </Text>
                                 </>
                               )}
