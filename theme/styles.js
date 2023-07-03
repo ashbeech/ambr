@@ -113,7 +113,7 @@ export const styles = {
       mixBlendMode: "color-burn",
       content: '""',
       position: "absolute",
-      width: "100vw",
+      width: "100%",
       height: "100%",
       minHeight: "100%",
       left: 0,
@@ -121,7 +121,6 @@ export const styles = {
       backgroundImage: `url("/images/noise.png")`,
       zIndex: "-9999",
       opacity: "0.8",
-      //backgroundSize: "100vw 100vh",
       backgroundRepeat: "repeat",
     },
 
