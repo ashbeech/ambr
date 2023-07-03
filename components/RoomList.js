@@ -351,7 +351,7 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
 
   return (
     <>
-      {!room.image_src || room.image_src === null ? ( // Display skeleton loading state while loading IPFS data
+      {/*       {!room.image_src || room.image_src === null ? ( // Display skeleton loading state while loading IPFS data
         <Skeleton
           startColor="gray.500"
           endColor="gray.600"
@@ -359,111 +359,110 @@ export const RoomItem = ({ room, onClose = () => {} }) => {
           borderRadius={"3xl"}
           w={"100%"}
         />
-      ) : (
-        <Box
-          py={[4, 4]}
-          px={[0, 4]}
-          borderWidth={1}
-          borderColor="blackAlpha.600"
-          borderRadius="3xl"
-        >
-          <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
-            <Box pos="relative" flex={1}>
-              <Link href={path} colorScheme="black" size="sm">
-                <Flex
-                  direction={"column"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  h={"100%"}
-                  minW={"80px"}
-                  px={1}
-                >
-                  <Icon
-                    pos="absolute"
-                    as={VscFile}
-                    boxSize={8}
-                    zIndex={998}
-                    blendMode="overlay"
-                    objectFit={["contain !important"]}
-                  />
-                  <Img
-                    h="80px"
-                    src={_image_src}
-                    objectFit={"contain !important"}
-                    alt="Ambr Stone"
-                    className="file-stone"
-                  />
-                </Flex>
-              </Link>
-            </Box>
+      ) : ( */}
+      <Box
+        py={[4, 4]}
+        px={[0, 4]}
+        borderWidth={1}
+        borderColor="blackAlpha.600"
+        borderRadius="3xl"
+      >
+        <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
+          <Box pos="relative" flex={1}>
+            <Link href={path} colorScheme="black" size="sm">
+              <Flex
+                direction={"column"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                h={"100%"}
+                minW={"80px"}
+                px={1}
+              >
+                <Icon
+                  pos="absolute"
+                  as={VscFile}
+                  boxSize={8}
+                  zIndex={998}
+                  blendMode="overlay"
+                  objectFit={["contain !important"]}
+                />
+                <Img
+                  h="80px"
+                  src={_image_src}
+                  objectFit={"contain !important"}
+                  alt="Ambr Stone"
+                  className="file-stone"
+                />
+              </Flex>
+            </Link>
+          </Box>
 
-            <VStack
-              className={"info"}
-              flex={4}
-              maxW={"50%"}
-              w={["33%", "90%"]}
-              pl={[0, 4]}
+          <VStack
+            className={"info"}
+            flex={4}
+            maxW={"50%"}
+            w={["33%", "90%"]}
+            pl={[0, 4]}
+          >
+            <Text
+              as={"a"}
+              w="full"
+              href={[path]}
+              cursor={"pointer"}
+              align="left"
+              noOfLines={1}
+              fontSize={["lg", "xl"]}
+              fontWeight="normal !important"
             >
-              <Text
-                as={"a"}
-                w="full"
-                href={[path]}
-                cursor={"pointer"}
-                align="left"
-                noOfLines={1}
-                fontSize={["lg", "xl"]}
-                fontWeight="normal !important"
-              >
-                {title}
-              </Text>
-              <Text
-                w="full"
-                align="left"
-                color="black.500"
-                fontSize={["sm", "sm"]}
-              >
-                {!isExpired ? (
-                  <>
-                    Download available for{" "}
-                    <RelativeTime
-                      to={Number(room.expiresAtTimestampMs)}
-                      onlyText={true}
-                    />
-                    .
-                  </>
-                ) : (
-                  <>Historic record.</>
-                )}
-              </Text>
-            </VStack>
+              {title}
+            </Text>
+            <Text
+              w="full"
+              align="left"
+              color="black.500"
+              fontSize={["sm", "sm"]}
+            >
+              {!isExpired ? (
+                <>
+                  Download available for{" "}
+                  <RelativeTime
+                    to={Number(room.expiresAtTimestampMs)}
+                    onlyText={true}
+                  />
+                  .
+                </>
+              ) : (
+                <>Historic record.</>
+              )}
+            </Text>
+          </VStack>
 
-            <Flex
-              flex={[1, 2]}
-              direction={["row"]}
-              alignContent={"right"}
-              align={"right"}
-              flexDirection={["column", "row-reverse"]}
-              alignItems={"center"}
+          <Flex
+            flex={[1, 2]}
+            direction={["row"]}
+            alignContent={"right"}
+            align={"right"}
+            flexDirection={["column", "row-reverse"]}
+            alignItems={"center"}
+          >
+            <CopyButton
+              onClick={handleClickCopy}
+              text={url}
+              colorScheme="black"
+              size={"md"}
+              ml={[0, 2]}
+            />
+            <ButtonLink
+              display={["none", "inherit"]}
+              href={path}
+              colorScheme="black"
+              size="md"
             >
-              <CopyButton
-                onClick={handleClickCopy}
-                text={url}
-                colorScheme="black"
-                size={"md"}
-                ml={[0, 2]}
-              />
-              <ButtonLink
-                display={["none", "inherit"]}
-                href={path}
-                colorScheme="black"
-                size="md"
-              >
-                View
-              </ButtonLink>
-            </Flex>
+              View
+            </ButtonLink>
           </Flex>
-        </Box>
-      )}
+        </Flex>
+      </Box>
     </>
   );
 };
