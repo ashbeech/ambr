@@ -95,8 +95,8 @@ export default function Navigation({
                   >
                     <Icon
                       className={"logo"}
-                      w={"50px"}
-                      h={"50px"}
+                      w={["50px", "65px"]}
+                      h={["50px", "65px"]}
                       as={LogoIcon}
                       _hover={
                         currentPage === ""

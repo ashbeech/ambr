@@ -740,12 +740,13 @@ export function ControlPanel() {
                                 !isUserMatch && (
                                   <>
                                     <Text as={"h1"} className={"fancy"}>
-                                      Share ideas fearlessly
+                                      Share Work Fearlessly
                                     </Text>
                                     <Text as={"p"}>
-                                      Ambr files have an unchangeable historic
-                                      record that can remain private or made
-                                      public by the creator if required.
+                                      Each file shared through Ambr generates an
+                                      encrypted, unchangeable historic record of
+                                      the event and the related intellectual
+                                      property within.
                                     </Text>
                                   </>
                                 )}
