@@ -497,7 +497,7 @@ export const PayPanel = ({
                           fontSize={["2xl", "xl", "md", "xl", "xl"]}
                           noOfLines={1}
                         >
-                          {"Ambr File Transfers"}
+                          {"Ambr File Shares"}
                         </Text>
                         <HStack
                           display={"flex"}
