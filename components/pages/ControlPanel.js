@@ -743,10 +743,9 @@ export function ControlPanel() {
                                       Share Work Fearlessly
                                     </Text>
                                     <Text as={"p"}>
-                                      Each file shared through Ambr generates an
-                                      encrypted, unchangeable historic record of
-                                      the event and the related intellectual
-                                      property within.
+                                      Each file shared through Ambr generates a
+                                      private, unchangeable historic record of
+                                      the event and the related work.
                                     </Text>
                                   </>
                                 )}

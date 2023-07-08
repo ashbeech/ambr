@@ -434,8 +434,9 @@ export const PayPanel = ({
                     <Box h={["100%", "25%"]}>
                       <Heading
                         as={"h1"}
+                        className="fancy"
                         fontSize={["4xl", "4xl"]}
-                        fontWeight={"medium"}
+                        fontWeight={"semibold"}
                         marginBottom={"0.21em !important"}
                         noOfLines={1}
                       >
@@ -594,15 +595,6 @@ export const PayPanel = ({
                           w={"100%"}
                           h={"100%"}
                         >
-                          {/*                           <Heading
-                            as={"h3"}
-                            zIndex={998}
-                            textAlign={"left"}
-                            noOfLines={3}
-                            h={"6%"}
-                          >
-                            Pay by Card
-                          </Heading> */}
                           <Box
                             pos={"relative"}
                             overflowY={["auto", "scroll"]}

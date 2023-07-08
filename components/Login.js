@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { MagicContext } from "./MagicContext";
 import { hasVisitedBefore } from "../lib/hasVisitedBefore";
-import { Input, Button, Flex } from "@chakra-ui/react";
+import { Box, Flex, Input, Button, Text, Link, HStack } from "@chakra-ui/react";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -67,39 +67,53 @@ function Login() {
   return (
     <>
       {!isLoggedIn && (
-        <Flex
-          w={"100%"}
-          maxW={"26rem"}
-          pt={4}
-          display={"flex"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          flexDirection={["column", "row"]}
-        >
-          <Input
-            flex={!visitedBefore ? ["", ""] : ["", 8]}
-            w={["full", "65%"]}
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setIsValidEmail(true); // Reset validation on input change
-            }}
-            placeholder="Your Email Address"
-            mr={[0, 2]}
-            backgroundColor={isValidEmail ? "gray.500" : "red.500"}
-          />
-          <Button
-            flex={!visitedBefore ? ["", ""] : ["", 2]}
-            overflow={"hidden"}
-            top={[1, "-2px"]}
-            w={["full", ""]}
-            size={"md"}
-            onClick={handleLogin}
+        <>
+          <Flex
+            w={"100%"}
+            maxW={"26rem"}
+            pt={4}
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            flexDirection={["column", "row"]}
           >
-            {!visitedBefore ? "Enter for Free" : "Enter"}
-          </Button>
-        </Flex>
+            <Input
+              flex={!visitedBefore ? ["", ""] : ["", 8]}
+              w={["full", "65%"]}
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setIsValidEmail(true); // Reset validation on input change
+              }}
+              placeholder="Your Email Address"
+              mr={[0, 2]}
+              _placeholder={
+                isValidEmail ? { color: "black.500" } : { color: "white" }
+              }
+              color={isValidEmail ? "black.500" : "white"}
+              backgroundColor={isValidEmail ? "gray.500" : "red.500"}
+            />
+            <Button
+              flex={!visitedBefore ? ["", ""] : ["", 2]}
+              overflow={"hidden"}
+              top={[1, "-2px"]}
+              w={["full", ""]}
+              size={"md"}
+              onClick={handleLogin}
+            >
+              {!visitedBefore ? "Enter for Free" : "Enter"}
+            </Button>
+          </Flex>
+          <HStack>
+            <Box>
+              <Text fontSize={"sm"}>
+                By clicking Enter, you agree to our Terms of Service and Privacy
+                Policy.
+              </Text>
+            </Box>
+          </HStack>
+        </>
       )}
     </>
   );
