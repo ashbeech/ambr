@@ -33,6 +33,9 @@ const nextConfig = {
     REACT_APP_MAILR_PW: process.env.REACT_APP_MAILR_PW,
     REACT_APP_STRIPE_SK: process.env.REACT_APP_STRIPE_SK,
   },
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 module.exports = nextConfig;
