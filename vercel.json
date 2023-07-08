@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-GNF74DLkXb0fH3ILHgILFjk1ozCF3SNXQ5mQb7WLu/Y='; script-src 'self' https://js.stripe.com/v3; frame-src 'self' https://auth.magic.link https://js.stripe.com https://ipfs.io;"
+          "value": "default-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-/ruXdsBDtJogFfBtlZv5IlpluJMP4GrjIX5q8DpoYOc=' 'sha256-xuVxjz8g6OjgnHuv050WihxRr8B6sQlOV7dCh5xflRI=' 'sha256-GNF74DLkXb0fH3ILHgILFjk1ozCF3SNXQ5mQb7WLu/Y='; script-src 'self' https://js.stripe.com/v3; frame-src 'self' https://auth.magic.link https://js.stripe.com https://ipfs.io;"
         },
         {
           "key": "X-Content-Type-Options",
