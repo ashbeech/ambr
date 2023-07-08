@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; connect-src 'self' https://*.ipfs.nftstorage.link/; img-src 'self' https://assets.vercel.com/*; media-src 'self'; object-src 'none'; style-src 'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-/ruXdsBDtJogFfBtlZv5IlpluJMP4GrjIX5q8DpoYOc=' 'sha256-xuVxjz8g6OjgnHuv050WihxRr8B6sQlOV7dCh5xflRI=' 'sha256-GNF74DLkXb0fH3ILHgILFjk1ozCF3SNXQ5mQb7WLu/Y=' 'sha256-3uVE+4ONXqG00gD41KZaK25WlsAIa3kpSTmc5cTBUS8=' 'sha256-debxBGmcZXma855ZRnRchHvi4jpf6d92YSZe6ZwsL1s='; script-src 'self' https://js.stripe.com/v3; script-src-elem 'self' https://vercel.live/_next-live/feedback/feedback.js https://js.stripe.com/v3 'sha256-vd3qp8D6kDw2J5+y5aDLMqG5U+o0U3Nbj5Wv9vUfR0M='; frame-src 'self' https://auth.magic.link https://js.stripe.com https://ipfs.io https://vercel.live;"
+          "value": "default-src 'self'; connect-src 'self' https://*.ipfs.nftstorage.link/; img-src 'self' https://assets.vercel.com; media-src 'self'; object-src 'none'; style-src 'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-/ruXdsBDtJogFfBtlZv5IlpluJMP4GrjIX5q8DpoYOc=' 'sha256-xuVxjz8g6OjgnHuv050WihxRr8B6sQlOV7dCh5xflRI=' 'sha256-GNF74DLkXb0fH3ILHgILFjk1ozCF3SNXQ5mQb7WLu/Y=' 'sha256-3uVE+4ONXqG00gD41KZaK25WlsAIa3kpSTmc5cTBUS8=' 'sha256-debxBGmcZXma855ZRnRchHvi4jpf6d92YSZe6ZwsL1s='; script-src 'self' https://js.stripe.com/v3; script-src-elem 'self' https://vercel.live/_next-live/feedback/feedback.js https://js.stripe.com/v3 'sha256-vd3qp8D6kDw2J5+y5aDLMqG5U+o0U3Nbj5Wv9vUfR0M='; frame-src 'self' https://auth.magic.link https://js.stripe.com https://ipfs.io https://vercel.live;"
         },
         {
           "key": "X-Content-Type-Options",
