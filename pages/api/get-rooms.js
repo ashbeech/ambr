@@ -32,7 +32,25 @@ export default async function handler(req, res) {
         },
         mintState: "Sealed",
       },
+      orderBy: {
+        expiresAtTimestampMs: "desc",
+      },
     });
+    /*     const rooms = await prisma.room.findMany({
+      where: {
+        idHash,
+        NOT: {
+          key: "",
+        },
+        mintState: "Sealed",
+      },
+      include: {
+        files: true,
+      },
+      orderBy: {
+        createdAt: "asc",
+      },
+    }); */
     const decryptedRooms = rooms.map((room) => {
       return {
         ...room,
