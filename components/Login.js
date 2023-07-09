@@ -79,7 +79,7 @@ function Login() {
           >
             <Input
               flex={!visitedBefore ? ["", ""] : ["", 8]}
-              w={["full", "65%"]}
+              w={["full", "70% !important"]}
               type="email"
               value={email}
               onChange={(e) => {
@@ -98,7 +98,8 @@ function Login() {
               flex={!visitedBefore ? ["", ""] : ["", 2]}
               overflow={"hidden"}
               top={[1, "-2px"]}
-              w={["full", ""]}
+              w={["full", "30% !important"]}
+              minW={"auto !important"}
               size={"md"}
               onClick={handleLogin}
             >

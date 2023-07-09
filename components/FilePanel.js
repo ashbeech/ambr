@@ -600,12 +600,12 @@ export const FilePanel = ({
               )}
               {roomMeta && !isUserMatch && roomMeta.isPublic && (
                 <Box
-                  mt={2}
+                  mt={[2, 0]}
                   w={"100%"}
                   h={["80%", "auto"]}
                   overflow={["auto", "hidden"]}
                 >
-                  <HStack h={"18%"} maxH={"18%"} pb={3} overflow={"visible"}>
+                  <HStack h={"25%"} maxH={"25%"} pb={3} overflow={"visible"}>
                     <SealIcon boxSize={"1.4rem"} />
                     <Heading
                       as={"h3"}
