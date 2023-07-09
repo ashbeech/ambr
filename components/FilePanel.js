@@ -621,9 +621,9 @@ export const FilePanel = ({
                   </HStack>
                   <Box
                     position={"relative"}
-                    maxH={isExpired ? "100%" : ["100%", "auto"]}
+                    maxH={isExpired ? "100%" : ["100%", "75%"]}
                     w={"100%"}
-                    h={isExpired ? ["100%", "82%"] : ["100%", "auto"]}
+                    h={isExpired ? ["100%", "82%"] : ["100%", "75%"]}
                     sx={{ marginTop: "0 !important" }}
                     pt={isExPublic ? [0, 0] : [0, 0]}
                     overflow="auto"
@@ -701,12 +701,7 @@ export const FilePanel = ({
                 isAuthenticated &&
                 roomMeta &&
                 isUserMatch && (
-                  <Box
-                    w={"full"}
-                    pos={["relative", "absolute"]}
-                    bottom={0}
-                    //mt={["","2em !important"]}
-                  >
+                  <Box w={"full"} pos={["relative", "relative"]} bottom={0}>
                     <SharePanel
                       shareUrl={
                         origin +
