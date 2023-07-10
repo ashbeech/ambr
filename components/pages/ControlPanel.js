@@ -997,15 +997,16 @@ export function ControlPanel() {
                                     </Text>
                                   )}
                                   <Text fontSize={"md"} noOfLines={12}>
-                                    Every file shared through{" "}
+                                    The ability to confidently assert your
+                                    copyright ownership is invaluable. Every
+                                    file shared through{" "}
                                     <Text as="span" fontStyle="italic">
                                       Ambr
                                     </Text>{" "}
-                                    generates robust and traceable evidence of
-                                    your work&#39;s copyright when sharing it
-                                    with clients, whilst also simultaneosly
-                                    ensuring definitive proof of origin in an
-                                    age of artificial intelligence (AI).
+                                    generates robust evidence of your work&#39;s
+                                    origin. This is especially critical when
+                                    sharing with clients, and particularly in an
+                                    age of artificial intelligence.
                                   </Text>
                                 </>
                               )}
