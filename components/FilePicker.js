@@ -92,7 +92,7 @@ export const FilePicker = ({ onFiles = () => {}, description, ...rest }) => {
           maxW={"100%"}
           leftIcon={<Icon as={AddIcon} boxSize={3} />}
         >
-          <Text>{description ? description : "Upload File Here"}</Text>
+          <Text>{description ? description : "Select a file"}</Text>
           {fileInput}
         </Button>
       </Box>

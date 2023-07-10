@@ -63,7 +63,6 @@ export const SendPanel = ({
     emails: [""],
     mode: formModeLink,
   });
-  //const isMobileBreakpoint = useBreakpointValue([true, false]);
 
   const handleChange = async (event) => {
     setIsLoading(true);
@@ -238,7 +237,7 @@ export const SendPanel = ({
                   >
                     <FilePicker
                       onFiles={handleFiles}
-                      description={"Upload File Here"}
+                      description={"Select a file"}
                     />
                   </Fade>
                   <Fade
@@ -418,6 +417,63 @@ export const SendPanel = ({
                                         type="creator"
                                         variant="outline"
                                         placeholder={
+                                          index <= 0
+                                            ? "Co-creator's name"
+                                            : "Creator's name"
+                                        }
+                                        p={3}
+                                        value={creator.creator || ""} // Ensure a default value is set
+                                      />
+                                      {values.creators && index > 0 ? (
+                                        <Button
+                                          ml={4}
+                                          type="button"
+                                          variant={"rounded"}
+                                          onClick={() =>
+                                            arrayHelpers.remove(index)
+                                          }
+                                          className={"m-btn p-m-btn"}
+                                        >
+                                          −
+                                        </Button>
+                                      ) : (
+                                        ""
+                                      )}
+                                      <Button
+                                        type="button"
+                                        variant={"rounded"}
+                                        onClick={() =>
+                                          arrayHelpers.insert(index, "")
+                                        }
+                                        className={"p-btn p-m-btn"}
+                                      >
+                                        +
+                                      </Button>
+                                    </Flex>
+                                    <ErrorMessage
+                                      name={`creators.${index}.creator`}
+                                      component="div"
+                                      className="invalid-feedback"
+                                    />
+                                  </Box>
+                                ))}
+                              </Box>
+                            )}
+                          />
+
+                          {/* <FieldArray
+                            name="creators"
+                            render={(arrayHelpers) => (
+                              <Box mt={1}>
+                                {values.creators.map((creator, index) => (
+                                  <Box key={index}>
+                                    <Flex>
+                                      <Field
+                                        as={Input}
+                                        name={`creators.${index}.creator`}
+                                        type="creator"
+                                        variant="outline"
+                                        placeholder={
                                           index > 0
                                             ? "Co-creator's name"
                                             : "Creator's name"
@@ -459,7 +515,7 @@ export const SendPanel = ({
                                 ))}
                               </Box>
                             )}
-                          />
+                          /> */}
                         </FormControl>
                         <FormControl
                           isInvalid={!!errors.emails && touched.emails}

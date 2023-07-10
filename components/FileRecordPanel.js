@@ -42,7 +42,7 @@ export function FileRecordPanel({
   return (
     <>
       <VStack
-        mb={publicView ? [6, 0] : [0, 0]}
+        mb={publicView ? [1, 0] : [0, 0]}
         w={"full"}
         h={publicView ? "85%" : "100%"}
         borderRadius={"md"}
@@ -85,14 +85,12 @@ export function FileRecordPanel({
           overflowX={[null, "hidden"]}
           maxH={publicView ? [null, "100%"] : [null, "100%"]}
           fontSize={"md"}
-          pt={publicView ? [2, 2] : [2, 1]}
-          pb={publicView ? [null, 2] : [null, 2]}
+          pt={publicView ? [2, 2] : [3, 2]}
+          pb={publicView ? [0, 2] : [0, 2]}
           sx={{
             mt: "0 !important",
-            mb: [4, "1 !important"],
+            mb: [3, "1 !important"],
           }}
-          //backgroundColor={["", "#f2f2f2"]}
-          //borderRadius={"xl"}
           borderBottom={publicView ? ["", "1px"] : ["", ""]}
         >
           <VStack w="full" alignItems="start">

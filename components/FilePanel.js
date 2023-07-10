@@ -95,7 +95,7 @@ export const FilePanel = ({
       roomMeta.remainingDownloads < 1 &&
       verifyState !== "Verified");
 
-  const isExPublic = isExpired && isAuthenticated;
+  const isExPublic = isExpired || isUserMatch;
   const unVerified = !verifyState || verifyState === "Unverified";
 
   const [verifyOpen, setVerifyOpen] = useState(null);
@@ -523,9 +523,10 @@ export const FilePanel = ({
                   h={["", "auto"]}
                   maxH={["", "100%"]}
                   mt={[6, 0]}
-                  mb={isExPublic && formModeLink ? 0 : [2]}
+                  mb={isExPublic && formModeLink ? 2 : 0}
                 >
                   <TopRightPanel
+                    isExPublic={isExPublic}
                     isExpired={isExpired}
                     roomMeta={roomMeta}
                     files={files}
@@ -540,7 +541,7 @@ export const FilePanel = ({
                     roomMeta.readableMetadata != null &&
                     isUserMatch && (
                       <HStack
-                        mt={isExpired ? [4, 8] : [4, 0]}
+                        mt={isExpired ? [4, 4] : [4, 0]}
                         mb={[2, 0]}
                         w="full"
                         overflow="hidden"
@@ -599,13 +600,12 @@ export const FilePanel = ({
                 </Box>
               )}
               {roomMeta && !isUserMatch && roomMeta.isPublic && (
-                <Box
-                  mt={[2, 0]}
-                  w={"100%"}
-                  h={["80%", "auto"]}
-                  overflow={["auto", "hidden"]}
-                >
-                  <HStack h={"25%"} maxH={"25%"} pb={3} overflow={"visible"}>
+                <>
+                  <HStack
+                    w={["100%", "100%"]}
+                    pt={isExPublic ? [0, 4] : [4, 0]}
+                    overflow={"visible"}
+                  >
                     <SealIcon boxSize={"1.4rem"} />
                     <Heading
                       as={"h3"}
@@ -620,52 +620,59 @@ export const FilePanel = ({
                     </Heading>
                   </HStack>
                   <Box
-                    position={"relative"}
-                    maxH={isExpired ? "100%" : ["100%", "75%"]}
+                    mt={[0, 0]}
                     w={"100%"}
-                    h={isExpired ? ["100%", "82%"] : ["100%", "75%"]}
-                    sx={{ marginTop: "0 !important" }}
-                    pt={isExPublic ? [0, 0] : [0, 0]}
-                    overflow="auto"
-                    borderBottom={["", "1px"]}
+                    h={["100%", "auto"]}
+                    overflow={["auto", "hidden"]}
                   >
                     <Box
-                      w={"full"}
-                      h={!isExPublic ? [null, "auto"] : [null, "auto"]}
+                      position={"relative"}
+                      maxH={isExpired ? "100%" : ["100%", "100%"]}
+                      w={"100%"}
+                      h={isExpired ? ["100%", "100%"] : ["100%", "100%"]}
+                      sx={{ marginTop: "0 !important" }}
+                      pt={isExPublic ? [0, 0] : [0, 0]}
+                      overflow="auto"
+                      borderBottom={["", "1px"]}
                     >
-                      <FileRecordPanel
-                        title={
-                          roomMeta?.readableMetadata.title
-                            ? roomMeta.readableMetadata.title
-                            : ""
-                        }
-                        client={client ? client : ""}
-                        key_concept={key_concept ? key_concept : ""}
-                        creators={creators ? creators : ""}
-                        numCreators={
-                          roomMeta.readableMetadata.creators.length
-                            ? roomMeta.readableMetadata.creators.length
-                            : 0
-                        }
-                        fileHash={fileHash ? fileHash : ""}
-                        cid={cid ? cid : ""}
-                        cidLink={cidLink ? cidLink : ""}
-                        txHash={txHash ? txHash : ""}
-                        txHashRaw={txHashRaw ? txHashRaw : ""}
-                        readableTimeStamp={
-                          readableTimeStamp ? readableTimeStamp : ""
-                        }
-                      />
+                      <Box
+                        w={"full"}
+                        h={!isExPublic ? [null, "auto"] : [null, "auto"]}
+                      >
+                        <FileRecordPanel
+                          title={
+                            roomMeta?.readableMetadata.title
+                              ? roomMeta.readableMetadata.title
+                              : ""
+                          }
+                          client={client ? client : ""}
+                          key_concept={key_concept ? key_concept : ""}
+                          creators={creators ? creators : ""}
+                          numCreators={
+                            roomMeta.readableMetadata.creators.length
+                              ? roomMeta.readableMetadata.creators.length
+                              : 0
+                          }
+                          fileHash={fileHash ? fileHash : ""}
+                          cid={cid ? cid : ""}
+                          cidLink={cidLink ? cidLink : ""}
+                          txHash={txHash ? txHash : ""}
+                          txHashRaw={txHashRaw ? txHashRaw : ""}
+                          readableTimeStamp={
+                            readableTimeStamp ? readableTimeStamp : ""
+                          }
+                        />
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
+                </>
               )}
               {verifyOpen &&
                 isAuthenticated &&
                 roomMeta &&
                 roomMeta.readableMetadata &&
                 isUserMatch && (
-                  <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
+                  <Box w={"100%"} h={["", "100%"]} mt={[2, 0]}>
                     <FileRecordPanel
                       title={
                         roomMeta?.readableMetadata.title
@@ -720,7 +727,15 @@ export const FilePanel = ({
 };
 
 const TopRightPanel = React.memo(
-  ({ isExpired, roomMeta, files, isDisabled, onDownloadAll, refresh }) => {
+  ({
+    isExPublic,
+    isExpired,
+    roomMeta,
+    files,
+    isDisabled,
+    onDownloadAll,
+    refresh,
+  }) => {
     const [d, setD] = useState(new Date()); // initialize d to current date
     //const [title, setTitle] = useState("Fetching File");
     const strings = ["You've got a file", "Your file awaits"];
@@ -751,7 +766,7 @@ const TopRightPanel = React.memo(
     }, [roomMeta]);
 
     return (
-      <Stack spacing={[2, 2]} h={isExpired ? ["", "auto"] : ["", "auto"]}>
+      <Stack spacing={[2, 2]} h={isExPublic ? ["", "auto"] : ["", "auto"]}>
         {roomMeta && (
           <Heading
             as={"h2"}
@@ -769,7 +784,11 @@ const TopRightPanel = React.memo(
           roomMeta.expiresAtTimestampMs != null &&
           roomMeta.remainingDownloads != null && (
             <Fade in>
-              <Box overflow={"hidden"} mb={[2, 0]} spacing={0}>
+              <Box
+                overflow={"hidden"}
+                mb={!isExPublic ? [2, 0] : [2, 0]}
+                spacing={0}
+              >
                 <Text fontSize={"sm"} zIndex={999} noOfLines={[3, 2]}>
                   Shared <RelativeTime to={d} />.{" "}
                   {!isExpired && (
