@@ -635,16 +635,11 @@ export function ControlPanel() {
                               maxW={"33%"}
                             >
                               <Text as={"h1"} className={"fancy"} noOfLines={3}>
-                                Secure
+                                Share
                                 <br />
                                 your pitch
                                 <br />
                                 in a pinch.
-                              </Text>
-                              <Text as={"p"} mb={4}>
-                                Sharing your work through Ambr ensures
-                                tracability for your claim of copyright
-                                ownership.
                               </Text>
                               <OrderedList>
                                 <ListItem>Upload your file</ListItem>
