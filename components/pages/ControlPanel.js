@@ -635,16 +635,16 @@ export function ControlPanel() {
                               maxW={"33%"}
                             >
                               <Text as={"h1"} className={"fancy"} noOfLines={3}>
-                                Protect
+                                Secure
                                 <br />
                                 your pitch
                                 <br />
                                 in a pinch.
                               </Text>
                               <Text as={"p"} mb={4}>
-                                Sharing your work through Ambr affords a robust
-                                layer of protection for the copyright of your
-                                work.
+                                Sharing your work through Ambr ensures
+                                tracability for your claim of copyright
+                                ownership.
                               </Text>
                               <OrderedList>
                                 <ListItem>Upload your file</ListItem>
@@ -1006,10 +1006,9 @@ export function ControlPanel() {
                                     <Text as="span" fontStyle="italic">
                                       Ambr
                                     </Text>{" "}
-                                    generates an immutable, historic record of
-                                    your work within, affording a robust layer
-                                    of protection for the copyright of your work
-                                    when sharing with clients, simultaneosly
+                                    generates robust and traceable evidence of
+                                    your work&#39;s copyright when sharing it
+                                    with clients, whilst also simultaneosly
                                     ensuring definitive proof of origin in an
                                     age of artificial intelligence (AI).
                                   </Text>

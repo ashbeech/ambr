@@ -118,7 +118,7 @@ export const SendPanel = ({
         email: Yup.string().email("Email invalid").required("Email required"),
       })
     ), */
-    concept: Yup.string().required("↑ Required to protect your work"),
+    concept: Yup.string().required("↑ Required to trace your work"),
   });
 
   useEffect(() => {
