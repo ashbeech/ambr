@@ -219,7 +219,7 @@ export default function PrivacyPanel() {
                 under 2.1.6.
               </Text>
             </Box>
-            <Box mb={[0, 6]}>
+            <Box mb={[0, 2]}>
               <Text as={"h2"} mb={[6, 8]}>
                 {"3. What parties do we share personal information with?"}
               </Text>

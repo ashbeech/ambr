@@ -53,7 +53,7 @@ export const SendPanel = ({
   //const { numDownloadingPeers, lifetime, maxDownloads } = roomMeta;
   //const roomCreationTime = roomMeta.expiresAtTimestampMs - roomMeta.lifetime * 1000;
 
-  const [formModeLink, formMode] = useState(false);
+  const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
   const [initialFormValues, setInitialFormValues] = useState({
