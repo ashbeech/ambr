@@ -553,8 +553,8 @@ export default function PrivacyPanel() {
     );
   };
   return (
-    <Box className="glass" mt={20} mb={8}>
-      <Box>{privacyPanel()}</Box>
+    <Box className="" mt={20} mb={8} w={"100%"}>
+      <Box w={"100%"}>{privacyPanel()}</Box>
     </Box>
   );
 }

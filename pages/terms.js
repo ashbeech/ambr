@@ -739,7 +739,7 @@ export default function TermsPanel() {
     );
   };
   return (
-    <Box className="glass" mt={20} mb={8}>
+    <Box className="" mt={20} mb={8} w={"100%"}>
       <Box>{termsPanel()}</Box>
     </Box>
   );
