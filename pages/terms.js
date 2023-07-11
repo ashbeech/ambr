@@ -119,11 +119,12 @@ export default function TermsPanel() {
               <Box as="span" fontWeight="bold">
                 data provenance
               </Box>
-              , particularly useful when sharing your valuable work with clients
-              and in the age of artificial intelligence (A.I.). With Ambr, you
-              can confidently share your valuable work with anyone, anywhere,
-              knowing that you have the means to easily and publicly verify its
-              origin, integrity, and authenticity with the world.
+              , particularly useful with the rise of artificial intelligence
+              (A.I.), and especially when sharing your valuable work with
+              clients. With Ambr, you can confidently share your work with
+              anyone, anywhere, knowing that you have the means to easily and
+              publicly verify its origin, integrity, and authenticity with the
+              world.
               <br />
               <br />
               We prioritise the privacy, safety, and security of your data in
