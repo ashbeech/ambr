@@ -6,6 +6,7 @@ import {
   UnorderedList,
   ListItem,
   VStack,
+  Link,
 } from "@chakra-ui/react";
 
 export default function TermsPanel() {
@@ -39,7 +40,7 @@ export default function TermsPanel() {
             <Box mb={6}>
               <Text>
                 {
-                  "Your time is valuable, so here's a simple summary of our Terms of Service. Please note that this summary does not replace the official legal documentation, but it provides you with a general idea of what's included. If you have any questions or concerns, feel free to contact us legal@ambr.link, and we’ll be happy to help."
+                  "Your time is valuable, so here's a simple summary of our Terms of Service. Please note that this summary does not replace the official legal documentation, but it provides you with a general idea of what's included. If you have any questions or concerns, feel free to contact us legal@ambr.link, and we&apos;ll be happy to help."
                 }
               </Text>
               <UnorderedList>
@@ -117,26 +118,30 @@ export default function TermsPanel() {
               <br />
               We prioritise the privacy, safety, and security of your data in
               every aspect of Ambr&apos;s design. Our commitment to security is
-              outlined in our Security Statement [INSERT LINK], where you can
-              verify our approach firsthand. Your usage and access to our
-              services, software, websites (including browser extensions),
-              and/or applications (collectively referred to as “Services“) are
-              governed by these Terms of Service (collectively, the “Agreement“
-              or “Terms“), a legal agreement between This is Bullish Ltd. (“This
-              is Bullish“, DBA Ambr, its affiliates, and any of its or their
-              respective successors or assigns (collectively, “Ambr,“ “our,“
-              “we,“ or “us“). These Services may be provided to you online, in
-              the form of mobile and/or desktop applications, or integrated
-              within third-party services. They enable you to upload, submit,
-              store, share, receive, collect, capture, and visualise your ideas,
-              texts, graphics, videos, data, information, files, presentation
-              decks, and other content, including third-party content you
-              utilise (“Content“). You retain all rights, responsibilities, and
-              liabilities for your Content, and Ambr/This is Bullish Ltd does
-              not claim ownership over it. The Services are provided to you, the
-              user, by us, with our headquarters located at 11 New Road,
-              Hornsea, East Riding of Yorkshire, HU18 1PG, registered in the
-              United Kingdom, at Companies House, under company number 14186533.
+              outlined in our{" "}
+              <Link href={"security"} target="_blank">
+                Security Statement
+              </Link>
+              , where you can verify our approach firsthand. Your usage and
+              access to our services, software, websites (including browser
+              extensions), and/or applications (collectively referred to as
+              “Services“) are governed by these Terms of Service (collectively,
+              the “Agreement“ or “Terms“), a legal agreement between This is
+              Bullish Ltd. (“This is Bullish“, DBA Ambr, its affiliates, and any
+              of its or their respective successors or assigns (collectively,
+              “Ambr,“ “our,“ “we,“ or “us“). These Services may be provided to
+              you online, in the form of mobile and/or desktop applications, or
+              integrated within third-party services. They enable you to upload,
+              submit, store, share, receive, collect, capture, and visualise
+              your ideas, texts, graphics, videos, data, information, files,
+              presentation decks, and other content, including third-party
+              content you utilise (“Content“). You retain all rights,
+              responsibilities, and liabilities for your Content, and Ambr/This
+              is Bullish Ltd does not claim ownership over it. The Services are
+              provided to you, the user, by us, with our headquarters located at
+              11 New Road, Hornsea, East Riding of Yorkshire, HU18 1PG,
+              registered in the United Kingdom, at Companies House, under
+              company number 14186533.
             </Text>
             <Box>
               <Text as={"h2"} mb={8}>
@@ -154,7 +159,10 @@ export default function TermsPanel() {
                 our Notice and Take Down Policy (described in full below) (“NTD
                 Policy”). In relation to the minimal use of personal data, and
                 cookies (for the sole purpose of improving the Services) our
-                Privacy Policy [INSERT LINK] applies.
+                <Link href={"privacy"} target="_blank">
+                  Privacy Policy
+                </Link>{" "}
+                applies.
               </Text>
 
               <Text className="decimal-list">
@@ -498,7 +506,7 @@ export default function TermsPanel() {
                 without permission, allow others to use their Ambr account, or
                 engage in other prohibited actions.
               </Text>
-              <Text className="decimal-list indented">
+              <Text className="decimal-list">
                 3.13. By using the Services, you represent and certify that you
                 are not the target of any economic sanctions administered by the
                 U.S. Government, the UK Government, the European Union, or other
@@ -510,13 +518,13 @@ export default function TermsPanel() {
                 prohibited by U.S., UK, European Union, or other applicable
                 laws.
               </Text>
-              <Text className="decimal-list indented">
+              <Text className="decimal-list">
                 3.14. You are required to uphold the good name and reputation of
                 Ambr and ensure that your use of the services does not infringe
                 upon the rights or harm the reputation of Ambr and its
                 licensors.
               </Text>
-              <Text className="decimal-list indented">
+              <Text className="decimal-list">
                 3.15. All intellectual property rights pertaining to the Ambr
                 services, including software, graphics, logos, trademarks,
                 domain names, copyrights, and patents, are owned by This is
@@ -619,8 +627,8 @@ export default function TermsPanel() {
                 that is subject to complaint
               </Text>
               <Text className="decimal-list indented">
-                5.2.4. Refer the complaint to Ambr’s Legal Advisor for comment
-                and advice
+                5.2.4. Refer the complaint to Ambr&apos;s Legal Advisor for
+                comment and advice
               </Text>
               <Text className="decimal-list indented">
                 5.2.5. Seek to verify your identity and authority as

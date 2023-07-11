@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, Link, VStack } from "@chakra-ui/react";
 
 export default function PrivacyPanel() {
   const privacyPanel = () => {
@@ -98,9 +98,9 @@ export default function PrivacyPanel() {
                 our Services, Ambr will only process it to provide its Service,
                 the uploader or creator is responsible for the legitimacy of the
                 Content, and our{" "}
-                <a href="terms" target="_self">
+                <Link href="terms" target="_self">
                   Terms of Service
-                </a>{" "}
+                </Link>{" "}
                 must be followed.
               </Text>
             </Box>
@@ -417,13 +417,14 @@ export default function PrivacyPanel() {
                 under consensual support enquiries or legal obligation. We
                 monitor internal activity to ensure the safety and accuracy of
                 personal information. Ambr staff are required to conduct
-                themselves in a manner consistent with the company’s guidelines
-                regarding confidentiality, ethics, and appropriate usage of
-                personal information. Staff are required to sign a
-                confidentiality agreement. During an upload, while it's stored
-                on our servers and during a download, Content is encrypted and
-                only sent over a secure connection (https). The servers we use
-                to store your Content for you are GDPR compliant and secure.
+                themselves in a manner consistent with the company&apos;s
+                guidelines regarding confidentiality, ethics, and appropriate
+                usage of personal information. Staff are required to sign a
+                confidentiality agreement. During an upload, while it&apos;s
+                stored on our servers and during a download, Content is
+                encrypted and only sent over a secure connection (https). The
+                servers we use to store your Content for you are GDPR compliant
+                and secure.
               </Text>
             </Box>
             <Box>
@@ -432,10 +433,10 @@ export default function PrivacyPanel() {
               </Text>
               <Text pb={6}>
                 You are only allowed to use our website, apps and/or Services
-                when aged 16 and over. When you’re younger than 16 you may use
-                our website, apps and/or Services only after parental approval
-                or approval of your legal representative. Minors under the age
-                of 13 in the USA are not allowed to use our Services.{" "}
+                when aged 16 and over. When you&apos;re younger than 16 you may
+                use our website, apps and/or Services only after parental
+                approval or approval of your legal representative. Minors under
+                the age of 13 in the USA are not allowed to use our Services.{" "}
               </Text>
             </Box>
             <Box>
@@ -462,9 +463,11 @@ export default function PrivacyPanel() {
               </Text>
               <Text pb={6}>
                 You can do this by sending an email to{" "}
-                <a href="mailto:privacy@ambr.link">privacy@ambr.link</a>. Please
-                state clearly in the subject that your request concerns a
-                privacy matter and more specific whether it is a request to
+                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                  privacy@ambr.link
+                </Link>
+                . Please state clearly in the subject that your request concerns
+                a privacy matter and more specific whether it is a request to
                 access, correction or deletion. Bear in mind that under
                 circumstances Ambr requests for additional information to
                 determine your identity.
@@ -484,14 +487,16 @@ export default function PrivacyPanel() {
                 security, outweighs your right to objection, or in the case of
                 encrypted data stored on IPFS; deletion is unfeasible. You can
                 request this via{" "}
-                <a href="mailto:privacy@ambr.link">privacy@ambr.link</a>. Please
-                state clearly that your request concerns a privacy matter and
-                more specifically that you exercise your right to object. If you
-                think we have infringed your privacy rights, you can lodge a
-                complaint with the relevant supervisory authority. You can lodge
-                your complaint in particular in the country where you live, your
-                place of work or place where you believe we infringed your
-                right(s).
+                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                  privacy@ambr.link
+                </Link>
+                . Please state clearly that your request concerns a privacy
+                matter and more specifically that you exercise your right to
+                object. If you think we have infringed your privacy rights, you
+                can lodge a complaint with the relevant supervisory authority.
+                You can lodge your complaint in particular in the country where
+                you live, your place of work or place where you believe we
+                infringed your right(s).
               </Text>
               <Text as={"h4"} pb={6}>
                 {"9.3. Withdrawal of consent"}
@@ -501,8 +506,8 @@ export default function PrivacyPanel() {
                 personal information, you can withdraw your consent at any time,
                 without affecting the lawfulness of processing activities based
                 on consent before its withdrawal. If you withdraw your consent,
-                we will no longer process the personal information which we’ve
-                received based on your consent.
+                we will no longer process the personal information which
+                we&apos;ve received based on your consent.
               </Text>
             </Box>
             <Box>
@@ -525,7 +530,11 @@ export default function PrivacyPanel() {
               </Text>
               <Text>
                 Please reach out to us regarding any privacy-related questions,
-                via <a href="mailto:privacy@ambr.link">privacy@ambr.link</a>.
+                via{" "}
+                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                  privacy@ambr.link
+                </Link>
+                .
               </Text>
             </Box>
             <Box
