@@ -197,6 +197,9 @@ export const styles = {
     "::-ms-input-placeholder": {
       /* Microsoft Edge */ color: "gray.800",
     },
+    ".scrollable": {
+      overflowY: "scroll !important",
+    },
     ".home-stone": {
       height: "100% !important",
       width: "100vw",

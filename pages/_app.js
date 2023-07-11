@@ -49,9 +49,16 @@ export default function AmbrApp({ Component, pageProps, err }) {
   if (description == null) description = siteDescription;
 
   const [loading, setLoading] = useState(true);
+  const [scrollDisabled, setScrollDisabled] = useState(true);
 
   useEffect(() => {
     setLoading(false);
+    if (
+      globalThis.location?.pathname === "/privacy" &&
+      globalThis.location?.pathname === "/terms"
+    ) {
+      setScrollDisabled(false);
+    }
   }, []);
 
   return (
@@ -75,7 +82,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
           <Fonts />
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <ChakraProvider theme={theme}>
-            <Box>
+            <Box className={scrollDisabled ? "scrollable" : ""}>
               <Grid>
                 <VStack>
                   <AmbrContext.Provider value={{ ...initialContext }}>

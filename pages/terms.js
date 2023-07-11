@@ -21,12 +21,12 @@ export default function TermsPanel() {
         justifyContent="center"
         align="center"
       >
-        <Box w={"100%"} h={"100%"}>
+        <Box w={"100%"} h={"100%"} pl={[14, 0]} pr={[14, 0]}>
           <Heading
-            pb={8}
+            pb={[1, 6]}
             as={"h1"}
             className="fancy"
-            lineHeight={["1.48rem !important"]}
+            lineHeight={["1.48rem"]}
             letterSpacing={["normal !important", "wide !important"]}
           >
             No jargon intro to our terms
@@ -35,16 +35,22 @@ export default function TermsPanel() {
             w={["full", "80vw", "86vw", "50vw"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "40rem"]}
-            spacing={8}
+            spacing={[4, 8]}
           >
-            <Box mb={6}>
-              <Text>
-                {
-                  "Your time is valuable, so here's a simple summary of our Terms of Service. Please note that this summary does not replace the official legal documentation, but it provides you with a general idea of what's included. If you have any questions or concerns, feel free to contact us legal@ambr.link, and we&apos;ll be happy to help."
-                }
+            <Box mb={[4, 6]}>
+              <Text pb={3}>
+                Your time is valuable, so here&apos;s a simple summary of our
+                Terms of Service. Please note that this summary does not replace
+                the official legal documentation, but it provides you with a
+                general idea of what&apos;s included. If you have any questions
+                or concerns, feel free to contact us{" "}
+                <Link href={"mailto:legal@ambr.link"} target="_blank">
+                  legal@ambr.link
+                </Link>
+                , and we&apos;ll be happy to help.
               </Text>
               <UnorderedList>
-                <ListItem pt={3} pb={3}>
+                <ListItem pt={3} pb={[2, 3]}>
                   <Text>
                     <Box as="span" fontWeight="bold">
                       Age Requirement:
@@ -53,7 +59,7 @@ export default function TermsPanel() {
                     services.
                   </Text>
                 </ListItem>
-                <ListItem pt={3} pb={3}>
+                <ListItem pt={3} pb={[2, 3]}>
                   <Text>
                     <Box as="span" fontWeight="bold">
                       Ownership and Responsibility:
@@ -63,7 +69,7 @@ export default function TermsPanel() {
                     services to function properly.
                   </Text>
                 </ListItem>
-                <ListItem pt={3} pb={3}>
+                <ListItem pt={3} pb={[2, 3]}>
                   <Text>
                     <Box as="span" fontWeight="bold">
                       Illegal Activities:
@@ -72,7 +78,7 @@ export default function TermsPanel() {
                     block, delete your content, and suspend your account.
                   </Text>
                 </ListItem>
-                <ListItem pt={3} pb={3}>
+                <ListItem pt={3} pb={[2, 3]}>
                   <Text>
                     <Box as="span" fontWeight="bold">
                       Service Usage Risk:
@@ -82,7 +88,7 @@ export default function TermsPanel() {
                     go wrong.
                   </Text>
                 </ListItem>
-                <ListItem pt={3} pb={3}>
+                <ListItem pt={3} pb={[2, 3]}>
                   <Text>
                     <Box as="span" fontWeight="bold">
                       Changes to Terms:
@@ -93,16 +99,16 @@ export default function TermsPanel() {
                   </Text>
                 </ListItem>
               </UnorderedList>
-              <Text>
-                {
-                  "These terms are designed to be fair, provide transparency, and ensure everything runs smoothly to provide you a valuable service."
-                }
+              <Text pt={3}>
+                These terms are designed to be fair, provide transparency, and
+                ensure everything runs smoothly to provide you a valuable
+                service.
               </Text>
             </Box>
             <Text as={"h1"} mb={"0 !important"}>
               {"Terms of Service"}
             </Text>
-            <Text>Version: [Date]</Text>
+            <Text>Version: 11-07-23</Text>
             <Text>
               Welcome to Ambr, a secure and private platform with a clear
               mission: to provide you with{" "}
@@ -144,7 +150,7 @@ export default function TermsPanel() {
               company number 14186533.
             </Text>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"1. Applicability"}
               </Text>
               <Text className="decimal-list">
@@ -158,7 +164,7 @@ export default function TermsPanel() {
                 extension, or integration), you agree and accept these Terms and
                 our Notice and Take Down Policy (described in full below) (“NTD
                 Policy”). In relation to the minimal use of personal data, and
-                cookies (for the sole purpose of improving the Services) our
+                cookies (for the sole purpose of improving the Services) our{" "}
                 <Link href={"privacy"} target="_blank">
                   Privacy Policy
                 </Link>{" "}
@@ -180,7 +186,7 @@ export default function TermsPanel() {
               <Text className="decimal-list">
                 1.4. If you want to file a complaint or notice about unlawful
                 Content being stored or shared via the Services or the Ambr API,
-                please refer to our NTD Policy.
+                please refer to our NTD Policy (described below).
               </Text>
 
               <Text className="decimal-list">
@@ -222,7 +228,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"2. Content Sharing and Storage"}
               </Text>
               <Text className="decimal-list">
@@ -321,7 +327,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"3. Content Ownership, Indemnity, Liability, and Licensing"}
               </Text>
               <Text className="decimal-list">
@@ -535,7 +541,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"4. Disclaimer, Termination, and Account Registration"}
               </Text>
               <Text className="decimal-list">
@@ -580,7 +586,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"5. Notice and Takedown Policy"}
               </Text>
               <Text className="decimal-list">
@@ -646,7 +652,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"6. Payment & Refunds"}
               </Text>
               <Text className="decimal-list">
@@ -682,7 +688,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"7. Waiver, Severability, and Assignment"}
               </Text>
               <Text className="decimal-list">
@@ -706,7 +712,7 @@ export default function TermsPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"8. Applicable Law and Jurisdiction"}
               </Text>
               <Text className="decimal-list">
@@ -730,7 +736,11 @@ export default function TermsPanel() {
               pt={8}
             >
               <Text className={"copyright"}>
-                {"Copyright 2023 This is Bullish Ltd. All rights reserved."}
+                Copyright{" "}
+                <Box as="span" fontStyle="italic">
+                  2023 This is Bullish Ltd.
+                </Box>{" "}
+                All rights reserved.
               </Text>
             </Box>
           </VStack>
@@ -739,7 +749,7 @@ export default function TermsPanel() {
     );
   };
   return (
-    <Box className="" mt={20} mb={8} w={"100%"}>
+    <Box className="" mt={[12, 20]} mb={8} w={"100%"}>
       <Box>{termsPanel()}</Box>
     </Box>
   );

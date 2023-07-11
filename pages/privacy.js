@@ -12,44 +12,47 @@ export default function PrivacyPanel() {
         justifyContent="center"
         align="center"
       >
-        <Box w={"100%"} h={"100%"}>
+        <Box w={"100%"} h={"100%"} pl={[14, 0]} pr={[14, 0]}>
           <VStack
             w={["full", "80vw", "86vw", "50vw"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "40rem"]}
-            spacing={8}
+            spacing={[4, 8]}
           >
             <Text as={"h1"} mb={"0 !important"}>
               {"Privacy Policy"}
             </Text>
-            <Text>Version: [Date]</Text>
-            <Text>
-              Ambr is designed with a clear purpose in mind: to provide you with
-              a powerful tool—data provenance. It enables you to confidently
-              share your work, knowing that easy access to verifiable proof of
-              origin and authenticity is at your fingertips. We believe in
-              providing you transparent services that you can not only trust,
-              but also verify. Our commitment to your privacy and data security
-              is at the core of Ambr&apos;s guiding principles. We&apos;ve
-              designed and built Ambr so that all sensitive data is encrypted
-              before transmission, in transit, as well as at rest in storage,
-              ensuring nothing you wouldn&apos;t want others reading leaves your
-              side in a plain-text readable format, without your consent.
-              <br />
-              <br />
-              This following statement covers the processing activities of the
-              Ambr services, software, websites (including browser extensions)
-              and/or applications (together: “Services”). The Services allow you
-              to create, share, collect, capture and/or visualise your ideas,
-              texts, graphics, videos, data, information, files, decks or other
-              content (together: “Content”). The Services may be provided to you
-              online, in the form of a mobile and/or desktop application(s)
-              and/or may be integrated in a third-party service. By using any of
-              the Services you agree to have read and understood our Privacy
-              Policy as below.
-            </Text>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Text>Version: 11-07-23</Text>
+            <Box mb={[3, 6]}>
+              <Text>
+                Ambr is designed with a clear purpose in mind: to provide you
+                with a powerful tool—data provenance. It enables you to
+                confidently share your work, knowing that easy access to
+                verifiable proof of origin and authenticity is at your
+                fingertips. We believe in providing you transparent services
+                that you can not only trust, but also verify. Our commitment to
+                your privacy and data security is at the core of Ambr&apos;s
+                guiding principles. We&apos;ve designed and built Ambr so that
+                all sensitive data is encrypted before transmission, in transit,
+                as well as at rest in storage, ensuring nothing you
+                wouldn&apos;t want others reading leaves your side in a
+                plain-text readable format, without your consent.
+                <br />
+                <br />
+                This following statement covers the processing activities of the
+                Ambr services, software, websites (including browser extensions)
+                and/or applications (together: “Services”). The Services allow
+                you to create, share, collect, capture and/or visualise your
+                ideas, texts, graphics, videos, data, information, files, decks
+                or other content (together: “Content”). The Services may be
+                provided to you online, in the form of a mobile and/or desktop
+                application(s) and/or may be integrated in a third-party
+                service. By using any of the Services you agree to have read and
+                understood our Privacy Policy as below.
+              </Text>
+            </Box>
+            <Box mb={[3, 6]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"1. What personal information do we collect?"}
               </Text>
 
@@ -68,11 +71,11 @@ export default function PrivacyPanel() {
                 feasible.
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Box mb={[3, 6]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"1.1. Personal information you submit"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 Each processing activity has a valid activity and purpose,
                 described below:
               </Text>
@@ -105,10 +108,10 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"2. Why do we use your personal information?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 We use your personal information in order to provide and improve
                 our Services, to comply with legal obligations, and to keep our
                 Services safe and secure. We do not use your personal
@@ -117,10 +120,10 @@ export default function PrivacyPanel() {
                 specifically how we may use your personal information, and on
                 what legal grounds we base its use.
               </Text>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"2.1. Activities & Purposes"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 Each processing activity has a valid activity and purpose,
                 described below:
               </Text>
@@ -180,10 +183,10 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"2.2. Legal Grounds"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 Each processing activity has a valid legal ground, which is
                 described below:
               </Text>
@@ -216,11 +219,11 @@ export default function PrivacyPanel() {
                 under 2.1.6.
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Box mb={[0, 6]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"3. What parties do we share personal information with?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 We work with third-parties to provide and improve our Services.
                 We may share or allow you to share your information as part of
                 some of the Services.
@@ -261,11 +264,11 @@ export default function PrivacyPanel() {
                 your personal information?”.
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Box mb={[0, 4]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"4. Why and how are cookies used?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 We are dedicated to making our Services safe, valuable,
                 unobtrusive and beautiful for you and the minimal cookies we may
                 use are for the purpose of facilitating your use of the Services
@@ -310,11 +313,11 @@ export default function PrivacyPanel() {
                 traffic, usage, and trend data.
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Box mb={[3, 6]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"5. Can you use Ambr for private or sensitive files?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 In short, yes. We treat your Content with respect. We don&apos;t
                 provide any public search function, catalogue or listing to find
                 yours or anyone else&apos;s Content. All Content is encrypted in
@@ -327,13 +330,13 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"6. What retention procedures are in place?"}
               </Text>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"6.1. Personal information"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[6, 8]}>
                 Ambr retains your personal information (encrypted) as long as
                 its necessary to provide our Services to you (e.g. upholding
                 your user account), to conduct our business activities and
@@ -343,10 +346,10 @@ export default function PrivacyPanel() {
                 years for tax purposes) and legal requests and to resolve
                 (legal) disputes.
               </Text>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"6.2. Files you transfer"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 When using Ambr File Sharing your Content will be deleted after
                 24 hours, unless you have an Enterprise account in which case
                 your transfer data is stored by default for 28 days or until the
@@ -390,12 +393,12 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {
                   "6.3. Content you create, use, store or share through the Services other than file sharing"
                 }
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 The Content you create, use, store or share on our Services,
                 other than our File Sharing Service, is, in principle, retained
                 until you stop interacting with our Service(s), when you delete
@@ -406,10 +409,10 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"7. How safe is it to use our Services?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 Ambr takes technical and organisational measures to protect your
                 personal information against loss or other forms of unlawful
                 processing. We make sure that personal information can only be
@@ -428,10 +431,10 @@ export default function PrivacyPanel() {
               </Text>
             </Box>
             <Box>
-              <Text as={"h2"} mb={8}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"8. Can minors use our Services?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 You are only allowed to use our website, apps and/or Services
                 when aged 16 and over. When you&apos;re younger than 16 you may
                 use our website, apps and/or Services only after parental
@@ -439,11 +442,11 @@ export default function PrivacyPanel() {
                 the age of 13 in the USA are not allowed to use our Services.{" "}
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} mb={8}>
+            <Box mb={[4, 2]}>
+              <Text as={"h2"} mb={[6, 8]}>
                 {"9. What are your rights as a user?"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[4, 6]}>
                 If you need more info on your personal information, please let
                 us know. We may ask for proof of identity. If you change your
                 mind and no longer want us to process your personal information,
@@ -461,7 +464,7 @@ export default function PrivacyPanel() {
                 9.1.3. in certain cases, send your personal information to other
                 third parties.
               </Text>
-              <Text pb={6}>
+              <Text pb={[6, 8]}>
                 You can do this by sending an email to{" "}
                 <Link href={"mailto:privacy@ambr.link"} target="_blank">
                   privacy@ambr.link
@@ -472,10 +475,10 @@ export default function PrivacyPanel() {
                 circumstances Ambr requests for additional information to
                 determine your identity.
               </Text>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"9.2. Right to object"}
               </Text>
-              <Text pb={6}>
+              <Text pb={[6, 8]}>
                 You have a right to object to our use of your personal
                 information, for instance when the legal base for processing is
                 based on one of our legitimate interests (see subsection “Legal
@@ -498,7 +501,7 @@ export default function PrivacyPanel() {
                 you live, your place of work or place where you believe we
                 infringed your right(s).
               </Text>
-              <Text as={"h4"} pb={6}>
+              <Text as={"h4"} pb={[4, 6]}>
                 {"9.3. Withdrawal of consent"}
               </Text>
               <Text>
@@ -510,8 +513,8 @@ export default function PrivacyPanel() {
                 we&apos;ve received based on your consent.
               </Text>
             </Box>
-            <Box>
-              <Text as={"h2"} pb={6}>
+            <Box mb={[4, 6]}>
+              <Text as={"h2"} pb={[4, 6]}>
                 {"10. Revisions to the Privacy Policy"}
               </Text>
               <Text>
@@ -524,8 +527,8 @@ export default function PrivacyPanel() {
                 service you accept any changes made to the Privacy Policy.
               </Text>
             </Box>
-            <Box w={"100%"}>
-              <Text as={"h2"} pb={6}>
+            <Box w={"100%"} mb={[4, 6]}>
+              <Text as={"h2"} pb={[4, 6]}>
                 {"How to contact Ambr"}
               </Text>
               <Text>
@@ -544,7 +547,11 @@ export default function PrivacyPanel() {
               pt={8}
             >
               <Text className={"copyright"}>
-                {"Copyright 2023 This is Bullish Ltd. All rights reserved."}
+                Copyright{" "}
+                <Box as="span" fontStyle="italic">
+                  2023 This is Bullish Ltd.
+                </Box>{" "}
+                All rights reserved.
               </Text>
             </Box>
           </VStack>
@@ -553,7 +560,7 @@ export default function PrivacyPanel() {
     );
   };
   return (
-    <Box className="" mt={20} mb={8} w={"100%"}>
+    <Box className="" mt={[12, 20]} mb={[6, 8]} w={"100%"}>
       <Box w={"100%"}>{privacyPanel()}</Box>
     </Box>
   );

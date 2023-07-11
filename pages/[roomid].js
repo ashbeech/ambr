@@ -1,6 +1,6 @@
 import { origin } from "../config.js";
 import { ControlPanel } from "../components/pages/ControlPanel.js";
-import { fetcher } from "../lib/fetcher.js";
+//import { fetcher } from "../lib/fetcher.js";
 
 //import { Room } from "../lib/Room.js"; // Add this line
 
