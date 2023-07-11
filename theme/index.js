@@ -103,7 +103,7 @@ export const theme = extendTheme(
       md: "0.875rem",
       lg: "1rem",
       xl: "1.125rem",
-      "2xl": "1.625rem",
+      "2xl": "1.625em",
       "3xl": "1.85rem",
       "4xl": "2.525rem",
       "5xl": "2.875rem",
