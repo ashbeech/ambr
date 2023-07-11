@@ -10,7 +10,6 @@ import {
   VStack,
   Img,
   Center,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import LogoLoader from "../icons/LogoLoader";
 import { shouldReportError } from "../../lib/errors.js";
@@ -56,7 +55,6 @@ export function ControlPanel() {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [fileName, setFileName] = useState("");
   const [fileTransfersRemaining, setSharesRemaining] = useState(-999);
-  const [isMobile] = useMediaQuery("(max-width: 40em)");
 
   const showFileTransfer =
     (fileTransfersRemaining !== -999 && fileTransfersRemaining <= 0) ||
@@ -832,24 +830,6 @@ export function ControlPanel() {
                   )}
                   {showFilePanel && (
                     <Fade in={showSubFilePanel1}>
-                      {/*                       <Box
-                        w={"100%"}
-                        h={"100vh"}
-                        display={isMobile ? "" : "flex"}
-                        alignItems="center"
-                        justifyContent="center"
-                        position={"relative"}
-                        top={isMobile ? null : 0}
-                        right={isMobile ? null : 0}
-                        left={isMobile ? null : 0}
-                        bottom={isMobile ? null : 0}
-                        margin="auto"
-                      >
-                        <SafeContainer
-                          pb={[8, 0]}
-                          minW={"100% !important"}
-                          maxW="8xl"
-                        > */}
                       <Box
                         w={"100%"}
                         h={"100%"}
@@ -871,7 +851,6 @@ export function ControlPanel() {
                           h={"100%"}
                           pb={[8, 0]}
                           minW={"100% !important"}
-                          //maxW="8xl"
                           maxW={["xs", "3xl", "5xl"]}
                           sx={{
                             paddingInlineStart: "0 !important",
@@ -900,30 +879,6 @@ export function ControlPanel() {
                   )}
                   {showTopup && (
                     <Fade in={showTopup} unmountOnExit>
-                      {/*                <Box
-                        w={"100%"}
-                        maxW={["100%", "100%"]}
-                        display={["block", "flex"]}
-                        alignItems="center"
-                        justifyContent="center"
-                        position={["relative", "absolute"]}
-                        top={0}
-                        right={0}
-                        left={0}
-                        bottom={0}
-                        margin="auto"
-                        px={6}
-                      >
-                        <SafeContainer
-                          position={"relative"}
-                          display={"block"}
-                          w={"100%"}
-                          maxW={["", "3xl", "5xl"]}
-                          sx={{
-                            paddingInlineStart: "0 !important",
-                            paddingInlineEnd: "0 !important",
-                          }}
-                        > */}
                       <Box
                         w={"100%"}
                         h={"100%"}

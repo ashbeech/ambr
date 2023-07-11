@@ -228,7 +228,7 @@ export default async function handler(req, res) {
       <div class="container-footer">
         <div class="footer-links">
           <a class="footer-link" href="https://ambr.link/terms">Terms</a>
-          <a class="footer-link" href="https://ambr.link/privacy-policy"
+          <a class="footer-link" href="https://ambr.link/privacy"
             >Privacy Policy</a
           >
         </div>

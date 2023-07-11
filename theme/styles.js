@@ -227,6 +227,12 @@ export const styles = {
       margin: "0 !important",
       padding: "0",
     },
+    ".decimal-list": {
+      marginBottom: "1.65em !important",
+    },
+    ".decimal-list.indented": {
+      paddingLeft: "1.65em !important",
+    },
     "@media screen and (max-width: 600px)": {
       ".underPanel": {
         backgroundImage: "none",

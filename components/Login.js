@@ -107,10 +107,31 @@ function Login() {
             </Button>
           </Flex>
           <HStack>
-            <Box>
+            <Box mt={[3, 0]}>
               <Text fontSize={"sm"}>
-                By clicking Enter, you agree to our Terms of Service and Privacy
-                Policy.
+                By clicking Enter, you agree to our{" "}
+                <Link
+                  fontSize={"sm"}
+                  fontWeight={"light"}
+                  textDecoration={"underline"}
+                  href={"terms"}
+                  target="_self"
+                  _hover={{ textDecoration: "underline", color: "orange.400" }}
+                >
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link
+                  fontSize={"sm"}
+                  fontWeight={"light"}
+                  textDecoration={"underline"}
+                  href={"privacy"}
+                  target="_self"
+                  _hover={{ textDecoration: "underline", color: "orange.400" }}
+                >
+                  Privacy Policy
+                </Link>
+                .
               </Text>
             </Box>
           </HStack>
