@@ -26,17 +26,22 @@ export default function PrivacyPanel() {
             <Box mb={[3, 6]}>
               <Text>
                 Ambr is designed with a clear purpose in mind: to provide you
-                with a powerful tool—data provenance. It enables you to
-                confidently share your work, knowing that easy access to
-                verifiable proof of origin and authenticity is at your
-                fingertips. We believe in providing you transparent services
-                that you can not only trust, but also verify. Our commitment to
-                your privacy and data security is at the core of Ambr&apos;s
-                guiding principles. We&apos;ve designed and built Ambr so that
-                all sensitive data is encrypted before transmission, in transit,
-                as well as at rest in storage, ensuring nothing you
-                wouldn&apos;t want others reading leaves your side in a
-                plain-text readable format, without your consent.
+                with data provenance for your valuble work. We want you to share
+                your work confidently with people that matter, knowing that easy
+                access to verifiable proof of origin and authenticity is at your
+                fingertips.
+                <br />
+                <br />
+                We believe in providing you transparent services that you and
+                others can not only trust, but also verify for yourselves.
+                <br />
+                <br />
+                Our commitment to your privacy and data security is at the core
+                of Ambr&apos;s guiding principles. We&apos;ve designed and built
+                Ambr so that all sensitive data is encrypted before
+                transmission, in transit, as well as at rest when in storage,
+                ensuring nothing you wouldn&apos;t want others snooping on
+                leaves your side in a readable format, without your consent.
                 <br />
                 <br />
                 This following statement covers the processing activities of the
@@ -562,12 +567,9 @@ export default function PrivacyPanel() {
               borderColor={"black.500"}
               pt={8}
             >
-              <Text className={"copyright"}>
-                Copyright{" "}
-                <Box as="span" fontStyle="italic">
-                  2023 This is Bullish Ltd.
-                </Box>{" "}
-                All rights reserved.
+              <Text className={"copyright"} fontWeight={"lighter"}>
+                &copy; {new Date().getFullYear()}{" "}
+                <i>This is Bullish Ltd. All rights reserved.</i>
               </Text>
             </Box>
           </VStack>

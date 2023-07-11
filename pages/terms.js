@@ -748,12 +748,9 @@ export default function TermsPanel() {
               borderColor={"black.500"}
               pt={8}
             >
-              <Text className={"copyright"}>
-                Copyright{" "}
-                <Box as="span" fontStyle="italic">
-                  2023 This is Bullish Ltd.
-                </Box>{" "}
-                All rights reserved.
+              <Text className={"copyright"} fontWeight={"lighter"}>
+                &copy; {new Date().getFullYear()}{" "}
+                <i>This is Bullish Ltd. All rights reserved.</i>
               </Text>
             </Box>
           </VStack>

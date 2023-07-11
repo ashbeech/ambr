@@ -30,7 +30,10 @@ export default function securityPanel() {
             lineHeight={["1.48rem"]}
             letterSpacing={["normal !important", "wide !important"]}
           >
-            Don&apos;t Trust. Verify.
+            Don&apos;t Trust.{" "}
+            <Box as="span" color={"orange.400"} textDecoration={"underline"}>
+              Verify.
+            </Box>
           </Heading>
           <VStack
             w={["full", "80vw", "86vw", "50vw"]}
@@ -546,12 +549,9 @@ export default function securityPanel() {
               borderColor={"black.500"}
               pt={8}
             >
-              <Text className={"copyright"}>
-                Copyright{" "}
-                <Box as="span" fontStyle="italic">
-                  2023 This is Bullish Ltd.
-                </Box>{" "}
-                All rights reserved.
+              <Text className={"copyright"} fontWeight={"lighter"}>
+                &copy; {new Date().getFullYear()}{" "}
+                <i>This is Bullish Ltd. All rights reserved.</i>
               </Text>
             </Box>
           </VStack>

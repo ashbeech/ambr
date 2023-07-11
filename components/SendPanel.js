@@ -161,7 +161,7 @@ export const SendPanel = ({
           position="relative"
           h={"100%"}
           w={"100%"}
-          minH={["100%", "22rem"]}
+          minH={["100%", "22.25rem"]}
           minW={["", "", "24rem"]}
           maxW={"40rem"}
         >

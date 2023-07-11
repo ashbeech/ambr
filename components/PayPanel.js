@@ -563,7 +563,7 @@ export const PayPanel = ({
                               h={["100%", "100%"]}
                               minW={["100%", "none"]}
                               minH={["18rem", "none"]}
-                              maxH={["22rem", "none"]}
+                              maxH={["22.25rem", "none"]}
                               src={"images/amber-7.png"}
                               objectFit={[
                                 "cover !important",

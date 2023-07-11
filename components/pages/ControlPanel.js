@@ -6,9 +6,11 @@ import {
   OrderedList,
   UnorderedList,
   ListItem,
+  Stack,
   HStack,
   VStack,
   Img,
+  Link,
   Center,
 } from "@chakra-ui/react";
 import LogoLoader from "../icons/LogoLoader";
@@ -523,7 +525,14 @@ export function ControlPanel() {
                   mintState={mintState}
                   chainState={chainState}
                 />
-                <Box pb={[8, 20]}>
+                <Box
+                  pb={[8, 0]}
+                  display={[null, "flex"]}
+                  w={[null, "100%"]}
+                  justifyContent={[null, "center"]}
+                  alignItems={[null, "center"]}
+                  h={[null, "73%"]}
+                >
                   {lockedState && (
                     <Box display={""} pr={4} spacing={4} w={"100%"}>
                       <HStack
@@ -562,7 +571,7 @@ export function ControlPanel() {
                         display={["", "flex"]}
                         alignItems="center"
                         justifyContent="center"
-                        position={["relative", "absolute"]}
+                        position={["relative", "relative"]}
                         top={0}
                         right={0}
                         left={0}
@@ -656,30 +665,6 @@ export function ControlPanel() {
                   )}
                   {showDownloadPanel && (
                     <Fade in={showDownloadPanel}>
-                      {/*                       <Box
-                        w={"100%"}
-                        maxW={["100%", "100%"]}
-                        display={["block", "flex"]}
-                        alignItems="center"
-                        justifyContent="center"
-                        position={["relative", "absolute"]}
-                        top={0}
-                        right={0}
-                        left={0}
-                        bottom={0}
-                        margin="auto"
-                        px={6}
-                      >
-                        <SafeContainer
-                          position={"relative"}
-                          display={"block"}
-                          w={"100%"}
-                          maxW={["xs", "3xl", "5xl"]}
-                          sx={{
-                            paddingInlineStart: "0 !important",
-                            paddingInlineEnd: "0 !important",
-                          }}
-                        > */}
                       <Box
                         w={"100%"}
                         h={"100%"}
@@ -687,7 +672,7 @@ export function ControlPanel() {
                         display={["", "flex"]}
                         alignItems="center"
                         justifyContent="center"
-                        position={["relative", "absolute"]}
+                        position={["relative", "relative"]}
                         top={0}
                         right={0}
                         left={0}
@@ -996,6 +981,54 @@ export function ControlPanel() {
                       </VStack>
                     </Fade>
                   )}
+                </Box>
+                <Box
+                  w={"100%"}
+                  maxH={"25%"}
+                  pl={8}
+                  pr={8}
+                  pb={[8, 0]}
+                  position={["relative", "absolute"]}
+                  bottom={[0, 4]}
+                  textAlign={"center"}
+                  justifyContent={"center"}
+                >
+                  <Link
+                    href={"terms"}
+                    target="_blank"
+                    title="Make sure you've read Ambr's Privacy Policy"
+                    fontWeight={"lighter"}
+                    pr={2}
+                  >
+                    Terms
+                  </Link>
+                  <Link
+                    href={"privacy"}
+                    target="_blank"
+                    title="Make sure you've read Ambr's Privacy Policy"
+                    fontWeight={"lighter"}
+                    px={2}
+                  >
+                    Privacy
+                  </Link>
+                  <Link
+                    href={"security"}
+                    target="_blank"
+                    title="Take a read of Ambr's Security Statement"
+                    fontWeight={"lighter"}
+                    pl={2}
+                  >
+                    Security
+                  </Link>
+                  <Text
+                    display={["block", "inline"]}
+                    pl={[0, 4]}
+                    pt={[2, 0]}
+                    fontWeight={"lighter"}
+                  >
+                    &copy; {new Date().getFullYear()}{" "}
+                    <i>This is Bullish Ltd. All rights reserved.</i>
+                  </Text>
                 </Box>
               </Box>
             </Flex>

@@ -541,7 +541,7 @@ export const FilePanel = ({
                     roomMeta.readableMetadata != null &&
                     isUserMatch && (
                       <HStack
-                        mt={isExpired ? [4, 4] : [4, 0]}
+                        mt={isExpired ? [4, 6] : [4, 0]}
                         mb={[2, 0]}
                         w="full"
                         overflow="hidden"
@@ -603,7 +603,7 @@ export const FilePanel = ({
                 <>
                   <HStack
                     w={["100%", "100%"]}
-                    pt={isExPublic ? [0, 4] : [4, 0]}
+                    pt={isExPublic ? [0, 0] : [4, 0]}
                     overflow={"visible"}
                   >
                     <SealIcon boxSize={"1.4rem"} />
@@ -708,7 +708,12 @@ export const FilePanel = ({
                 isAuthenticated &&
                 roomMeta &&
                 isUserMatch && (
-                  <Box w={"full"} pos={["relative", "relative"]} bottom={0}>
+                  <Box
+                    w={"full"}
+                    pos={["relative", "relative"]}
+                    pt={[1, 4]}
+                    bottom={0}
+                  >
                     <SharePanel
                       shareUrl={
                         origin +

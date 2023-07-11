@@ -71,8 +71,8 @@ export default function Navigation({
         pb={[2, 6]}
         maxW={["90%", "90%"]}
         sx={{
-          paddingInlineStart: [0, 6, 0],
-          paddingInlineEnd: [0, 6, 0],
+          paddingInlineStart: [0, 0, 0],
+          paddingInlineEnd: [0, 0, 0],
         }}
       >
         <Flex as="header" justify={{ md: "space-between" }} w={"100%"}>

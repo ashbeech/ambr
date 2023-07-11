@@ -202,7 +202,7 @@ export const styles = {
     },
     ".h2.code-highlight": {
       fontFamily: "monospace",
-      backgroundColor: "orange.200",
+      backgroundColor: "orange.100",
       padding: "0.2em 0.4em",
       borderRadius: "4px",
       fontSize: "lg",

@@ -85,8 +85,8 @@ export function FileRecordPanel({
           overflowX={[null, "hidden"]}
           maxH={publicView ? [null, "100%"] : [null, "100%"]}
           fontSize={"md"}
-          pt={publicView ? [2, 2] : [3, 2]}
-          pb={publicView ? [0, 2] : [0, 2]}
+          pt={publicView ? [3, 2] : [3, 2]}
+          pb={publicView ? [2, 3] : [0, 2]}
           sx={{
             mt: "0 !important",
             mb: [3, "1 !important"],
@@ -158,7 +158,7 @@ export function FileRecordPanel({
             </HStack>
             <HStack w="full">
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={2}>
-                {"Metadata: "}
+                {"Source: "}
               </Text>
               <Link
                 w="full"
