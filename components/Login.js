@@ -116,7 +116,7 @@ function Login() {
                   textDecoration={"underline"}
                   href={"terms"}
                   target="_self"
-                  _hover={{ textDecoration: "underline", color: "orange.400" }}
+                  _hover={{ textDecoration: "underline", color: "white" }}
                 >
                   Terms of Service
                 </Link>{" "}
@@ -127,7 +127,7 @@ function Login() {
                   textDecoration={"underline"}
                   href={"privacy"}
                   target="_self"
-                  _hover={{ textDecoration: "underline", color: "orange.400" }}
+                  _hover={{ textDecoration: "underline", color: "white" }}
                 >
                   Privacy Policy
                 </Link>
