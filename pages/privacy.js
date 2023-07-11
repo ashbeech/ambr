@@ -101,7 +101,11 @@ export default function PrivacyPanel() {
                 our Services, Ambr will only process it to provide its Service,
                 the uploader or creator is responsible for the legitimacy of the
                 Content, and our{" "}
-                <Link href="terms" target="_self">
+                <Link
+                  href="terms"
+                  target="_self"
+                  title="Make sure you've read Ambr's Terms of Service"
+                >
                   Terms of Service
                 </Link>{" "}
                 must be followed.
@@ -466,7 +470,11 @@ export default function PrivacyPanel() {
               </Text>
               <Text pb={[6, 8]}>
                 You can do this by sending an email to{" "}
-                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                <Link
+                  href={"mailto:privacy@ambr.link"}
+                  target="_blank"
+                  title="Mail Ambr's privacy department here"
+                >
                   privacy@ambr.link
                 </Link>
                 . Please state clearly in the subject that your request concerns
@@ -490,7 +498,11 @@ export default function PrivacyPanel() {
                 security, outweighs your right to objection, or in the case of
                 encrypted data stored on IPFS; deletion is unfeasible. You can
                 request this via{" "}
-                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                <Link
+                  href={"mailto:privacy@ambr.link"}
+                  target="_blank"
+                  title="Mail Ambr's privacy department here"
+                >
                   privacy@ambr.link
                 </Link>
                 . Please state clearly that your request concerns a privacy
@@ -534,7 +546,11 @@ export default function PrivacyPanel() {
               <Text>
                 Please reach out to us regarding any privacy-related questions,
                 via{" "}
-                <Link href={"mailto:privacy@ambr.link"} target="_blank">
+                <Link
+                  href={"mailto:privacy@ambr.link"}
+                  target="_blank"
+                  title="Mail Ambr's privacy department here"
+                >
                   privacy@ambr.link
                 </Link>
                 .

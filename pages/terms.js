@@ -44,7 +44,11 @@ export default function TermsPanel() {
                 the official legal documentation, but it provides you with a
                 general idea of what&apos;s included. If you have any questions
                 or concerns, feel free to contact us{" "}
-                <Link href={"mailto:legal@ambr.link"} target="_blank">
+                <Link
+                  href={"mailto:legal@ambr.link"}
+                  target="_blank"
+                  title="Mail Ambr's legal department here"
+                >
                   legal@ambr.link
                 </Link>
                 , and we&apos;ll be happy to help.
@@ -125,7 +129,11 @@ export default function TermsPanel() {
               We prioritise the privacy, safety, and security of your data in
               every aspect of Ambr&apos;s design. Our commitment to security is
               outlined in our{" "}
-              <Link href={"security"} target="_blank">
+              <Link
+                href={"security"}
+                target="_blank"
+                title="Take a read of Ambr's Security Statement"
+              >
                 Security Statement
               </Link>
               , where you can verify our approach firsthand. Your usage and
@@ -165,7 +173,11 @@ export default function TermsPanel() {
                 our Notice and Take Down Policy (described in full below) (“NTD
                 Policy”). In relation to the minimal use of personal data, and
                 cookies (for the sole purpose of improving the Services) our{" "}
-                <Link href={"privacy"} target="_blank">
+                <Link
+                  href={"privacy"}
+                  target="_blank"
+                  title="Take a read of Ambr's Privacy Policy"
+                >
                   Privacy Policy
                 </Link>{" "}
                 applies.
