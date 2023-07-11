@@ -11,6 +11,8 @@ import {
   ColorModeScript,
   VStack,
   Grid,
+  Text,
+  Link,
   Box,
   Center,
 } from "@chakra-ui/react";
@@ -170,7 +172,6 @@ export default function AmbrApp({ Component, pageProps, err }) {
                   </AmbrContext.Provider>
                 </VStack>
               </Grid>
-              {/* <SmallWithSocial /> */}
             </Box>
           </ChakraProvider>
         </MagicProvider>

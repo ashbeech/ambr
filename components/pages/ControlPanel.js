@@ -493,6 +493,28 @@ export function ControlPanel() {
               <Center h="100%">
                 <LogoLoader />
               </Center>
+              <Box
+                w={"100%"}
+                maxH={"25%"}
+                pl={8}
+                pr={8}
+                pb={[8, 4]}
+                bottom={[0, 0]}
+                position={["relative", "absolute"]}
+                textAlign={"center"}
+                justifyContent={"center"}
+              >
+                <Text
+                  display={["block", "inline"]}
+                  pl={[0, 4]}
+                  pt={[2, 0]}
+                  fontSize={"sm"}
+                  fontWeight={"lighter"}
+                >
+                  &copy; {new Date().getFullYear()}{" "}
+                  <i>This is Bullish Ltd. All rights reserved.</i>
+                </Text>
+              </Box>
             </Box>
           </Fade>
         )}
@@ -969,6 +991,7 @@ export function ControlPanel() {
                         bottom={0}
                         margin="auto"
                         spacing={[3, 5]}
+                        zIndex={999}
                       >
                         <Img src={`images/ambr.svg`} />
                         <Text
@@ -987,43 +1010,53 @@ export function ControlPanel() {
                   maxH={"25%"}
                   pl={8}
                   pr={8}
-                  pb={[8, 0]}
-                  position={["relative", "absolute"]}
+                  pb={showHomeStone ? [4, 0] : [8, 0]}
+                  position={
+                    showHomeStone ? "absolute" : ["relative", "absolute"]
+                  }
                   bottom={[0, 4]}
                   textAlign={"center"}
                   justifyContent={"center"}
                 >
-                  <Link
-                    href={"terms"}
-                    target="_blank"
-                    title="Make sure you've read Ambr's Privacy Policy"
-                    fontWeight={"lighter"}
-                    pr={2}
-                  >
-                    Terms
-                  </Link>
-                  <Link
-                    href={"privacy"}
-                    target="_blank"
-                    title="Make sure you've read Ambr's Privacy Policy"
-                    fontWeight={"lighter"}
-                    px={2}
-                  >
-                    Privacy
-                  </Link>
-                  <Link
-                    href={"security"}
-                    target="_blank"
-                    title="Take a read of Ambr's Security Statement"
-                    fontWeight={"lighter"}
-                    pl={2}
-                  >
-                    Security
-                  </Link>
+                  {!showHomeStone && (
+                    <>
+                      <Link
+                        href={"terms"}
+                        target="_blank"
+                        title="Make sure you've read Ambr's Privacy Policy"
+                        fontSize={"sm"}
+                        fontWeight={"lighter"}
+                        pr={2}
+                      >
+                        Terms
+                      </Link>
+                      <Link
+                        href={"privacy"}
+                        target="_blank"
+                        fontSize={"sm"}
+                        title="Make sure you've read Ambr's Privacy Policy"
+                        fontWeight={"lighter"}
+                        px={2}
+                      >
+                        Privacy
+                      </Link>
+                      <Link
+                        href={"security"}
+                        target="_blank"
+                        fontSize={"sm"}
+                        title="Take a read of Ambr's Security Statement"
+                        fontWeight={"lighter"}
+                        pl={2}
+                      >
+                        Security
+                      </Link>
+                    </>
+                  )}
                   <Text
                     display={["block", "inline"]}
                     pl={[0, 4]}
                     pt={[2, 0]}
+                    fontSize={"sm"}
                     fontWeight={"lighter"}
                   >
                     &copy; {new Date().getFullYear()}{" "}
