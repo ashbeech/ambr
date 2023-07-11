@@ -115,7 +115,7 @@ function Login() {
                   fontWeight={"light"}
                   textDecoration={"underline"}
                   href={"terms"}
-                  target="_self"
+                  target="_blank"
                   _hover={{ textDecoration: "underline", color: "white" }}
                 >
                   Terms of Service
@@ -126,7 +126,7 @@ function Login() {
                   fontWeight={"light"}
                   textDecoration={"underline"}
                   href={"privacy"}
-                  target="_self"
+                  target="_blank"
                   _hover={{ textDecoration: "underline", color: "white" }}
                 >
                   Privacy Policy
