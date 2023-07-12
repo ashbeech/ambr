@@ -47,18 +47,20 @@ export default function securityPanel() {
                 works.
                 <br />
                 <br />
+                If you share your work with clients or are perhaps concerned
+                your work may be used without consent by artificial
+                intelligence,{" "}
                 <Box as="span" fontWeight="italic">
-                  Ambr&apos;s
+                  Ambr
                 </Box>{" "}
-                purpose is to address the problem faced by creatives vulnerable
-                to unauthorised use of their work and ideas, by both the clients
-                they work with, and artificial intelligence. Ambr services
-                provide you easily accessible data provenance, offering
-                verifiable proof of origin and authenticity for your copyrighted
-                intellectual property, right from within your exisiting
-                workflow, without extra steps or 3rd-parties. We believe in
-                providing transparent services that you and others can not only
-                trust, but indeed verify.
+                is for you.
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                provides a file transfer service with verifiable proof of origin
+                and authenticity built-in. No extra steps, complexity or
+                3rd-parties—you just share your work with the confidence that
+                you have state-of-the-art data provenance on your side.
                 <br />
                 <br />
                 We don&apos;t believe or hold value in the approach of
