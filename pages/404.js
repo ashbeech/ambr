@@ -103,7 +103,7 @@ export default function ErrorPanel() {
                       <Box w={["85%", "60%"]} h={"100%"} p={6}>
                         <Image
                           src={"/images/404.png"}
-                          alt="Secure file transfers for ideas worth protecting."
+                          alt="Share ideas worth protecting."
                         />
                       </Box>
                       <Center w={["85%", "60%"]} h="100%">

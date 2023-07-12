@@ -955,7 +955,7 @@ export function ControlPanel() {
                                   <Text fontSize={"md"} noOfLines={12}>
                                     Proving the origin and authenticity of your
                                     work is made easy with Ambr, especially
-                                    valuble with the rise of age of artificial
+                                    valuable with the rise of age of artificial
                                     intelligence (A.I.) and critical when
                                     sharing work with clients.
                                   </Text>

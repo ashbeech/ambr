@@ -114,11 +114,17 @@ export default function TermsPanel() {
             </Text>
             <Text>Version: 12-07-23</Text>
             <Text>
-              Welcome to Ambr, a secure and private platform with a clear
-              mission: provide you easily accessible data provenance, offering
-              verifiable proof of origin and authenticity for your copyrighted
-              intellectual property, particularly useful when sharing your
-              valuble work and ideas with clients.
+              <Box as="span" fontWeight="italic">
+                Ambr&apos;s
+              </Box>{" "}
+              purpose is to address the problem faced by creatives vulnerable to
+              unauthorised use of their work and ideas, both by the clients they
+              work with, and artificial intelligence. Ambr service is to provide
+              you easily accessible data provenance, offering verifiable proof
+              of origin and authenticity for your copyrighted intellectual
+              property, particularly useful when sharing your work and ideas
+              with clients. We believe in providing transparent services that
+              you and others can not only trust, but indeed verify.
               <br />
               <br />
               We prioritise the privacy, safety, and security of your data in
