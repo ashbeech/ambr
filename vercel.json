@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; connect-src 'self' blob: https://*.backblaze.com https://*.backblazeb2.com wss://ambr.link; img-src 'self' 'self' blob: data: https://*; media-src 'self' blob: https://*; object-src 'none'; style-src 'self' 'unsafe-inline'; base-uri 'none'; frame-ancestors 'self'; form-action 'self'; script-src-elem 'self' https://* https://vercel.live/_next-live/feedback/* https://js.stripe.com/v3/* 'sha256-vd3qp8D6kDw2J5+y5aDLMqG5U+o0U3Nbj5Wv9vUfR0M='; frame-src 'self' https://* https://auth.magic.link https://js.stripe.com https://ipfs.io https://vercel.live;"
+          "value": "default-src 'self'; connect-src 'self' blob: https://*.backblaze.com https://*.backblazeb2.com wss://ambr.link https://*.ipfs.nftstorage.link/; img-src 'self' 'self' blob: data: https://*; media-src 'self' blob: https://*; object-src 'none'; style-src 'self' 'unsafe-inline'; base-uri 'none'; frame-ancestors 'self'; form-action 'self'; script-src-elem 'self' https://vercel.live/_next-live/feedback/feedback.js https://js.stripe.com/v3 'sha256-vd3qp8D6kDw2J5+y5aDLMqG5U+o0U3Nbj5Wv9vUfR0M='; frame-src 'self' https://auth.magic.link https://js.stripe.com https://ipfs.io; frame-src 'self' https://* https://auth.magic.link https://js.stripe.com https://ipfs.io https://vercel.live;"
         },
         {
           "key": "X-Content-Type-Options",

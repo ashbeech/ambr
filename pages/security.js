@@ -74,7 +74,7 @@ export default function securityPanel() {
                 <br />
                 <br />
                 <Link
-                  href="https://tools.ietf.org/html/rfc6844"
+                  href="https://observatory.mozilla.org/analyze/ambr.link"
                   target="_blank"
                 >
                   Mozilla Observatory rates our site configuration an A+.

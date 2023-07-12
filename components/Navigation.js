@@ -126,7 +126,7 @@ export default function Navigation({
                 <>
                   {isLoggedIn && (
                     <Box>
-                      <Menu>
+                      <Menu direction={"rtl"} gutter={0}>
                         <MenuButton
                           isDisabled={disabled}
                           as={Button}
@@ -135,7 +135,11 @@ export default function Navigation({
                         >
                           Menu
                         </MenuButton>
-                        <MenuList pos={"relative"} top={"-0.2rem"} zIndex={999}>
+                        <MenuList
+                          pos={"relative"}
+                          zIndex={999}
+                          inset={"0em auto auto -1.5em"}
+                        >
                           {currentPage !== "" && (
                             <MenuItem
                               isDisabled={disabled}
