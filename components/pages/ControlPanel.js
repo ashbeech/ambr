@@ -850,7 +850,7 @@ export function ControlPanel() {
                           display={"block"}
                           w={"100%"}
                           h={"100%"}
-                          pb={[8, 0]}
+                          pb={[0, 0]}
                           minW={"100% !important"}
                           maxW={["xs", "3xl", "5xl"]}
                           sx={{

@@ -386,7 +386,6 @@ export const PayPanel = ({
                                 "cover !important",
                                 "cover !important",
                               ]}
-                              overflow={"visible !important"}
                               backgroundSize={"100%"}
                               alt={`Ambr Stone`}
                               className="file-stone"
@@ -569,7 +568,6 @@ export const PayPanel = ({
                                 "cover !important",
                                 "contain !important",
                               ]}
-                              overflow={"visible !important"}
                               backgroundSize={"100%"}
                               alt={`Ambr Stone`}
                               className="file-stone"

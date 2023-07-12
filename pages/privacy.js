@@ -25,30 +25,42 @@ export default function PrivacyPanel() {
             <Text>Version: 11-07-23</Text>
             <Box mb={[3, 6]}>
               <Text>
-                Ambr is designed with a clear purpose in mind: to provide you
-                with{" "}
-                <Box as="span" fontWeight="bold">
-                  easily accessible data provenance for your valuble work when
-                  sharing it with the people that matter.
+                <Box as="span" fontWeight="italic">
+                  Ambr
                 </Box>{" "}
-                It&apos;s easy access to verifiable proof of origin and
-                authenticity should a dispute arise.
+                is designed with a clear purpose in mind: to provide{" "}
+                <Box as="span" fontWeight="bold">
+                  easily accessible data provenance
+                </Box>{" "}
+                for your valuble work when sharing it with people that matter,
+                especially useful should a dispute arise down the road and
+                verifiable proof of origin and authenticity would be invaluble.
                 <br />
                 <br />
-                We believe in providing you transparent services that you and
-                others can not only trust, but also verify for yourselves.
+                We believe in providing transparent services that you and others
+                can not only trust, but indeed verify for yourselves.
                 <br />
                 <br />
                 Our commitment to your privacy and data security is at the core
-                of Ambr&apos;s guiding principles. We&apos;ve designed and built
-                Ambr so that all sensitive data is encrypted before
-                transmission, in transit, as well as at rest when in storage,
-                ensuring nothing you wouldn&apos;t want others snooping on
-                leaves your side in a readable format, without your consent.
+                of{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr&apos;s
+                </Box>{" "}
+                guiding principles. We&apos;ve designed and built{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                so that all sensitive data is encrypted before transmission, in
+                transit, as well as at rest when in storage. This ensures
+                nothing you wouldn&apos;t want others snooping on leaves your
+                side in a readable format, without your consent.
                 <br />
                 <br />
                 This following statement covers the processing activities of the
-                Ambr services, software, websites (including browser extensions)
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                services, software, websites (including browser extensions)
                 and/or applications (together: “Services”). The Services allow
                 you to create, share, collect, capture and/or visualise your
                 ideas, texts, graphics, videos, data, information, files, decks
@@ -89,26 +101,36 @@ export default function PrivacyPanel() {
               </Text>
               <Text className="decimal-list indented">
                 1.1.1. Contact Information: When you create a user account on
-                Ambr we only encrypt and store your email address, we do not
-                collect any personal names or any other personal data.
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                we only encrypt and store your email address, we do not collect
+                any personal names or any other personal data.
               </Text>
               <Text className="decimal-list indented">
                 1.1.2. Content and Certificates: You may choose to upload or
                 create Content which contains personal information about you and
-                others. When you upload and share file(s) through Ambr, you have
-                the option to provide associated details such as a client&apos;s
-                name, the file&apos;s key concept describing its contents,
-                creator and co-creator names (if applicable), as well as
-                optional recipient email addresses. All this information,
+                others. When you upload and share file(s) through{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                , you have the option to provide associated details such as a
+                client&apos;s name, the file&apos;s key concept describing its
+                contents, creator and co-creator names (if applicable), as well
+                as optional recipient email addresses. All this information,
                 including the file itself and its corresponding Certificate, is
                 encrypted on your device prior to transmission and storage to
                 ensure its privacy and security.{" "}
               </Text>
               <Text>
                 If you upload, send or create personal information via one of
-                our Services, Ambr will only process it to provide its Service,
-                the uploader or creator is responsible for the legitimacy of the
-                Content, and our{" "}
+                our Services,{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                will only process it to provide its Service, the uploader or
+                creator is responsible for the legitimacy of the Content, and
+                our{" "}
                 <Link
                   href="terms"
                   target="_self"
@@ -160,19 +182,22 @@ export default function PrivacyPanel() {
                 auditing & billing activities.
               </Text>
               <Text className="decimal-list indented">
-                2.1.4. Safety, integrity & security: Ambr follows up on abuse
-                reports, fraud investigations and could investigate your
-                compliance with our of our Terms of Service. Furthermore, we
-                detect & block Child Sexual Abuse Imagery (CSAI). Cases of
-                potential CSAI will be reported directly to law enforcement
-                agencies. Furthermore, we protect ourselves against fraud and
-                other illegal activities. In all these cases we withhold the
-                right to preserve your Content and share it, together with other
-                identifying information, with law enforcement agencies. Finally,
-                we could use your personal information for internal control to
-                safeguard our and your safety, integrity and security. For
-                instance, in case of any suspicion of violations of our Terms of
-                Service.
+                2.1.4. Safety, integrity & security:{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                follows up on abuse reports, fraud investigations and could
+                investigate your compliance with our of our Terms of Service.
+                Furthermore, we detect & block Child Sexual Abuse Imagery
+                (CSAI). Cases of potential CSAI will be reported directly to law
+                enforcement agencies. Furthermore, we protect ourselves against
+                fraud and other illegal activities. In all these cases we
+                withhold the right to preserve your Content and share it,
+                together with other identifying information, with law
+                enforcement agencies. Finally, we could use your personal
+                information for internal control to safeguard our and your
+                safety, integrity and security. For instance, in case of any
+                suspicion of violations of our Terms of Service.
               </Text>
               <Text className="decimal-list indented">
                 2.1.5. Improvement & development: we evaluate the use of our
@@ -186,12 +211,16 @@ export default function PrivacyPanel() {
               </Text>
               <Text className="decimal-list indented">
                 2.1.6. Legal: in so far as necessary, we might use your personal
-                information to defend Ambr in legal proceedings in relation to
-                or as a result of your use of our Services, following a court
-                order, abiding by any law, regulation or governmental request,
-                cooperating with law enforcement, cooperating in fraud
-                investigations of third parties, safeguarding national security,
-                defence, public security, and to uphold our Terms of Service.
+                information to defend{" "}
+                <Box as="span" fontWeight="italic">
+                  Ambr
+                </Box>{" "}
+                in legal proceedings in relation to or as a result of your use
+                of our Services, following a court order, abiding by any law,
+                regulation or governmental request, cooperating with law
+                enforcement, cooperating in fraud investigations of third
+                parties, safeguarding national security, defence, public
+                security, and to uphold our Terms of Service.
               </Text>
             </Box>
             <Box>
