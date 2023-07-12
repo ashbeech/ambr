@@ -476,6 +476,7 @@ export function ControlPanel() {
         {loading && (
           <Fade in={loading}>
             <Box
+              h={"100dvh"}
               minH={"100%"}
               pos={"fixed"}
               inset={0}
@@ -493,7 +494,7 @@ export function ControlPanel() {
                 pr={8}
                 pb={[8, 4]}
                 bottom={[0, 0]}
-                position={["relative", "absolute"]}
+                position={["absolute", "absolute"]}
                 textAlign={"center"}
                 justifyContent={"center"}
               >
