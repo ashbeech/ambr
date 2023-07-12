@@ -6,7 +6,6 @@ import {
   OrderedList,
   UnorderedList,
   ListItem,
-  Stack,
   HStack,
   VStack,
   Img,
@@ -34,7 +33,10 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import { tagline, environment } from "../../config.js";
+import {
+  tagline,
+  //environment
+} from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -463,10 +465,10 @@ export function ControlPanel() {
       roomMeta.idHash === idHash;
 
     // NOTE: For dev use
-    const dev_readout =
+    /*     const dev_readout =
       environment === "development"
         ? `ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`
-        : "";
+        : ""; */
 
     return (
       <>
@@ -474,16 +476,7 @@ export function ControlPanel() {
         {loading && (
           <Fade in={loading}>
             <Box
-              //display="flex"
-              //alignItems="center"
-              //justifyContent="center"
-              //h="100vh"
-
-              //display={"flex"}
-              //alignItems={"center"}
-              //justifyContent={"center"}
               minH={"100%"}
-              //h={"100vh"}
               pos={"fixed"}
               inset={0}
               overflow={"hidden"}
@@ -959,16 +952,11 @@ export function ControlPanel() {
                                     </Text>
                                   )}
                                   <Text fontSize={"md"} noOfLines={12}>
-                                    The ability to confidently assert your
-                                    copyright ownership is invaluable. Every
-                                    file shared through{" "}
-                                    <Text as="span" fontStyle="italic">
-                                      Ambr
-                                    </Text>{" "}
-                                    generates robust evidence of your work&#39;s
-                                    origin. This is especially critical when
-                                    sharing with clients, and particularly in an
-                                    age of artificial intelligence.
+                                    Proving the origin and authenticity of your
+                                    work is invaluble, especially critical when
+                                    sharing with the clients that matter, and
+                                    particularly in an age of artificial
+                                    intelligence (A.I.).
                                   </Text>
                                 </>
                               )}

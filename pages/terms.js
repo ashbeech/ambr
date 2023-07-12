@@ -117,14 +117,14 @@ export default function TermsPanel() {
               Welcome to Ambr, a secure and private platform with a clear
               mission: to provide you with{" "}
               <Box as="span" fontWeight="bold">
-                data provenance
+                easily accessible data provenance for your valuble work when
+                sharing it with the people that matter
               </Box>
               , particularly useful with the rise of artificial intelligence
-              (A.I.), and especially when sharing your valuable work with
-              clients. With Ambr, you can confidently share your work with
-              anyone, anywhere, knowing that you have the means to easily and
-              publicly verify its origin, integrity, and authenticity with the
-              world.
+              (A.I.), and when sharing your valuable work with clients. With
+              Ambr, you can confidently share your work with anyone, anywhere,
+              knowing that you have the means to easily and publicly verify its
+              origin, integrity, and authenticity with the world.
               <br />
               <br />
               We prioritise the privacy, safety, and security of your data in

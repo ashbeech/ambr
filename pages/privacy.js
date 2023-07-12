@@ -26,10 +26,13 @@ export default function PrivacyPanel() {
             <Box mb={[3, 6]}>
               <Text>
                 Ambr is designed with a clear purpose in mind: to provide you
-                with data provenance for your valuble work. We want you to share
-                your work confidently with people that matter, knowing that easy
-                access to verifiable proof of origin and authenticity is at your
-                fingertips.
+                with{" "}
+                <Box as="span" fontWeight="bold">
+                  easily accessible data provenance for your valuble work when
+                  sharing it with the people that matter.
+                </Box>{" "}
+                It&apos;s easy access to verifiable proof of origin and
+                authenticity should a dispute arise.
                 <br />
                 <br />
                 We believe in providing you transparent services that you and
