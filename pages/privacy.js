@@ -26,19 +26,19 @@ export default function PrivacyPanel() {
             <Box mb={[3, 6]}>
               <Text>
                 If you share your work with clients or are perhaps concerned
-                your work may be used without consent by artificial
+                that your work may be used without consent by artificial
                 intelligence,{" "}
                 <Box as="span" fontWeight="italic">
                   Ambr
                 </Box>{" "}
-                is for you.
+                is for you.{" "}
                 <Box as="span" fontWeight="italic">
                   Ambr
                 </Box>{" "}
                 provides a file transfer service with verifiable proof of origin
-                and authenticity built-in. No extra steps, complexity or
-                3rd-parties—you just share your work with the confidence that
-                you have state-of-the-art data provenance on your side.
+                and authenticity built-in. No extra steps, complexity, or third
+                parties—just share your work with the confidence that you have
+                state-of-the-art data provenance on your side.
                 <br />
                 <br />
                 Our commitment to your privacy and data security is at the core
