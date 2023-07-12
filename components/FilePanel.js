@@ -672,7 +672,7 @@ export const FilePanel = ({
                 roomMeta &&
                 roomMeta.readableMetadata &&
                 isUserMatch && (
-                  <Box w={"100%"} h={["", "100%"]} mt={[2, 0]}>
+                  <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
                     <FileRecordPanel
                       title={
                         roomMeta?.readableMetadata.title
@@ -711,7 +711,7 @@ export const FilePanel = ({
                   <Box
                     w={"full"}
                     pos={["relative", "relative"]}
-                    pt={[1, 4]}
+                    pt={[0, 4]}
                     bottom={0}
                   >
                     <SharePanel

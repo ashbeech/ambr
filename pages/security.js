@@ -76,6 +76,7 @@ export default function securityPanel() {
                 <Link
                   href="https://observatory.mozilla.org/analyze/ambr.link"
                   target="_blank"
+                  fontWeight={"bold"}
                 >
                   Mozilla Observatory rates our site configuration an A+.
                 </Link>
