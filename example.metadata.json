@@ -11,7 +11,7 @@
   "lifetime": 86400,
   "maxDownloads": 100,
   "description": "This token contains the permentant, immutable, and encrypted record of a file shared via Ambr.link.",
-  "type": "Ambr — Share ideas worth protecting.",
+  "type": "Ambr — Secure file transfers for ideas worth protecting.",
   "infoHash": "d00a5090367760648579ff1ba3fe5897f326df75",
   "encryptedData": {
     "name": "Ambr encrypted metadata",
@@ -21,7 +21,7 @@
   "attributes": [
     {
       "trait_type": "Type",
-      "value": "Ambr Secured File Share [End-to-End Encrypted]"
+      "value": "Ambr Secured File [Encrypted]"
     }
   ],
   "animation": "ipfs://bafybeiferwwko7jwhfrm7ivgjsi54cjvr3gxeoys2fsyccq3g2jn5rqsna/ambr.png",

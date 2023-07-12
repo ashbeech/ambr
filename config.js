@@ -57,11 +57,11 @@ export const wsUrl = `${wsOrigin}/websocket`;
 // Title of the site
 export const siteTitle = "Ambr";
 
-export const tagline = "Share ideas worth protecting";
+export const tagline = "Secure file transfers for ideas worth protecting.";
 
 // Description of the site
 export const siteDescription =
-  "File transfers that provide a robust layer of traceability for the copyright of your work.";
+  "Ambr's purpose is to provide you easily accessible data provenance, offering verifiable proof of origin and authenticity for your copyrighted intellectual property, particularly useful when sharing your valuble work and ideas with clients. We believe in providing transparent services that you and others can not only trust, but indeed verify.";
 
 // Twitter username of the site
 export const socialHandle = "ambrlink";
