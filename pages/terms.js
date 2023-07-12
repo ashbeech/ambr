@@ -112,19 +112,13 @@ export default function TermsPanel() {
             <Text as={"h1"} mb={"0 !important"}>
               {"Terms of Service"}
             </Text>
-            <Text>Version: 11-07-23</Text>
+            <Text>Version: 12-07-23</Text>
             <Text>
               Welcome to Ambr, a secure and private platform with a clear
-              mission: to provide you with{" "}
-              <Box as="span" fontWeight="bold">
-                easily accessible data provenance for your valuble work when
-                sharing it with the people that matter
-              </Box>
-              , particularly useful with the rise of artificial intelligence
-              (A.I.), and when sharing your valuable work with clients. With
-              Ambr, you can confidently share your work with anyone, anywhere,
-              knowing that you have the means to easily and publicly verify its
-              origin, integrity, and authenticity with the world.
+              mission: provide you easily accessible data provenance, offering
+              verifiable proof of origin and authenticity for your copyrighted
+              intellectual property, particularly useful when sharing your
+              valuble work and ideas with clients.
               <br />
               <br />
               We prioritise the privacy, safety, and security of your data in

@@ -47,11 +47,13 @@ export default function securityPanel() {
                 works.
                 <br />
                 <br />
-                Our commitment is to provide accessible data provenance for your
-                work, empowering you to confidently share it with those who
-                matter. Rest assured that in the event of a dispute,
-                transparency and verifiability of your copyrighted intellectual
-                property will be on your side.
+                <Box as="span" fontWeight="italic">
+                  Ambr&apos;s
+                </Box>{" "}
+                purpose is to provide you easily accessible data provenance,
+                offering verifiable proof of origin and authenticity for your
+                copyrighted intellectual property, particularly useful when
+                sharing your valuble work and ideas with clients.
                 <br />
                 <br />
                 We don&apos;t believe or hold value in the approach of

@@ -954,10 +954,10 @@ export function ControlPanel() {
                                   )}
                                   <Text fontSize={"md"} noOfLines={12}>
                                     Proving the origin and authenticity of your
-                                    work is invaluble, especially critical when
-                                    sharing with the clients that matter, and
-                                    particularly in an age of artificial
-                                    intelligence (A.I.).
+                                    work is made easy with Ambr, especially
+                                    valuble with the rise of age of artificial
+                                    intelligence (A.I.) and critical when
+                                    sharing work with clients.
                                   </Text>
                                 </>
                               )}

@@ -22,23 +22,18 @@ export default function PrivacyPanel() {
             <Text as={"h1"} mb={"0 !important"}>
               {"Privacy Policy"}
             </Text>
-            <Text>Version: 11-07-23</Text>
+            <Text>Version: 12-07-23</Text>
             <Box mb={[3, 6]}>
               <Text>
                 <Box as="span" fontWeight="italic">
-                  Ambr
+                  Ambr&apos;s
                 </Box>{" "}
-                is designed with a clear purpose in mind: to provide{" "}
-                <Box as="span" fontWeight="bold">
-                  easily accessible data provenance
-                </Box>{" "}
-                for your valuble work when sharing it with people that matter,
-                especially useful should a dispute arise down the road and
-                verifiable proof of origin and authenticity would be invaluble.
-                <br />
-                <br />
-                We believe in providing transparent services that you and others
-                can not only trust, but indeed verify for yourselves.
+                purpose is to provide you easily accessible data provenance,
+                offering verifiable proof of origin and authenticity for your
+                copyrighted intellectual property, particularly useful when
+                sharing your valuble work and ideas with clients. We believe in
+                providing transparent services that you and others can not only
+                trust, but indeed verify.
                 <br />
                 <br />
                 Our commitment to your privacy and data security is at the core
