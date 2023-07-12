@@ -61,7 +61,7 @@ export const tagline = "Share ideas worth protecting.";
 
 // Description of the site
 export const siteDescription =
-  "Ambr's purpose is to address the problem faced by creatives vulnerable to unauthorised use of their work and ideas, both by the clients they work with, and artificial intelligence. Ambr service is to provide you easily accessible data provenance, offering verifiable proof of origin and authenticity for your copyrighted intellectual property, particularly useful when sharing your work and ideas with clients. We believe in providing transparent services that you and others can not only trust, but indeed verify.";
+  "Ambr's purpose is to address the problem faced by creatives vulnerable to unauthorised use of their work and ideas, by both the clients they work with, and artificial intelligence. Ambr services provide you easily accessible data provenance, offering verifiable proof of origin and authenticity for your copyrighted intellectual property, right from within your exisiting workflow, without extra steps or 3rd-parties.";
 
 // Twitter username of the site
 export const socialHandle = "ambrlink";

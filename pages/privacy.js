@@ -12,7 +12,7 @@ export default function PrivacyPanel() {
         justifyContent="center"
         align="center"
       >
-        <Box w={"100%"} h={"100%"} pl={[14, 0]} pr={[14, 0]}>
+        <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
           <VStack
             w={["full", "80vw", "86vw", "50vw"]}
             minW={["", "", "43rem"]}
@@ -29,14 +29,12 @@ export default function PrivacyPanel() {
                   Ambr&apos;s
                 </Box>{" "}
                 purpose is to address the problem faced by creatives vulnerable
-                to unauthorised use of their work and ideas, both by the clients
-                they work with, and artificial intelligence. Ambr service is to
+                to unauthorised use of their work and ideas, by both the clients
+                they work with, and artificial intelligence. Ambr services
                 provide you easily accessible data provenance, offering
                 verifiable proof of origin and authenticity for your copyrighted
-                intellectual property, particularly useful when sharing your
-                work and ideas with clients. We believe in providing transparent
-                services that you and others can not only trust, but indeed
-                verify.
+                intellectual property, right from within your exisiting
+                workflow, without extra steps or 3rd-parties.
                 <br />
                 <br />
                 Our commitment to your privacy and data security is at the core
