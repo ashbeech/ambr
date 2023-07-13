@@ -116,7 +116,8 @@ export default function TermsPanel() {
             <Text>Version: 12-07-23</Text>
             <Text>
               If you share your work with clients or are perhaps concerned that
-              your work may be used without consent by artificial intelligence,{" "}
+              your work may be used without consent by artificial intelligence
+              (AI),{" "}
               <Box as="span" fontWeight="italic">
                 Ambr
               </Box>{" "}
@@ -126,8 +127,8 @@ export default function TermsPanel() {
               </Box>{" "}
               provides a file transfer service with verifiable proof of origin
               and authenticity built-in. No extra steps, complexity, or third
-              parties—just share your work with the confidence that you have
-              state-of-the-art data provenance on your side.
+              parties—just share your work confidently with state-of-the-art
+              data provenance.
               <br />
               <br />
               We prioritise the privacy, safety, and security of your data in

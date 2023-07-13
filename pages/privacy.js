@@ -27,7 +27,7 @@ export default function PrivacyPanel() {
               <Text>
                 If you share your work with clients or are perhaps concerned
                 that your work may be used without consent by artificial
-                intelligence,{" "}
+                intelligence (AI),{" "}
                 <Box as="span" fontWeight="italic">
                   Ambr
                 </Box>{" "}
@@ -37,8 +37,8 @@ export default function PrivacyPanel() {
                 </Box>{" "}
                 provides a file transfer service with verifiable proof of origin
                 and authenticity built-in. No extra steps, complexity, or third
-                parties—just share your work with the confidence that you have
-                state-of-the-art data provenance on your side.
+                parties—just share your work confidently with state-of-the-art
+                data provenance.
                 <br />
                 <br />
                 Our commitment to your privacy and data security is at the core
