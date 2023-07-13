@@ -137,6 +137,10 @@ export function ControlPanel() {
     [mint]
   );
 
+  const initLoader = async (user) => {
+    setSharesRemaining(user.fileTransfersRemaining);
+    setLoading(false);
+  };
   // Must ensure that the user is logged in before loading the page
   useEffect(() => {
     console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
@@ -144,13 +148,19 @@ export function ControlPanel() {
     // Check existence of Magic, if not, don't load the page
     if (magic === null) return;
     if (magic !== null && isLoggedIn && publicAddress === "") return;
-    if (magic !== null && isLoggedIn && publicAddress) setLoading(false);
+    /*     if (
+      magic !== null &&
+      isLoggedIn &&
+      publicAddress &&
+      fileTransfersRemaining === -999
+    )
+       */
     if (magic !== null && !isLoggedIn && publicAddress === "")
       setLoading(false);
 
     if (magic !== null && isLoggedIn && fileTransfersRemaining === -999) {
       getUser(publicAddress)
-        .then((user) => setSharesRemaining(user.fileTransfersRemaining))
+        .then((user) => initLoader(user))
         .catch((error) => console.error(error));
     }
   }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]);
@@ -416,20 +426,20 @@ export function ControlPanel() {
 
   const controlPanel = (_isAuthenticated) => {
     const showPanel =
+      fileTransfersRemaining !== -999 &&
+      fileTransfersRemaining >= 1 &&
+      _path !== "/files" &&
+      _path !== "/top-up" &&
+      _isAuthenticated &&
+      _mode !== JOIN_MODE &&
+      _mode !== VERIFY_MODE; /* ||
       (fileTransfersRemaining !== -999 &&
         fileTransfersRemaining >= 1 &&
         _path !== "/files" &&
         _path !== "/top-up" &&
         _isAuthenticated &&
         _mode !== JOIN_MODE &&
-        _mode !== VERIFY_MODE) ||
-      (fileTransfersRemaining !== -999 &&
-        fileTransfersRemaining >= 1 &&
-        _path !== "/files" &&
-        _path !== "/top-up" &&
-        _isAuthenticated &&
-        _mode !== JOIN_MODE &&
-        _mode !== VERIFY_MODE);
+        _mode !== VERIFY_MODE) */
     _mode === SHARE_MODE;
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
@@ -987,7 +997,7 @@ export function ControlPanel() {
                           letterSpacing={["normal", "wide"]}
                           fontSize={["lg", "xl"]}
                         >
-                          {tagline + "."}
+                          {tagline}
                         </Text>
                         <Login />
                       </VStack>

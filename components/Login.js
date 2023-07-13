@@ -70,7 +70,7 @@ function Login() {
         <>
           <Flex
             w={"100%"}
-            maxW={"26rem"}
+            maxW={"28rem"}
             pt={4}
             display={"flex"}
             alignItems={"center"}
@@ -78,15 +78,19 @@ function Login() {
             flexDirection={["column", "row"]}
           >
             <Input
-              flex={!visitedBefore ? ["", ""] : ["", 8]}
-              w={["full", "70% !important"]}
+              flex={!visitedBefore ? ["", 6] : ["", 8]}
+              w={["full", null]}
               type="email"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
                 setIsValidEmail(true); // Reset validation on input change
               }}
-              placeholder="Your Email Address"
+              placeholder={
+                !visitedBefore
+                  ? "Enter Your Email Address"
+                  : "Your Email Address"
+              }
               mr={[0, 2]}
               _placeholder={
                 isValidEmail ? { color: "black.500" } : { color: "white" }
@@ -95,21 +99,21 @@ function Login() {
               backgroundColor={isValidEmail ? "gray.500" : "red.500"}
             />
             <Button
-              flex={!visitedBefore ? ["", ""] : ["", 2]}
+              flex={!visitedBefore ? ["", 6] : ["", 4]}
               overflow={"hidden"}
               top={[1, "-2px"]}
-              w={["full", "30% !important"]}
+              w={["full", null]}
               minW={"auto !important"}
               size={"md"}
               onClick={handleLogin}
             >
-              {!visitedBefore ? "Enter for Free" : "Enter"}
+              {!visitedBefore ? "Start Sharing (It's FREE)" : "Start Sharing"}
             </Button>
           </Flex>
           <HStack>
             <Box mt={[3, 0]}>
               <Text fontSize={"sm"}>
-                By clicking Enter, you agree to our{" "}
+                By clicking to enter, you agree to our{" "}
                 <Link
                   fontSize={"sm"}
                   fontWeight={"light"}
