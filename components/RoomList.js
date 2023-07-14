@@ -85,6 +85,17 @@ export const RoomList = ({ onChange = () => {} }) => {
     [publicAddress]
   );
 
+  // LOCAL CRON TEST
+  // NOTE: Triggers Class C transaction--B2 list_filenames cap: https://help.backblaze.com/hc/en-us/articles/224378407-Why-am-I-Reaching-Class-C-Transaction-Caps-with-Synology-
+  /*   const deleteExpiredFiles = async () => {
+    try {
+      const response = await fetcher.get(`${origin}/api/cron`);
+      console.log("deleteExpiredFiles res: ", response || "Nothing to report.");
+    } catch (error) {
+      console.error(error);
+    }
+  }; */
+
   useEffect(() => {
     // LOCAL CRON TEST
     // TODO: Delete this as is just a test
@@ -480,17 +491,6 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
 };
 
 {
-  // LOCAL CRON TEST
-  // NOTE: Triggers Class C transaction--B2 list_filenames cap: https://help.backblaze.com/hc/en-us/articles/224378407-Why-am-I-Reaching-Class-C-Transaction-Caps-with-Synology-
-  /* const deleteExpiredFiles = async () => {
-  try {
-    const response = await fetcher.get(`${origin}/api/cron`);
-    console.log("deleteExpiredFiles res: ", response || "Nothing to report.");
-  } catch (error) {
-    console.error(error);
-  }
-}; */
-
   {
     /* {loading && (
               <>

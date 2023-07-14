@@ -128,7 +128,7 @@ export const theme = extendTheme(
       none: 1.48,
       shorter: 1.0764,
       short: 1.148,
-      base: 1.48,
+      base: 1.4,
       tall: 1.5909,
       taller: "2",
       3: ".8057rem",
@@ -304,6 +304,7 @@ export const theme = extendTheme(
           fontFamily: "body",
           fontWeight: "light",
           borderRadius: "base",
+          lineHeight: "base",
         },
         variants: {
           outline: {

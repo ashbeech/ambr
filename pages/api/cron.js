@@ -293,6 +293,9 @@ export default async function handler(req, res) {
               lt: 1,
             },
           },
+          {
+            key: null,
+          },
         ],
       },
     });
@@ -301,7 +304,12 @@ export default async function handler(req, res) {
     for (const room of rooms) {
       const expireStatus =
         room.expiresAtTimestampMs < Date.now() ? "expired" : "active";
-      console.log("Deletion Flag: ", room.roomId, room.mintState, expireStatus);
+      console.log(
+        "Flagged for Deletion: ",
+        room.roomId,
+        room.mintState,
+        expireStatus
+      );
       promises.push(deleteExpiredFiles(room.roomId));
     }
 

@@ -92,10 +92,29 @@ export const styles = {
       height: "100%",
     },
     ".chakra-ui-light": {
+      /*       width: "100%",
+      height: "100%",
+      overflow: "hidden",
+      background: `radial-gradient(ellipse at center, #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`, */
       width: "100%",
       height: "100%",
       overflow: "hidden",
-      background: `radial-gradient(ellipse at center, #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
+      background: "#ACAFAF" /* Fallback color */,
+      background: `-webkit-gradient(
+        radial,
+        center center,
+        0,
+        center center,
+        100%,
+        from(#F8F8F5),
+        to(#ACAFAF)
+      )`,
+      background: `radial-gradient(
+        ellipse at center,
+        #F8F8F5 66%,
+        #E0E0DC 83%,
+        #ACAFAF 100%
+      )`,
     },
     /*     "html::after": {
       mixBlendMode: "color-burn",

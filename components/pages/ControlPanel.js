@@ -617,7 +617,7 @@ export function ControlPanel() {
                         >
                           <HStack w={"100%"} h={"100%"}>
                             <Box w={"100%"} h={"100%"} overflow={"visible"}>
-                              <Box
+                              {/*                               <Box
                                 display={["block", "none", "none"]}
                                 minW={"100%"}
                               >
@@ -635,7 +635,7 @@ export function ControlPanel() {
                                 >
                                   Share Your Work Fearlessly
                                 </Text>
-                              </Box>
+                              </Box> */}
 
                               <SendPanel
                                 mode={_mode}

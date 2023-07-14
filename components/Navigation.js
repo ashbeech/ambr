@@ -89,7 +89,7 @@ export default function Navigation({
                     left={"-6px"}
                     className={disabled ? "disabled" : ""}
                     onClick={() => {
-                      handlePageChange("");
+                      currentPage === "" ? () => {} : handlePageChange("");
                     }}
                     disabled={disabled}
                   >
