@@ -99,7 +99,7 @@ export const styles = {
       background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
       background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
     },
-    "html::before": {
+    "html::after": {
       mixBlendMode: "color-burn",
       content: '""',
       position: "absolute",
@@ -108,7 +108,7 @@ export const styles = {
       minHeight: "100%",
       left: 0,
       top: 0,
-      backgroundImage: `url("/images/noise.png")`,
+      //backgroundImage: `url("/images/noise.png")`,
       zIndex: "-9999",
       opacity: "0.8",
       backgroundRepeat: "repeat",
