@@ -1,17 +1,19 @@
 export const styles = {
   global: {
     html: {
+      bg: "#ACAFAF" /* Fallback color */,
+      width: "100%",
+      height: "100%",
+    },
+    body: {
       position: "fixed",
       width: "100%",
       height: "100%",
-      background: "#ACAFAF" /* Fallback color */,
-      background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
-      background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
-    },
-    body: {
-      bg: "white.400",
-      color: "black.500",
+      bg: "#ACAFAF" /* Fallback color */,
+      bg: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
+      bg: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
       minHeight: "100%",
+      color: "black.500",
       fontWeight: "light",
       fontSize: "sm",
       // Prevent margin on children from collapsing (and passing through)
