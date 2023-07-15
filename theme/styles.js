@@ -1,6 +1,7 @@
 export const styles = {
   global: {
     html: {
+      width: "100%",
       height: "100%",
     },
     body: {
@@ -94,23 +95,25 @@ export const styles = {
     ".chakra-ui-light": {
       width: "100%",
       height: "100%",
-      overflow: "hidden",
       background: "#ACAFAF" /* Fallback color */,
       background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
       background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
     },
-    "html::after": {
+    "body::after": {
+      backgroundBlendMode: "color-burn",
       mixBlendMode: "color-burn",
+      isolation: "isolate",
       content: '""',
-      position: "absolute",
+      position: "fixed",
       width: "100%",
       height: "100%",
       minHeight: "100%",
+      minWidth: "100%",
       left: 0,
       top: 0,
-      //backgroundImage: `url("/images/noise.png")`,
+      backgroundImage: `url("/images/noise.png")`,
       zIndex: "-9999",
-      opacity: "0.8",
+      opacity: "0.9",
       backgroundRepeat: "repeat",
     },
 

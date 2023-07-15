@@ -67,8 +67,8 @@ export default function Navigation({
     <Box zIndex={999} position={"relative"}>
       <Container
         w={["100%"]}
-        pt={[2, 8]}
-        pb={[2, 6]}
+        pt={[3, 8]}
+        pb={[3, 6]}
         maxW={["90%", "90%"]}
         sx={{
           paddingInlineStart: [0, 0, 0],
