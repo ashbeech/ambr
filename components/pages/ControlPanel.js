@@ -119,10 +119,6 @@ export function ControlPanel() {
     [verify]
   );
 
-  /*   useEffect(() => {
-    console.log("Verifiction Feedback: ", verifyState);
-  }, [verifyState]); */
-
   const handleMint = useCallback(
     async (_finalMetadata) => {
       if (mint == null) return;

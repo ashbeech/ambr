@@ -1,8 +1,12 @@
 export const styles = {
   global: {
     html: {
+      position: "fixed",
       width: "100%",
       height: "100%",
+      background: "#ACAFAF" /* Fallback color */,
+      background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
+      background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
     },
     body: {
       bg: "white.400",
@@ -92,17 +96,8 @@ export const styles = {
       width: "100%",
       height: "100%",
     },
-    ".chakra-ui-light": {
-      width: "100%",
-      height: "100%",
-      background: "#ACAFAF" /* Fallback color */,
-      background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
-      background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
-    },
     ".bg::after": {
-      backgroundBlendMode: "color-burn",
       mixBlendMode: "color-burn",
-      isolation: "isolate",
       content: '""',
       position: "fixed",
       width: "100%",
@@ -113,7 +108,7 @@ export const styles = {
       top: 0,
       backgroundImage: `url("/images/noise.png")`,
       zIndex: "-9999",
-      opacity: "0.9",
+      opacity: "0.8",
       backgroundRepeat: "repeat",
     },
 
