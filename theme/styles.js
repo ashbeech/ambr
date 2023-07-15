@@ -99,7 +99,7 @@ export const styles = {
       background: `-webkit-gradient(radial, center center, 0, center center, 100%, from(#F8F8F5), to(#ACAFAF))`,
       background: `radial-gradient(ellipse at center,  #F8F8F5 66%, #E0E0DC 83%, #ACAFAF 100%)`,
     },
-    "body::after": {
+    ".bg::after": {
       backgroundBlendMode: "color-burn",
       mixBlendMode: "color-burn",
       isolation: "isolate",

@@ -64,7 +64,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
   }, []);
 
   return (
-    <>
+    <Box className="bg">
       {loading && (
         <Box
           minH={"100%"}
@@ -176,7 +176,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
           </ChakraProvider>
         </MagicProvider>
       )}
-    </>
+    </Box>
   );
 }
 
