@@ -168,8 +168,6 @@ export function ControlPanel() {
   }, [_key, setKey]);
 
   useEffect(() => {
-    console.log("MODE: ", mode);
-    console.log("_MODE: ", _mode);
     if (pathname) setPath(pathname);
     if (roomId) roomId ? setRoomId(roomId) : setRoomId(null);
     key ? setKey(globalThis.location?.hash.slice(1)) : setKey(null);
@@ -528,23 +526,14 @@ export function ControlPanel() {
         {!loading && (
           <>
             <Flex
-              //direction="column"
-              //justify={"space-between"}
-              //align-items="center"
-              //justify-content="center"
               className={!_key && !_isAuthenticated ? "home-stone" : ""}
-              //position="relative"
               backgroundSize={"cover !important"}
-              //minW="100vw"
-              //minH="100vh"
-              //h={"100vh"}
               h={"100%"}
               overflowX={"hidden"}
               overflowY={showHomeStone ? "hidden" : "scroll"}
               minH={"100%"}
               pos={"fixed"}
               inset={0}
-              //overflow={"hidden"}
               display={"grid"}
               place-items={"center"}
             >
@@ -824,54 +813,57 @@ export function ControlPanel() {
                   )}
                   {showFilePanel && (
                     <>
-                      {/*                     <Fade in={showSubFilePanel1}>
-                       */}{" "}
-                      <Box
-                        w={"100%"}
-                        h={"100%"}
-                        maxW={["90%", "100%"]}
-                        display={["", "flex"]}
-                        alignItems="center"
-                        justifyContent="center"
-                        position={["relative", "absolute"]}
-                        top={0}
-                        right={0}
-                        left={0}
-                        bottom={0}
-                        margin="auto"
-                      >
-                        <SafeContainer
-                          position={"relative"}
-                          display={"block"}
+                      <Fade in={showSubFilePanel1}>
+                        <Box
                           w={"100%"}
                           h={"100%"}
-                          pb={[0, 0]}
-                          minW={"100% !important"}
-                          maxW={["xs", "3xl", "5xl"]}
-                          sx={{
-                            paddingInlineStart: "0 !important",
-                            paddingInlineEnd: "0 !important",
-                          }}
+                          maxW={["90%", "100%"]}
+                          display={["", "flex"]}
+                          alignItems="center"
+                          justifyContent="center"
+                          position={["relative", "absolute"]}
+                          top={0}
+                          right={0}
+                          left={0}
+                          bottom={0}
+                          margin="auto"
                         >
-                          <Box w={"100%"} h={"100%"} overflow={"visible"}>
-                            <Panel className="glass" pt={[8, 10]} pb={[8, 10]}>
-                              <VStack
-                                display={"flex"}
-                                alignItems="center"
-                                justifyContent="flex-start"
-                                minW={"100%"}
-                                minH={"24rem"}
-                                maxW={["100%", "100%"]}
-                                maxH={[null, "24rem"]}
-                                pt={[0]}
+                          <SafeContainer
+                            position={"relative"}
+                            display={"block"}
+                            w={"100%"}
+                            h={"100%"}
+                            pb={[0, 0]}
+                            minW={"100% !important"}
+                            maxW={["xs", "3xl", "5xl"]}
+                            sx={{
+                              paddingInlineStart: "0 !important",
+                              paddingInlineEnd: "0 !important",
+                            }}
+                          >
+                            <Box w={"100%"} h={"100%"} overflow={"visible"}>
+                              <Panel
+                                className="glass"
+                                pt={[8, 10]}
+                                pb={[8, 10]}
                               >
-                                <RoomList />
-                              </VStack>
-                            </Panel>
-                          </Box>
-                        </SafeContainer>
-                      </Box>
-                      {/* </Fade> */}
+                                <VStack
+                                  display={"flex"}
+                                  alignItems="center"
+                                  justifyContent="flex-start"
+                                  minW={"100%"}
+                                  minH={"24rem"}
+                                  maxW={["100%", "100%"]}
+                                  maxH={[null, "24rem"]}
+                                  pt={[0]}
+                                >
+                                  <RoomList />
+                                </VStack>
+                              </Panel>
+                            </Box>
+                          </SafeContainer>
+                        </Box>
+                      </Fade>
                     </>
                   )}
                   {showTopup && (

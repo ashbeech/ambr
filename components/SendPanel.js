@@ -155,488 +155,473 @@ export const SendPanel = ({
   }, [shouldWarn]);
 
   return (
-    <>
-      <Panel className="glass">
-        <HStack
-          display={["block", "grid"]}
-          maxHeight={[null, null]}
-          direction={[null, "row"]}
-          spacing={[2, 4]}
-          position="relative"
+    <Panel className="glass">
+      <HStack
+        display={["block", "grid"]}
+        maxHeight={[null, null]}
+        direction={[null, "row"]}
+        spacing={[2, 4]}
+        position="relative"
+        h={"100%"}
+        w={"100%"}
+        minH={["100%", "22.25rem"]}
+        minW={["", "", "24rem"]}
+        maxW={"40rem"}
+      >
+        <Box
+          w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
+          style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
           h={"100%"}
-          w={"100%"}
-          minH={["100%", "22.25rem"]}
-          minW={["", "", "24rem"]}
-          maxW={"40rem"}
+          mb={[3, 0]}
+          position={"relative"}
         >
-          <Box
-            w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
-            style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
-            h={"100%"}
-            mb={[3, 0]}
-            position={"relative"}
+          <Flex
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            h="100%"
           >
-            <Flex
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-              h="100%"
+            <Fade
+              in={mode === CREATE_MODE || mode === SHARE_MODE}
+              style={{ height: "100%", width: "100%" }}
+              unmountOnExit
             >
-              <Fade
-                in={mode === CREATE_MODE || mode === SHARE_MODE}
-                style={{ height: "100%", width: "100%" }}
-                unmountOnExit
-              >
-                <Box
-                  position="absolute"
-                  w={mode === SHARE_MODE ? ["100%", "164%"] : "100%"}
-                >
-                  <Text
-                    w={"100%"}
-                    style={{
-                      transition: "width 0.1s ease-in, height 0.1s ease-in",
-                    }}
-                    fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
-                    fontWeight={
-                      mode === SHARE_MODE
-                        ? ["semibold !important", "semibold !important"]
-                        : "medium !important"
-                    }
-                    align={"left"}
-                    noOfLines={2}
-                    wordBreak="break-word"
-                    pr={"1rem"}
-                  >
-                    {cloudState === "Uploading" && (
-                      <>{"Uploading " + fileName}</>
-                    )}
-                    {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
-                    {cloudState === "Uploaded" && (
-                      <>
-                        {mode === SHARE_MODE
-                          ? fileName
-                          : "Uploaded " + fileName}
-                      </>
-                    )}
-                  </Text>
-                </Box>
-              </Fade>
               <Box
                 position="absolute"
-                top="50%"
-                left="50%"
-                transform="translate(-50%, -50%)"
-                zIndex={998}
-                w={["100%", "100%"]}
-                h={["100%", "100%"]}
-                minW={"7rem"}
+                w={mode === SHARE_MODE ? ["100%", "164%"] : "100%"}
               >
-                <Box zIndex={999} h={"100%"} mr={[0, 3]}>
+                <Text
+                  w={"100%"}
+                  style={{
+                    transition: "width 0.1s ease-in, height 0.1s ease-in",
+                  }}
+                  fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
+                  fontWeight={
+                    mode === SHARE_MODE
+                      ? ["semibold !important", "semibold !important"]
+                      : "medium !important"
+                  }
+                  align={"left"}
+                  noOfLines={2}
+                  wordBreak="break-word"
+                  pr={"1rem"}
+                >
+                  {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
+                  {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
+                  {cloudState === "Uploaded" && (
+                    <>
+                      {mode === SHARE_MODE ? fileName : "Uploaded " + fileName}
+                    </>
+                  )}
+                </Text>
+              </Box>
+            </Fade>
+            <Box
+              position="absolute"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+              zIndex={998}
+              w={["100%", "100%"]}
+              h={["100%", "100%"]}
+              minW={"7rem"}
+            >
+              <Box zIndex={999} h={"100%"} mr={[0, 3]}>
+                <Fade
+                  in={mode === null}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    transition: "height 0.1s ease-in, width 0.1s ease-in",
+                  }}
+                  unmountOnExit
+                >
+                  <FilePicker
+                    onFiles={handleFiles}
+                    description={"Select a file"}
+                  />
+                </Fade>
+                <Fade
+                  in={mode === CREATE_MODE || mode === SHARE_MODE}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    zIndex: -999,
+                    transition: "height 0.1s ease-in, width 0.1s ease-in",
+                  }}
+                  unmountOnExit
+                >
                   <Fade
-                    in={mode === null}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      transition: "height 0.1s ease-in, width 0.1s ease-in",
-                    }}
+                    style={{ height: "100%", width: "100%" }}
+                    in={showProgress}
                     unmountOnExit
                   >
-                    <FilePicker
-                      onFiles={handleFiles}
-                      description={"Select a file"}
-                    />
+                    <Flex
+                      direction={"column"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      h={"100%"}
+                    >
+                      <CreateProgress mode={mode} progress={createProgress} />
+                    </Flex>
                   </Fade>
                   <Fade
                     in={mode === CREATE_MODE || mode === SHARE_MODE}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      zIndex: -999,
-                      transition: "height 0.1s ease-in, width 0.1s ease-in",
-                    }}
                     unmountOnExit
+                    style={{ height: "100%", width: "100%" }}
                   >
                     <Fade
                       style={{ height: "100%", width: "100%" }}
-                      in={showProgress}
+                      in={!showProgress}
                       unmountOnExit
                     >
-                      <Flex
-                        direction={"column"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        h={"100%"}
-                      >
-                        <CreateProgress mode={mode} progress={createProgress} />
-                      </Flex>
-                    </Fade>
-                    <Fade
-                      in={mode === CREATE_MODE || mode === SHARE_MODE}
-                      unmountOnExit
-                      style={{ height: "100%", width: "100%" }}
-                    >
-                      <Fade
-                        style={{ height: "100%", width: "100%" }}
-                        in={!showProgress}
-                        unmountOnExit
-                      >
-                        {mintState === "Sealed" && (
-                          <Box zIndex={99} h={"100%"}>
-                            {roomMeta && (
-                              <Flex
-                                direction={"column"}
-                                alignItems={"center"}
-                                justifyContent={"center"}
-                                h={"100%"}
-                              >
-                                <Arrow
-                                  size={["xl"]}
-                                  maxW={["33%", "40%"]}
-                                  h={"auto"}
-                                  p={0}
-                                  mode={"downloaded"}
-                                  disabled={false}
-                                  title={""}
-                                  description={""}
-                                  colorScheme="gray"
-                                />
-                              </Flex>
-                            )}
-                          </Box>
-                        )}
-                      </Fade>
+                      {mintState === "Sealed" && (
+                        <Box zIndex={99} h={"100%"}>
+                          {roomMeta && (
+                            <Flex
+                              direction={"column"}
+                              alignItems={"center"}
+                              justifyContent={"center"}
+                              h={"100%"}
+                            >
+                              <Arrow
+                                size={["xl"]}
+                                maxW={["33%", "40%"]}
+                                h={"auto"}
+                                p={0}
+                                mode={"downloaded"}
+                                disabled={false}
+                                title={""}
+                                description={""}
+                                colorScheme="gray"
+                              />
+                            </Flex>
+                          )}
+                        </Box>
+                      )}
                     </Fade>
                   </Fade>
-                </Box>
+                </Fade>
               </Box>
+            </Box>
+            <Box
+              zIndex={-999}
+              w={["100%", "100%"]}
+              h={["100%", "100%"]}
+              pos={["relative", "absolute"]}
+            >
               <Box
-                zIndex={-999}
-                w={["100%", "100%"]}
-                h={["100%", "100%"]}
-                pos={["relative", "absolute"]}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                position={"relative"}
+                w={"100%"}
+                h={["18rem", "100%"]}
               >
                 <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  position={"relative"}
-                  w={"100%"}
-                  h={["18rem", "100%"]}
+                  overflow={"visible"}
+                  width={"24rem"}
+                  height={"24rem"}
+                  pos={"absolute"}
                 >
-                  <Box
-                    overflow={"visible"}
-                    width={"24rem"}
-                    height={"24rem"}
-                    pos={"absolute"}
-                  >
-                    <Img
-                      w={["100%", "100%"]}
-                      h={"100%"}
-                      ml={["0.8em", 0]}
-                      objectFit={"none !important"}
-                      src={`/images/amber-7.png`}
-                      position={"relative"}
-                      alt={`Ambr Stone`}
-                      className="file-stone"
-                    />
-                  </Box>
+                  <Img
+                    w={["100%", "100%"]}
+                    h={"100%"}
+                    ml={["0.8em", 0]}
+                    objectFit={"none !important"}
+                    src={`/images/amber-7.png`}
+                    position={"relative"}
+                    alt={`Ambr Stone`}
+                    className="file-stone"
+                  />
                 </Box>
               </Box>
-            </Flex>
-          </Box>
-          <Box
-            h={"100%"}
-            overflowY={"scroll"}
-            overflowX={"hidden"}
-            w={["full", "55%"]}
-            position={["relative", "absolute"]}
-            top={[null, 0]}
-            left={[null, "45%"]}
-            sx={{ marginInlineStart: "0 !important" }}
-            zIndex={999}
-          >
-            <Box h={"100%"}>
-              <Fade
-                in={mode !== SHARE_MODE}
-                style={{ height: "100%", width: "100%" }}
-                unmountOnExit
-              >
-                <Formik
-                  validateOnMount={true}
-                  validationSchema={validationSchema}
-                  enableReinitialize={true}
-                  initialValues={initialFormValues}
-                  onSubmit={(values) => {
-                    handleSubmit(values);
-                  }}
-                >
-                  {({ errors, touched, values, isValid }) => (
-                    <Form>
-                      <VStack
-                        margin={"0 0 1.5em 0"}
-                        spacing={0}
-                        align="flex-start"
+            </Box>
+          </Flex>
+        </Box>
+        <Box
+          h={"100%"}
+          overflowY={"scroll"}
+          overflowX={"hidden"}
+          w={["full", "55%"]}
+          position={["relative", "absolute"]}
+          top={[null, 0]}
+          left={[null, "45%"]}
+          sx={{ marginInlineStart: "0 !important" }}
+          zIndex={999}
+        >
+          <Box h={"100%"}>
+            {/*             <Fade
+              in={mode !== SHARE_MODE}
+              style={{ height: "100%", width: "100%" }}
+              unmountOnExit
+            > */}
+            <Formik
+              validateOnMount={true}
+              validationSchema={validationSchema}
+              enableReinitialize={true}
+              initialValues={initialFormValues}
+              onSubmit={(values) => {
+                handleSubmit(values);
+              }}
+            >
+              {({ errors, touched, values, isValid }) => (
+                <Form>
+                  <VStack margin={"0 0 1.5em 0"} spacing={0} align="flex-start">
+                    <Field
+                      as={Input}
+                      id="client"
+                      name="client"
+                      type="text"
+                      variant="outline"
+                      placeholder={"Client's name"}
+                      p={3}
+                    />
+                    <FormControl
+                      isInvalid={!!errors.concept && touched.concept}
+                    >
+                      <Field
+                        as={Textarea}
+                        rows="4"
+                        name="concept"
+                        type="text"
+                        variant="outline"
+                        placeholder={
+                          "Short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
+                        }
+                        mt={1}
+                        p={3}
+                      />
+                      <ErrorMessage
+                        name="concept"
+                        component="div"
+                        className="invalid-feedback"
+                      />
+                    </FormControl>
+                    <FormControl
+                    //isInvalid={!!errors.creators && touched.creators}
+                    >
+                      <FieldArray
+                        name="creators"
+                        render={(arrayHelpers) => (
+                          <Box mt={1}>
+                            {values.creators.map((creator, index) => (
+                              <Box key={index}>
+                                <Flex>
+                                  <Field
+                                    as={Input}
+                                    name={`creators.${index}.creator`}
+                                    type="creator"
+                                    variant="outline"
+                                    placeholder={
+                                      index <= 0 && values.creators.length > 1
+                                        ? "Co-creator's name"
+                                        : "Creator's name"
+                                    }
+                                    p={3}
+                                    value={creator.creator || ""} // Ensure a default value is set
+                                  />
+                                  {values.creators && index > 0 ? (
+                                    <Button
+                                      ml={4}
+                                      type="button"
+                                      variant={"rounded"}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                      className={"m-btn p-m-btn"}
+                                    >
+                                      −
+                                    </Button>
+                                  ) : (
+                                    ""
+                                  )}
+                                  <Button
+                                    type="button"
+                                    variant={"rounded"}
+                                    onClick={() =>
+                                      arrayHelpers.insert(index, "")
+                                    }
+                                    className={"p-btn p-m-btn"}
+                                  >
+                                    +
+                                  </Button>
+                                </Flex>
+                                <ErrorMessage
+                                  name={`creators.${index}.creator`}
+                                  component="div"
+                                  className="invalid-feedback"
+                                />
+                              </Box>
+                            ))}
+                          </Box>
+                        )}
+                      />
+                    </FormControl>
+                    <FormControl isInvalid={!!errors.emails && touched.emails}>
+                      <Collapse
+                        style={{ height: "100%", width: "100%" }}
+                        in={formModeLink}
+                        unmountOnExit
                       >
-                        <Field
-                          as={Input}
-                          id="client"
-                          name="client"
-                          type="text"
-                          variant="outline"
-                          placeholder={"Client's name"}
-                          p={3}
-                        />
-                        <FormControl
-                          isInvalid={!!errors.concept && touched.concept}
-                        >
-                          <Field
-                            as={Textarea}
-                            rows="4"
-                            name="concept"
-                            type="text"
-                            variant="outline"
-                            placeholder={
-                              "Short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
-                            }
-                            mt={1}
-                            p={3}
-                          />
-                          <ErrorMessage
-                            name="concept"
-                            component="div"
-                            className="invalid-feedback"
-                          />
-                        </FormControl>
-                        <FormControl
-                        //isInvalid={!!errors.creators && touched.creators}
-                        >
-                          <FieldArray
-                            name="creators"
-                            render={(arrayHelpers) => (
-                              <Box mt={1}>
-                                {values.creators.map((creator, index) => (
-                                  <Box key={index}>
-                                    <Flex>
-                                      <Field
-                                        as={Input}
-                                        name={`creators.${index}.creator`}
-                                        type="creator"
-                                        variant="outline"
-                                        placeholder={
-                                          index <= 0 &&
-                                          values.creators.length > 1
-                                            ? "Co-creator's name"
-                                            : "Creator's name"
-                                        }
-                                        p={3}
-                                        value={creator.creator || ""} // Ensure a default value is set
-                                      />
-                                      {values.creators && index > 0 ? (
-                                        <Button
-                                          ml={4}
-                                          type="button"
-                                          variant={"rounded"}
-                                          onClick={() =>
-                                            arrayHelpers.remove(index)
-                                          }
-                                          className={"m-btn p-m-btn"}
-                                        >
-                                          −
-                                        </Button>
-                                      ) : (
-                                        ""
-                                      )}
+                        <FieldArray
+                          name="emails"
+                          render={(arrayHelpers) => (
+                            <Box width={"100%"} mt={1}>
+                              {values.emails.map((email, index) => (
+                                <Box w={"full"} key={index}>
+                                  <Flex w={"full"}>
+                                    <Field
+                                      as={Input}
+                                      name={`emails.${index}.email`}
+                                      type="email"
+                                      variant="outline"
+                                      placeholder={"Email file to"}
+                                      value={email.email || ""} // Ensure a default value is set
+                                      p={3}
+                                    />
+                                    {values.emails && index > 0 ? (
                                       <Button
+                                        ml={1}
                                         type="button"
                                         variant={"rounded"}
                                         onClick={() =>
-                                          arrayHelpers.insert(index, "")
-                                        }
-                                        className={"p-btn p-m-btn"}
+                                          arrayHelpers.remove(index)
+                                        } // remove a creator from the list
+                                        className={"m-btn p-m-btn"}
                                       >
-                                        +
+                                        −
                                       </Button>
-                                    </Flex>
-                                    <ErrorMessage
-                                      name={`creators.${index}.creator`}
-                                      component="div"
-                                      className="invalid-feedback"
-                                    />
-                                  </Box>
-                                ))}
-                              </Box>
-                            )}
-                          />
-                        </FormControl>
-                        <FormControl
-                          isInvalid={!!errors.emails && touched.emails}
-                        >
-                          <Collapse
-                            style={{ height: "100%", width: "100%" }}
-                            in={formModeLink}
-                            unmountOnExit
-                          >
-                            <FieldArray
-                              name="emails"
-                              render={(arrayHelpers) => (
-                                <Box width={"100%"} mt={1}>
-                                  {values.emails.map((email, index) => (
-                                    <Box w={"full"} key={index}>
-                                      <Flex w={"full"}>
-                                        <Field
-                                          as={Input}
-                                          name={`emails.${index}.email`}
-                                          type="email"
-                                          variant="outline"
-                                          placeholder={"Email file to"}
-                                          value={email.email || ""} // Ensure a default value is set
-                                          p={3}
-                                        />
-                                        {values.emails && index > 0 ? (
-                                          <Button
-                                            ml={1}
-                                            type="button"
-                                            variant={"rounded"}
-                                            onClick={() =>
-                                              arrayHelpers.remove(index)
-                                            } // remove a creator from the list
-                                            className={"m-btn p-m-btn"}
-                                          >
-                                            −
-                                          </Button>
-                                        ) : (
-                                          ""
-                                        )}
-                                        <Button
-                                          type="button"
-                                          variant={"rounded"}
-                                          onClick={() =>
-                                            arrayHelpers.insert(index, "")
-                                          } // insert an empty string at a position
-                                          className={"p-btn p-m-btn"}
-                                        >
-                                          +
-                                        </Button>
-                                      </Flex>
-                                      <ErrorMessage
-                                        name={`emails.${index}.email`}
-                                        component="div"
-                                        className="invalid-feedback"
-                                      />
-                                    </Box>
-                                  ))}
+                                    ) : (
+                                      ""
+                                    )}
+                                    <Button
+                                      type="button"
+                                      variant={"rounded"}
+                                      onClick={() =>
+                                        arrayHelpers.insert(index, "")
+                                      } // insert an empty string at a position
+                                      className={"p-btn p-m-btn"}
+                                    >
+                                      +
+                                    </Button>
+                                  </Flex>
+                                  <ErrorMessage
+                                    name={`emails.${index}.email`}
+                                    component="div"
+                                    className="invalid-feedback"
+                                  />
                                 </Box>
-                              )}
-                            />
-                          </Collapse>
-                        </FormControl>
-                        <Box w={"full"}>
-                          <Button
-                            mt={2}
-                            type="submit"
-                            width="full"
-                            isDisabled={
-                              mode === CREATE_MODE &&
-                              cloudState !== "Preparing" &&
-                              isValid
-                                ? false
-                                : true
-                            }
-                          >
-                            {formModeLink ? "Transfer" : "Get Link"}
-                          </Button>
-                        </Box>
-                      </VStack>
-                      <Box mb={[4, 0]}>
-                        <HStack>
-                          <Field
-                            as={Switch}
-                            id="mode"
-                            name="mode"
-                            size="lg"
-                            variant="outline"
-                            isChecked={formModeLink}
-                            onChange={handleChange}
-                          />
-                          <Text fontWeight={"medium"}>
-                            {formModeLink
-                              ? "Get a link instead"
-                              : "Switch to email transfer"}
-                          </Text>
-                        </HStack>
-                      </Box>
-                    </Form>
-                  )}
-                </Formik>
-              </Fade>
-              <Fade
-                in={mode === SHARE_MODE}
-                style={{ height: "100%", width: "100%" }}
-                unmountOnExit
+                              ))}
+                            </Box>
+                          )}
+                        />
+                      </Collapse>
+                    </FormControl>
+                    <Box w={"full"}>
+                      <Button
+                        mt={2}
+                        type="submit"
+                        width="full"
+                        isDisabled={
+                          mode === CREATE_MODE &&
+                          cloudState !== "Preparing" &&
+                          isValid
+                            ? false
+                            : true
+                        }
+                      >
+                        {formModeLink ? "Transfer" : "Get Link"}
+                      </Button>
+                    </Box>
+                  </VStack>
+                  <Box mb={[4, 0]}>
+                    <HStack>
+                      <Field
+                        as={Switch}
+                        id="mode"
+                        name="mode"
+                        size="lg"
+                        variant="outline"
+                        isChecked={formModeLink}
+                        onChange={handleChange}
+                      />
+                      <Text fontWeight={"medium"}>
+                        {formModeLink
+                          ? "Get a link instead"
+                          : "Switch to email transfer"}
+                      </Text>
+                    </HStack>
+                  </Box>
+                </Form>
+              )}
+            </Formik>
+            {/* </Fade> */}
+            <Fade
+              in={mode === SHARE_MODE}
+              style={{ height: "100%", width: "100%" }}
+              unmountOnExit
+            >
+              <Box
+                className="center-box"
+                h={"100%"}
+                w={["100%", ""]}
+                justifyContent={["left", "center"]}
+                alignItems={["left", "center"]}
+                display={["", "flex"]}
+                pt={mode === SHARE_MODE ? [0, "8%"] : [0, 0]}
               >
-                <Box
-                  className="center-box"
-                  h={"100%"}
-                  w={["100%", ""]}
-                  justifyContent={["left", "center"]}
-                  alignItems={["left", "center"]}
-                  display={["", "flex"]}
-                  pt={mode === SHARE_MODE ? [0, "8%"] : [0, 0]}
-                >
-                  <CreateMintProgress
-                    peerState={peerState}
-                    cloudState={cloudState}
-                    chainState={chainState}
-                    mintState={mintState}
-                    progress={createMintProgress}
-                  />
-                </Box>
-              </Fade>
-            </Box>
+                <CreateMintProgress
+                  peerState={peerState}
+                  cloudState={cloudState}
+                  chainState={chainState}
+                  mintState={mintState}
+                  progress={createMintProgress}
+                />
+              </Box>
+            </Fade>
           </Box>
+        </Box>
+      </HStack>
+      <Collapse
+        in={mode === SHARE_MODE && mintState !== "Sealed"}
+        unmountOnExit
+      >
+        <HStack mt={6} w="full" align="center" spacing={2}>
+          <Icon as={WarningIcon} boxSize={10} mr={2} />
+          <Text
+            fontSize={"lg"}
+            zIndex={999}
+            textAlign={"left"}
+            noOfLines={3}
+            w={"full"}
+          >
+            Please keep this window open until your file is signed and sealed.
+          </Text>
         </HStack>
-        <Collapse
-          in={mode === SHARE_MODE && mintState !== "Sealed"}
-          unmountOnExit
-        >
-          <HStack mt={6} w="full" align="center" spacing={2}>
-            <Icon as={WarningIcon} boxSize={10} mr={2} />
-            <Text
-              fontSize={"lg"}
-              zIndex={999}
-              textAlign={"left"}
-              noOfLines={3}
-              w={"full"}
-            >
-              Please keep this window open until your file is signed and sealed.
-            </Text>
-          </HStack>
-        </Collapse>
-        <Collapse
-          in={mode === SHARE_MODE && mintState === "Sealed"}
-          unmountOnExit
-        >
-          <Stack mt={[8, 0]} w="full" spacing={2}>
-            <Heading
-              as={"h4"}
-              zIndex={999}
-              textAlign={"left"}
-              noOfLines={1}
-              w={"full"}
-            >
-              {"Ready to Share"}
-            </Heading>
-            <Share
-              url={shareUrl}
-              w="full"
-              maxW="3xl"
-              size={["md", "lg"]}
-              justify="center"
-            />
-          </Stack>
-        </Collapse>
-      </Panel>
-    </>
+      </Collapse>
+      <Collapse
+        in={mode === SHARE_MODE && mintState === "Sealed"}
+        unmountOnExit
+      >
+        <Stack mt={[8, 0]} w="full" spacing={2}>
+          <Heading
+            as={"h4"}
+            zIndex={999}
+            textAlign={"left"}
+            noOfLines={1}
+            w={"full"}
+          >
+            {"Ready to Share"}
+          </Heading>
+          <Share
+            url={shareUrl}
+            w="full"
+            maxW="3xl"
+            size={["md", "lg"]}
+            justify="center"
+          />
+        </Stack>
+      </Collapse>
+    </Panel>
   );
 };
 
