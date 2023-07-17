@@ -6,7 +6,6 @@ import {
   Center,
   Flex,
   Fade,
-  ScaleFade,
   Stack,
   HStack,
   VStack,
@@ -129,13 +128,13 @@ export const PayPanel = ({
   }, [clientSecret, publicAddress]);
 
   function formatDesc(desc) {
-    //console.log("PayPanel desc: ", desc);
     if (desc) {
-      const match = desc.match(/\+(\d+(\.\d+)?)/);
+      // Match any number, integer, or decimal in the desc string
+      const match = desc.match(/(\d+(\.\d+)?)/);
       if (match) {
         return parseFloat(match[1]);
       } else {
-        return console.error("No match found.");
+        return console.error("No number found.");
       }
     }
   }
@@ -187,21 +186,23 @@ export const PayPanel = ({
 
   return (
     <>
-      {!fullyLoaded ? (
-        <ScaleFade in={!fullyLoaded} initialScale={0}>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            height="100vh"
-          >
-            <Center h="100%">
-              <LogoLoader />
-            </Center>
-          </Box>
-        </ScaleFade>
-      ) : (
-        <Panel className="glass" overflow="visible">
+      <Panel className="glass" overflow="visible">
+        {!fullyLoaded ? (
+          <Fade in={!fullyLoaded}>
+            <Box
+              minH={["28rem", "26rem", "25rem"]}
+              pos={"relative"}
+              inset={0}
+              overflow={"hidden"}
+              display={"grid"}
+              place-items={"center"}
+            >
+              <Center h="100%">
+                <LogoLoader />
+              </Center>
+            </Box>
+          </Fade>
+        ) : (
           <HStack
             w={"100%"}
             h={"100%"}
@@ -461,79 +462,66 @@ export const PayPanel = ({
                       justifyContent={"center"}
                       w={"100%"}
                       h={["100%", "75%"]}
-                      mt={[6, 0, 0, 0, 0]}
-                      mb={[4, 0, 0, 0, 0]}
+                      mt={[4, "-5px", "-5px", "-5px"]}
+                      mb={[2, 0, 0, 0]}
                     >
-                      <Box w={"100%"} h={"auto"} pr={["13%", "14%"]}>
-                        <Heading
-                          as={"h1"}
-                          className="fancy"
-                          fontSize={[
-                            "8xl !important",
-                            "8xl !important",
-                            "7xl !important",
-                            "8xl !important",
-                            "8xl !important",
-                          ]}
-                          marginBottom={"0 !important"}
-                          textAlign={"center !important"}
-                          fontWeight={"light !important"}
-                          m={"0 !important"}
-                          noOfLines={1}
-                        >
-                          {descRender === undefined ? "" : `+${descRender}`}
-                        </Heading>
+                      <Box w={"100%"} h={"auto"} pr={["3rem", "15%"]}>
+                        {descRender === undefined ? (
+                          ""
+                        ) : (
+                          <Box display={"flex"} justifyContent={"center"}>
+                            <Text
+                              fontWeight={"lighter"}
+                              fontSize={"5.4em"}
+                              h={"100%"}
+                            >
+                              +
+                            </Text>
+                            <Heading
+                              as={"h1"}
+                              className="fancy"
+                              fontSize={[
+                                "8xl !important",
+                                "8xl !important",
+                                "8xl !important",
+                                "8xl !important",
+                              ]}
+                              marginBottom={"0 !important"}
+                              textAlign={"center !important"}
+                              fontWeight={"light !important"}
+                              m={"0 !important"}
+                              noOfLines={1}
+                            >
+                              {descRender}
+                            </Heading>
+                          </Box>
+                        )}
                         <Text
                           fontWeight={"medium"}
                           position={"relative"}
-                          top={[
-                            "-1rem",
-                            "-1.2rem",
-                            "-0.75rem",
-                            "-1.2rem",
-                            "-1.2rem",
-                          ]}
+                          top={["-0.9rem", "-1.2rem", "-1.2rem", "-1.2rem"]}
                           align={"center"}
-                          fontSize={["2xl", "xl", "md", "xl", "xl"]}
+                          fontSize={["2xl", "xl", "xl", "xl"]}
                           noOfLines={1}
                         >
-                          {"Ambr File Shares"}
+                          {"File Transfers"}
                         </Text>
                         <HStack
                           display={"flex"}
                           justifyContent={"center"}
                           alignItems={"flex-start"}
                           position={"relative"}
-                          top={[
-                            "-0.6rem",
-                            "-1rem",
-                            "-0.6rem",
-                            "-1rem",
-                            "-1rem",
-                          ]}
-                          left={["2rem", "0rem", "0rem", "0rem", "0rem"]}
+                          top={["-0.6rem", "-1rem", "-1rem", "-1rem"]}
                         >
                           <Text
-                            pt={[
-                              "0.4rem",
-                              "0.4rem",
-                              "0.3rem",
-                              "0.4rem",
-                              "0.4rem",
-                            ]}
-                            pr={[
-                              "0.2rem",
-                              "0.2rem",
-                              "0rem",
-                              "0.2rem",
-                              "0.2rem",
-                            ]}
-                            fontSize={["sm", "sm", "xs", "sm", "sm"]}
+                            pt={["0.4rem", "0.4rem", "0.4rem", "0.4rem"]}
+                            pr={["0.2rem", "0.2rem", "0.2rem", "0.2rem"]}
+                            fontSize={["sm", "sm", "sm", "sm"]}
                           >
                             for only
                           </Text>
                           <Text
-                            fontSize={["3xl", "3xl", "2xl", "3xl", "3xl"]}
+                            fontSize={["3xl", "3xl", "3xl", "3xl"]}
                             alignItems={"flex-start"}
                           >
                             {!costRender ? "" : costRender}
@@ -544,31 +532,26 @@ export const PayPanel = ({
                           alignItems="center"
                           justifyContent="center"
                           w={["100%", ""]}
-                          h={["60%", "100%"]}
+                          h={["18rem", "100%"]}
                           pos={"absolute"}
                           top={0}
                           zIndex={-998}
-                          mt={[0, 8, 8, 5, 5]}
+                          mt={[0, 8, 5, 5]}
                           overflow={"visible !important"}
                         >
                           <Box
-                            position="relative"
-                            w={["100%", "111%"]}
-                            h={["100%", "111%"]}
+                            overflow={"visible"}
+                            width={"24rem"}
+                            height={"24rem"}
+                            pos={"absolute"}
                           >
                             <Img
-                              position={"relative"}
                               w={["100%", "100%"]}
-                              h={["100%", "100%"]}
-                              minW={["100%", "none"]}
-                              minH={["18rem", "none"]}
-                              maxH={["22.25rem", "none"]}
-                              src={"images/amber-7.png"}
-                              objectFit={[
-                                "cover !important",
-                                "contain !important",
-                              ]}
-                              backgroundSize={"100%"}
+                              h={"100%"}
+                              ml={[0, 0]}
+                              objectFit={"none !important"}
+                              src={`/images/amber-7.png`}
+                              position={"relative"}
                               alt={`Ambr Stone`}
                               className="file-stone"
                             />
@@ -614,8 +597,8 @@ export const PayPanel = ({
                 </>
               )}
           </HStack>
-        </Panel>
-      )}
+        )}
+      </Panel>
     </>
   );
 };

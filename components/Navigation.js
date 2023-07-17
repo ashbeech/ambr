@@ -225,7 +225,7 @@ export default function Navigation({
                               handlePageChange("");
                             }}
                           >
-                            Send a File
+                            Transfer a File
                           </Link>
                         )}
                         {currentPage !== "files" && (

@@ -10,6 +10,7 @@ import {
   VStack,
   Img,
   Link,
+  Skeleton,
   Center,
 } from "@chakra-ui/react";
 import LogoLoader from "../icons/LogoLoader";
@@ -33,10 +34,7 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import {
-  tagline,
-  //environment
-} from "../../config.js";
+import { tagline, environment } from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -144,17 +142,15 @@ export function ControlPanel() {
     // Check existence of Magic, if not, don't load the page
     if (magic === null) return;
     if (magic !== null && isLoggedIn && publicAddress === "") return;
-    /*     if (
+    if (magic !== null && !isLoggedIn && publicAddress === "")
+      setLoading(false);
+
+    if (
       magic !== null &&
       isLoggedIn &&
       publicAddress &&
       fileTransfersRemaining === -999
-    )
-       */
-    if (magic !== null && !isLoggedIn && publicAddress === "")
-      setLoading(false);
-
-    if (magic !== null && isLoggedIn && fileTransfersRemaining === -999) {
+    ) {
       getUser(publicAddress)
         .then((user) => initLoader(user))
         .catch((error) => console.error(error));
@@ -174,7 +170,8 @@ export function ControlPanel() {
     if (
       (key && mode !== _mode) ||
       (mode === CREATE_MODE && _mode === null) ||
-      (mode === SHARE_MODE && _mode === CREATE_MODE)
+      (mode === SHARE_MODE && _mode === CREATE_MODE) ||
+      (pathname === "/" && mode === null && _mode === SHARE_MODE)
     )
       setMode(mode);
     // TODO: Decide if this is OK to un-comment and use to update fileTransfersRemaining
@@ -184,23 +181,9 @@ export function ControlPanel() {
       // Designed to udate how many file shares a user has in the UI
       updateUser(publicAddress);
     }
-    //console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
-  }, [
-    key,
-    mode,
-    _mode,
-    pathname,
-    roomId,
-    publicAddress,
-    //fileTransfersRemaining,
-  ]);
+  }, [key, mode, _mode, pathname, roomId, publicAddress]);
 
   useEffect(() => {
-    /*     if (publicAddress && fileTransfersRemaining) {
-      // Designed to udate how many file shares a user has in the UI
-      updateUser(publicAddress);
-    } */
-
     if (
       fileTransfersRemaining <= 0 &&
       pathname === "/" &&
@@ -433,15 +416,7 @@ export function ControlPanel() {
       _path !== "/top-up" &&
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
-      _mode !== VERIFY_MODE; /* ||
-      (fileTransfersRemaining !== -999 &&
-        fileTransfersRemaining >= 1 &&
-        _path !== "/files" &&
-        _path !== "/top-up" &&
-        _isAuthenticated &&
-        _mode !== JOIN_MODE &&
-        _mode !== VERIFY_MODE) */
-    _mode === SHARE_MODE;
+      _mode !== VERIFY_MODE;
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
         _mode === JOIN_MODE &&
@@ -467,6 +442,13 @@ export function ControlPanel() {
     const isExpired =
       (roomMeta !== null && roomMeta.expiresAtTimestampMs < Date.now()) ||
       (roomMeta !== null && roomMeta.remainingDownloads < 1);
+    const allFailedIntermission =
+      !showPanel &&
+      !showDownloadPanel &&
+      !showFilePanel &&
+      !showSubFilePanel1 &&
+      !showTopup &&
+      !showHomeStone;
 
     const idHash = makeHash(publicAddress);
     const isUserMatch =
@@ -475,17 +457,27 @@ export function ControlPanel() {
       roomMeta !== null &&
       roomMeta.idHash === idHash;
 
-    // NOTE: For dev use
+    // NOTE: For dev use only
     /*     const dev_readout =
       environment === "development"
-        ? `ID: ${_roomId} | KEY: ${_key} | showPanel: ${showPanel} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${_mode} | VerifyState: ${verifyState}`
+        ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
         : ""; */
 
     return (
       <>
-        {/* <Text>{dev_readout}</Text> */}
-        {loading && (
-          <Fade in={loading}>
+        {/* <-- DEV USE START --> */}
+        {/*         <Box
+          pos={"relative"}
+          top={0}
+          display={"flex"}
+          alignItems={"center"}
+          w={"100%"}
+        >
+          <Text>{dev_readout}</Text>
+        </Box> */}
+        {/* <-- DEV USE END --> */}
+        {(loading || allFailedIntermission) && (
+          <Fade in={loading || allFailedIntermission}>
             <Box
               h={"100dvh"}
               minH={"100%"}
@@ -942,10 +934,10 @@ export function ControlPanel() {
                                   )}
                                   <Text fontSize={"md"} noOfLines={12}>
                                     Proving the origin and authenticity of your
-                                    work is made easy with Ambr, especially
-                                    valuable with the rise of age of artificial
-                                    intelligence (A.I.) and critical when
-                                    sharing work with clients.
+                                    work is made easy with Ambr.
+                                    <br />
+                                    Feel confident sharing valuble ideas with
+                                    clients.
                                   </Text>
                                 </>
                               )}
@@ -984,7 +976,7 @@ export function ControlPanel() {
                 </Box>
                 <Box
                   w={"100%"}
-                  h={"13%"}
+                  h={["auto", "13%"]}
                   maxH={"13%"}
                   pl={8}
                   pr={8}

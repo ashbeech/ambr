@@ -17,6 +17,7 @@ import {
   Heading,
   Icon,
   Fade,
+  Skeleton,
   Img,
 } from "@chakra-ui/react";
 import { WarningIcon } from "./icons/WarningIcon";
@@ -351,141 +352,88 @@ export const SendPanel = ({
           zIndex={999}
         >
           <Box h={"100%"}>
-            {/*             <Fade
+            <Fade
               in={mode !== SHARE_MODE}
               style={{ height: "100%", width: "100%" }}
               unmountOnExit
-            > */}
-            <Formik
-              validateOnMount={true}
-              validationSchema={validationSchema}
-              enableReinitialize={true}
-              initialValues={initialFormValues}
-              onSubmit={(values) => {
-                handleSubmit(values);
-              }}
             >
-              {({ errors, touched, values, isValid }) => (
-                <Form>
-                  <VStack margin={"0 0 1.5em 0"} spacing={0} align="flex-start">
-                    <Field
-                      as={Input}
-                      id="client"
-                      name="client"
-                      type="text"
-                      variant="outline"
-                      placeholder={"Client's name"}
-                      p={3}
-                    />
-                    <FormControl
-                      isInvalid={!!errors.concept && touched.concept}
+              <Formik
+                validateOnMount={true}
+                validationSchema={validationSchema}
+                enableReinitialize={true}
+                initialValues={initialFormValues}
+                onSubmit={(values) => {
+                  handleSubmit(values);
+                }}
+              >
+                {({ errors, touched, values, isValid }) => (
+                  <Form>
+                    <VStack
+                      margin={"0 0 1.5em 0"}
+                      spacing={0}
+                      align="flex-start"
                     >
                       <Field
-                        as={Textarea}
-                        rows="4"
-                        name="concept"
+                        as={Input}
+                        id="client"
+                        name="client"
                         type="text"
                         variant="outline"
-                        placeholder={
-                          "Short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
-                        }
-                        mt={1}
+                        placeholder={"Client's name"}
                         p={3}
                       />
-                      <ErrorMessage
-                        name="concept"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </FormControl>
-                    <FormControl
-                    //isInvalid={!!errors.creators && touched.creators}
-                    >
-                      <FieldArray
-                        name="creators"
-                        render={(arrayHelpers) => (
-                          <Box mt={1}>
-                            {values.creators.map((creator, index) => (
-                              <Box key={index}>
-                                <Flex>
-                                  <Field
-                                    as={Input}
-                                    name={`creators.${index}.creator`}
-                                    type="creator"
-                                    variant="outline"
-                                    placeholder={
-                                      index <= 0 && values.creators.length > 1
-                                        ? "Co-creator's name"
-                                        : "Creator's name"
-                                    }
-                                    p={3}
-                                    value={creator.creator || ""} // Ensure a default value is set
-                                  />
-                                  {values.creators && index > 0 ? (
-                                    <Button
-                                      ml={4}
-                                      type="button"
-                                      variant={"rounded"}
-                                      onClick={() => arrayHelpers.remove(index)}
-                                      className={"m-btn p-m-btn"}
-                                    >
-                                      −
-                                    </Button>
-                                  ) : (
-                                    ""
-                                  )}
-                                  <Button
-                                    type="button"
-                                    variant={"rounded"}
-                                    onClick={() =>
-                                      arrayHelpers.insert(index, "")
-                                    }
-                                    className={"p-btn p-m-btn"}
-                                  >
-                                    +
-                                  </Button>
-                                </Flex>
-                                <ErrorMessage
-                                  name={`creators.${index}.creator`}
-                                  component="div"
-                                  className="invalid-feedback"
-                                />
-                              </Box>
-                            ))}
-                          </Box>
-                        )}
-                      />
-                    </FormControl>
-                    <FormControl isInvalid={!!errors.emails && touched.emails}>
-                      <Collapse
-                        style={{ height: "100%", width: "100%" }}
-                        in={formModeLink}
-                        unmountOnExit
+                      <FormControl
+                        isInvalid={!!errors.concept && touched.concept}
+                      >
+                        <Field
+                          as={Textarea}
+                          rows="4"
+                          name="concept"
+                          type="text"
+                          variant="outline"
+                          placeholder={
+                            "Short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
+                          }
+                          mt={1}
+                          p={3}
+                        />
+                        <ErrorMessage
+                          name="concept"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </FormControl>
+                      <FormControl
+                      //isInvalid={!!errors.creators && touched.creators}
                       >
                         <FieldArray
-                          name="emails"
+                          name="creators"
                           render={(arrayHelpers) => (
-                            <Box width={"100%"} mt={1}>
-                              {values.emails.map((email, index) => (
-                                <Box w={"full"} key={index}>
-                                  <Flex w={"full"}>
+                            <Box mt={1}>
+                              {values.creators.map((creator, index) => (
+                                <Box key={index}>
+                                  <Flex>
                                     <Field
                                       as={Input}
-                                      name={`emails.${index}.email`}
-                                      type="email"
+                                      name={`creators.${index}.creator`}
+                                      type="creator"
                                       variant="outline"
-                                      placeholder={"Email file to"}
-                                      value={email.email || ""} // Ensure a default value is set
+                                      placeholder={
+                                        index <= 0 && values.creators.length > 1
+                                          ? "Co-creator's name"
+                                          : "Creator's name"
+                                      }
                                       p={3}
+                                      value={creator.creator || ""} // Ensure a default value is set
                                     />
-                                    {values.emails && index > 0 ? (
+                                    {values.creators && index > 0 ? (
                                       <Button
-                                        ml={1}
+                                        ml={4}
                                         type="button"
                                         variant={"rounded"}
                                         onClick={() =>
                                           arrayHelpers.remove(index)
-                                        } // remove a creator from the list
+                                        }
                                         className={"m-btn p-m-btn"}
                                       >
                                         −
@@ -498,14 +446,14 @@ export const SendPanel = ({
                                       variant={"rounded"}
                                       onClick={() =>
                                         arrayHelpers.insert(index, "")
-                                      } // insert an empty string at a position
+                                      }
                                       className={"p-btn p-m-btn"}
                                     >
                                       +
                                     </Button>
                                   </Flex>
                                   <ErrorMessage
-                                    name={`emails.${index}.email`}
+                                    name={`creators.${index}.creator`}
                                     component="div"
                                     className="invalid-feedback"
                                   />
@@ -514,47 +462,108 @@ export const SendPanel = ({
                             </Box>
                           )}
                         />
-                      </Collapse>
-                    </FormControl>
-                    <Box w={"full"}>
-                      <Button
-                        mt={2}
-                        type="submit"
-                        width="full"
-                        isDisabled={
-                          mode === CREATE_MODE &&
-                          cloudState !== "Preparing" &&
-                          isValid
-                            ? false
-                            : true
-                        }
+                      </FormControl>
+                      <FormControl
+                        isInvalid={!!errors.emails && touched.emails}
                       >
-                        {formModeLink ? "Transfer" : "Get Link"}
-                      </Button>
+                        <Collapse
+                          style={{ height: "100%", width: "100%" }}
+                          in={formModeLink}
+                          unmountOnExit
+                        >
+                          <FieldArray
+                            name="emails"
+                            render={(arrayHelpers) => (
+                              <Box width={"100%"} mt={1}>
+                                {values.emails.map((email, index) => (
+                                  <Box w={"full"} key={index}>
+                                    <Flex w={"full"}>
+                                      <Field
+                                        as={Input}
+                                        name={`emails.${index}.email`}
+                                        type="email"
+                                        variant="outline"
+                                        placeholder={"Email file to"}
+                                        value={email.email || ""} // Ensure a default value is set
+                                        p={3}
+                                      />
+                                      {values.emails && index > 0 ? (
+                                        <Button
+                                          ml={1}
+                                          type="button"
+                                          variant={"rounded"}
+                                          onClick={() =>
+                                            arrayHelpers.remove(index)
+                                          } // remove a creator from the list
+                                          className={"m-btn p-m-btn"}
+                                        >
+                                          −
+                                        </Button>
+                                      ) : (
+                                        ""
+                                      )}
+                                      <Button
+                                        type="button"
+                                        variant={"rounded"}
+                                        onClick={() =>
+                                          arrayHelpers.insert(index, "")
+                                        } // insert an empty string at a position
+                                        className={"p-btn p-m-btn"}
+                                      >
+                                        +
+                                      </Button>
+                                    </Flex>
+                                    <ErrorMessage
+                                      name={`emails.${index}.email`}
+                                      component="div"
+                                      className="invalid-feedback"
+                                    />
+                                  </Box>
+                                ))}
+                              </Box>
+                            )}
+                          />
+                        </Collapse>
+                      </FormControl>
+                      <Box w={"full"}>
+                        <Button
+                          mt={2}
+                          type="submit"
+                          width="full"
+                          isDisabled={
+                            mode === CREATE_MODE &&
+                            cloudState !== "Preparing" &&
+                            isValid
+                              ? false
+                              : true
+                          }
+                        >
+                          {formModeLink ? "Transfer" : "Get Link"}
+                        </Button>
+                      </Box>
+                    </VStack>
+                    <Box mb={[4, 0]}>
+                      <HStack>
+                        <Field
+                          as={Switch}
+                          id="mode"
+                          name="mode"
+                          size="lg"
+                          variant="outline"
+                          isChecked={formModeLink}
+                          onChange={handleChange}
+                        />
+                        <Text fontWeight={"medium"}>
+                          {formModeLink
+                            ? "Get a link instead"
+                            : "Switch to email transfer"}
+                        </Text>
+                      </HStack>
                     </Box>
-                  </VStack>
-                  <Box mb={[4, 0]}>
-                    <HStack>
-                      <Field
-                        as={Switch}
-                        id="mode"
-                        name="mode"
-                        size="lg"
-                        variant="outline"
-                        isChecked={formModeLink}
-                        onChange={handleChange}
-                      />
-                      <Text fontWeight={"medium"}>
-                        {formModeLink
-                          ? "Get a link instead"
-                          : "Switch to email transfer"}
-                      </Text>
-                    </HStack>
-                  </Box>
-                </Form>
-              )}
-            </Formik>
-            {/* </Fade> */}
+                  </Form>
+                )}
+              </Formik>
+            </Fade>
             <Fade
               in={mode === SHARE_MODE}
               style={{ height: "100%", width: "100%" }}
