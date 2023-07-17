@@ -140,9 +140,9 @@ export default async function handler(req, res) {
   
       <div class="container-footer" style="background-color: #1e1e1e; text-align: center; padding: 1.5em 0 3em 0; color: #fff; font-size: 12px; font-weight: 400;">
         <div class="footer-links" style="margin-top: 1em; padding: 0 1em; display: table; text-align: center; width: 100%;">
-          <a class="footer-link" href="https://ambr.link/terms" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: right;  width: 46%;">Terms</a>
-          <a class="footer-link" href="https://ambr.link/security" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: center;  width: 8%;">Security</a>
-          <a class="footer-link" href="https://ambr.link/privacy" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: left;  width: 46%;">Privacy Policy</a>
+          <a class="footer-link" href="https://ambr.link/terms" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: right;  width: 45%;">Terms</a>
+          <a class="footer-link" href="https://ambr.link/security" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: center;  width: 10%;">Security</a>
+          <a class="footer-link" href="https://ambr.link/privacy" style="color: #fff; text-decoration: none; padding: 0 1em; display: table-cell; text-align: left;  width: 45%;">Privacy Policy</a>
         </div>
       </div>
     </body>
