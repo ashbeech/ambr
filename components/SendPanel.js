@@ -24,7 +24,7 @@ import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //import { maxRoomCloudSizeGb, maxRoomSizeGb } from "../config.js";
 //import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
-import { CREATE_MODE, SHARE_MODE } from "../lib/Send.js";
+import { CREATE_MODE, JOIN_MODE, SHARE_MODE } from "../lib/Send.js";
 import { FilePicker } from "./FilePicker.js";
 import { Arrow } from "./Arrow.js";
 import { Panel } from "./Panel.js";
@@ -127,6 +127,7 @@ export const SendPanel = ({
   });
 
   useEffect(() => {
+    if (mode === JOIN_MODE) return;
     if (
       (mode === CREATE_MODE && mintState !== "Sealed") ||
       (mode === SHARE_MODE && mintState !== "Sealed")

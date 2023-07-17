@@ -82,7 +82,7 @@ export const Check = forwardRef(
               fontSize={descriptionFontSize}
               maxW={64}
             >
-              <Text numberOfLines={1}>{description}</Text>
+              {/* <Text noOfLines={1}>{description}</Text> */}
             </Box>
           </Stack>
         </SlideFade>

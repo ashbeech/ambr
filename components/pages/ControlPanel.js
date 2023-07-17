@@ -168,10 +168,17 @@ export function ControlPanel() {
   }, [_key, setKey]);
 
   useEffect(() => {
-    if (mode !== _mode) setMode(mode);
+    console.log("MODE: ", mode);
+    console.log("_MODE: ", _mode);
     if (pathname) setPath(pathname);
     if (roomId) roomId ? setRoomId(roomId) : setRoomId(null);
     key ? setKey(globalThis.location?.hash.slice(1)) : setKey(null);
+    if (
+      (key && mode !== _mode) ||
+      (mode === CREATE_MODE && _mode === null) ||
+      (mode === SHARE_MODE && _mode === CREATE_MODE)
+    )
+      setMode(mode);
     // TODO: Decide if this is OK to un-comment and use to update fileTransfersRemaining
     // Might be good to do a console log of something to see how often this getUser will be called.
 
