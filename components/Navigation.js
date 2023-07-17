@@ -150,7 +150,7 @@ export default function Navigation({
                                 handlePageChange("");
                               }}
                             >
-                              Share Your Work
+                              Transfer a File
                             </MenuItem>
                           )}
                           {currentPage !== "files" && (

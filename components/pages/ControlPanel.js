@@ -416,6 +416,7 @@ export function ControlPanel() {
       _path !== "/top-up" &&
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
+      mode !== JOIN_MODE &&
       _mode !== VERIFY_MODE;
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
@@ -458,15 +459,15 @@ export function ControlPanel() {
       roomMeta.idHash === idHash;
 
     // NOTE: For dev use only
-    /*     const dev_readout =
+    const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
-        : ""; */
+        : "";
 
     return (
       <>
         {/* <-- DEV USE START --> */}
-        {/*         <Box
+        <Box
           pos={"relative"}
           top={0}
           display={"flex"}
@@ -474,7 +475,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box> */}
+        </Box>
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>
@@ -738,8 +739,8 @@ export function ControlPanel() {
                                     </ListItem>
                                     <ListItem>
                                       <Text noOfLines={2}>
-                                        Keep the file&apos;s recorded history
-                                        private or make it publically visible.
+                                        Keep the file&apos;s certificate private
+                                        or make it publically visible.
                                       </Text>
                                     </ListItem>
                                     <ListItem>
@@ -771,8 +772,8 @@ export function ControlPanel() {
                                         </ListItem>
                                         <ListItem>
                                           <Text noOfLines={5}>
-                                            Set the file&apos;s recorded history
-                                            to be private or made publically
+                                            Set the file&apos;s certificate to
+                                            be private or made publically
                                             visible.
                                           </Text>
                                         </ListItem>
