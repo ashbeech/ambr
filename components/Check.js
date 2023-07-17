@@ -1,5 +1,6 @@
 import {
   chakra,
+  Text,
   Box,
   Stack,
   SlideFade,
@@ -64,14 +65,10 @@ export const Check = forwardRef(
           size={checkmarkSize}
           color={`${colorScheme}.500`}
         />
-
         <SlideFade in offsetX={-30} offsetY={0} delay={0.1}>
           <Stack spacing={1}>
             <Heading
               as={"h4"}
-              //letterSpacing={"normal !important"}
-              //fontSize={"1.65em !important"}
-              //fontWeight={"semibold !important"}
               fontWeight={
                 disabled ? "semibold !important" : "medium !important"
               }
@@ -80,13 +77,13 @@ export const Check = forwardRef(
             >
               {title}
             </Heading>
-            {/*             <Box
+            <Box
               color={disabled ? "black.500" : "gray.500"}
               fontSize={descriptionFontSize}
               maxW={64}
             >
-              {description}
-            </Box> */}
+              <Text numberOfLines={1}>{description}</Text>
+            </Box>
           </Stack>
         </SlideFade>
       </Stack>

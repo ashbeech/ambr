@@ -15,9 +15,9 @@ export default function SmallWithSocial() {
     >
       <Container pt={6} pb={6} pl={0} pr={0} w={"100%"} maxW={"100%"}>
         <Center mr={0}>
-          <Text fontSize="sm" as="i" color="subtle">
-            &copy; {new Date().getFullYear()}{" "}
-            <i>This is Bullish Ltd. All rights reserved.</i>.
+          <Text fontSize="sm" color="subtle">
+            &copy; {new Date().getFullYear()} This is Bullish Ltd. All rights
+            reserved.
           </Text>
         </Center>
       </Container>

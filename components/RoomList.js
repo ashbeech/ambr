@@ -60,16 +60,19 @@ export const RoomList = ({ onChange = () => {} }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const updateRooms = async (rooms) => {
-    try {
-      for (const room of rooms) {
-        await addOrReplaceRoomServer(room);
+  const updateRooms = useCallback(
+    async (rooms) => {
+      try {
+        for (const room of rooms) {
+          await addOrReplaceRoomServer(room);
+        }
+        setRooms(await getRoomsServer(publicAddress));
+      } catch (err) {
+        if (shouldReportError(err)) throw err;
       }
-      setRooms(await getRoomsServer(publicAddress));
-    } catch (err) {
-      if (shouldReportError(err)) throw err;
-    }
-  };
+    },
+    [publicAddress]
+  );
 
   const removeRooms = useCallback(
     async (rooms) => {
@@ -172,7 +175,6 @@ export const RoomList = ({ onChange = () => {} }) => {
         // Initialize rooms
         const initialRooms = await getRoomsServer(publicAddress);
         setRooms(initialRooms);
-
         // Trigger checkExpiration the first time
         await checkExpiration(initialRooms);
 
@@ -187,7 +189,7 @@ export const RoomList = ({ onChange = () => {} }) => {
         if (shouldReportError(err)) throw err;
       }
     })();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [publicAddress, updateRooms]);
 
   useEffect(() => {
     if (!Array.isArray(rooms)) {
@@ -202,10 +204,10 @@ export const RoomList = ({ onChange = () => {} }) => {
     }
   }, [onChange, removeRooms, rooms]);
 
-  const handleClose = async (room) => {
+  /*   const handleClose = async (room) => {
     await removeRooms([room]);
     return room.roomId;
-  };
+  }; */
 
   const roomsLoaded = !loading && rooms !== null && rooms.length !== 0;
 
@@ -274,7 +276,7 @@ export const RoomList = ({ onChange = () => {} }) => {
                         key={room.roomId}
                         room={room}
                         router={router}
-                        onClose={handleClose}
+                        //onClose={handleClose}
                       />
                     ))}
                 </Stack>
@@ -332,7 +334,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||
     (room !== null && room.remainingDownloads < 1);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     // Fetch IPFS data and update the loading state
     const fetchIPFSData = async () => {
       try {
@@ -350,7 +352,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
     };
 
     fetchIPFSData(); // Fetch IPFS data when the component mounts
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps */
 
   const handleClickCopy = () => {
     logEvent("share", { type: "copy" });

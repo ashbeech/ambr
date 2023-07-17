@@ -188,7 +188,7 @@ export const PayPanel = ({
   return (
     <>
       {!fullyLoaded ? (
-        <ScaleFade in={!fullyLoaded} initialScale={0} unmountOnExit>
+        <ScaleFade in={!fullyLoaded} initialScale={0}>
           <Box
             display="flex"
             alignItems="center"

@@ -753,8 +753,8 @@ export default function TermsPanel() {
               pt={8}
             >
               <Text className={"copyright"} fontWeight={"lighter"}>
-                &copy; {new Date().getFullYear()}{" "}
-                <i>This is Bullish Ltd. All rights reserved.</i>
+                &copy; {new Date().getFullYear()} This is Bullish Ltd. All
+                rights reserved.
               </Text>
             </Box>
           </VStack>

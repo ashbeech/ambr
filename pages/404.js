@@ -42,7 +42,7 @@ export default function ErrorPanel() {
     return (
       <>
         {loading && (
-          <ScaleFade in={loading} initialScale={0} unmountOnExit>
+          <ScaleFade in={loading} initialScale={0}>
             <Box
               display="flex"
               alignItems="center"

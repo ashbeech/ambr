@@ -511,8 +511,8 @@ export function ControlPanel() {
                   fontSize={"sm"}
                   fontWeight={"lighter"}
                 >
-                  &copy; {new Date().getFullYear()}{" "}
-                  <i>This is Bullish Ltd. All rights reserved.</i>
+                  &copy; {new Date().getFullYear()} This is Bullish Ltd. All
+                  rights reserved.
                 </Text>
               </Box>
             </Box>
@@ -816,7 +816,9 @@ export function ControlPanel() {
                     </Fade>
                   )}
                   {showFilePanel && (
-                    <Fade in={showSubFilePanel1}>
+                    <>
+                      {/*                     <Fade in={showSubFilePanel1}>
+                       */}{" "}
                       <Box
                         w={"100%"}
                         h={"100%"}
@@ -862,10 +864,11 @@ export function ControlPanel() {
                           </Box>
                         </SafeContainer>
                       </Box>
-                    </Fade>
+                      {/* </Fade> */}
+                    </>
                   )}
                   {showTopup && (
-                    <Fade in={showTopup} unmountOnExit>
+                    <Fade in={showTopup}>
                       <Box
                         w={"100%"}
                         h={"100%"}
@@ -982,13 +985,16 @@ export function ControlPanel() {
                 </Box>
                 <Box
                   w={"100%"}
-                  maxH={"25%"}
+                  h={"13%"}
+                  maxH={"13%"}
                   pl={8}
                   pr={8}
                   pb={showHomeStone ? [4, 0] : [8, 0]}
                   position={
-                    showHomeStone ? "absolute" : ["relative", "absolute"]
+                    showHomeStone ? "absolute" : ["relative", "relative"]
                   }
+                  display={["", "flex"]}
+                  alignItems={["", "end"]}
                   bottom={[0, 4]}
                   textAlign={"center"}
                   justifyContent={"center"}
@@ -1034,8 +1040,8 @@ export function ControlPanel() {
                     fontSize={"sm"}
                     fontWeight={"lighter"}
                   >
-                    &copy; {new Date().getFullYear()}{" "}
-                    <i>This is Bullish Ltd. All rights reserved.</i>
+                    &copy; {new Date().getFullYear()} This is Bullish Ltd. All
+                    rights reserved.
                   </Text>
                 </Box>
               </Box>

@@ -82,7 +82,6 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
           height: "100%",
           minHeight: "100%",
         }}
-        unmountOnExit
       >
         <Box display={isLoading ? "flex" : "none"}>
           <Box

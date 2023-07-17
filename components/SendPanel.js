@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Box,
   Collapse,
@@ -56,13 +56,16 @@ export const SendPanel = ({
   const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
-  const [initialFormValues, setInitialFormValues] = useState({
-    client: "",
-    concept: "",
-    creators: [""],
-    emails: [""],
-    mode: formModeLink,
-  });
+  const initialFormValues = useMemo(
+    () => ({
+      client: "",
+      concept: "",
+      creators: [""],
+      emails: [""],
+      mode: formModeLink,
+    }),
+    [formModeLink]
+  );
 
   const handleChange = async (event) => {
     setIsLoading(true);

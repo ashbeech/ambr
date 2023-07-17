@@ -87,9 +87,10 @@ export default function Navigation({
                   <Link
                     pos={"relative"}
                     left={"-6px"}
+                    cursor={currentPage === "" ? "auto" : "pointer"}
                     className={disabled ? "disabled" : ""}
                     onClick={() => {
-                      currentPage === "" ? () => {} : handlePageChange("");
+                      currentPage === "" ? "() => {}" : handlePageChange("");
                     }}
                     disabled={disabled}
                   >
