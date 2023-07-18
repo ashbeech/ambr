@@ -28,6 +28,7 @@ export default function securityPanel() {
             as={"h1"}
             className="fancy"
             lineHeight={["1.48rem"]}
+            fontWeight={"semibold !important"}
             letterSpacing={["widest !important", "wide !important"]}
           >
             Don&apos;t Trust.{" "}

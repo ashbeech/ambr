@@ -26,6 +26,7 @@ export default function TermsPanel() {
             pb={[1, 6]}
             as={"h1"}
             className="fancy"
+            fontWeight={"semibold !important"}
             letterSpacing={["normal !important", "wider !important"]}
           >
             No jargon introduction
