@@ -17,7 +17,6 @@ import {
   Heading,
   Icon,
   Fade,
-  Skeleton,
   Img,
 } from "@chakra-ui/react";
 import { WarningIcon } from "./icons/WarningIcon";
@@ -57,6 +56,7 @@ export const SendPanel = ({
   const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
+  const [shouldReset, shouldResetBoolean] = useState(false);
   const initialFormValues = useMemo(
     () => ({
       client: "",
@@ -89,15 +89,6 @@ export const SendPanel = ({
     cloudState === "Uploading";
 
   const handleSubmit = async (_values) => {
-    //setLoading(true);
-
-    // Pass in the key from global this
-    //console.log("globalThis", globalThis);
-    //console.log("this", this);
-    //console.log("roomMeta", roomMeta);
-
-    //const key = globalThis.location?.hash.slice(1) || null;
-
     const mint = {
       //key: key,
       roomMeta: roomMeta,
@@ -107,8 +98,8 @@ export const SendPanel = ({
       },
       creator: creator,
     };
-
     onMint(mint);
+    shouldResetBoolean(true);
   };
 
   const validationSchema = Yup.object().shape({
@@ -117,11 +108,11 @@ export const SendPanel = ({
         creator: Yup.string().required("Creator name required"),
       })
     ), */
-    /*     emails: Yup.array().of(
+    emails: Yup.array().of(
       Yup.object().shape({
         email: Yup.string().email("Email invalid").required("Email required"),
       })
-    ), */
+    ),
     /*     concept: Yup.string().required(
       "↑ Required evidential support for your work"
     ), */
@@ -360,7 +351,7 @@ export const SendPanel = ({
               <Formik
                 validateOnMount={true}
                 validationSchema={validationSchema}
-                enableReinitialize={true}
+                enableReinitialize={shouldReset}
                 initialValues={initialFormValues}
                 onSubmit={(values) => {
                   handleSubmit(values);
@@ -383,7 +374,7 @@ export const SendPanel = ({
                         p={3}
                       />
                       <FormControl
-                        isInvalid={!!errors.concept && touched.concept}
+                      //isInvalid={!!errors.concept && touched.concept}
                       >
                         <Field
                           as={Textarea}
@@ -397,11 +388,11 @@ export const SendPanel = ({
                           mt={1}
                           p={3}
                         />
-                        <ErrorMessage
+                        {/*                         <ErrorMessage
                           name="concept"
                           component="div"
                           className="invalid-feedback"
-                        />
+                        /> */}
                       </FormControl>
                       <FormControl
                       //isInvalid={!!errors.creators && touched.creators}

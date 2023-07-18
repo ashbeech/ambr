@@ -139,7 +139,7 @@ export default function Navigation({
                         <MenuList
                           pos={"relative"}
                           zIndex={999}
-                          inset={"0em auto auto -1.5em"}
+                          //inset={"0em auto auto -1.5em"}
                         >
                           {currentPage !== "" && (
                             <MenuItem

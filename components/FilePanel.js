@@ -243,9 +243,10 @@ export const FilePanel = ({
                       endColor={"gray.600"}
                       borderRadius={"md"}
                       w={["100%", "90%"]}
-                      h={["18rem", "2.525rem"]}
+                      h={["14rem", "2.525rem"]}
                       maxH={"100%"}
                       minH={"100%"}
+                      mb={[4, 0]}
                     />
                   </Flex>
                 </Box>
@@ -616,7 +617,7 @@ export const FilePanel = ({
                       w={"full"}
                       sx={isExpired ? {} : { marginTop: "0 !important" }}
                     >
-                      File&apos;s Certificate:
+                      Certification
                     </Heading>
                   </HStack>
                   <Box

@@ -51,20 +51,23 @@ export function FileRecordPanel({
         {publicView && (
           <Flex w="full" zIndex={998}>
             <Flex w={"full"} alignItems="center" justifyContent="space-between">
-              <HStack left={"-2px"} pos={"relative"}>
-                <SealIcon boxSize={"1.4rem"} />
-                <Heading
-                  as={"h3"}
-                  fontWeight={"medium !important"}
-                  letterSpacing={"normal !important"}
-                  zIndex={999}
-                  textAlign={"left"}
-                  noOfLines={1}
-                  w={"full"}
-                >
-                  File&apos;s Certificate:
-                </Heading>
-              </HStack>
+              <VStack display={"flex"} alignItems={"start"}>
+                <HStack left={"-2px"} pos={"relative"}>
+                  <SealIcon boxSize={"1.4rem"} />
+                  <Heading
+                    as={"h3"}
+                    fontWeight={"medium !important"}
+                    letterSpacing={"normal !important"}
+                    zIndex={999}
+                    textAlign={"left"}
+                    noOfLines={1}
+                    w={"full"}
+                  >
+                    Certification
+                  </Heading>
+                </HStack>
+                {/* <Text>Recorded historic record of the shared file.</Text> */}
+              </VStack>
               <Button
                 onClick={handleClickVerify}
                 colorScheme="black"

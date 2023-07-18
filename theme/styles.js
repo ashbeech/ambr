@@ -190,6 +190,7 @@ export const styles = {
     },
     ".scrollable": {
       overflowY: "scroll !important",
+      height: "100dvh",
     },
     ".h2.code-highlight": {
       fontFamily: "monospace",

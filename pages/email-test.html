@@ -92,16 +92,22 @@
         border-radius: 12px;
       }
 
+      a:hover,
+      a[href]:hover {
+        color: #ff8d00 !important;
+        text-decoration: none !important;
+      }
+
       a.link:hover,
       a[href].link:hover {
         display: inline-block;
         margin-top: 1em;
         padding: 1em 1.5em;
-        color: #ff8d00;
-        background-color: #fff;
+        color: #ff8d00 !important;
+        background-color: #ffffff !important;
         text-decoration: none !important;
-        border: solid #ff8d00;
-        border-width: 2px 4px 4px 2px;
+        border: solid #ff8d00 !important;
+        border-width: 2px 4px 4px 2px !important;
         border-radius: 12px;
       }
 
@@ -137,10 +143,6 @@
         padding: 0 1em;
       }
 
-      .footer-link:not(:last-child) {
-        border-right: 1px solid #fff;
-      }
-
       a.footer-link,
       a[href].footer-link {
         color: #fff;
@@ -148,60 +150,173 @@
 
       a.footer-link:hover,
       a[href].footer-link:hover {
-        color: #ff8d00;
+        color: #ff8d00 !important;
+        text-decoration: none !important;
       }
     </style>
   </head>
-  <body>
-    <div class="container">
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      background-color: #1e1e1e;
+      width: 100%;
+      max-width: 100% !important;
+    "
+  >
+    <div
+      class="container"
+      style="
+        background-color: #1e1e1e;
+        padding: 2.5em 0 2em 0;
+        text-align: center;
+      "
+    >
       <a href="https://ambr.link/">
         <img
           width="125px"
           class="logo"
-          src="http://localhost:3000/ambr-logo-white.png"
+          src="${origin}/ambr-logo-white.png"
           alt="Ambr"
         />
       </a>
     </div>
 
-    <div class="inner-wrapper">
-      <div class="title">
+    <div class="inner-wrapper" style="padding: 2em 0; background-color: #fff">
+      <div
+        class="title"
+        style="color: #1e1e1e; margin-top: 1em; text-align: center"
+      >
         <h1>You've got a file</h1>
       </div>
 
-      <div class="filename">
+      <div class="filename" style="color: #1e1e1e; text-align: center">
         <h2>${filename}</h2>
       </div>
 
-      <div class="row download-link">
-        <div class="column col-left">
+      <div
+        class="row"
+        style="display: table; width: 100%; text-align: center; margin-top: 1em"
+      >
+        <div
+          class="column col-left"
+          style="
+            display: table-cell;
+            width: 50%;
+            text-align: right;
+            padding: 0 1em 0 0em;
+          "
+        >
           <p>File Size: ${size}</p>
         </div>
-        <div class="column col-right">
+        <div
+          class="column col-right"
+          style="
+            display: table-cell;
+            width: 50%;
+            text-align: left;
+            padding: 0 0em 0 1em;
+          "
+        >
           <p>Expires In: ${expiresText}</p>
         </div>
       </div>
 
-      <div class="download-link">
-        <a class="link" href="${link}">Go to download</a>
+      <div class="download-link" style="margin-top: 0.5em; text-align: center">
+        <a
+          class="link"
+          href="${link}"
+          style="
+            display: inline-block;
+            margin-top: 1em;
+            padding: 1em 1.5em;
+            background-color: #ff8d00;
+            color: #1e1e1e;
+            text-decoration: none;
+            border: solid #1e1e1e;
+            border-width: 2px 4px 4px 2px;
+            border-radius: 12px;
+          "
+          >Go to download</a
+        >
       </div>
 
-      <div class="download-header">
-        <p>Download link if button above is not visible:</p>
+      <div
+        class="download-header"
+        style="text-align: center; margin-top: 3.5em"
+      >
+        <p>If the button above is not visible, here is the download link:</p>
       </div>
 
-      <div class="download-link">
+      <div class="download-link" style="margin-top: 0.5em; text-align: center">
         <p>
-          <a href="${link}">${link}</a>
+          <a href="${link}" style="color: #1e1e1e; text-decoration: none"
+            >${link}</a
+          >
         </p>
       </div>
     </div>
 
-    <div class="container-footer">
-      <div class="footer-links">
-        <a class="footer-link" href="https://ambr.link/terms">Terms</a>
-        <a class="footer-link" href="https://ambr.link/privacy"
-          >Privacy Policy</a
+    <div
+      class="container-footer"
+      style="
+        background-color: #1e1e1e;
+        text-align: center;
+        padding: 1.5em 0 3em 0;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        width: 100%;
+      "
+    >
+      <div
+        class="footer-links"
+        style="
+          margin-top: 1em !important;
+          padding: 0 0;
+          display: inline-table !important;
+          text-align: center !important;
+          min-width: 16rem !important;
+          width: 18rem !important;
+        "
+      >
+        <a
+          class="footer-link"
+          href="https://ambr.link/terms"
+          style="
+            color: #fff;
+            text-decoration: none;
+            padding: 0 0;
+            display: table-cell !important;
+            text-align: center;
+          "
+          >Terms</a
+        >
+        <a
+          class="footer-link"
+          href="https://ambr.link/privacy"
+          style="
+            color: #fff;
+            text-decoration: none;
+            padding: 0 0;
+            display: table-cell !important;
+            text-align: center;
+          "
+          >Privacy</a
+        >
+        <a
+          class="footer-link"
+          href="https://ambr.link/security"
+          style="
+            color: #fff;
+            text-decoration: none;
+            padding: 0 0;
+            display: table-cell !important;
+            text-align: center;
+          "
+          >Security</a
         >
       </div>
     </div>

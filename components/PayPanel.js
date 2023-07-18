@@ -426,7 +426,7 @@ export const PayPanel = ({
               descRender !== undefined && (
                 <>
                   <Box
-                    w={["full", "50%"]}
+                    w={["full", "45%"]}
                     h={"100%"}
                     overflow={"visible"}
                     position={["static", "absolute"]}
@@ -563,10 +563,10 @@ export const PayPanel = ({
                   {!paymentSuccess && clientSecret && (
                     <Box
                       h={"100%"}
-                      w={["full", "50%"]}
+                      w={["full", "55%"]}
                       position={["relative", "absolute"]}
                       top={[null, 0]}
-                      left={[null, "50%"]}
+                      left={[null, "45%"]}
                       sx={{ marginInlineStart: "0 !important" }}
                     >
                       <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>
@@ -581,7 +581,8 @@ export const PayPanel = ({
                             overflowY={["auto", "scroll"]}
                             overflowX={"hidden"}
                             h={"100%"}
-                            pr={"1px"}
+                            w={"100%"}
+                            px={["3px", "3px"]}
                           >
                             <Elements options={options} stripe={stripePromise}>
                               <PaymentForm
