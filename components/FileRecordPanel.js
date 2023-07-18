@@ -160,7 +160,7 @@ export function FileRecordPanel({
               />
             </HStack>
             <HStack w="full">
-              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={2}>
+              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
                 {"Source: "}
               </Text>
               <Link
@@ -172,17 +172,17 @@ export function FileRecordPanel({
               >
                 {cid}
               </Link>
-              <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} />
+              {/* <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} /> */}
               <CopyButton
                 onClick={handleClickCopy}
                 text={cidLink}
                 colorScheme="black"
                 size="sm"
-                flex={1}
+                //flex={1}
               />
             </HStack>
             <HStack w="full">
-              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={2}>
+              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
                 {"Transaction: "}
               </Text>
               <Link
@@ -194,7 +194,7 @@ export function FileRecordPanel({
               >
                 {txHashRaw}
               </Link>
-              <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} />
+              {/* <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} /> */}
               <CopyButton
                 onClick={handleClickCopy}
                 text={txHashRaw}

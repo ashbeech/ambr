@@ -400,14 +400,14 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                 minW={"80px"}
                 px={1}
               >
-                <Icon
+                {/*                 <Icon
                   pos="absolute"
                   as={VscFile}
                   boxSize={8}
                   zIndex={998}
                   blendMode="overlay"
                   objectFit={["contain !important"]}
-                />
+                /> */}
                 <Img
                   h="80px"
                   src={_image_src ? _image_src : origin + "/images/amber-1.png"}
