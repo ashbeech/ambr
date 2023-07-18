@@ -480,7 +480,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box> */}
+        </Box>
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>

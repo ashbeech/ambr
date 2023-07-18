@@ -436,7 +436,6 @@ export const PayPanel = ({
                         as={"h1"}
                         className="fancy"
                         fontSize={["4xl", "4xl"]}
-                        fontWeight={"semibold"}
                         marginBottom={"0.21em !important"}
                         noOfLines={1}
                       >

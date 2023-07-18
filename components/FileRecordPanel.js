@@ -53,7 +53,7 @@ export function FileRecordPanel({
             <Flex w={"full"} alignItems="center" justifyContent="space-between">
               <VStack display={"flex"} alignItems={"start"}>
                 <HStack left={"-2px"} pos={"relative"}>
-                  <SealIcon boxSize={"1.4rem"} />
+                  <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
                   <Heading
                     as={"h3"}
                     fontWeight={"medium !important"}
@@ -63,7 +63,7 @@ export function FileRecordPanel({
                     noOfLines={1}
                     w={"full"}
                   >
-                    Certification
+                    File&apos;s Certification
                   </Heading>
                 </HStack>
                 {/* <Text>Recorded historic record of the shared file.</Text> */}

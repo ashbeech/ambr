@@ -26,7 +26,7 @@ export default function TermsPanel() {
             pb={[1, 6]}
             as={"h1"}
             className="fancy"
-            letterSpacing={["tight !important", "wide !important"]}
+            letterSpacing={["normal !important", "wider !important"]}
           >
             No jargon introduction
             <br />

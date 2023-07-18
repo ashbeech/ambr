@@ -28,7 +28,7 @@ export default function securityPanel() {
             as={"h1"}
             className="fancy"
             lineHeight={["1.48rem"]}
-            letterSpacing={["normal !important", "wide !important"]}
+            letterSpacing={["widest !important", "wide !important"]}
           >
             Don&apos;t Trust.{" "}
             <Box as="span" color={"orange.400"} textDecoration={"underline"}>
@@ -304,7 +304,12 @@ export default function securityPanel() {
               </Text>
             </Box>
             <Box w={"100%"}>
-              <Text as={"h2"} className={"fancy"} mb={[4, 6]}>
+              <Text
+                as={"h2"}
+                className={"fancy"}
+                letterSpacing={["normal !important", "wider !important"]}
+                mb={[4, 6]}
+              >
                 {"Step-by-step"}
               </Text>
               <Text pb={6}>Here is a high-level design document for Ambr.</Text>

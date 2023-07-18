@@ -549,7 +549,12 @@ export const FilePanel = ({
                       >
                         <Box flex="1" minW="0" maxW="50%">
                           <Button
-                            leftIcon={<SealIcon boxSize={"1.4rem"} />}
+                            leftIcon={
+                              <SealIcon
+                                color={"orange.400"}
+                                boxSize={"1.4rem"}
+                              />
+                            }
                             isDisabled={false}
                             size={"md"}
                             onClick={handleClickVerify}
@@ -607,7 +612,7 @@ export const FilePanel = ({
                     pt={isExPublic ? [0, 0] : [4, 0]}
                     overflow={"visible"}
                   >
-                    <SealIcon boxSize={"1.4rem"} />
+                    <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
                     <Heading
                       as={"h3"}
                       fontWeight={"medium !important"}
@@ -617,7 +622,7 @@ export const FilePanel = ({
                       w={"full"}
                       sx={isExpired ? {} : { marginTop: "0 !important" }}
                     >
-                      Certification
+                      File&apos;s Certification
                     </Heading>
                   </HStack>
                   <Box

@@ -146,9 +146,9 @@ export const theme = extendTheme(
     letterSpacings: {
       tightest: "-0.06em",
       tighter: "-0.04em",
-      tight: "-0.02em",
+      tight: "-0.022em",
       normal: "0",
-      wide: "0.02em",
+      wide: "0.022em",
       wider: "0.04em",
       widest: "0.06em",
     },
