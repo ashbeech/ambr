@@ -29,7 +29,7 @@ export default function securityPanel() {
             className="fancy"
             lineHeight={["1.48rem"]}
             fontWeight={"semibold !important"}
-            letterSpacing={["widest !important", "wide !important"]}
+            letterSpacing={["widest !important", "normal !important"]}
           >
             Don&apos;t Trust.{" "}
             <Box as="span" color={"orange.400"} textDecoration={"underline"}>
@@ -308,7 +308,8 @@ export default function securityPanel() {
               <Text
                 as={"h2"}
                 className={"fancy"}
-                letterSpacing={["normal !important", "wider !important"]}
+                fontWeight={"semibold !important"}
+                letterSpacing={["widest !important", "wider !important"]}
                 mb={[4, 6]}
               >
                 {"Step-by-step"}
