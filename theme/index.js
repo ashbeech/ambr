@@ -142,7 +142,6 @@ export const theme = extendTheme(
       11: "3.1553rem",
       12: "3.449rem",
     },
-
     letterSpacings: {
       tightest: "-0.06em",
       tighter: "-0.04em",
@@ -191,8 +190,8 @@ export const theme = extendTheme(
             borderWidth: "1px 3px 3px 1px",
             _disabled: {
               opacity: "1",
-              color: "gray.600",
-              borderColor: "gray.600",
+              color: "blackAlpha.300",
+              borderColor: "blackAlpha.300",
             },
             _hover: {
               borderWidth: "1px 3px 3px 1px",
@@ -200,9 +199,9 @@ export const theme = extendTheme(
               borderColor: "orange.400",
               _disabled: {
                 borderWidth: "1px 3px 3px 1px",
-                color: "gray.600",
+                color: "blackAlpha.300",
                 opacity: "1",
-                borderColor: "gray.600",
+                borderColor: "blackAlpha.300",
               },
             },
             _focus: {},

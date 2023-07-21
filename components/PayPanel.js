@@ -190,6 +190,7 @@ export const PayPanel = ({
         {!fullyLoaded ? (
           <Fade in={!fullyLoaded}>
             <Box
+              minW={["100%", "36rem"]}
               minH={["28rem", "26rem", "25rem"]}
               pos={"relative"}
               inset={0}
@@ -439,7 +440,7 @@ export const PayPanel = ({
                         marginBottom={"0.21em !important"}
                         noOfLines={1}
                       >
-                        Top-up
+                        Top Up
                       </Heading>
                       <Text
                         w={["100%", "100%"]}

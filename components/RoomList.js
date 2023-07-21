@@ -19,7 +19,7 @@ import {
   AddIcon,
   // ViewIcon, DeleteIcon,
 } from "@chakra-ui/icons";
-import { VscFile } from "react-icons/vsc";
+//import { VscFile } from "react-icons/vsc";
 import {
   addOrReplaceRoomServer,
   getRoomsServer,
@@ -228,7 +228,9 @@ export const RoomList = ({ onChange = () => {} }) => {
         w={["full", "80vw", "86vw", "50vw"]}
         minW={["", "", "43rem"]}
         maxW={["", "", "40rem"]}
-        borderBottom={roomsLoaded ? ["none", "1px solid"] : "none"}
+        borderBottom={
+          rooms && rooms?.length >= 3 ? ["none", "1px solid"] : "none"
+        }
         borderColor={"black.500"}
         pb={[0, 4]}
         templateColumns="repeat(auto-fill, minmax(100%, 1fr))"
@@ -421,9 +423,9 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
 
           <VStack
             className={"info"}
-            flex={4}
-            maxW={"50%"}
-            w={["33%", "90%"]}
+            maxW={["50%", "65%"]}
+            w={["33%", "98%"]}
+            flex={[2, 4]}
             pl={[0, 4]}
           >
             <Text

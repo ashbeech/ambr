@@ -39,15 +39,15 @@ const IPFSImage = ({ image_src }) => {
   return image_src ? (
     <Img
       position={"relative"}
-      w={["100%", "100%"]}
+      w={["100%", "95%"]}
       h={["100%", "100%"]}
       src={image_src}
       objectFit={[
         "cover !important",
         "contain !important",
         "contain !important",
-        "cover !important",
-        "cover !important",
+        "contain !important",
+        "contain !important",
       ]}
       backgroundSize={"100%"}
       alt={`Ambr Stone`}
@@ -216,8 +216,8 @@ export const FilePanel = ({
           w={"100%"}
           h={"100%"}
           display={["block", "flex"]}
-          minH={["100%", "18rem", "18rem"]}
-          minW={["100%", "82vw", "36rem"]}
+          minH={["100%", "24rem", "24rem"]}
+          minW={["100%", "82vw", "38rem"]}
           maxW={["17rem", "38rem"]}
           direction={[null, "row"]}
           spacing={[2, 4]}
@@ -325,7 +325,7 @@ export const FilePanel = ({
                             h={["100%", "100%"]}
                             minW={"7rem"}
                           >
-                            <Box h={"100%"} mr={[0, 4]}>
+                            <Box h={"100%"} mr={[0, 0]}>
                               <FilePicker
                                 onFiles={verifyFiles}
                                 description={"Re-upload Original"}
@@ -542,7 +542,7 @@ export const FilePanel = ({
                     roomMeta.readableMetadata != null &&
                     isUserMatch && (
                       <HStack
-                        mt={isExpired ? [4, 6] : [4, 0]}
+                        mt={isExpired ? [4, 5] : [4, 0]}
                         mb={[2, 0]}
                         w="full"
                         overflow="hidden"
@@ -578,7 +578,10 @@ export const FilePanel = ({
                             enableReinitialize={true}
                           >
                             <Form>
-                              <HStack justifyContent={"flex-start"}>
+                              <HStack
+                                className={formModeLink ? "pub" : "pri"}
+                                justifyContent={"flex-start"}
+                              >
                                 <Field
                                   align={"left"}
                                   as={Switch}
@@ -622,7 +625,7 @@ export const FilePanel = ({
                       w={"full"}
                       sx={isExpired ? {} : { marginTop: "0 !important" }}
                     >
-                      File&apos;s Certification
+                      Certificate
                     </Heading>
                   </HStack>
                   <Box
@@ -748,10 +751,7 @@ const TopRightPanel = React.memo(
     refresh,
   }) => {
     const [d, setD] = useState(new Date()); // initialize d to current date
-    //const [title, setTitle] = useState("Fetching File");
-    const strings = ["You've got a file", "Your file awaits"];
-    //const randomIndex = Math.floor(Math.random() * strings.length);
-    const title = roomMeta?.readableMetadata.title; //strings[randomIndex];
+    const title = roomMeta?.readableMetadata.title;
 
     // HACK: Disable download all button if there's a file greater than 4GB
     const downloadAllSupported =
@@ -777,7 +777,7 @@ const TopRightPanel = React.memo(
     }, [roomMeta]);
 
     return (
-      <Stack spacing={[2, 2]} h={isExPublic ? ["", "auto"] : ["", "auto"]}>
+      <Stack spacing={[2, 4]} h={isExPublic ? ["", "auto"] : ["", "auto"]}>
         {roomMeta && (
           <Heading
             as={"h2"}
@@ -829,15 +829,6 @@ const TopRightPanel = React.memo(
               </Box>
             </Fade>
           )}
-        {/*       {!isExpired && (
-        <FileList
-          files={files}
-          isDisabled={isDisabled || files.length === 0}
-          onDownload={onDownload}
-          downloadProgress={downloadProgress}
-          mb={4}
-        />
-      )} */}
         {!isExpired && (
           <Box justify="space-between" align="center">
             <Stack

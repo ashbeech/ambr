@@ -416,7 +416,7 @@ export function ControlPanel() {
       _path !== "/top-up" &&
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
-      mode !== JOIN_MODE &&
+      //mode !== JOIN_MODE &&
       _mode !== VERIFY_MODE;
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
@@ -645,13 +645,13 @@ export function ControlPanel() {
                                 in a pinch.
                               </Text>
                               <OrderedList>
-                                <ListItem>Upload your file</ListItem>
+                                <ListItem>Upload your file.</ListItem>
                                 <ListItem>
                                   Describe the file&apos;s contents (this will
                                   be private unless you decide to make it
                                   public).
                                 </ListItem>
-                                <ListItem>Share your download link</ListItem>
+                                <ListItem>Share your download link.</ListItem>
                               </OrderedList>
                             </Box>
                           </HStack>
@@ -745,13 +745,14 @@ export function ControlPanel() {
                                     <ListItem>
                                       <Text noOfLines={2}>
                                         Keep the file&apos;s certificate private
-                                        or make it publically visible.
+                                        or make it publicly visible.
                                       </Text>
                                     </ListItem>
                                     <ListItem>
                                       <Text noOfLines={2}>
-                                        Share the file&apos;s link for others to
-                                        download.
+                                        Share the file&apos;s link for
+                                        <br />
+                                        others to download.
                                       </Text>
                                     </ListItem>
                                   </OrderedList>
@@ -770,16 +771,16 @@ export function ControlPanel() {
                                       </Text>
                                       <UnorderedList>
                                         <ListItem>
-                                          <Text noOfLines={3}>
+                                          <Text noOfLines={2}>
                                             Share the file&apos;s link for
+                                            <br />
                                             others to download.
                                           </Text>
                                         </ListItem>
                                         <ListItem>
                                           <Text noOfLines={5}>
                                             Set the file&apos;s certificate to
-                                            be private or made publically
-                                            visible.
+                                            be private or made publicly visible.
                                           </Text>
                                         </ListItem>
                                       </UnorderedList>
@@ -811,7 +812,12 @@ export function ControlPanel() {
                   )}
                   {showFilePanel && (
                     <>
-                      <Fade in={showSubFilePanel1}>
+                      <Fade
+                        in={showSubFilePanel1}
+                        h={"100%"}
+                        w={"100%"}
+                        pos={"relative"}
+                      >
                         <Box
                           w={"100%"}
                           h={"100%"}
@@ -819,7 +825,7 @@ export function ControlPanel() {
                           display={["", "flex"]}
                           alignItems="center"
                           justifyContent="center"
-                          position={["relative", "absolute"]}
+                          position={["relative", "relative"]}
                           top={0}
                           right={0}
                           left={0}
@@ -873,7 +879,7 @@ export function ControlPanel() {
                         display={["", "flex"]}
                         alignItems="center"
                         justifyContent="center"
-                        position={["relative", "absolute"]}
+                        position={["relative", "relative"]}
                         top={0}
                         right={0}
                         left={0}

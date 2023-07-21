@@ -63,7 +63,7 @@ export function FileRecordPanel({
                     noOfLines={1}
                     w={"full"}
                   >
-                    File&apos;s Certification
+                    Certificate
                   </Heading>
                 </HStack>
                 {/* <Text>Recorded historic record of the shared file.</Text> */}
@@ -217,21 +217,15 @@ export function FileRecordPanel({
           alignItems="center"
           justifyContent="end"
         >
-          {/*           <Box w={"100%"}>
-            <Button
-              w={"full"}
-              leftIcon={<Icon as={DownloadIcon} boxSize={4} />}
-              isDisabled={true}
-              size={"md"}
-              onClick={handleClickVerify}
-            >
-              {"Certificate (Coming Soon)"}
-            </Button>
-          </Box> */}
           <Box w={"100%"}>
             <Formik validateOnMount={true} enableReinitialize={true}>
               <Form>
-                <Box className="important" p={0} zIndex={-999} w={"100%"}>
+                <Box
+                  className={formModeLink ? "important pub" : "important pri"}
+                  p={0}
+                  zIndex={-999}
+                  w={"100%"}
+                >
                   <HStack
                     w={"100%"}
                     display="flex"

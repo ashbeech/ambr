@@ -32,6 +32,15 @@ export const styles = {
       color: "gray",
       cursor: "not-allowed",
     },
+    "a.chakra-link.disabled, a.chakra-link.disabled:hover": {
+      cursor: "default",
+    },
+    ".pri .chakra-icon, .pri p": {
+      opacity: "0.33",
+    },
+    ".pub .chakra-icon, .pub p": {
+      opacity: "1",
+    },
     h1: {
       fontFamily: "heading",
       fontSize: "4xl",
@@ -43,7 +52,7 @@ export const styles = {
     "h1.fancy": {
       fontFamily: "fancy",
       fontSize: "4xl",
-      fontWeight: "normal",
+      fontWeight: "thin",
       textAlign: "left",
       lineHeight: "short",
       marginBottom: "0.42em",
@@ -91,6 +100,9 @@ export const styles = {
     li: {
       paddingTop: "0.55em",
       paddingBottom: "0.55em",
+    },
+    "::marker": {
+      fontWeight: "semibold",
     },
     "img.file-stone": {
       objectFit: "cover",

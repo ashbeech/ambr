@@ -156,7 +156,7 @@ export const SendPanel = ({
         position="relative"
         h={"100%"}
         w={"100%"}
-        minH={["100%", "22.25rem"]}
+        minH={["100%", "24rem"]}
         minW={["", "", "24rem"]}
         maxW={"40rem"}
       >
@@ -308,7 +308,7 @@ export const SendPanel = ({
                 justifyContent="center"
                 position={"relative"}
                 w={"100%"}
-                h={["18rem", "100%"]}
+                h={["24rem", "100%"]}
               >
                 <Box
                   overflow={"visible"}
@@ -410,9 +410,10 @@ export const SendPanel = ({
                                       type="creator"
                                       variant="outline"
                                       placeholder={
-                                        index <= 0 && values.creators.length > 1
-                                          ? "Co-creator's name"
-                                          : "Creator's name"
+                                        index === values.creators.length - 1 &&
+                                        index <= 1
+                                          ? "Creator's name"
+                                          : "Co-creator's name"
                                       }
                                       p={3}
                                       value={creator.creator || ""} // Ensure a default value is set

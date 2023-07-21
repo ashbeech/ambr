@@ -7,7 +7,7 @@ export const Panel = (props) => (
     py={[6, 10]}
     pb={[6, null]}
     border="solid #1E1E1E"
-    borderRadius="3xl"
+    borderRadius="2.5rem"
     borderWidth="1px 4px 4px 1px"
     {...props}
   />

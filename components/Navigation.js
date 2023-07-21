@@ -102,9 +102,11 @@ export default function Navigation({
                       _hover={
                         currentPage === ""
                           ? { color: "black.500" }
-                          : { color: disabled ? "gray.500" : "orange.400" }
+                          : {
+                              color: disabled ? "blackAlpha.500" : "orange.400",
+                            }
                       }
-                      color={disabled ? "gray.500" : "black.500"}
+                      color={disabled ? "blackAlpha.500" : "black.500"}
                       style={{
                         transition: "color 0.15s ease-in",
                       }}
@@ -184,7 +186,7 @@ export default function Navigation({
                                   pr={2}
                                 />
                               )}
-                              Top-up{" "}
+                              Top Up{" "}
                               {!fileTransfersRemaining ||
                               fileTransfersRemaining === -999
                                 ? ``
@@ -217,51 +219,60 @@ export default function Navigation({
                         alignItems={"center"}
                         justifyContent={"start"}
                       >
-                        {currentPage !== "" && (
-                          <Link
-                            pr={6}
-                            className={disabled ? "share disabled" : "share"}
-                            onClick={() => {
-                              handlePageChange("");
-                            }}
-                          >
-                            Transfer a File
-                          </Link>
-                        )}
-                        {currentPage !== "files" && (
-                          <Link
-                            pr={6}
-                            className={disabled ? "files disabled" : "files"}
-                            onClick={() => {
-                              handlePageChange("files");
-                            }}
-                          >
-                            Your Files
-                          </Link>
-                        )}
-                        {showTopup && (
-                          <Link
-                            pr={6}
-                            className={disabled ? "top-up disabled" : "top-up"}
-                            onClick={() => {
-                              handlePageChange("top-up");
-                            }}
-                          >
-                            {fileTransfersRemaining <= 0 && (
-                              <Icon
-                                as={InfoOutlineIcon}
-                                boxSize={6}
-                                color="orange.400"
-                                pr={2}
-                              />
-                            )}
-                            Top-up{" "}
-                            {!fileTransfersRemaining ||
-                            fileTransfersRemaining === -999
-                              ? ``
-                              : `(${fileTransfersRemaining})`}
-                          </Link>
-                        )}
+                        <Link
+                          pr={6}
+                          className={
+                            disabled || currentPage === ""
+                              ? "share disabled"
+                              : "share"
+                          }
+                          onClick={() => {
+                            handlePageChange("");
+                          }}
+                          disabled={currentPage === ""}
+                        >
+                          Transfer a File
+                        </Link>
+                        <Link
+                          pr={6}
+                          className={
+                            disabled || currentPage === "files"
+                              ? "files disabled"
+                              : "files"
+                          }
+                          onClick={() => {
+                            handlePageChange("files");
+                          }}
+                          disabled={currentPage === "files"}
+                        >
+                          Your Files
+                        </Link>
+                        <Link
+                          pr={6}
+                          className={
+                            disabled || !showTopup
+                              ? "top-up disabled"
+                              : "top-up"
+                          }
+                          onClick={() => {
+                            handlePageChange("top-up");
+                          }}
+                          disabled={!showTopup}
+                        >
+                          {fileTransfersRemaining <= 0 && (
+                            <Icon
+                              as={InfoOutlineIcon}
+                              boxSize={6}
+                              color="orange.400"
+                              pr={2}
+                            />
+                          )}
+                          Top up{" "}
+                          {!fileTransfersRemaining ||
+                          fileTransfersRemaining === -999
+                            ? ``
+                            : `(${fileTransfersRemaining})`}
+                        </Link>
                         <Button
                           onClick={() => handleUser()}
                           isDisabled={disabled}
