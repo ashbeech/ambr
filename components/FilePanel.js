@@ -39,7 +39,7 @@ const IPFSImage = ({ image_src }) => {
   return image_src ? (
     <Img
       position={"relative"}
-      w={["100%", "95%"]}
+      w={["100%", "100%"]}
       h={["100%", "100%"]}
       src={image_src}
       objectFit={[
@@ -217,8 +217,8 @@ export const FilePanel = ({
           h={"100%"}
           display={["block", "flex"]}
           minH={["100%", "24rem", "24rem"]}
-          minW={["100%", "82vw", "38rem"]}
-          maxW={["17rem", "38rem"]}
+          minW={["100%", "82vw", "40rem"]}
+          maxW={["17rem", "40rem"]}
           direction={[null, "row"]}
           spacing={[2, 4]}
           position="relative"
@@ -271,7 +271,7 @@ export const FilePanel = ({
                           alignItems="center"
                           justifyContent="center"
                           h="100%"
-                          mr={[0, 3]}
+                          mr={[0, 0]}
                         >
                           <Box
                             position="absolute"
@@ -296,7 +296,7 @@ export const FilePanel = ({
                               progress={downloadProgress}
                             />
                           </Box>
-                          <Box position="relative" w={["100%", "175%", "150%"]}>
+                          <Box position="relative" w={["100%", "137%", "137%"]}>
                             <IPFSImage image_src={_image_src} />
                           </Box>
                         </Flex>
@@ -337,8 +337,8 @@ export const FilePanel = ({
                             alignItems="center"
                             justifyContent="center"
                             position={"relative"}
-                            w={["75%", "150%"]}
-                            h={["100%", "150%"]}
+                            w={["75%", "137%"]}
+                            h={["100%", "137%"]}
                           >
                             <IPFSImage image_src={_image_src} />
                           </Box>
@@ -405,8 +405,8 @@ export const FilePanel = ({
                               alignItems="center"
                               justifyContent="center"
                               position={"relative"}
-                              w={["100%", "150%"]}
-                              h={["100%", "150%"]}
+                              w={["100%", "137%"]}
+                              h={["100%", "137%"]}
                             >
                               <IPFSImage image_src={_image_src} />
                             </Box>
@@ -524,7 +524,7 @@ export const FilePanel = ({
                   h={["", "auto"]}
                   maxH={["", "100%"]}
                   mt={[6, 0]}
-                  mb={isExPublic && formModeLink ? 2 : 0}
+                  mb={isExPublic ? 0 : 0}
                 >
                   <TopRightPanel
                     isExPublic={isExPublic}

@@ -75,14 +75,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
 
   return (
     <>
-      <Fade
-        in={isLoading}
-        sx={{
-          width: "100%",
-          height: "100%",
-          minHeight: "100%",
-        }}
-      >
+      <Fade in={isLoading} w={"100%"} h={"100%"} minH={"100%"}>
         <Box display={isLoading ? "flex" : "none"}>
           <Box
             pos={"absolute"}
@@ -99,19 +92,10 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
         </Box>
       </Fade>
 
-      <Box pt={2}>
+      <Box>
         <Formik initialValues={{}} onSubmit={handleSubmit}>
           {({ isSubmitting }) => (
             <Form id="payment-form">
-              {/*               {message && (
-                <Box
-                  color={"orange.400"}
-                  fontSize={["lg", "md"]}
-                  id="payment-message"
-                >
-                  {message}
-                </Box>
-              )} */}
               <Box>
                 <PaymentElement
                   id="payment-element"

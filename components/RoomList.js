@@ -225,9 +225,9 @@ export const RoomList = ({ onChange = () => {} }) => {
       <Grid
         overflowY={"scroll"}
         overflowX={"hidden"}
-        w={["full", "80vw", "86vw", "50vw"]}
-        minW={["", "", "43rem"]}
-        maxW={["", "", "40rem"]}
+        w={["full", "80vw", "86vw", "100%"]}
+        minW={["", "", "45rem"]}
+        maxW={["", "", "45rem"]}
         borderBottom={
           rooms && rooms?.length >= 3 ? ["none", "1px solid"] : "none"
         }
@@ -423,8 +423,8 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
 
           <VStack
             className={"info"}
-            maxW={["50%", "65%"]}
-            w={["33%", "98%"]}
+            maxW={["50%", "68%"]}
+            w={["33%", "100%"]}
             flex={[2, 4]}
             pl={[0, 4]}
           >

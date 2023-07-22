@@ -50,9 +50,6 @@ export const SendPanel = ({
   handleMaxRoomDownloadsChange,
   ...rest
 }) => {
-  //const { numDownloadingPeers, lifetime, maxDownloads } = roomMeta;
-  //const roomCreationTime = roomMeta.expiresAtTimestampMs - roomMeta.lifetime * 1000;
-
   const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
@@ -157,7 +154,7 @@ export const SendPanel = ({
         h={"100%"}
         w={"100%"}
         minH={["100%", "24rem"]}
-        minW={["", "", "24rem"]}
+        minW={["", "", "40rem"]}
         maxW={"40rem"}
       >
         <Box
@@ -218,7 +215,7 @@ export const SendPanel = ({
               h={["100%", "100%"]}
               minW={"7rem"}
             >
-              <Box zIndex={999} h={"100%"} mr={[0, 3]}>
+              <Box zIndex={999} h={"100%"} mr={[0, 3]} overflow={"hidden"}>
                 <Fade
                   in={mode === null}
                   style={{
@@ -312,15 +309,19 @@ export const SendPanel = ({
               >
                 <Box
                   overflow={"visible"}
-                  width={"24rem"}
-                  height={"24rem"}
+                  width={"125%"}
+                  height={"125%"}
                   pos={"absolute"}
+                  style={{
+                    filter: `blur(${Math.round(3.3 - createProgress * 3.3)}px)`,
+                    transition: "filter 0.76s ease-in",
+                  }}
                 >
                   <Img
                     w={["100%", "100%"]}
                     h={"100%"}
                     ml={["0.8em", 0]}
-                    objectFit={"none !important"}
+                    objectFit={"contain !important"}
                     src={`/images/amber-7.png`}
                     position={"relative"}
                     alt={`Ambr Stone`}
@@ -410,10 +411,9 @@ export const SendPanel = ({
                                       type="creator"
                                       variant="outline"
                                       placeholder={
-                                        index === values.creators.length - 1 &&
-                                        index <= 1
-                                          ? "Creator's name"
-                                          : "Co-creator's name"
+                                        index === values.creators.length - 1
+                                          ? `Creator's name`
+                                          : `Co-creator's name`
                                       }
                                       p={3}
                                       value={creator.creator || ""} // Ensure a default value is set
@@ -654,21 +654,6 @@ const CreateProgress = ({ mode, progress }) => {
     >
       <Box position={["", ""]} w={"100%"}>
         <Box display="flex" flexDirection="column">
-          {/*           <Box alignSelf="flex-start" position={["", "absolute"]}>
-            <Text
-              w={"100%"}
-              fontFamily={"heading"}
-              fontSize={["2xl", "xl"]}
-              fontWeight={"bold"}
-              align={"left"}
-              noOfLines={3}
-              wordBreak="break-word"
-            >
-              {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
-              {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
-              {cloudState === "Uploaded" && <>{"Uploaded " + fileName}</>}
-            </Text>
-          </Box> */}
           <Box
             display={"flex"}
             position={"relative"}

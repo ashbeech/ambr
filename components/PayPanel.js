@@ -190,8 +190,8 @@ export const PayPanel = ({
         {!fullyLoaded ? (
           <Fade in={!fullyLoaded}>
             <Box
-              minW={["100%", "36rem"]}
-              minH={["28rem", "26rem", "25rem"]}
+              minW={["100%", "40rem"]}
+              minH={["28rem", "26rem", "24rem"]}
               pos={"relative"}
               inset={0}
               overflow={"hidden"}
@@ -208,8 +208,8 @@ export const PayPanel = ({
             w={"100%"}
             h={"100%"}
             display={["block", "flex"]}
-            minH={["28rem", "26rem", "25rem"]}
-            minW={["100%", "82vw", "36rem"]}
+            minH={["28rem", "26rem", "24rem"]}
+            minW={["100%", "82vw", "40rem"]}
             direction={[null, "row"]}
             spacing={[2, 4]}
             position="relative"
@@ -582,7 +582,7 @@ export const PayPanel = ({
                             overflowX={"hidden"}
                             h={"100%"}
                             w={"100%"}
-                            px={["3px", "3px"]}
+                            px={"3px"}
                           >
                             <Elements options={options} stripe={stripePromise}>
                               <PaymentForm
