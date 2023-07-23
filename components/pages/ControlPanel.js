@@ -607,28 +607,30 @@ export function ControlPanel() {
                         >
                           <HStack w={"100%"} h={"100%"}>
                             <Box w={"100%"} h={"100%"} overflow={"visible"}>
-                              <SendPanel
-                                mode={_mode}
-                                creator={publicAddress}
-                                handleFiles={handleFiles}
-                                cloudState={cloudState}
-                                peerState={peerState}
-                                createProgress={createProgress}
-                                createMintProgress={createMintProgress}
-                                roomMeta={roomMeta}
-                                fileName={fileName}
-                                shareUrl={shareUrl}
-                                filesLength={files?.length ?? 0}
-                                handleRoomLifetimeChange={
-                                  handleRoomLifetimeChange
-                                }
-                                handleMaxRoomDownloadsChange={
-                                  handleMaxRoomDownloadsChange
-                                }
-                                onMint={handleMint}
-                                chainState={chainState}
-                                mintState={mintState}
-                              />
+                              <Panel className="glass">
+                                <SendPanel
+                                  mode={_mode}
+                                  creator={publicAddress}
+                                  handleFiles={handleFiles}
+                                  cloudState={cloudState}
+                                  peerState={peerState}
+                                  createProgress={createProgress}
+                                  createMintProgress={createMintProgress}
+                                  roomMeta={roomMeta}
+                                  fileName={fileName}
+                                  shareUrl={shareUrl}
+                                  filesLength={files?.length ?? 0}
+                                  handleRoomLifetimeChange={
+                                    handleRoomLifetimeChange
+                                  }
+                                  handleMaxRoomDownloadsChange={
+                                    handleMaxRoomDownloadsChange
+                                  }
+                                  onMint={handleMint}
+                                  chainState={chainState}
+                                  mintState={mintState}
+                                />
+                              </Panel>
                             </Box>
                             <Box
                               display={["none", "block", "block"]}
@@ -899,15 +901,19 @@ export function ControlPanel() {
                         >
                           <HStack w={"100%"} maxW={"full"}>
                             <Box w={"100%"}>
-                              <PayPanel
-                                mode={_mode}
-                                fileTransfersRemaining={fileTransfersRemaining}
-                                onUpdateFileTransfersRemaining={
-                                  handleFileTransfersRemainingUpdate
-                                }
-                                setPath={setPath}
-                                publicAddress={publicAddress}
-                              />
+                              <Panel className={"glass"} overflow={"visible"}>
+                                <PayPanel
+                                  mode={_mode}
+                                  fileTransfersRemaining={
+                                    fileTransfersRemaining
+                                  }
+                                  onUpdateFileTransfersRemaining={
+                                    handleFileTransfersRemainingUpdate
+                                  }
+                                  setPath={setPath}
+                                  publicAddress={publicAddress}
+                                />
+                              </Panel>
                             </Box>
                             <Box
                               display={["none", "none", "block", "block", ""]}

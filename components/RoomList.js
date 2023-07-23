@@ -367,18 +367,9 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
 
   return (
     <>
-      {/*       {!room.image_src || room.image_src === null ? ( // Display skeleton loading state while loading IPFS data
-        <Skeleton
-          startColor="gray.500"
-          endColor="gray.600"
-          height="7.2rem"
-          borderRadius={"3xl"}
-          w={"100%"}
-        />
-      ) : ( */}
       <Box
-        py={[4, 4]}
-        pr={[3, 4]}
+        py={[3, 4]}
+        pr={[0, 4]}
         pl={[0, 4]}
         borderWidth={1}
         borderColor="blackAlpha.600"
@@ -387,7 +378,6 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
         <Flex alignItems="center" justifyContent={"space-between"} w={"100%"}>
           <Box pos="relative" flex={1}>
             <Link
-              //href={path}
               onClick={() => {
                 router.push(path, undefined, { shallow: true });
               }}
@@ -399,8 +389,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                 alignItems={"center"}
                 justifyContent={"center"}
                 h={"100%"}
-                minW={"80px"}
-                px={1}
+                minW={"70px"}
               >
                 {/*                 <Icon
                   pos="absolute"
@@ -411,7 +400,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                   objectFit={["contain !important"]}
                 /> */}
                 <Img
-                  h="80px"
+                  h="70px"
                   src={_image_src ? _image_src : origin + "/images/amber-1.png"}
                   objectFit={"contain !important"}
                   alt="Ambr Stone"
@@ -423,20 +412,19 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
 
           <VStack
             className={"info"}
-            maxW={["50%", "68%"]}
-            w={["33%", "100%"]}
-            flex={[2, 4]}
-            pl={[0, 4]}
+            maxW={["60%", "60%"]}
+            w={["auto", "full"]}
+            flex={[3, 8]}
+            pl={[0, 2]}
+            alignItems={"flex-start"}
           >
             <Text
-              //as={"a"}
-              w="full"
-              //href={path}
+              w={"90%"}
               onClick={() => {
                 router.push(path, undefined, { shallow: true });
               }}
               cursor={"pointer"}
-              align="left"
+              textAlign="left"
               noOfLines={1}
               fontSize={["lg", "xl"]}
               fontWeight="normal !important"
@@ -465,7 +453,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
           </VStack>
 
           <Flex
-            flex={[1, 2]}
+            flex={[1, 4]}
             direction={["row"]}
             alignContent={"right"}
             align={"right"}
@@ -493,74 +481,3 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
     </>
   );
 };
-
-{
-  {
-    /* {loading && (
-              <>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-                <Skeleton
-                  startColor="gray.500"
-                  endColor="gray.600"
-                  height="8rem"
-                  borderRadius={"xl"}
-                  mb={4}
-                  w={"100%"}
-                >
-                  Fetching File
-                </Skeleton>
-              </>
-            )} */
-  }
-  {
-    /*             {!loading && rooms !== null && rooms.length !== 0 && (
-              <Fade in={rooms.length > 0}>
-                <Stack spacing={[4, 4]} px={[0, 0]}>
-                  {rooms.length > 0 &&
-                    rooms.map((room) => (
-                      <RoomItem
-                        key={room.roomId}
-                        room={room}
-                        onClose={handleClose}
-                      />
-                    ))}
-                </Stack>
-              </Fade>
-            )} */
-  }
-
-  /*<Flex justify={"right"} align="right">
-         <Box w={"full"} align="right" alignSelf="end">
-          <Button
-            //leftIcon={<Icon as={DeleteIcon} boxSize={4} />}
-            onClick={handleClickDelete}
-            colorScheme="black"
-            size="sm"
-            align="end"
-            isDisabled={deleting}
-          >
-            {deleting ? "Deleting..." : "Delete"}
-          </Button>
-        </Box>
-
-  </Flex>*/
-}

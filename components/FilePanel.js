@@ -41,6 +41,7 @@ const IPFSImage = ({ image_src }) => {
       position={"relative"}
       w={["100%", "100%"]}
       h={["100%", "100%"]}
+      left={[0, "0.55em"]}
       src={image_src}
       objectFit={[
         "cover !important",

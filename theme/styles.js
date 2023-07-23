@@ -235,8 +235,7 @@ export const styles = {
       border: "3px solid green",
     },
     ".glass": {
-      //background: `radial-gradient(farthest-corner at center, RGBA(255, 255, 255, 0.2) 55%, RGBA(224, 224, 220, 0.2) 66%, RGBA(173, 173, 168, 0.2) 100%)`,
-      background: "transparent !important",
+      background: `radial-gradient(farthest-corner at center, RGBA(255, 255, 255, 0.44) 58%, RGBA(224, 224, 220, 0.66) 85%, RGBA(173, 173, 168, 0.33) 95%)`,
     },
     ".icon-only .chakra-button__icon": {
       margin: "0 !important",

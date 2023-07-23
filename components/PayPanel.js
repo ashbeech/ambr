@@ -17,7 +17,6 @@ import { useRouter } from "next/router";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { fetcher } from "../lib/fetcher";
-import { Panel } from "./Panel.js";
 import PaymentForm from "./PaymentForm.js";
 import { Arrow } from "./Arrow.js";
 import LogoLoader from "./icons/LogoLoader";
@@ -86,19 +85,6 @@ export const PayPanel = ({
     clientSecret,
     appearance,
   };
-
-  /*   // Must ensure that the user is logged in before loading the page
-  useEffect(() => {
-    // Check existence of Magic, if not, don't load the page
-    if (magic === null) return;
-    if (magic !== null && isLoggedIn && publicAddress === "") return;
-    if (magic !== null && isLoggedIn && publicAddress) setLoading(false);
-    if (magic !== null && !isLoggedIn && publicAddress === "")
-      setLoading(false);
-
-    if (magic !== null && isLoggedIn && fileTransfersRemaining === -999) {
-    }
-  }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]); */
 
   useEffect(() => {
     if (!clientSecret) {
@@ -186,78 +172,151 @@ export const PayPanel = ({
 
   return (
     <>
-      <Panel className="glass" overflow="visible">
-        {!fullyLoaded ? (
-          <Fade in={!fullyLoaded}>
-            <Box
-              minW={["100%", "40rem"]}
-              minH={["28rem", "26rem", "24rem"]}
-              pos={"relative"}
-              inset={0}
-              overflow={"hidden"}
-              display={"grid"}
-              place-items={"center"}
-            >
-              <Center h="100%">
-                <LogoLoader />
-              </Center>
-            </Box>
-          </Fade>
-        ) : (
-          <HStack
-            w={"100%"}
-            h={"100%"}
-            display={["block", "flex"]}
+      {!fullyLoaded ? (
+        <Fade in={!fullyLoaded}>
+          <Box
+            minW={["100%", "40rem"]}
             minH={["28rem", "26rem", "24rem"]}
-            minW={["100%", "82vw", "40rem"]}
-            direction={[null, "row"]}
-            spacing={[2, 4]}
-            position="relative"
+            pos={"relative"}
+            inset={0}
+            overflow={"hidden"}
+            display={"grid"}
+            place-items={"center"}
           >
-            {!fullyLoaded && (
-              <Stack
-                direction={["column", "row"]}
-                alignItems={["center", "flex-start"]}
-                justifyContent={["center", "flex-start"]}
-                w="100%"
-                h="100%"
-                pos="absolute"
-              >
-                <Box w={["100%", "50%"]} h={"100%"} mr={[0, 4]} mb={[2, 0]}>
-                  <Skeleton
-                    startColor={"gray.500"}
-                    endColor={"gray.600"}
-                    borderRadius={"md"}
-                    w={"100%"}
-                    h={"100%"}
-                    maxH={"100%"}
-                    minH={"100%"}
-                  />
-                </Box>
-                <VStack w={["100%", "50%"]} h={"100%"} spacing={[2]}>
-                  <Skeleton
-                    startColor={"gray.500"}
-                    endColor={"gray.600"}
-                    borderRadius={"md"}
-                    w={"100%"}
-                    h={"44px"}
-                    maxH={"100%"}
-                    p
-                  />
-                  <Skeleton
-                    startColor={"gray.500"}
-                    endColor={"gray.600"}
-                    borderRadius={"md"}
-                    w={"100%"}
-                    h={"100%"}
-                    maxH={"100%"}
-                  />
-                </VStack>
-              </Stack>
-            )}
-            {fullyLoaded && paymentError && (
+            <Center h="100%">
+              <LogoLoader />
+            </Center>
+          </Box>
+        </Fade>
+      ) : (
+        <HStack
+          w={"100%"}
+          h={"100%"}
+          display={["block", "flex"]}
+          minH={["28rem", "26rem", "24rem"]}
+          minW={["100%", "82vw", "40rem"]}
+          direction={[null, "row"]}
+          spacing={[2, 4]}
+          position="relative"
+        >
+          {!fullyLoaded && (
+            <Stack
+              direction={["column", "row"]}
+              alignItems={["center", "flex-start"]}
+              justifyContent={["center", "flex-start"]}
+              w="100%"
+              h="100%"
+              pos="absolute"
+            >
+              <Box w={["100%", "50%"]} h={"100%"} mr={[0, 4]} mb={[2, 0]}>
+                <Skeleton
+                  startColor={"gray.500"}
+                  endColor={"gray.600"}
+                  borderRadius={"md"}
+                  w={"100%"}
+                  h={"100%"}
+                  maxH={"100%"}
+                  minH={"100%"}
+                />
+              </Box>
+              <VStack w={["100%", "50%"]} h={"100%"} spacing={[2]}>
+                <Skeleton
+                  startColor={"gray.500"}
+                  endColor={"gray.600"}
+                  borderRadius={"md"}
+                  w={"100%"}
+                  h={"44px"}
+                  maxH={"100%"}
+                  p
+                />
+                <Skeleton
+                  startColor={"gray.500"}
+                  endColor={"gray.600"}
+                  borderRadius={"md"}
+                  w={"100%"}
+                  h={"100%"}
+                  maxH={"100%"}
+                />
+              </VStack>
+            </Stack>
+          )}
+          {fullyLoaded && paymentError && (
+            <Box w={"100%"} pb={[2, 0]}>
+              <Fade in={paymentError}>
+                <Flex
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  w={"100%"}
+                  position="relative"
+                >
+                  <Heading
+                    as={"h1"}
+                    zIndex={998}
+                    textAlign={"center"}
+                    noOfLines={2}
+                    w={"full"}
+                    fontWeight={"normal !important"}
+                    fontSize={["3xl", "3xl"]}
+                    mb={4}
+                  >
+                    Payment Unsuccessful
+                  </Heading>
+                  <Text
+                    fontSize={["md !important", "lg !important"]}
+                    textAlign={"center"}
+                    fontWeight={"light !important"}
+                    maxW={"75%"}
+                  >
+                    {paymentError}
+                  </Text>
+                  <Box w={"100%"} h={"100%"}>
+                    <Flex
+                      direction={"column"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      h={"100%"}
+                    >
+                      <Box
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        position={"relative"}
+                        w={["90%", "50%", "50%", "50%"]}
+                        h={["90%", "50%", "50%", "50%"]}
+                      >
+                        <Img
+                          src={"images/amber-7.png"}
+                          position={"relative"}
+                          w={["100%", "100%"]}
+                          h={["100%", "100%"]}
+                          objectFit={[
+                            "cover !important",
+                            "contain !important",
+                            "contain !important",
+                            "cover !important",
+                            "cover !important",
+                          ]}
+                          backgroundSize={"100%"}
+                          alt={`Ambr Stone`}
+                          className="file-stone"
+                        />
+                      </Box>
+                    </Flex>
+                  </Box>
+                  <VStack spacing={[4, 4]}>
+                    <HStack spacing={[2, 4]}>
+                      <Button onClick={reloadPaymentForm}>Try Again</Button>
+                    </HStack>
+                  </VStack>
+                </Flex>
+              </Fade>
+            </Box>
+          )}
+          {fullyLoaded &&
+            paymentSuccess && ( // Render a success message if the paymentSuccess state is true
               <Box w={"100%"} pb={[2, 0]}>
-                <Fade in={paymentError}>
+                <Fade in={paymentSuccess}>
                   <Flex
                     direction={"column"}
                     alignItems={"center"}
@@ -275,7 +334,7 @@ export const PayPanel = ({
                       fontSize={["3xl", "3xl"]}
                       mb={4}
                     >
-                      Payment Unsuccessful
+                      Payment Successful
                     </Heading>
                     <Text
                       fontSize={["md !important", "lg !important"]}
@@ -283,7 +342,9 @@ export const PayPanel = ({
                       fontWeight={"light !important"}
                       maxW={"75%"}
                     >
-                      {paymentError}
+                      You&apos;ve unlocked 25 additional file transfers to use
+                      sharing your amazing work with {fileTransfersRemaining}{" "}
+                      file transfers total.
                     </Text>
                     <Box w={"100%"} h={"100%"}>
                       <Flex
@@ -317,289 +378,207 @@ export const PayPanel = ({
                             className="file-stone"
                           />
                         </Box>
+                        <Arrow
+                          size={["xl"]}
+                          w={["33%", "20%", "33%"]}
+                          h={"auto"}
+                          maxW={["33%", "33%", "20%", "20%"]}
+                          disabled={false}
+                          colorScheme="gray"
+                          mode={"downloaded"}
+                          position="absolute"
+                          left={0}
+                          right={0}
+                          m="auto"
+                        />
                       </Flex>
                     </Box>
                     <VStack spacing={[4, 4]}>
                       <HStack spacing={[2, 4]}>
-                        <Button onClick={reloadPaymentForm}>Try Again</Button>
+                        <Button onClick={sendAFile}>Share a File</Button>
+                        <Button onClick={resetPaymentForm}>+ Add More</Button>
                       </HStack>
+                      <Text className={"reciept-id"}>
+                        Receipt ID: {recieptID}
+                      </Text>
                     </VStack>
                   </Flex>
                 </Fade>
               </Box>
             )}
-            {fullyLoaded &&
-              paymentSuccess && ( // Render a success message if the paymentSuccess state is true
-                <Box w={"100%"} pb={[2, 0]}>
-                  <Fade in={paymentSuccess}>
-                    <Flex
-                      direction={"column"}
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                      w={"100%"}
-                      position="relative"
+          {fullyLoaded &&
+            !paymentSuccess &&
+            !paymentError &&
+            descRender !== undefined && (
+              <>
+                <Box
+                  w={["full", "45%"]}
+                  h={"100%"}
+                  overflow={"visible"}
+                  pos={["relative", "absolute"]}
+                  zIndex={998}
+                >
+                  <Box h={"12%"}>
+                    <Heading
+                      as={"h1"}
+                      className="fancy"
+                      fontSize={["4xl", "4xl"]}
+                      marginBottom={"0em !important"}
+                      noOfLines={1}
+                      mt={0}
+                      textAlign={["center !important", "left !important"]}
                     >
-                      <Heading
-                        as={"h1"}
-                        zIndex={998}
-                        textAlign={"center"}
-                        noOfLines={2}
-                        w={"full"}
-                        fontWeight={"normal !important"}
-                        fontSize={["3xl", "3xl"]}
-                        mb={4}
-                      >
-                        Payment Successful
-                      </Heading>
-                      <Text
-                        fontSize={["md !important", "lg !important"]}
-                        textAlign={"center"}
-                        fontWeight={"light !important"}
-                        maxW={"75%"}
-                      >
-                        You&apos;ve unlocked 25 additional file transfers to use
-                        sharing your amazing work with {fileTransfersRemaining}{" "}
-                        file transfers total.
-                      </Text>
-                      <Box w={"100%"} h={"100%"}>
-                        <Flex
-                          direction={"column"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
-                          h={"100%"}
-                        >
-                          <Box
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center"
-                            position={"relative"}
-                            w={["90%", "50%", "50%", "50%"]}
-                            h={["90%", "50%", "50%", "50%"]}
-                          >
-                            <Img
-                              src={"images/amber-7.png"}
-                              position={"relative"}
-                              w={["100%", "100%"]}
-                              h={["100%", "100%"]}
-                              objectFit={[
-                                "cover !important",
-                                "contain !important",
-                                "contain !important",
-                                "cover !important",
-                                "cover !important",
-                              ]}
-                              backgroundSize={"100%"}
-                              alt={`Ambr Stone`}
-                              className="file-stone"
-                            />
-                          </Box>
-                          <Arrow
-                            size={["xl"]}
-                            w={["33%", "20%", "33%"]}
-                            h={"auto"}
-                            maxW={["33%", "33%", "20%", "20%"]}
-                            disabled={false}
-                            colorScheme="gray"
-                            mode={"downloaded"}
-                            position="absolute"
-                            left={0}
-                            right={0}
-                            m="auto"
-                          />
-                        </Flex>
-                      </Box>
-                      <VStack spacing={[4, 4]}>
-                        <HStack spacing={[2, 4]}>
-                          <Button onClick={sendAFile}>Share a File</Button>
-                          <Button onClick={resetPaymentForm}>+ Add More</Button>
-                        </HStack>
-                        <Text className={"reciept-id"}>
-                          Receipt ID: {recieptID}
-                        </Text>
-                      </VStack>
-                    </Flex>
-                  </Fade>
-                </Box>
-              )}
-            {fullyLoaded &&
-              !paymentSuccess &&
-              !paymentError &&
-              descRender !== undefined && (
-                <>
-                  <Box
-                    w={["full", "45%"]}
-                    h={"100%"}
-                    overflow={"visible"}
-                    position={["static", "absolute"]}
+                      Top Up
+                    </Heading>
+                  </Box>
+                  <Flex
+                    flexDir={"column"}
+                    dir={"column"}
+                    alignItems={"flex-start"}
+                    justifyContent={["space-around", "center"]}
+                    w={"100%"}
+                    h={["100%", "88%"]}
+                    minH={["20rem", null]}
                   >
-                    <Box h={["100%", "25%"]}>
-                      <Heading
-                        as={"h1"}
-                        className="fancy"
-                        fontSize={["4xl", "4xl"]}
-                        marginBottom={"0.21em !important"}
-                        noOfLines={1}
-                      >
-                        Top Up
-                      </Heading>
-                      <Text
-                        w={["100%", "100%"]}
-                        pr={4}
-                        fontSize={"md"}
-                        align={"left"}
-                        noOfLines={[1, 2]}
-                      >
-                        {fileTransfersRemaining
-                          ? "You have only " +
-                            fileTransfersRemaining +
-                            " file transfers remaining."
-                          : "To share more of your work through Ambr you'll need to top-up."}
-                      </Text>
-                    </Box>
-                    <Flex
-                      direction={"column"}
+                    <Box
+                      w={"100%"}
+                      h={"auto"}
+                      display={"flex"}
+                      flexDir={"column"}
+                      gap={"0.15em"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      w={"100%"}
-                      h={["100%", "75%"]}
-                      mt={[4, "-5px", "-5px", "-5px"]}
-                      mb={[2, 0, 0, 0]}
+                      pr={["5%", "10%"]}
                     >
-                      <Box w={"100%"} h={"auto"} pr={["3rem", "15%"]}>
-                        {descRender === undefined ? (
-                          ""
-                        ) : (
-                          <Box display={"flex"} justifyContent={"center"}>
-                            <Text
-                              fontWeight={"lighter"}
-                              fontSize={"5.4em"}
-                              h={"100%"}
-                            >
-                              +
-                            </Text>
-                            <Heading
-                              as={"h1"}
-                              className="fancy"
-                              fontSize={[
-                                "8xl !important",
-                                "8xl !important",
-                                "8xl !important",
-                                "8xl !important",
-                              ]}
-                              marginBottom={"0 !important"}
-                              textAlign={"center !important"}
-                              fontWeight={"light !important"}
-                              m={"0 !important"}
-                              noOfLines={1}
-                            >
-                              {descRender}
-                            </Heading>
-                          </Box>
-                        )}
-                        <Text
-                          fontWeight={"medium"}
-                          position={"relative"}
-                          top={["-0.9rem", "-1.2rem", "-1.2rem", "-1.2rem"]}
-                          align={"center"}
-                          fontSize={["2xl", "xl", "xl", "xl"]}
-                          noOfLines={1}
-                        >
-                          {"File Transfers"}
-                        </Text>
-                        <HStack
+                      {descRender === undefined ? (
+                        ""
+                      ) : (
+                        <Box
                           display={"flex"}
                           justifyContent={"center"}
+                          height={"8em"}
+                        >
+                          <Text
+                            fontWeight={"medium"}
+                            fontSize={"5.4em"}
+                            h={"100%"}
+                          >
+                            +
+                          </Text>
+                          <Heading
+                            as={"h1"}
+                            className="fancy"
+                            fontSize={"8xl !important"}
+                            marginBottom={"0 !important"}
+                            textAlign={"center !important"}
+                            fontWeight={"light !important"}
+                            m={"0 !important"}
+                            noOfLines={1}
+                          >
+                            {descRender}
+                          </Heading>
+                        </Box>
+                      )}
+                      <Box>
+                        <Text
+                          fontWeight="medium"
+                          position="relative"
+                          align="center"
+                          fontSize={["2xl", "xl"]}
+                          noOfLines={1}
+                        >
+                          File transfers
+                        </Text>
+                        <Text
+                          fontWeight="medium"
+                          position="relative"
+                          align="center"
+                          fontSize={["2xl", "xl"]}
+                          noOfLines={1}
+                        >
+                          for only
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Text
+                          fontWeight={"medium"}
+                          fontSize={"4xl"}
                           alignItems={"flex-start"}
+                        >
+                          {!costRender ? "" : costRender}
+                        </Text>
+                      </Box>
+                    </Box>
+                    <Flex
+                      direction="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      w={["100%", ""]}
+                      h={["100%", "100%"]}
+                      pos={"absolute"}
+                      top={[null, 0]}
+                      overflow={"visible !important"}
+                    >
+                      <Box
+                        overflow={"visible"}
+                        width={["100%", "115%"]}
+                        height={["100%", "115%"]}
+                        pos={"absolute"}
+                        pt={[0, "0.33em"]}
+                        pl={["1.25em", 0]}
+                        style={{
+                          filter: `blur(${Math.round(6.66)}px)`,
+                          transition: "filter 0.76s ease-in",
+                        }}
+                        zIndex={-1}
+                      >
+                        <Img
+                          w={["100%", "100%"]}
+                          h={"100%"}
+                          objectFit={"contain !important"}
+                          src={`/images/amber-7.png`}
                           position={"relative"}
-                          top={["-0.6rem", "-1rem", "-1rem", "-1rem"]}
-                        >
-                          <Text
-                            pt={["0.4rem", "0.4rem", "0.4rem", "0.4rem"]}
-                            pr={["0.2rem", "0.2rem", "0.2rem", "0.2rem"]}
-                            fontSize={["sm", "sm", "sm", "sm"]}
-                          >
-                            for only
-                          </Text>
-                          <Text
-                            fontSize={["3xl", "3xl", "3xl", "3xl"]}
-                            alignItems={"flex-start"}
-                          >
-                            {!costRender ? "" : costRender}
-                          </Text>
-                        </HStack>
-                        <Flex
-                          direction="column"
-                          alignItems="center"
-                          justifyContent="center"
-                          w={["100%", ""]}
-                          h={["18rem", "100%"]}
-                          pos={"absolute"}
-                          top={0}
-                          zIndex={-998}
-                          mt={[0, 8, 5, 5]}
-                          overflow={"visible !important"}
-                        >
-                          <Box
-                            overflow={"visible"}
-                            width={"24rem"}
-                            height={"24rem"}
-                            pos={"absolute"}
-                          >
-                            <Img
-                              w={["100%", "100%"]}
-                              h={"100%"}
-                              ml={[0, 0]}
-                              objectFit={"none !important"}
-                              src={`/images/amber-7.png`}
-                              position={"relative"}
-                              alt={`Ambr Stone`}
-                              className="file-stone"
-                            />
-                          </Box>
-                        </Flex>
+                          alt={`Ambr Stone`}
+                          className="file-stone"
+                        />
                       </Box>
                     </Flex>
-                  </Box>
-                  {!paymentSuccess && clientSecret && (
-                    <Box
-                      h={"100%"}
-                      w={["full", "55%"]}
-                      position={["relative", "absolute"]}
-                      top={[null, 0]}
-                      left={[null, "45%"]}
-                      sx={{ marginInlineStart: "0 !important" }}
-                    >
-                      <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>
+                  </Flex>
+                </Box>
+                {!paymentSuccess && clientSecret && (
+                  <Box
+                    h={"100%"}
+                    w={["full", "55%"]}
+                    position={["relative", "absolute"]}
+                    top={[null, 0]}
+                    left={[null, "45%"]}
+                    sx={{ marginInlineStart: "0 !important" }}
+                  >
+                    <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>
+                      <Box px={"0"} position={"relative"} w={"100%"} h={"100%"}>
                         <Box
-                          px={"0"}
-                          position={"relative"}
-                          w={"100%"}
+                          pos={"relative"}
+                          overflowY={["auto", "scroll"]}
+                          overflowX={"hidden"}
                           h={"100%"}
+                          w={"100%"}
+                          px={"3px"}
                         >
-                          <Box
-                            pos={"relative"}
-                            overflowY={["auto", "scroll"]}
-                            overflowX={"hidden"}
-                            h={"100%"}
-                            w={"100%"}
-                            px={"3px"}
-                          >
-                            <Elements options={options} stripe={stripePromise}>
-                              <PaymentForm
-                                clientSecret={clientSecret}
-                                onSuccess={handlePaymentSuccess}
-                              />
-                            </Elements>
-                          </Box>
+                          <Elements options={options} stripe={stripePromise}>
+                            <PaymentForm
+                              clientSecret={clientSecret}
+                              onSuccess={handlePaymentSuccess}
+                            />
+                          </Elements>
                         </Box>
-                      </VStack>
-                    </Box>
-                  )}
-                </>
-              )}
-          </HStack>
-        )}
-      </Panel>
+                      </Box>
+                    </VStack>
+                  </Box>
+                )}
+              </>
+            )}
+        </HStack>
+      )}
     </>
   );
 };

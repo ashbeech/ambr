@@ -23,11 +23,9 @@ import { WarningIcon } from "./icons/WarningIcon";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //import { maxRoomCloudSizeGb, maxRoomSizeGb } from "../config.js";
-//import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
 import { CREATE_MODE, JOIN_MODE, SHARE_MODE } from "../lib/Send.js";
 import { FilePicker } from "./FilePicker.js";
 import { Arrow } from "./Arrow.js";
-import { Panel } from "./Panel.js";
 import { Check } from "./Check.js";
 import { Share } from "./Share.js";
 
@@ -144,7 +142,7 @@ export const SendPanel = ({
   }, [shouldWarn]);
 
   return (
-    <Panel className="glass">
+    <>
       <HStack
         display={["block", "grid"]}
         maxHeight={[null, null]}
@@ -173,6 +171,7 @@ export const SendPanel = ({
             <Fade
               in={mode === CREATE_MODE || mode === SHARE_MODE}
               style={{ height: "100%", width: "100%" }}
+              zIndex={"9999"}
               unmountOnExit
             >
               <Box
@@ -215,7 +214,7 @@ export const SendPanel = ({
               h={["100%", "100%"]}
               minW={"7rem"}
             >
-              <Box zIndex={999} h={"100%"} mr={[0, 3]} overflow={"hidden"}>
+              <Box zIndex={998} h={"100%"} mr={[0, 3]} overflow={"hidden"}>
                 <Fade
                   in={mode === null}
                   style={{
@@ -294,7 +293,7 @@ export const SendPanel = ({
               </Box>
             </Box>
             <Box
-              zIndex={-999}
+              zIndex={1}
               w={["100%", "100%"]}
               h={["100%", "100%"]}
               pos={["relative", "absolute"]}
@@ -309,11 +308,13 @@ export const SendPanel = ({
               >
                 <Box
                   overflow={"visible"}
-                  width={"125%"}
-                  height={"125%"}
+                  width={"120%"}
+                  height={"120%"}
                   pos={"absolute"}
                   style={{
-                    filter: `blur(${Math.round(3.3 - createProgress * 3.3)}px)`,
+                    filter: `blur(${Math.round(
+                      6.66 - createProgress * 6.66
+                    )}px)`,
                     transition: "filter 0.76s ease-in",
                   }}
                 >
@@ -622,7 +623,7 @@ export const SendPanel = ({
           />
         </Stack>
       </Collapse>
-    </Panel>
+    </>
   );
 };
 
