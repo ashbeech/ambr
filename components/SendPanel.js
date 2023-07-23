@@ -204,7 +204,7 @@ export const SendPanel = ({
           w={mode === SHARE_MODE ? ["full", "58%"] : ["full", "42%"]}
           style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
           h={"100%"}
-          mb={[0, 0]}
+          mb={[2, 0]}
           position={["relative", "absolute"]}
         >
           <Flex
@@ -227,7 +227,7 @@ export const SendPanel = ({
               h={["100%", "100%"]}
               minW={"7rem"}
             >
-              <Box zIndex={998} h={"100%"} mr={[0, 3]} overflow={"hidden"}>
+              <Box zIndex={998} h={"100%"} mr={[0, 2]} overflow={"hidden"}>
                 <Fade
                   in={mode === null}
                   style={{
@@ -616,9 +616,10 @@ export const SendPanel = ({
       </Collapse>
       <Collapse
         in={mode === SHARE_MODE && mintState === "Sealed"}
+        endingHeight={"4rem"}
         unmountOnExit
       >
-        <Stack mt={[8, 0]} w="full" spacing={2}>
+        <Stack mt={[8, 0]} w="full" spacing={2} h={"4rem"} maxH={"4rem"}>
           <Heading
             as={"h4"}
             zIndex={999}
