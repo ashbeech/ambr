@@ -205,538 +205,530 @@ export const FilePanel = ({
 
   return (
     <>
-      <Panel
-        className="glass"
-        pt={
-          isExpired
-            ? ["6 !important", "10 !important"]
-            : ["0 !important", "10 !important"]
-        }
+      <HStack
+        w={"100%"}
+        h={"100%"}
+        display={["block", "flex"]}
+        minH={["100%", "24rem", "24rem"]}
+        minW={["100%", "82vw", "40rem"]}
+        maxW={["17rem", "40rem"]}
+        direction={[null, "row"]}
+        spacing={[2, 4]}
+        position="relative"
       >
-        <HStack
-          w={"100%"}
+        <Box
+          w={["full", "40%"]}
           h={"100%"}
-          display={["block", "flex"]}
-          minH={["100%", "24rem", "24rem"]}
-          minW={["100%", "82vw", "40rem"]}
-          maxW={["17rem", "40rem"]}
-          direction={[null, "row"]}
-          spacing={[2, 4]}
-          position="relative"
+          overflow={"visible"}
+          position={["static", "absolute"]}
         >
-          <Box
-            w={["full", "40%"]}
-            h={"100%"}
-            overflow={"visible"}
-            position={["static", "absolute"]}
-          >
-            {!fullyLoaded && isExpired && (
-              <Box w={"100%"} h={"100%"}>
-                <Box w={"full"} h={"100%"}>
-                  <Flex
-                    direction={"column"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    h={"100%"}
-                  >
-                    <Skeleton
-                      startColor={"gray.500"}
-                      endColor={"gray.600"}
-                      borderRadius={"md"}
-                      w={["100%", "90%"]}
-                      h={["14rem", "2.525rem"]}
-                      maxH={"100%"}
-                      minH={"100%"}
-                      mb={[4, 0]}
-                    />
-                  </Flex>
-                </Box>
+          {!fullyLoaded && isExpired && (
+            <Box w={"100%"} h={"100%"}>
+              <Box w={"full"} h={"100%"}>
+                <Flex
+                  direction={"column"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  h={"100%"}
+                >
+                  <Skeleton
+                    startColor={"gray.500"}
+                    endColor={"gray.600"}
+                    borderRadius={"xl"}
+                    w={["100%", "100%"]}
+                    h={["17.5rem", "2.525rem"]}
+                    maxH={"100%"}
+                    minH={"100%"}
+                    mt={[6, 0]}
+                    mb={[4, 0]}
+                  />
+                </Flex>
               </Box>
-            )}
-            {fullyLoaded && (
-              <Fade
-                in={roomMeta != null && cid != null}
-                style={{ height: "100%", width: "100%" }}
-              >
-                <Box overflow={"visible"} h={"100%"} spacing={0}>
-                  {!isExpired && (
-                    <Box
-                      overflow="visible"
-                      h="100%"
-                      spacing={0}
-                      position="relative"
-                    >
-                      {!isExpired && (
-                        <Flex
-                          direction="column"
-                          alignItems="center"
-                          justifyContent="center"
-                          h="100%"
-                          mr={[0, 0]}
+            </Box>
+          )}
+          {fullyLoaded && (
+            <Fade
+              in={roomMeta != null && cid != null}
+              style={{ height: "100%", width: "100%" }}
+            >
+              <Box overflow={"visible"} h={"100%"} spacing={0}>
+                {!isExpired && (
+                  <Box
+                    overflow="visible"
+                    h="100%"
+                    spacing={0}
+                    position="relative"
+                  >
+                    {!isExpired && (
+                      <Flex
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        h="100%"
+                        mr={[0, 0]}
+                      >
+                        <Box
+                          position="absolute"
+                          alignItems={"center"}
+                          display={"flex"}
+                          justifyContent={"center"}
+                          top="50%"
+                          left="50%"
+                          transform="translate(-50%, -50%)"
+                          zIndex={997}
+                          w={["33%", ""]}
+                          h={["33%", ""]}
+                          minW={"7rem"}
                         >
-                          <Box
-                            position="absolute"
-                            top="50%"
-                            left="50%"
-                            transform="translate(-50%, -50%)"
-                            zIndex={997}
-                            w={["33%", ""]}
-                            h={["33%", ""]}
-                            minW={"7rem"}
-                          >
-                            <Arrow
-                              size={["xl", "xl", "xl", "xl", "xl"]}
-                              maxW={["100%", "100%"]}
-                              h="auto"
-                              p={0}
-                              disabled={false}
-                              title=""
-                              description=""
-                              colorScheme="gray"
-                              mode={!verifyOpen ? downloadState : "downloaded"}
-                              progress={downloadProgress}
+                          <Arrow
+                            size={["xl", "xl", "xl", "xl", "xl"]}
+                            maxW={["100%", "100%"]}
+                            h="auto"
+                            p={0}
+                            disabled={false}
+                            title=""
+                            description=""
+                            colorScheme="gray"
+                            mode={!verifyOpen ? downloadState : "downloaded"}
+                            progress={downloadProgress}
+                          />
+                        </Box>
+                        <Box position="relative" w={["100%", "125%", "125%"]}>
+                          <IPFSImage image_src={_image_src} />
+                        </Box>
+                      </Flex>
+                    )}
+                  </Box>
+                )}
+                {isExpired && unVerified && (
+                  <Fade
+                    in={unVerified}
+                    style={{ height: "100%", width: "100%" }}
+                  >
+                    <Box w={"100%"} h={"100%"} position={["relative"]}>
+                      <Flex
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        h="100%"
+                      >
+                        <Box
+                          position="absolute"
+                          top="50%"
+                          left="50%"
+                          transform="translate(-50%, -50%)"
+                          zIndex={998}
+                          w={["100%", "100%"]}
+                          h={["100%", "100%"]}
+                          minW={"7rem"}
+                        >
+                          <Box h={"100%"} mr={[0, 0]}>
+                            <FilePicker
+                              onFiles={verifyFiles}
+                              description={"Re-upload Original"}
                             />
                           </Box>
-                          <Box position="relative" w={["100%", "137%", "137%"]}>
-                            <IPFSImage image_src={_image_src} />
-                          </Box>
-                        </Flex>
-                      )}
-                    </Box>
-                  )}
-                  {isExpired && unVerified && (
-                    <Fade
-                      in={unVerified}
-                      style={{ height: "100%", width: "100%" }}
-                    >
-                      <Box w={"100%"} h={"100%"} position={["relative"]}>
-                        <Flex
-                          direction="column"
+                        </Box>
+                        <Box
+                          display="flex"
                           alignItems="center"
                           justifyContent="center"
-                          h="100%"
+                          position={"relative"}
+                          w={["85%", "125%"]}
+                          h={["85%", "125%"]}
                         >
-                          <Box
-                            position="absolute"
-                            top="50%"
-                            left="50%"
-                            transform="translate(-50%, -50%)"
-                            zIndex={998}
-                            w={["100%", "100%"]}
-                            h={["100%", "100%"]}
-                            minW={"7rem"}
-                          >
-                            <Box h={"100%"} mr={[0, 0]}>
-                              <FilePicker
-                                onFiles={verifyFiles}
-                                description={"Re-upload Original"}
-                              />
-                            </Box>
-                          </Box>
+                          <IPFSImage image_src={_image_src} />
+                        </Box>
+                      </Flex>
+                    </Box>
+                  </Fade>
+                )}
+                {isExpired && !unVerified && verifyState !== "Verified" && (
+                  <Fade
+                    in={verifyState === "Verifying"}
+                    style={{ height: "100%", width: "100%" }}
+                  >
+                    <Box w={"100%"} h={"100%"}>
+                      <Flex
+                        direction={"column"}
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        h={"100%"}
+                      >
+                        <VStack>
+                          <Spinner size="xl" speed="0.33s" />
+                          <Text fontWeight={"light"} fontSize={"md"}>
+                            Verifying file matches original
+                          </Text>
+                        </VStack>
+                      </Flex>
+                    </Box>
+                  </Fade>
+                )}
+                {isExpired && verifyState === "Verified" && (
+                  <Fade
+                    in={verifyState === "Verified"}
+                    style={{ height: "100%", width: "100%" }}
+                  >
+                    <Box w={"100%"} h={"100%"}>
+                      <Flex
+                        direction={"column"}
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        h={"100%"}
+                      >
+                        <Arrow
+                          size={["xl"]}
+                          maxW={["33%", "40%"]}
+                          h={"auto"}
+                          p={0}
+                          disabled={false}
+                          title={""}
+                          description={""}
+                          colorScheme="gray"
+                          mode={"downloaded"}
+                          progress={null}
+                        />
+                        <Box
+                          zIndex={-999}
+                          w={["100%", "65%"]}
+                          h={["60%", "125%"]}
+                          pos={"absolute"}
+                          top={["-2rem", "-12%"]}
+                          left={["0", "-10%"]}
+                        >
                           <Box
                             display="flex"
                             alignItems="center"
                             justifyContent="center"
                             position={"relative"}
-                            w={["75%", "137%"]}
-                            h={["100%", "137%"]}
+                            w={["100%", "125%"]}
+                            h={["100%", "125%"]}
                           >
                             <IPFSImage image_src={_image_src} />
                           </Box>
-                        </Flex>
-                      </Box>
-                    </Fade>
-                  )}
-                  {isExpired && !unVerified && verifyState !== "Verified" && (
-                    <Fade
-                      in={verifyState === "Verifying"}
-                      style={{ height: "100%", width: "100%" }}
-                    >
-                      <Box w={"100%"} h={"100%"}>
-                        <Flex
-                          direction={"column"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
-                          h={"100%"}
-                        >
-                          <VStack>
-                            <Spinner size="xl" speed="0.33s" />
-                            <Text fontWeight={"light"} fontSize={"md"}>
-                              Verifying file matches original
-                            </Text>
-                          </VStack>
-                        </Flex>
-                      </Box>
-                    </Fade>
-                  )}
-                  {isExpired && verifyState === "Verified" && (
-                    <Fade
-                      in={verifyState === "Verified"}
-                      style={{ height: "100%", width: "100%" }}
-                    >
-                      <Box w={"100%"} h={"100%"}>
-                        <Flex
-                          direction={"column"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
-                          h={"100%"}
-                        >
-                          <Arrow
-                            size={["xl"]}
-                            maxW={["33%", "40%"]}
-                            h={"auto"}
-                            p={0}
-                            disabled={false}
-                            title={""}
-                            description={""}
-                            colorScheme="gray"
-                            mode={"downloaded"}
-                            progress={null}
-                          />
-                          <Box
-                            zIndex={-999}
-                            w={["100%", "65%"]}
-                            h={["60%", "120%"]}
-                            pos={"absolute"}
-                            top={["-2rem", "-12%"]}
-                            left={["0", "-10%"]}
-                          >
-                            <Box
-                              display="flex"
-                              alignItems="center"
-                              justifyContent="center"
-                              position={"relative"}
-                              w={["100%", "137%"]}
-                              h={["100%", "137%"]}
-                            >
-                              <IPFSImage image_src={_image_src} />
-                            </Box>
-                          </Box>
-                        </Flex>
-                      </Box>
-                    </Fade>
-                  )}
-                </Box>
-              </Fade>
-            )}
-          </Box>
-          <Box
-            h={"100%"}
-            w={["full", "60%"]}
-            position={["relative", "absolute"]}
-            top={[null, 0]}
-            left={[null, "40%"]}
-            sx={{ marginInlineStart: "0 !important" }}
+                        </Box>
+                      </Flex>
+                    </Box>
+                  </Fade>
+                )}
+              </Box>
+            </Fade>
+          )}
+        </Box>
+        <Box
+          h={"100%"}
+          w={["full", "60%"]}
+          position={["relative", "absolute"]}
+          top={[null, 0]}
+          left={[null, "40%"]}
+          sx={{ marginInlineStart: "0 !important" }}
+        >
+          <VStack
+            display="flex"
+            alignItems="flex-start"
+            justifyContent="left"
+            overflow="visible"
+            maxWidth="100%"
+            w="100%"
+            h={["auto", "100%"]}
+            pl={[0, 6]}
           >
-            <VStack
-              display="flex"
-              alignItems="flex-start"
-              justifyContent="left"
-              overflow="visible"
-              maxWidth="100%"
-              w="100%"
-              h={["auto", "100%"]}
-              pl={[0, 6]}
-            >
-              {!fullyLoaded && (
-                <>
-                  <Box position={"relative"} w={"100%"}>
-                    <Skeleton
-                      startColor="gray.500"
-                      endColor="gray.600"
-                      borderRadius={"md"}
-                      h={"2.525rem"}
-                      mt={0}
-                      mb={5}
-                    />
-                    <Skeleton
-                      startColor="gray.500"
-                      endColor="gray.600"
-                      borderRadius={"md"}
-                      h="0.875rem"
-                      mt={0}
-                      mb={1}
-                    />
-                    <Skeleton
-                      startColor="gray.500"
-                      endColor="gray.600"
-                      borderRadius={"md"}
-                      w={"75%"}
-                      h="0.875rem"
-                      mt={0}
-                      mb={4}
-                    />
-                    {!isExpired && (
-                      <>
-                        <Skeleton
-                          startColor="gray.500"
-                          endColor="gray.600"
-                          borderRadius={"md"}
-                          w={"100%"}
-                          h="2.525rem"
-                          mb={4}
-                        />
-                      </>
-                    )}
-                    {isAuthenticated && (
-                      <>
-                        <HStack mb={4}>
-                          <Skeleton
-                            startColor="gray.500"
-                            endColor="gray.600"
-                            borderRadius={"md"}
-                            w={"48%"}
-                            h="2.525rem"
-                            mr={1}
-                          />
-                          <Skeleton
-                            startColor="gray.500"
-                            endColor="gray.600"
-                            borderRadius={"md"}
-                            w={"48%"}
-                            h="2.525rem"
-                          />
-                        </HStack>
-                        <Skeleton
-                          startColor="gray.500"
-                          endColor="gray.600"
-                          borderRadius={"md"}
-                          w={"25%"}
-                          h="1.125rem"
-                          mb={2}
-                          mt={2}
-                        />
-                        <Skeleton
-                          startColor="gray.500"
-                          endColor="gray.600"
-                          borderRadius={"md"}
-                          w={"100%"}
-                          h="2.525rem"
-                        />
-                      </>
-                    )}
-                  </Box>
-                </>
-              )}
-              {!verifyOpen && fullyLoaded && files && (
-                <Box
-                  position={"relative"}
-                  w={"100%"}
-                  h={["", "auto"]}
-                  maxH={["", "100%"]}
-                  mt={[6, 0]}
-                  mb={isExPublic ? 0 : 0}
-                >
-                  <TopRightPanel
-                    isExPublic={isExPublic}
-                    isExpired={isExpired}
-                    roomMeta={roomMeta}
-                    files={files}
-                    isDisabled={isDisabled}
-                    onDownload={onDownload}
-                    onDownloadAll={onDownloadAll}
-                    downloadProgress={downloadProgress}
-                    refresh={refresh}
+            {!fullyLoaded && (
+              <>
+                <Box position={"relative"} w={"100%"}>
+                  <Skeleton
+                    startColor="gray.500"
+                    endColor="gray.600"
+                    borderRadius={"md"}
+                    h={"2.525rem"}
+                    mt={0}
+                    mb={5}
                   />
-                  {isAuthenticated &&
-                    roomMeta != null &&
-                    roomMeta.readableMetadata != null &&
-                    isUserMatch && (
-                      <HStack
-                        mt={isExpired ? [4, 5] : [4, 0]}
-                        mb={[2, 0]}
-                        w="full"
-                        overflow="hidden"
-                      >
-                        <Box flex="1" minW="0" maxW="50%">
-                          <Button
-                            leftIcon={
-                              <SealIcon
-                                color={"orange.400"}
-                                boxSize={"1.4rem"}
-                              />
-                            }
-                            isDisabled={false}
-                            size={"md"}
-                            onClick={handleClickVerify}
-                            w="full"
-                            overflow={"hidden"}
-                          >
-                            {"Certificate"}
-                          </Button>
-                        </Box>
-                        <Box
-                          flex="1"
-                          minW="0"
-                          maxW="50%"
-                          className="important"
-                          py={"3px"}
-                          px={0}
-                          mx={"1px"}
-                        >
-                          <Formik
-                            validateOnMount={true}
-                            enableReinitialize={true}
-                          >
-                            <Form>
-                              <HStack
-                                className={formModeLink ? "pub" : "pri"}
-                                justifyContent={"flex-start"}
-                              >
-                                <Field
-                                  align={"left"}
-                                  as={Switch}
-                                  id="mode"
-                                  name="mode"
-                                  size="lg"
-                                  variant="outline"
-                                  disabled={isLoading}
-                                  isChecked={formModeLink}
-                                  onChange={handleChange}
-                                />
-                                <Icon
-                                  as={formModeLink ? PublicIcon : PrivateIcon}
-                                  boxSize={"1.85rem"}
-                                />
-                                <Text fontWeight={"medium"} noOfLines={1}>
-                                  {formModeLink ? "Public" : "Private"}
-                                </Text>
-                              </HStack>
-                            </Form>
-                          </Formik>
-                        </Box>
+                  <Skeleton
+                    startColor="gray.500"
+                    endColor="gray.600"
+                    borderRadius={"md"}
+                    h="0.875rem"
+                    mt={0}
+                    mb={1}
+                  />
+                  <Skeleton
+                    startColor="gray.500"
+                    endColor="gray.600"
+                    borderRadius={"md"}
+                    w={"75%"}
+                    h="0.875rem"
+                    mt={0}
+                    mb={4}
+                  />
+                  {!isExpired && (
+                    <>
+                      <Skeleton
+                        startColor="gray.500"
+                        endColor="gray.600"
+                        borderRadius={"md"}
+                        w={"100%"}
+                        h="2.525rem"
+                        mb={4}
+                      />
+                    </>
+                  )}
+                  {isAuthenticated && (
+                    <>
+                      <HStack mb={4}>
+                        <Skeleton
+                          startColor="gray.500"
+                          endColor="gray.600"
+                          borderRadius={"md"}
+                          w={"48%"}
+                          h="2.525rem"
+                          mr={1}
+                        />
+                        <Skeleton
+                          startColor="gray.500"
+                          endColor="gray.600"
+                          borderRadius={"md"}
+                          w={"48%"}
+                          h="2.525rem"
+                        />
                       </HStack>
-                    )}
+                      <Skeleton
+                        startColor="gray.500"
+                        endColor="gray.600"
+                        borderRadius={"md"}
+                        w={"25%"}
+                        h="1.125rem"
+                        mb={2}
+                        mt={2}
+                      />
+                      <Skeleton
+                        startColor="gray.500"
+                        endColor="gray.600"
+                        borderRadius={"md"}
+                        w={"100%"}
+                        h="2.525rem"
+                      />
+                    </>
+                  )}
                 </Box>
-              )}
-              {roomMeta && !isUserMatch && roomMeta.isPublic && (
-                <>
-                  <HStack
-                    w={["100%", "100%"]}
-                    pt={isExPublic ? [0, 0] : [4, 0]}
-                    overflow={"visible"}
-                  >
-                    <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
-                    <Heading
-                      as={"h3"}
-                      fontWeight={"medium !important"}
-                      letterSpacing={"normal !important"}
-                      zIndex={999}
-                      textAlign={"left"}
-                      w={"full"}
-                      sx={isExpired ? {} : { marginTop: "0 !important" }}
+              </>
+            )}
+            {!verifyOpen && fullyLoaded && files && (
+              <Box
+                position={"relative"}
+                w={"100%"}
+                h={["", "auto"]}
+                maxH={["", "100%"]}
+                mt={[6, 0]}
+                mb={isExPublic ? 0 : 0}
+              >
+                <TopRightPanel
+                  isExPublic={isExPublic}
+                  isExpired={isExpired}
+                  roomMeta={roomMeta}
+                  files={files}
+                  isDisabled={isDisabled}
+                  onDownload={onDownload}
+                  onDownloadAll={onDownloadAll}
+                  downloadProgress={downloadProgress}
+                  refresh={refresh}
+                />
+                {isAuthenticated &&
+                  roomMeta != null &&
+                  roomMeta.readableMetadata != null &&
+                  isUserMatch && (
+                    <HStack
+                      mt={isExpired ? [4, 5] : [4, 0]}
+                      mb={[2, 0]}
+                      w="full"
+                      overflow="hidden"
                     >
-                      Certificate
-                    </Heading>
-                  </HStack>
+                      <Box flex="1" minW="0" maxW="50%">
+                        <Button
+                          leftIcon={
+                            <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
+                          }
+                          isDisabled={false}
+                          size={"md"}
+                          onClick={handleClickVerify}
+                          w="full"
+                          overflow={"hidden"}
+                        >
+                          {"Certificate"}
+                        </Button>
+                      </Box>
+                      <Box
+                        flex="1"
+                        minW="0"
+                        maxW="50%"
+                        className="important"
+                        py={"3px"}
+                        px={0}
+                        mx={"1px"}
+                      >
+                        <Formik
+                          validateOnMount={true}
+                          enableReinitialize={true}
+                        >
+                          <Form>
+                            <HStack
+                              className={formModeLink ? "pub" : "pri"}
+                              justifyContent={"flex-start"}
+                            >
+                              <Field
+                                align={"left"}
+                                as={Switch}
+                                id="mode"
+                                name="mode"
+                                size="lg"
+                                variant="outline"
+                                disabled={isLoading}
+                                isChecked={formModeLink}
+                                onChange={handleChange}
+                              />
+                              <Icon
+                                as={formModeLink ? PublicIcon : PrivateIcon}
+                                boxSize={"1.85rem"}
+                              />
+                              <Text fontWeight={"medium"} noOfLines={1}>
+                                {formModeLink ? "Public" : "Private"}
+                              </Text>
+                            </HStack>
+                          </Form>
+                        </Formik>
+                      </Box>
+                    </HStack>
+                  )}
+              </Box>
+            )}
+            {roomMeta && !isUserMatch && roomMeta.isPublic && (
+              <>
+                <HStack
+                  w={["100%", "100%"]}
+                  pt={isExPublic ? [0, 0] : [4, 0]}
+                  overflow={"visible"}
+                >
+                  <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
+                  <Heading
+                    as={"h3"}
+                    fontWeight={"medium !important"}
+                    letterSpacing={"normal !important"}
+                    zIndex={999}
+                    textAlign={"left"}
+                    w={"full"}
+                    sx={isExpired ? {} : { marginTop: "0 !important" }}
+                  >
+                    Certificate
+                  </Heading>
+                </HStack>
+                <Box
+                  mt={[0, 0]}
+                  w={"100%"}
+                  h={["100%", "auto"]}
+                  overflow={["auto", "hidden"]}
+                >
                   <Box
-                    mt={[0, 0]}
+                    position={"relative"}
+                    maxH={isExpired ? "100%" : ["100%", "100%"]}
                     w={"100%"}
-                    h={["100%", "auto"]}
-                    overflow={["auto", "hidden"]}
+                    h={isExpired ? ["100%", "100%"] : ["100%", "100%"]}
+                    sx={{ marginTop: "0 !important" }}
+                    pt={isExPublic ? [0, 0] : [0, 0]}
+                    overflow="auto"
+                    borderBottom={["", "1px"]}
                   >
                     <Box
-                      position={"relative"}
-                      maxH={isExpired ? "100%" : ["100%", "100%"]}
-                      w={"100%"}
-                      h={isExpired ? ["100%", "100%"] : ["100%", "100%"]}
-                      sx={{ marginTop: "0 !important" }}
-                      pt={isExPublic ? [0, 0] : [0, 0]}
-                      overflow="auto"
-                      borderBottom={["", "1px"]}
+                      w={"full"}
+                      h={!isExPublic ? [null, "auto"] : [null, "auto"]}
                     >
-                      <Box
-                        w={"full"}
-                        h={!isExPublic ? [null, "auto"] : [null, "auto"]}
-                      >
-                        <FileRecordPanel
-                          title={
-                            roomMeta?.readableMetadata.title
-                              ? roomMeta.readableMetadata.title
-                              : ""
-                          }
-                          client={client ? client : ""}
-                          key_concept={key_concept ? key_concept : ""}
-                          creators={creators ? creators : ""}
-                          numCreators={
-                            roomMeta.readableMetadata.creators.length
-                              ? roomMeta.readableMetadata.creators.length
-                              : 0
-                          }
-                          fileHash={fileHash ? fileHash : ""}
-                          cid={cid ? cid : ""}
-                          cidLink={cidLink ? cidLink : ""}
-                          txHash={txHash ? txHash : ""}
-                          txHashRaw={txHashRaw ? txHashRaw : ""}
-                          readableTimeStamp={
-                            readableTimeStamp ? readableTimeStamp : ""
-                          }
-                        />
-                      </Box>
+                      <FileRecordPanel
+                        title={
+                          roomMeta?.readableMetadata.title
+                            ? roomMeta.readableMetadata.title
+                            : ""
+                        }
+                        client={client ? client : ""}
+                        key_concept={key_concept ? key_concept : ""}
+                        creators={creators ? creators : ""}
+                        numCreators={
+                          roomMeta.readableMetadata.creators.length
+                            ? roomMeta.readableMetadata.creators.length
+                            : 0
+                        }
+                        fileHash={fileHash ? fileHash : ""}
+                        cid={cid ? cid : ""}
+                        cidLink={cidLink ? cidLink : ""}
+                        txHash={txHash ? txHash : ""}
+                        txHashRaw={txHashRaw ? txHashRaw : ""}
+                        readableTimeStamp={
+                          readableTimeStamp ? readableTimeStamp : ""
+                        }
+                      />
                     </Box>
                   </Box>
-                </>
+                </Box>
+              </>
+            )}
+            {verifyOpen &&
+              isAuthenticated &&
+              roomMeta &&
+              roomMeta.readableMetadata &&
+              isUserMatch && (
+                <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
+                  <FileRecordPanel
+                    title={
+                      roomMeta?.readableMetadata.title
+                        ? roomMeta.readableMetadata.title
+                        : ""
+                    }
+                    client={client ? client : ""}
+                    key_concept={key_concept ? key_concept : ""}
+                    creators={creators ? creators : ""}
+                    numCreators={
+                      roomMeta.readableMetadata.creators.length
+                        ? roomMeta.readableMetadata.creators.length
+                        : 0
+                    }
+                    fileHash={fileHash ? fileHash : ""}
+                    cid={cid ? cid : ""}
+                    cidLink={cidLink ? cidLink : ""}
+                    txHash={txHash ? txHash : ""}
+                    txHashRaw={txHashRaw ? txHashRaw : ""}
+                    readableTimeStamp={
+                      readableTimeStamp ? readableTimeStamp : ""
+                    }
+                    formModeLink={formModeLink}
+                    isLoading={isLoading}
+                    handleClickVerify={handleClickVerify}
+                    handleChange={handleChange}
+                  />
+                </Box>
               )}
-              {verifyOpen &&
-                isAuthenticated &&
-                roomMeta &&
-                roomMeta.readableMetadata &&
-                isUserMatch && (
-                  <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
-                    <FileRecordPanel
-                      title={
-                        roomMeta?.readableMetadata.title
-                          ? roomMeta.readableMetadata.title
-                          : ""
-                      }
-                      client={client ? client : ""}
-                      key_concept={key_concept ? key_concept : ""}
-                      creators={creators ? creators : ""}
-                      numCreators={
-                        roomMeta.readableMetadata.creators.length
-                          ? roomMeta.readableMetadata.creators.length
-                          : 0
-                      }
-                      fileHash={fileHash ? fileHash : ""}
-                      cid={cid ? cid : ""}
-                      cidLink={cidLink ? cidLink : ""}
-                      txHash={txHash ? txHash : ""}
-                      txHashRaw={txHashRaw ? txHashRaw : ""}
-                      readableTimeStamp={
-                        readableTimeStamp ? readableTimeStamp : ""
-                      }
-                      formModeLink={formModeLink}
-                      isLoading={isLoading}
-                      handleClickVerify={handleClickVerify}
-                      handleChange={handleChange}
-                    />
-                  </Box>
-                )}
-              {!verifyOpen &&
-                fullyLoaded &&
-                files &&
-                isAuthenticated &&
-                roomMeta &&
-                isUserMatch && (
-                  <Box
-                    w={"full"}
-                    pos={["relative", "relative"]}
-                    pt={[0, 4]}
-                    bottom={0}
-                  >
-                    <SharePanel
-                      shareUrl={
-                        origin +
-                        globalThis.location?.pathname +
-                        globalThis.location?.hash
-                      }
-                    />
-                  </Box>
-                )}
-            </VStack>
-          </Box>
-        </HStack>
-      </Panel>
+            {!verifyOpen &&
+              fullyLoaded &&
+              files &&
+              isAuthenticated &&
+              roomMeta &&
+              isUserMatch && (
+                <Box
+                  w={"full"}
+                  pos={["relative", "relative"]}
+                  pt={[0, 4]}
+                  bottom={0}
+                >
+                  <SharePanel
+                    shareUrl={
+                      origin +
+                      globalThis.location?.pathname +
+                      globalThis.location?.hash
+                    }
+                  />
+                </Box>
+              )}
+          </VStack>
+        </Box>
+      </HStack>
     </>
   );
 };

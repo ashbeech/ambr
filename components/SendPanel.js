@@ -144,66 +144,79 @@ export const SendPanel = ({
   return (
     <>
       <HStack
+        w={"100%"}
+        h={"100%"}
         display={["block", "grid"]}
-        maxHeight={[null, null]}
+        minH={
+          mode === SHARE_MODE
+            ? ["100%", "20rem", "20rem"]
+            : ["100%", "24rem", "24rem"]
+        }
+        minW={["100%", "77vw", "40rem"]}
         direction={[null, "row"]}
         spacing={[2, 4]}
         position="relative"
-        h={"100%"}
-        w={"100%"}
-        minH={["100%", "24rem"]}
-        minW={["", "", "40rem"]}
-        maxW={"40rem"}
+        style={{
+          transition: "width 0.1s ease-in, height 0.1s ease-in",
+        }}
       >
         <Box
-          w={mode === SHARE_MODE ? ["full", "60%"] : ["full", "45%"]}
+          position="absolute"
+          w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
+          top={0}
+          h={"100%"}
+        >
+          <Fade
+            in={mode === CREATE_MODE || mode === SHARE_MODE}
+            style={{ height: "auto", width: "100%" }}
+            h={"auto"}
+            w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
+            pos={"relative"}
+            zIndex={"9999"}
+            unmountOnExit
+          >
+            <Text
+              w={"100%"}
+              style={{
+                transition: "width 0.1s ease-in, height 0.1s ease-in",
+              }}
+              fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
+              fontWeight={
+                mode === SHARE_MODE
+                  ? ["semibold !important", "semibold !important"]
+                  : "medium !important"
+              }
+              align={"left"}
+              noOfLines={2}
+              wordBreak="break-word"
+              pr={"1rem"}
+            >
+              {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
+              {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
+              {cloudState === "Uploaded" && (
+                <>{mode === SHARE_MODE ? fileName : "Uploaded " + fileName}</>
+              )}
+            </Text>
+          </Fade>
+        </Box>
+
+        <Box
+          w={mode === SHARE_MODE ? ["full", "58%"] : ["full", "42%"]}
           style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
           h={"100%"}
-          mb={[3, 0]}
-          position={"relative"}
+          mb={[0, 0]}
+          position={["relative", "absolute"]}
         >
           <Flex
             direction="column"
             alignItems="center"
             justifyContent="center"
             h="100%"
+            w={"auto"}
+            m={"auto"}
+            pos={"relative"}
+            top={mode === SHARE_MODE ? [0, "1em"] : [0, 0]}
           >
-            <Fade
-              in={mode === CREATE_MODE || mode === SHARE_MODE}
-              style={{ height: "100%", width: "100%" }}
-              zIndex={"9999"}
-              unmountOnExit
-            >
-              <Box
-                position="absolute"
-                w={mode === SHARE_MODE ? ["100%", "164%"] : "100%"}
-              >
-                <Text
-                  w={"100%"}
-                  style={{
-                    transition: "width 0.1s ease-in, height 0.1s ease-in",
-                  }}
-                  fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
-                  fontWeight={
-                    mode === SHARE_MODE
-                      ? ["semibold !important", "semibold !important"]
-                      : "medium !important"
-                  }
-                  align={"left"}
-                  noOfLines={2}
-                  wordBreak="break-word"
-                  pr={"1rem"}
-                >
-                  {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
-                  {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
-                  {cloudState === "Uploaded" && (
-                    <>
-                      {mode === SHARE_MODE ? fileName : "Uploaded " + fileName}
-                    </>
-                  )}
-                </Text>
-              </Box>
-            </Fade>
             <Box
               position="absolute"
               top="50%"
@@ -274,7 +287,7 @@ export const SendPanel = ({
                             >
                               <Arrow
                                 size={["xl"]}
-                                maxW={["33%", "40%"]}
+                                maxW={"33%"}
                                 h={"auto"}
                                 p={0}
                                 mode={"downloaded"}
@@ -308,20 +321,21 @@ export const SendPanel = ({
               >
                 <Box
                   overflow={"visible"}
-                  width={"120%"}
-                  height={"120%"}
+                  w={mode === SHARE_MODE ? "100%" : ["100%", "120%"]}
+                  h={mode === SHARE_MODE ? "100%" : ["100%", "120%"]}
                   pos={"absolute"}
                   style={{
-                    filter: `blur(${Math.round(
-                      6.66 - createProgress * 6.66
-                    )}px)`,
+                    filter:
+                      mintState === "Sealed"
+                        ? `blur(0)`
+                        : `blur(${Math.round(6.66 - createProgress * 3.33)}px)`,
                     transition: "filter 0.76s ease-in",
                   }}
                 >
                   <Img
                     w={["100%", "100%"]}
                     h={"100%"}
-                    ml={["0.8em", 0]}
+                    ml={["0.65em", 0]}
                     objectFit={"contain !important"}
                     src={`/images/amber-7.png`}
                     position={"relative"}
@@ -337,10 +351,10 @@ export const SendPanel = ({
           h={"100%"}
           overflowY={"scroll"}
           overflowX={"hidden"}
-          w={["full", "55%"]}
+          w={["full", "58%"]}
           position={["relative", "absolute"]}
           top={[null, 0]}
-          left={[null, "45%"]}
+          left={[null, "42%"]}
           sx={{ marginInlineStart: "0 !important" }}
           zIndex={999}
         >
@@ -565,7 +579,7 @@ export const SendPanel = ({
               <Box
                 className="center-box"
                 h={"100%"}
-                w={["100%", ""]}
+                w={["100%", "100%"]}
                 justifyContent={["left", "center"]}
                 alignItems={["left", "center"]}
                 display={["", "flex"]}
@@ -672,9 +686,9 @@ const CreateProgress = ({ mode, progress }) => {
               capIsRound={true}
               min={1}
               w={mode === SHARE_MODE ? ["68%", "65%"] : ["68%", "80%"]}
-              minW={["11rem", ""]}
+              minW={["11rem", null]}
               maxW={["13rem"]}
-              mt={["2rem", 0]}
+              mt={[0, 0]}
             >
               <CircularProgressLabel
                 color="black.500"
@@ -730,38 +744,36 @@ const CreateMintProgress = ({ peerState, cloudState, mintState, progress }) => {
   }, [running]);
 
   return (
-    <>
-      <VStack align="left" spacing={0} pl={["", "", ""]}>
-        <Box>
-          <Check
-            mb={["1.88em", "2.6em"]}
-            disabled={peerState === "Active" ? false : true}
-            title={peerState === "Inactive" ? "Encrypting" : "Encrypted"}
-            size={["lg", "lg"]}
-            description={""}
-            colorScheme="gray"
-          />
-        </Box>
-        <Box>
-          <Check
-            mb={["1.88em", "2.6em"]}
-            disabled={cloudState === "Uploaded" ? false : true}
-            title={cloudState}
-            size={["lg", "lg"]}
-            description={""}
-            colorScheme="gray"
-          />
-        </Box>
-        <Box>
-          <Check
-            disabled={mintState === "Sealed" ? false : true}
-            title={mintState}
-            size={["lg", "lg"]}
-            description={""}
-            colorScheme="gray"
-          />
-        </Box>
-      </VStack>
-    </>
+    <VStack align="left" spacing={0} pl={[null, null, null]}>
+      <Box>
+        <Check
+          mb={["1.88em", "2.6em"]}
+          disabled={peerState === "Active" ? false : true}
+          title={peerState === "Inactive" ? "Encrypting" : "Encrypted"}
+          size={["lg", "lg"]}
+          description={""}
+          colorScheme="gray"
+        />
+      </Box>
+      <Box>
+        <Check
+          mb={["1.88em", "2.6em"]}
+          disabled={cloudState === "Uploaded" ? false : true}
+          title={cloudState}
+          size={["lg", "lg"]}
+          description={""}
+          colorScheme="gray"
+        />
+      </Box>
+      <Box>
+        <Check
+          disabled={mintState === "Sealed" ? false : true}
+          title={mintState}
+          size={["lg", "lg"]}
+          description={""}
+          colorScheme="gray"
+        />
+      </Box>
+    </VStack>
   );
 };

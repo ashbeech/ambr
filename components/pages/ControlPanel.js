@@ -3,6 +3,7 @@ import {
   Box,
   Flex,
   Fade,
+  SlideFade,
   OrderedList,
   UnorderedList,
   ListItem,
@@ -10,7 +11,6 @@ import {
   VStack,
   Img,
   Link,
-  Skeleton,
   Center,
 } from "@chakra-ui/react";
 import LogoLoader from "../icons/LogoLoader";
@@ -34,7 +34,10 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import { tagline, environment } from "../../config.js";
+import {
+  tagline,
+  //environment
+} from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -607,7 +610,13 @@ export function ControlPanel() {
                         >
                           <HStack w={"100%"} h={"100%"}>
                             <Box w={"100%"} h={"100%"} overflow={"visible"}>
-                              <Panel className="glass">
+                              <Panel
+                                className="glass"
+                                style={{
+                                  transition:
+                                    "width 0.1s ease-in, height 0.1s ease-in",
+                                }}
+                              >
                                 <SendPanel
                                   mode={_mode}
                                   creator={publicAddress}
@@ -633,28 +642,43 @@ export function ControlPanel() {
                               </Panel>
                             </Box>
                             <Box
-                              display={["none", "block", "block"]}
+                              display={["none", "none", "block"]}
                               p={8}
                               spacing={4}
                               minW={"33%"}
                               maxW={"33%"}
                             >
-                              <Text as={"h1"} className={"fancy"} noOfLines={3}>
-                                Share
-                                <br />
-                                your pitch
-                                <br />
-                                in a pinch.
-                              </Text>
-                              <OrderedList>
-                                <ListItem>Upload your file.</ListItem>
-                                <ListItem>
-                                  Describe the file&apos;s contents (this will
-                                  be private unless you decide to make it
-                                  public).
-                                </ListItem>
-                                <ListItem>Share your download link.</ListItem>
-                              </OrderedList>
+                              <SlideFade
+                                in={showPanel}
+                                offsetX={"-10%"}
+                                offsetY={"0"}
+                                transition={{
+                                  enter: { duration: 0.15, ease: "easeOut" },
+                                  exit: { duration: 0.15, ease: "easeOut" },
+                                }}
+                                style={{ height: "100%", width: "100%" }}
+                              >
+                                <Text
+                                  as={"h1"}
+                                  className={"fancy"}
+                                  noOfLines={3}
+                                >
+                                  Share
+                                  <br />
+                                  your pitch
+                                  <br />
+                                  in a pinch.
+                                </Text>
+                                <OrderedList>
+                                  <ListItem>Upload your file.</ListItem>
+                                  <ListItem>
+                                    Describe the file&apos;s contents (this will
+                                    be private unless you decide to make it
+                                    public).
+                                  </ListItem>
+                                  <ListItem>Share your download link.</ListItem>
+                                </OrderedList>
+                              </SlideFade>
                             </Box>
                           </HStack>
                         </SafeContainer>
@@ -688,21 +712,34 @@ export function ControlPanel() {
                             paddingInlineEnd: "0 !important",
                           }}
                         >
-                          <HStack w={"100%"} maxW={"full"}>
+                          <HStack w={"100%"} h={"100%"} maxW={"full"}>
                             <Box w={"100%"}>
-                              <FilePanel
-                                roomMeta={roomMeta}
-                                files={files}
-                                verifyFiles={verifyFiles}
-                                verifyState={verifyState}
-                                isDisabled={peerState === "Idle"}
-                                onDownload={handleDownload}
-                                onDownloadAll={handleDownloadAll}
-                                isAuthenticated={_isAuthenticated}
-                                downloadState={downloadState}
-                                downloadProgress={downloadProgress}
-                                isUserMatch={isUserMatch}
-                              />
+                              <Panel
+                                className="glass"
+                                pt={
+                                  isExpired
+                                    ? ["6 !important", "10 !important"]
+                                    : ["0 !important", "10 !important"]
+                                }
+                                style={{
+                                  transition:
+                                    "width 0.1s ease-in, height 0.1s ease-in",
+                                }}
+                              >
+                                <FilePanel
+                                  roomMeta={roomMeta}
+                                  files={files}
+                                  verifyFiles={verifyFiles}
+                                  verifyState={verifyState}
+                                  isDisabled={peerState === "Idle"}
+                                  onDownload={handleDownload}
+                                  onDownloadAll={handleDownloadAll}
+                                  isAuthenticated={_isAuthenticated}
+                                  downloadState={downloadState}
+                                  downloadProgress={downloadProgress}
+                                  isUserMatch={isUserMatch}
+                                />
+                              </Panel>
                             </Box>
                             <Box
                               display={["none", "none", "block", "block", ""]}
@@ -714,7 +751,19 @@ export function ControlPanel() {
                               {_isAuthenticated &&
                                 isExpired &&
                                 !isUserMatch && (
-                                  <>
+                                  <SlideFade
+                                    in={showDownloadPanel}
+                                    offsetX={"-10%"}
+                                    offsetY={"0"}
+                                    transition={{
+                                      enter: {
+                                        duration: 0.15,
+                                        ease: "easeOut",
+                                      },
+                                      exit: { duration: 0.15, ease: "easeOut" },
+                                    }}
+                                    style={{ height: "100%", width: "100%" }}
+                                  >
                                     <Text as={"h1"} className={"fancy"}>
                                       Share Work Fearlessly
                                     </Text>
@@ -723,10 +772,19 @@ export function ControlPanel() {
                                       private, unchangeable historic record of
                                       the event and the related work.
                                     </Text>
-                                  </>
+                                  </SlideFade>
                                 )}
                               {isExpired && isUserMatch && (
-                                <>
+                                <SlideFade
+                                  in={showDownloadPanel}
+                                  offsetX={"-10%"}
+                                  offsetY={"0"}
+                                  transition={{
+                                    enter: { duration: 0.15, ease: "easeOut" },
+                                    exit: { duration: 0.15, ease: "easeOut" },
+                                  }}
+                                  style={{ height: "100%", width: "100%" }}
+                                >
                                   <Text
                                     as={"h1"}
                                     className={"fancy"}
@@ -758,12 +816,16 @@ export function ControlPanel() {
                                       </Text>
                                     </ListItem>
                                   </OrderedList>
-                                </>
+                                </SlideFade>
                               )}
                               {!isExpired && (
                                 <>
                                   {isUserMatch && (
-                                    <>
+                                    <SlideFade
+                                      in={showDownloadPanel}
+                                      offsetX={"-10%"}
+                                      offsetY={"0"}
+                                    >
                                       <Text
                                         as={"h1"}
                                         className={"fancy"}
@@ -786,14 +848,18 @@ export function ControlPanel() {
                                           </Text>
                                         </ListItem>
                                       </UnorderedList>
-                                    </>
+                                    </SlideFade>
                                   )}
                                 </>
                               )}
                               {!_isAuthenticated &&
                                 !isExpired &&
                                 !isUserMatch && (
-                                  <>
+                                  <SlideFade
+                                    in={showDownloadPanel}
+                                    offsetX={"-10%"}
+                                    offsetY={"0"}
+                                  >
                                     <Text as={"h1"} className={"fancy"}>
                                       You&apos;ve
                                       <br />
@@ -804,7 +870,7 @@ export function ControlPanel() {
                                       <br />
                                       ready to download.
                                     </Text>
-                                  </>
+                                  </SlideFade>
                                 )}
                             </Box>
                           </HStack>
@@ -923,7 +989,11 @@ export function ControlPanel() {
                               maxW={"33%"}
                             >
                               {showFileTransfer && (
-                                <>
+                                <SlideFade
+                                  in={showFileTransfer}
+                                  offsetX={"-10%"}
+                                  offsetY={"0"}
+                                >
                                   {fileTransfersRemaining <= 0 && (
                                     <Text
                                       as={"h1"}
@@ -957,7 +1027,7 @@ export function ControlPanel() {
                                     Feel confident sharing valuble ideas with
                                     clients.
                                   </Text>
-                                </>
+                                </SlideFade>
                               )}
                             </Box>
                           </HStack>

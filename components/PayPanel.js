@@ -412,7 +412,7 @@ export const PayPanel = ({
             descRender !== undefined && (
               <>
                 <Box
-                  w={["full", "45%"]}
+                  w={["full", "42%"]}
                   h={"100%"}
                   overflow={"visible"}
                   pos={["relative", "absolute"]}
@@ -456,7 +456,7 @@ export const PayPanel = ({
                         <Box
                           display={"flex"}
                           justifyContent={"center"}
-                          height={"8em"}
+                          h={["7.5em", "8em"]}
                         >
                           <Text
                             fontWeight={"medium"}
@@ -484,7 +484,7 @@ export const PayPanel = ({
                           fontWeight="medium"
                           position="relative"
                           align="center"
-                          fontSize={["2xl", "xl"]}
+                          fontSize={["lg", "xl"]}
                           noOfLines={1}
                         >
                           File transfers
@@ -493,7 +493,7 @@ export const PayPanel = ({
                           fontWeight="medium"
                           position="relative"
                           align="center"
-                          fontSize={["2xl", "xl"]}
+                          fontSize={["lg", "xl"]}
                           noOfLines={1}
                         >
                           for only
@@ -548,10 +548,10 @@ export const PayPanel = ({
                 {!paymentSuccess && clientSecret && (
                   <Box
                     h={"100%"}
-                    w={["full", "55%"]}
+                    w={["full", "58%"]}
                     position={["relative", "absolute"]}
                     top={[null, 0]}
-                    left={[null, "45%"]}
+                    left={[null, "42%"]}
                     sx={{ marginInlineStart: "0 !important" }}
                   >
                     <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>

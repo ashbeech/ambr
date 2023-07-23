@@ -97,10 +97,18 @@ export function FileRecordPanel({
           borderBottom={publicView ? ["", "1px"] : ["", ""]}
         >
           <VStack w="full" alignItems="start">
+            <HStack w="full" minH={"1.8rem"}>
+              <Text className={"title"} fontWeight={"semibold"} flex={1}>
+                {"Timestamp: "}
+              </Text>
+              <Text className={"content"} w="full" noOfLines={1} flex={8}>
+                {readableTimeStamp}
+              </Text>
+            </HStack>
             {publicView && (
               <HStack w="full" alignItems="center" minH={"0.8rem"}>
                 <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
-                  {"Filename: "}
+                  {"File: "}
                 </Text>
                 <Text noOfLines={1} flex={8}>
                   {title}
@@ -133,14 +141,6 @@ export function FileRecordPanel({
                 {creators}
               </Text>
             </HStack>
-            <HStack w="full" minH={"1.8rem"}>
-              <Text className={"title"} fontWeight={"semibold"} flex={1}>
-                {"Timestamp: "}
-              </Text>
-              <Text className={"content"} w="full" noOfLines={1} flex={8}>
-                {readableTimeStamp}
-              </Text>
-            </HStack>
             <HStack w="full">
               <Text
                 className={"title"}
@@ -148,7 +148,7 @@ export function FileRecordPanel({
                 whiteSpace={"nowrap"}
                 flex={1}
               >
-                {"File ID: "}
+                {"Fingerprint: "}
               </Text>
               <Text noOfLines={1}>{fileHash}</Text>
               <CopyButton
