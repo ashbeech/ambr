@@ -523,7 +523,7 @@ export const FilePanel = ({
                 w={"100%"}
                 h={[null, "auto"]}
                 maxH={[null, "100%"]}
-                mt={[6, 0]}
+                mt={[0, 0]}
                 mb={isExPublic ? 0 : 2}
               >
                 <TopRightPanel
