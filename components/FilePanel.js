@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Button,
   Fade,
+  Collapse,
   Stack,
   HStack,
   Text,
@@ -311,6 +312,7 @@ export const FilePanel = ({
                         alignItems="center"
                         justifyContent="center"
                         h="100%"
+                        minH={["16rem", null]}
                       >
                         <Box
                           position="absolute"
@@ -433,6 +435,7 @@ export const FilePanel = ({
             w="100%"
             h={["auto", "100%"]}
             pl={[0, 6]}
+            minH={"8rem"}
           >
             {!fullyLoaded && (
               <>
@@ -602,6 +605,7 @@ export const FilePanel = ({
                   )}
               </Box>
             )}
+
             {roomMeta && !isUserMatch && roomMeta.isPublic && (
               <>
                 <HStack
