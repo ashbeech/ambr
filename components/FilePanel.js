@@ -312,7 +312,8 @@ export const FilePanel = ({
                         alignItems="center"
                         justifyContent="center"
                         h="100%"
-                        minH={["16rem", null]}
+                        minH={["18rem", null]}
+                        mb={[4, 0]}
                       >
                         <Box
                           position="absolute"
@@ -338,6 +339,8 @@ export const FilePanel = ({
                           position={"relative"}
                           w={["85%", "125%"]}
                           h={["85%", "125%"]}
+                          filter={"grayscale(100%)"}
+                          opacity={"0.5"}
                         >
                           <IPFSImage image_src={_image_src} />
                         </Box>
@@ -610,7 +613,7 @@ export const FilePanel = ({
               <>
                 <HStack
                   w={["100%", "100%"]}
-                  pt={isExPublic ? [0, 0] : [4, 0]}
+                  pt={isExPublic ? [0, 4] : [4, 0]}
                   overflow={"visible"}
                 >
                   <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
@@ -679,7 +682,7 @@ export const FilePanel = ({
               roomMeta &&
               roomMeta.readableMetadata &&
               isUserMatch && (
-                <Box w={"100%"} h={[null, "100%"]} mt={[6, 0]}>
+                <Box w={"100%"} h={[null, "100%"]} mt={[0, 0]}>
                   <FileRecordPanel
                     title={
                       roomMeta?.readableMetadata.title
@@ -831,7 +834,7 @@ const TopRightPanel = React.memo(
             <Stack
               overflow={"hidden"}
               spacing={2}
-              mb={[0, 4]}
+              mb={[0, 3]}
               mt={!isExpired ? [0, 3] : [4, 0]}
             >
               {downloadAllSupported && (

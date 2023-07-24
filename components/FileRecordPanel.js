@@ -88,7 +88,7 @@ export function FileRecordPanel({
           overflowX={[null, "hidden"]}
           maxH={publicView ? [null, "100%"] : [null, "100%"]}
           fontSize={"md"}
-          pt={publicView ? [3, 2] : [3, 2]}
+          pt={publicView ? [1, 1] : [2, 2]}
           pb={publicView ? [2, 3] : [0, 2]}
           sx={{
             mt: "0 !important",
