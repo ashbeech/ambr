@@ -339,7 +339,7 @@ export const FilePanel = ({
                           position={"relative"}
                           w={["85%", "125%"]}
                           h={["85%", "125%"]}
-                          filter={"grayscale(100%)"}
+                          filter={"contrast(0) grayscale(100%)"}
                           opacity={"0.5"}
                         >
                           <IPFSImage image_src={_image_src} />
