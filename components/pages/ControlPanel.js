@@ -1028,7 +1028,7 @@ export function ControlPanel() {
                                     Proving the origin and authenticity of your
                                     work is made easy with Ambr.
                                     <br />
-                                    Feel confident sharing valuble ideas with
+                                    Feel confident sharing valuable ideas with
                                     clients.
                                   </Text>
                                 </SlideFade>
