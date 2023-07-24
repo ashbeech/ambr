@@ -63,9 +63,8 @@ export const SendPanel = ({
     [formModeLink]
   );
 
-  const handleChange = async (event) => {
+  const handleChange = async () => {
     setIsLoading(true);
-
     try {
       formMode(formModeLink ? false : true);
     } catch (err) {
@@ -97,22 +96,20 @@ export const SendPanel = ({
     shouldResetBoolean(true);
   };
 
+  // Conditional Yup schema
   const validationSchema = Yup.object().shape({
-    /*     creators: Yup.array().of(
-      Yup.object().shape({
-        creator: Yup.string().required("Creator name required"),
-      })
-    ), */
-    emails: Yup.array().of(
-      Yup.object().shape({
-        email: Yup.string().email("Email invalid").required("Email required"),
-      })
-    ),
-    /*     concept: Yup.string().required(
-      "↑ Required evidential support for your work"
-    ), */
+    emails: formModeLink
+      ? Yup.array().of(
+          Yup.object().shape({
+            email: Yup.string()
+              .email("Email invalid")
+              .required("Email required"),
+          })
+        )
+      : null, // Set to null when formModeLink is false
   });
 
+  // Prevent leaving page before critical client-side interaction is complete
   useEffect(() => {
     if (mode === JOIN_MODE) return;
     if (
@@ -153,6 +150,7 @@ export const SendPanel = ({
             : ["100%", "24rem", "24rem"]
         }
         minW={["100%", "77vw", "40rem"]}
+        maxH={["100%", "24rem"]}
         direction={[null, "row"]}
         spacing={[2, 4]}
         position="relative"
@@ -173,7 +171,6 @@ export const SendPanel = ({
             h={"auto"}
             w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
             pos={"relative"}
-            zIndex={"9999"}
             unmountOnExit
           >
             <Text
@@ -190,7 +187,7 @@ export const SendPanel = ({
               align={"left"}
               noOfLines={2}
               wordBreak="break-word"
-              pr={"1rem"}
+              pr={[null, "1rem"]}
             >
               {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
               {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
@@ -202,8 +199,8 @@ export const SendPanel = ({
         </Box>
         <Box
           w={mode === SHARE_MODE ? ["full", "58%"] : ["full", "42%"]}
-          style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
           h={"100%"}
+          maxW={mode === SHARE_MODE ? [null, "24rem"] : [null, "17rem"]}
           mb={[2, 0]}
           position={["relative", "absolute"]}
         >
@@ -212,10 +209,13 @@ export const SendPanel = ({
             alignItems="center"
             justifyContent="center"
             h="100%"
-            w={"auto"}
+            w={"100%"}
             m={"auto"}
             pos={"relative"}
-            top={mode === SHARE_MODE ? ["1.5em", "1.5em"] : [0]}
+            top={mode === SHARE_MODE ? ["1.5em", "1.5em"] : [0, 0]}
+            style={{
+              transition: "width 1s ease-in, height 1s ease-in",
+            }}
           >
             <Box
               position="absolute"
@@ -233,7 +233,6 @@ export const SendPanel = ({
                   style={{
                     height: "100%",
                     width: "100%",
-                    transition: "height 0.1s ease-in, width 0.1s ease-in",
                   }}
                   unmountOnExit
                 >
@@ -247,7 +246,6 @@ export const SendPanel = ({
                   style={{
                     height: "100%",
                     width: "100%",
-                    zIndex: -999,
                     transition: "height 0.1s ease-in, width 0.1s ease-in",
                   }}
                   unmountOnExit
@@ -261,6 +259,7 @@ export const SendPanel = ({
                       direction={"column"}
                       alignItems={"center"}
                       justifyContent={"center"}
+                      w={"100%"}
                       h={"100%"}
                     >
                       <CreateProgress mode={mode} progress={createProgress} />
@@ -277,7 +276,7 @@ export const SendPanel = ({
                       unmountOnExit
                     >
                       {mintState === "Sealed" && (
-                        <Box zIndex={99} h={"100%"}>
+                        <Box h={"100%"}>
                           {roomMeta && (
                             <Flex
                               direction={"column"}
@@ -287,8 +286,8 @@ export const SendPanel = ({
                             >
                               <Arrow
                                 size={["xl"]}
-                                maxW={"7rem"}
-                                w={"33%"}
+                                maxW={["7rem"]}
+                                w={["33%"]}
                                 h={"auto"}
                                 p={0}
                                 mode={"downloaded"}
@@ -326,18 +325,17 @@ export const SendPanel = ({
                   h={mode === SHARE_MODE ? "100%" : ["100%", "120%"]}
                   pos={"absolute"}
                   style={{
-                    filter:
-                      mintState === "Sealed"
-                        ? `blur(0)`
-                        : `blur(${Math.round(6.66 - createProgress * 3.33)}px)`,
+                    filter: `blur(${Math.round(
+                      6.66 - createProgress * 6.66
+                    )}px)`,
                     transition: "filter 0.76s ease-in",
                   }}
                 >
                   <Img
                     w={["100%", "100%"]}
                     h={"100%"}
-                    ml={["0.6em", 0]}
-                    objectFit={"contain !important"}
+                    ml={[0, 0]}
+                    objectFit={["contain !important", "contain !important"]}
                     src={`/images/amber-7.png`}
                     position={"relative"}
                     alt={`Ambr Stone`}
@@ -367,6 +365,7 @@ export const SendPanel = ({
             >
               <Formik
                 validateOnMount={true}
+                //validateOnChange={true}
                 validationSchema={validationSchema}
                 enableReinitialize={shouldReset}
                 initialValues={initialFormValues}
@@ -374,7 +373,7 @@ export const SendPanel = ({
                   handleSubmit(values);
                 }}
               >
-                {({ errors, touched, values, isValid }) => (
+                {({ errors, touched, values, validateForm, isValid }) => (
                   <Form>
                     <VStack
                       margin={"0 0 1.5em 0"}
@@ -472,7 +471,9 @@ export const SendPanel = ({
                         />
                       </FormControl>
                       <FormControl
-                        isInvalid={!!errors.emails && touched.emails}
+                        isInvalid={
+                          formModeLink && !!errors.emails && touched.emails
+                        }
                       >
                         <Collapse
                           style={{ height: "100%", width: "100%" }}
@@ -559,7 +560,10 @@ export const SendPanel = ({
                           size="lg"
                           variant="outline"
                           isChecked={formModeLink}
-                          onChange={handleChange}
+                          onChange={async () => {
+                            await handleChange();
+                            validateForm();
+                          }}
                         />
                         <Text fontWeight={"medium"}>
                           {formModeLink
@@ -676,7 +680,8 @@ const CreateProgress = ({ mode, progress }) => {
             position={"relative"}
             alignItems="center"
             justifyContent="center"
-            pt={[0, 4]}
+            top={[2, 2]}
+            left={[-2, -2]}
           >
             <CircularProgress
               size={"100%"}
@@ -687,9 +692,9 @@ const CreateProgress = ({ mode, progress }) => {
               thickness="0.4px"
               capIsRound={true}
               min={1}
-              w={mode === SHARE_MODE ? ["68%", "65%"] : ["68%", "80%"]}
-              minW={["11rem", null]}
-              maxW={["13rem"]}
+              w={mode === SHARE_MODE ? ["68%", "65%"] : ["33%", "60%"]}
+              minW={["5rem", null]}
+              maxW={["9.5rem", "9.5rem"]}
               mt={[0, 0]}
             >
               <CircularProgressLabel

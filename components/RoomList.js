@@ -405,7 +405,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                   objectFit={"contain !important"}
                   alt="Ambr Stone"
                   className="file-stone"
-                  filter={isExpired ? "grayscale(100%)" : null}
+                  filter={isExpired ? "contrast(0) grayscale(100%)" : null}
                   opacity={isExpired ? "0.5" : null}
                 />
               </Flex>
