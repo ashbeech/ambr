@@ -915,7 +915,11 @@ export function ControlPanel() {
                           >
                             <Box w={"100%"} h={"100%"} overflow={"visible"}>
                               <Panel
-                                className="glass"
+                                className={"glass"}
+                                bg={[
+                                  `radial-gradient(farthest-corner at center, RGBA(255, 255, 255, 0.44) 58%, RGBA(224, 224, 220, 0.16) 85%, RGBA(173, 173, 168, 0.16) 95%)`,
+                                  `radial-gradient(farthest-corner at center, RGBA(255, 255, 255, 0.44) 58%, RGBA(224, 224, 220, 0.66) 85%, RGBA(173, 173, 168, 0.33) 95%)`,
+                                ]}
                                 pt={[8, 10]}
                                 pb={[8, 10]}
                               >

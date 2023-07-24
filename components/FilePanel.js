@@ -277,8 +277,8 @@ export const FilePanel = ({
                           left="50%"
                           transform="translate(-50%, -50%)"
                           zIndex={997}
-                          w={["33%", ""]}
-                          h={["33%", ""]}
+                          w={["33%", null]}
+                          h={["33%", null]}
                           minW={"7rem"}
                         >
                           <Arrow
@@ -429,7 +429,7 @@ export const FilePanel = ({
           <VStack
             display="flex"
             alignItems="flex-start"
-            justifyContent="left"
+            justifyContent={["flex-start", "center"]}
             overflow="visible"
             maxWidth="100%"
             w="100%"
@@ -521,8 +521,8 @@ export const FilePanel = ({
               <Box
                 position={"relative"}
                 w={"100%"}
-                h={["", "auto"]}
-                maxH={["", "100%"]}
+                h={[null, "auto"]}
+                maxH={[null, "100%"]}
                 mt={[6, 0]}
                 mb={isExPublic ? 0 : 0}
               >
@@ -640,7 +640,7 @@ export const FilePanel = ({
                     sx={{ marginTop: "0 !important" }}
                     pt={isExPublic ? [0, 0] : [0, 0]}
                     overflow="auto"
-                    borderBottom={["", "1px"]}
+                    borderBottom={[null, "1px"]}
                   >
                     <Box
                       w={"full"}
@@ -679,7 +679,7 @@ export const FilePanel = ({
               roomMeta &&
               roomMeta.readableMetadata &&
               isUserMatch && (
-                <Box w={"100%"} h={["", "100%"]} mt={[6, 0]}>
+                <Box w={"100%"} h={[null, "100%"]} mt={[6, 0]}>
                   <FileRecordPanel
                     title={
                       roomMeta?.readableMetadata.title
@@ -774,7 +774,7 @@ const TopRightPanel = React.memo(
     }, [roomMeta]);
 
     return (
-      <Stack spacing={[2, 4]} h={isExPublic ? ["", "auto"] : ["", "auto"]}>
+      <Stack spacing={[2, 4]} h={isExPublic ? [null, "auto"] : [null, "auto"]}>
         {roomMeta && (
           <Heading
             as={"h2"}

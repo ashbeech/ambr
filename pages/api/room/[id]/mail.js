@@ -275,7 +275,7 @@ export default async function handler(req, res) {
           class="download-header"
           style="text-align: center; margin-top: 3.5em"
         >
-          <p>If the button above is not visible, here is the download link:</p>
+          <p style="padding: 0 3em 0em 3em;">If the button above is not visible, here is the download link:</p>
         </div>
   
         <div class="download-link" style="margin-top: 0.5em; text-align: center">
