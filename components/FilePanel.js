@@ -240,7 +240,7 @@ export const FilePanel = ({
                     h={["17.5rem", "2.525rem"]}
                     maxH={"100%"}
                     minH={"100%"}
-                    mt={[0, 0]}
+                    mt={[6, 0]}
                     mb={[4, 0]}
                   />
                 </Flex>

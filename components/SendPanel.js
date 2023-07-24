@@ -317,7 +317,7 @@ export const SendPanel = ({
                 justifyContent="center"
                 position={"relative"}
                 w={"100%"}
-                h={["24rem", "100%"]}
+                h={["20rem", "100%"]}
               >
                 <Box
                   overflow={"visible"}
