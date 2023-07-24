@@ -149,7 +149,7 @@ export const SendPanel = ({
         display={["block", "grid"]}
         minH={
           mode === SHARE_MODE
-            ? ["100%", "20rem", "20rem"]
+            ? ["100%", "19rem", "19rem"]
             : ["100%", "24rem", "24rem"]
         }
         minW={["100%", "77vw", "40rem"]}
@@ -165,6 +165,7 @@ export const SendPanel = ({
           w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
           top={0}
           h={"100%"}
+          zIndex={2}
         >
           <Fade
             in={mode === CREATE_MODE || mode === SHARE_MODE}
@@ -199,7 +200,6 @@ export const SendPanel = ({
             </Text>
           </Fade>
         </Box>
-
         <Box
           w={mode === SHARE_MODE ? ["full", "58%"] : ["full", "42%"]}
           style={{ transition: "width 0.1s ease-in, height 0.1s ease-in" }}
@@ -215,7 +215,7 @@ export const SendPanel = ({
             w={"auto"}
             m={"auto"}
             pos={"relative"}
-            top={mode === SHARE_MODE ? [0, "1em"] : [0, 0]}
+            top={mode === SHARE_MODE ? ["1.5em", "1.5em"] : [0]}
           >
             <Box
               position="absolute"
@@ -287,7 +287,8 @@ export const SendPanel = ({
                             >
                               <Arrow
                                 size={["xl"]}
-                                maxW={"33%"}
+                                maxW={"7rem"}
+                                w={"33%"}
                                 h={"auto"}
                                 p={0}
                                 mode={"downloaded"}
@@ -335,7 +336,7 @@ export const SendPanel = ({
                   <Img
                     w={["100%", "100%"]}
                     h={"100%"}
-                    ml={["0.65em", 0]}
+                    ml={["0.6em", 0]}
                     objectFit={"contain !important"}
                     src={`/images/amber-7.png`}
                     position={"relative"}
@@ -583,7 +584,7 @@ export const SendPanel = ({
                 justifyContent={["left", "center"]}
                 alignItems={["left", "center"]}
                 display={["", "flex"]}
-                pt={mode === SHARE_MODE ? [0, "8%"] : [0, 0]}
+                pt={mode === SHARE_MODE ? [0, "10%"] : [0, 0]}
               >
                 <CreateMintProgress
                   peerState={peerState}
@@ -616,10 +617,10 @@ export const SendPanel = ({
       </Collapse>
       <Collapse
         in={mode === SHARE_MODE && mintState === "Sealed"}
-        endingHeight={"4rem"}
+        endingHeight={"auto"}
         unmountOnExit
       >
-        <Stack mt={[8, 0]} w="full" spacing={2} h={"4rem"} maxH={"4rem"}>
+        <Stack mt={[8, 0]} w="full" spacing={2} h={"auto"} maxH={"6rem"}>
           <Heading
             as={"h4"}
             zIndex={999}
