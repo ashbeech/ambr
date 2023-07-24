@@ -240,7 +240,7 @@ export const FilePanel = ({
                     h={["17.5rem", "2.525rem"]}
                     maxH={"100%"}
                     minH={"100%"}
-                    mt={[6, 0]}
+                    mt={[0, 0]}
                     mb={[4, 0]}
                   />
                 </Flex>
@@ -794,7 +794,7 @@ const TopRightPanel = React.memo(
             <Fade in>
               <Box
                 overflow={"hidden"}
-                mb={!isExPublic ? [2, 0] : [2, 0]}
+                mb={!isExPublic ? [3, 0] : [3, 0]}
                 spacing={0}
               >
                 <Text fontSize={"sm"} zIndex={999} noOfLines={[3, 2]}>

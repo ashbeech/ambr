@@ -400,7 +400,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                   objectFit={["contain !important"]}
                 /> */}
                 <Img
-                  h="70px"
+                  h={["60px", "70px"]}
                   src={_image_src ? _image_src : origin + "/images/amber-1.png"}
                   objectFit={"contain !important"}
                   alt="Ambr Stone"
@@ -409,7 +409,6 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
               </Flex>
             </Link>
           </Box>
-
           <VStack
             className={"info"}
             maxW={["60%", "60%"]}
@@ -417,6 +416,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
             flex={[3, 8]}
             pl={[0, 2]}
             alignItems={"flex-start"}
+            gap={["0.33rem", "0.5rem"]}
           >
             <Text
               w={"90%"}
