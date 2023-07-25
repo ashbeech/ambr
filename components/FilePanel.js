@@ -42,7 +42,7 @@ const IPFSImage = ({ image_src }) => {
       position={"relative"}
       w={["100%", "100%"]}
       h={["100%", "100%"]}
-      left={[0, "0.55em"]}
+      left={[0, 0]}
       src={image_src}
       objectFit={[
         "cover !important",
@@ -306,14 +306,18 @@ export const FilePanel = ({
                     in={unVerified}
                     style={{ height: "100%", width: "100%" }}
                   >
-                    <Box w={"100%"} h={"100%"} position={["relative"]}>
+                    <Box
+                      w={"100%"}
+                      h={"100%"}
+                      position={["relative"]}
+                      mb={[4, 0]}
+                    >
                       <Flex
                         direction="column"
                         alignItems="center"
                         justifyContent="center"
                         h="100%"
                         minH={["18rem", null]}
-                        mb={[4, 0]}
                       >
                         <Box
                           position="absolute"

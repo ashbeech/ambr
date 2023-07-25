@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Collapse,
@@ -29,6 +29,16 @@ import { Arrow } from "./Arrow.js";
 import { Check } from "./Check.js";
 import { Share } from "./Share.js";
 
+const nowTimestamp = Date.now();
+//const randomAmbr = `/images/amber-${(nowTimestamp % 7) + 1}.png`;
+const initialFormValues = {
+  client: "",
+  concept: "",
+  creators: [""],
+  emails: [""],
+  mode: true,
+};
+
 export const SendPanel = ({
   mode,
   handleFiles,
@@ -51,8 +61,15 @@ export const SendPanel = ({
   const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
+  const [randomAmbr, setRandomAmbr] = useState(
+    `/images/amber-${(nowTimestamp % 7) + 1}.png`
+  );
   const [shouldReset, shouldResetBoolean] = useState(false);
-  const initialFormValues = useMemo(
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  console.log("formModeLink", formModeLink);
+
+  /*   const initialFormValues = useMemo(
     () => ({
       client: "",
       concept: "",
@@ -61,10 +78,33 @@ export const SendPanel = ({
       mode: formModeLink,
     }),
     [formModeLink]
-  );
+  ); */
+
+  useEffect(() => {
+    console.log("RESEEET");
+    setRandomAmbr(`/images/amber-${(nowTimestamp % 7) + 1}.png`);
+  }, []);
+
+  useEffect(() => {
+    // Create an image object to track the image load event
+    const image = new Image();
+    image.src = randomAmbr;
+
+    // When the image is loaded, update the state
+    image.onload = () => {
+      setIsImageLoaded(true);
+    };
+
+    // Clean up the image object
+    return () => {
+      image.onload = null;
+    };
+    console.log("RESET AMBR: ", randomAmbr);
+  }, [randomAmbr]);
 
   const handleChange = async () => {
     setIsLoading(true);
+    console.log("randomAmbr 1: ", randomAmbr);
     try {
       formMode(formModeLink ? false : true);
     } catch (err) {
@@ -91,6 +131,7 @@ export const SendPanel = ({
         mode: formModeLink, // add mode property with formModeLink value
       },
       creator: creator,
+      stone: randomAmbr,
     };
     onMint(mint);
     shouldResetBoolean(true);
@@ -140,14 +181,33 @@ export const SendPanel = ({
 
   return (
     <>
+      <Fade
+        in={mode === SHARE_MODE}
+        h={"auto"}
+        w={["100%", "100%"]}
+        pos={"relative"}
+        style={{ height: "auto", width: "100%" }}
+        unmountOnExit
+      >
+        <Text
+          w={"100%"}
+          fontSize={"2xl"}
+          fontWeight={"semibold !important"}
+          align={"left"}
+          noOfLines={1}
+          wordBreak="break-word"
+        >
+          {fileName}
+        </Text>
+      </Fade>
       <HStack
         w={"100%"}
         h={"100%"}
         display={["block", "grid"]}
         minH={
           mode === SHARE_MODE
-            ? ["100%", "19rem", "19rem"]
-            : ["100%", "24rem", "24rem"]
+            ? ["100%", "20rem", "20rem"]
+            : ["100%", "22rem", "22rem"]
         }
         minW={["100%", "77vw", "40rem"]}
         maxH={["100%", "24rem"]}
@@ -158,202 +218,214 @@ export const SendPanel = ({
           transition: "width 0.1s ease-in, height 0.1s ease-in",
         }}
       >
-        <Box
-          position="absolute"
-          w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
-          top={0}
-          h={"100%"}
-          zIndex={2}
+        <VStack
+          w={mode === SHARE_MODE ? ["100%", "50%"] : ["100%", "45%"]}
+          h={["auto", "100%"]}
+          gap={0}
         >
           <Fade
-            in={mode === CREATE_MODE || mode === SHARE_MODE}
+            in={mode === CREATE_MODE}
             style={{ height: "auto", width: "100%" }}
             h={"auto"}
-            w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "45%"]}
+            w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
             pos={"relative"}
             unmountOnExit
           >
-            <Text
-              w={"100%"}
-              style={{
-                transition: "width 0.1s ease-in, height 0.1s ease-in",
-              }}
-              fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
-              fontWeight={
-                mode === SHARE_MODE
-                  ? ["semibold !important", "semibold !important"]
-                  : "medium !important"
-              }
-              align={"left"}
-              noOfLines={2}
-              wordBreak="break-word"
-              pr={[null, "1rem"]}
+            <Box
+              position="relative"
+              w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
+              h={["100%", "auto"]}
+              pt={"0.5em"}
+              zIndex={2}
             >
-              {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
-              {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
-              {cloudState === "Uploaded" && (
-                <>{mode === SHARE_MODE ? fileName : "Uploaded " + fileName}</>
-              )}
-            </Text>
+              <Text
+                w={"100%"}
+                style={{
+                  transition: "width 0.1s ease-in, height 0.1s ease-in",
+                }}
+                fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
+                fontWeight={
+                  mode === SHARE_MODE
+                    ? ["semibold !important", "semibold !important"]
+                    : "medium !important"
+                }
+                align={"left"}
+                noOfLines={1}
+                wordBreak="break-word"
+              >
+                {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
+                {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
+                {cloudState === "Uploaded" && (
+                  <>{mode === SHARE_MODE ? fileName : "Uploaded " + fileName}</>
+                )}
+              </Text>
+            </Box>
           </Fade>
-        </Box>
-        <Box
-          w={mode === SHARE_MODE ? ["full", "58%"] : ["full", "42%"]}
-          h={"100%"}
-          maxW={mode === SHARE_MODE ? [null, "24rem"] : [null, "17rem"]}
-          mb={[2, 0]}
-          position={["relative", "absolute"]}
-        >
-          <Flex
-            direction="column"
+          <Box
+            display={"flex"}
             alignItems="center"
             justifyContent="center"
-            h="100%"
-            w={"100%"}
-            m={"auto"}
-            pos={"relative"}
-            top={mode === SHARE_MODE ? ["1.5em", "1.5em"] : [0, 0]}
-            style={{
-              transition: "width 1s ease-in, height 1s ease-in",
-            }}
+            position={["relative", "absolute"]}
+            w={mode === SHARE_MODE ? ["full", "50%"] : ["full", "45%"]}
+            h={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
+            //top={mode === CREATE_MODE ? [0, "15%"] : [0, 0]}
+            //maxW={mode === SHARE_MODE ? [null, "24rem"] : [null, "17rem"]}
+            //pt={mode === CREATE_MODE ? [0, 0] : [0, 8]}
+            pt={mode === SHARE_MODE ? [2, 2] : [0, 0]}
+            pl={mode === SHARE_MODE ? [0, 0] : [0, 0]}
+            mb={[2, 0]}
           >
-            <Box
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              zIndex={998}
-              w={["100%", "100%"]}
-              h={["100%", "100%"]}
-              minW={"7rem"}
+            <Flex
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              h="100%"
+              w={"100%"}
+              m={"auto"}
+              pos={"relative"}
+              style={{
+                transition: "width 1s ease-in, height 1s ease-in",
+              }}
             >
-              <Box zIndex={998} h={"100%"} mr={[0, 2]} overflow={"hidden"}>
-                <Fade
-                  in={mode === null}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                  }}
-                  unmountOnExit
-                >
-                  <FilePicker
-                    onFiles={handleFiles}
-                    description={"Select a file"}
-                  />
-                </Fade>
-                <Fade
-                  in={mode === CREATE_MODE || mode === SHARE_MODE}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                    transition: "height 0.1s ease-in, width 0.1s ease-in",
-                  }}
-                  unmountOnExit
-                >
+              <Box
+                position="absolute"
+                top="50%"
+                left="50%"
+                transform="translate(-50%, -50%)"
+                zIndex={998}
+                w={["100%", "100%"]}
+                h={["100%", "100%"]}
+                minW={"8rem"}
+              >
+                <Box zIndex={998} h={"100%"} mr={[0, 0]} overflow={"hidden"}>
                   <Fade
-                    style={{ height: "100%", width: "100%" }}
-                    in={showProgress}
+                    in={mode === null}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                    }}
                     unmountOnExit
                   >
-                    <Flex
-                      direction={"column"}
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                      w={"100%"}
-                      h={"100%"}
-                    >
-                      <CreateProgress mode={mode} progress={createProgress} />
-                    </Flex>
+                    <FilePicker
+                      mr={mode === CREATE_MODE ? [0, 3] : [0, 3]}
+                      onFiles={handleFiles}
+                      description={"Select a file"}
+                    />
                   </Fade>
                   <Fade
                     in={mode === CREATE_MODE || mode === SHARE_MODE}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      transition: "height 0.1s ease-in, width 0.1s ease-in",
+                    }}
                     unmountOnExit
-                    style={{ height: "100%", width: "100%" }}
                   >
                     <Fade
                       style={{ height: "100%", width: "100%" }}
-                      in={!showProgress}
+                      in={showProgress}
                       unmountOnExit
                     >
-                      {mintState === "Sealed" && (
-                        <Box h={"100%"}>
-                          {roomMeta && (
-                            <Flex
-                              direction={"column"}
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                              h={"100%"}
-                            >
-                              <Arrow
-                                size={["xl"]}
-                                maxW={["7rem"]}
-                                w={["33%"]}
-                                h={"auto"}
-                                p={0}
-                                mode={"downloaded"}
-                                disabled={false}
-                                title={""}
-                                description={""}
-                                colorScheme="gray"
-                              />
-                            </Flex>
-                          )}
-                        </Box>
-                      )}
+                      <Flex
+                        direction={"column"}
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        w={"100%"}
+                        h={"100%"}
+                      >
+                        <CreateProgress mode={mode} progress={createProgress} />
+                      </Flex>
+                    </Fade>
+                    <Fade
+                      in={mode === CREATE_MODE || mode === SHARE_MODE}
+                      unmountOnExit
+                      style={{ height: "100%", width: "100%" }}
+                    >
+                      <Fade
+                        style={{ height: "100%", width: "100%" }}
+                        in={!showProgress}
+                        unmountOnExit
+                      >
+                        {mintState === "Sealed" && (
+                          <Box h={"100%"}>
+                            {roomMeta && (
+                              <Flex
+                                direction={"column"}
+                                alignItems={"center"}
+                                justifyContent={"center"}
+                                h={"100%"}
+                              >
+                                <Arrow
+                                  size={["xl"]}
+                                  maxW={["7rem"]}
+                                  w={["33%"]}
+                                  h={"auto"}
+                                  p={0}
+                                  mode={"downloaded"}
+                                  disabled={false}
+                                  title={""}
+                                  description={""}
+                                  colorScheme="gray"
+                                />
+                              </Flex>
+                            )}
+                          </Box>
+                        )}
+                      </Fade>
                     </Fade>
                   </Fade>
-                </Fade>
-              </Box>
-            </Box>
-            <Box
-              zIndex={1}
-              w={["100%", "100%"]}
-              h={["100%", "100%"]}
-              pos={["relative", "absolute"]}
-            >
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                position={"relative"}
-                w={"100%"}
-                h={["20rem", "100%"]}
-              >
-                <Box
-                  overflow={"visible"}
-                  w={mode === SHARE_MODE ? "100%" : ["100%", "120%"]}
-                  h={mode === SHARE_MODE ? "100%" : ["100%", "120%"]}
-                  pos={"absolute"}
-                  style={{
-                    filter: `blur(${Math.round(
-                      6.66 - createProgress * 6.66
-                    )}px)`,
-                    transition: "filter 0.76s ease-in",
-                  }}
-                >
-                  <Img
-                    w={["100%", "100%"]}
-                    h={"100%"}
-                    ml={[0, 0]}
-                    objectFit={["contain !important", "contain !important"]}
-                    src={`/images/amber-7.png`}
-                    position={"relative"}
-                    alt={`Ambr Stone`}
-                    className="file-stone"
-                  />
                 </Box>
               </Box>
-            </Box>
-          </Flex>
-        </Box>
+              <Box
+                zIndex={1}
+                w={["100%", "100%"]}
+                h={["100%", "100%"]}
+                pos={["relative", "absolute"]}
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position={"relative"}
+                  w={"100%"}
+                  h={["20rem", "100%"]}
+                >
+                  <Box
+                    overflow={"visible"}
+                    w={mode === SHARE_MODE ? "100%" : ["100%", "112%"]}
+                    h={mode === SHARE_MODE ? "100%" : ["100%", "112%"]}
+                    pos={"absolute"}
+                    style={{
+                      filter: isImageLoaded
+                        ? `blur(${Math.round(6.66 - createProgress * 6.66)}px)`
+                        : `blur(333px)`,
+                      transition: "filter 0.76s ease-in",
+                    }}
+                  >
+                    <Img
+                      w={["100%", "100%"]}
+                      h={"100%"}
+                      ml={[0, 0]}
+                      objectFit={["contain !important", "contain !important"]}
+                      src={randomAmbr}
+                      position={"relative"}
+                      alt={`Ambr Stone`}
+                      className="file-stone"
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </Flex>
+          </Box>
+        </VStack>
         <Box
           h={"100%"}
           overflowY={"scroll"}
           overflowX={"hidden"}
-          w={["full", "58%"]}
+          w={mode === SHARE_MODE ? ["full", "50%"] : ["full", "55%"]}
           position={["relative", "absolute"]}
           top={[null, 0]}
-          left={[null, "42%"]}
+          left={[null, "45%"]}
           sx={{ marginInlineStart: "0 !important" }}
           zIndex={999}
         >
@@ -365,7 +437,6 @@ export const SendPanel = ({
             >
               <Formik
                 validateOnMount={true}
-                //validateOnChange={true}
                 validationSchema={validationSchema}
                 enableReinitialize={shouldReset}
                 initialValues={initialFormValues}
@@ -588,7 +659,7 @@ export const SendPanel = ({
                 justifyContent={["left", "center"]}
                 alignItems={["left", "center"]}
                 display={["", "flex"]}
-                pt={mode === SHARE_MODE ? [0, "10%"] : [0, 0]}
+                pt={mode === SHARE_MODE ? [0, 0] : [0, 0]}
               >
                 <CreateMintProgress
                   peerState={peerState}
@@ -606,10 +677,10 @@ export const SendPanel = ({
         in={mode === SHARE_MODE && mintState !== "Sealed"}
         unmountOnExit
       >
-        <HStack mt={6} w="full" align="center" spacing={2}>
+        <HStack mt={[4, 4]} w="full" align="center" spacing={2}>
           <Icon as={WarningIcon} boxSize={10} mr={2} />
           <Text
-            fontSize={"lg"}
+            fontSize={["md", "lg"]}
             zIndex={999}
             textAlign={"left"}
             noOfLines={3}
@@ -624,7 +695,7 @@ export const SendPanel = ({
         endingHeight={"auto"}
         unmountOnExit
       >
-        <Stack mt={[8, 0]} w="full" spacing={2} h={"auto"} maxH={"6rem"}>
+        <Stack mt={[8, 3]} w="full" spacing={2} h={"auto"} maxH={"6rem"}>
           <Heading
             as={"h4"}
             zIndex={999}
@@ -681,7 +752,7 @@ const CreateProgress = ({ mode, progress }) => {
             alignItems="center"
             justifyContent="center"
             top={[2, 2]}
-            left={[-2, -2]}
+            left={[0, 0]}
           >
             <CircularProgress
               size={"100%"}
@@ -693,7 +764,7 @@ const CreateProgress = ({ mode, progress }) => {
               capIsRound={true}
               min={1}
               w={mode === SHARE_MODE ? ["68%", "65%"] : ["33%", "60%"]}
-              minW={["5rem", null]}
+              minW={["8rem", null]}
               maxW={["9.5rem", "9.5rem"]}
               mt={[0, 0]}
             >

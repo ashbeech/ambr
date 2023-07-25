@@ -77,6 +77,28 @@ export default function AmbrApp({ Component, pageProps, err }) {
           <Center h={"100%"}>
             <LogoLoader />
           </Center>
+          <Box
+            w={"100%"}
+            maxH={"25%"}
+            pl={8}
+            pr={8}
+            pb={[8, 4]}
+            bottom={[0, 0]}
+            position={["absolute", "absolute"]}
+            textAlign={"center"}
+            justifyContent={"center"}
+          >
+            <Text
+              display={["block", "inline"]}
+              pl={[0, 4]}
+              pt={[2, 0]}
+              fontSize={"sm"}
+              fontWeight={"lighter"}
+            >
+              &copy; {new Date().getFullYear()} This is Bullish Ltd. All rights
+              reserved.
+            </Text>
+          </Box>
         </Box>
       )}
       {!loading && (

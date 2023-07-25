@@ -75,8 +75,8 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
 
   return (
     <>
-      <Fade in={isLoading} w={"100%"} h={"100%"} minH={"100%"}>
-        <Box display={isLoading ? "flex" : "none"}>
+      <Fade in={isLoading} w={"100%"} h={"100%"} minh={"100%"}>
+        <Box display={isLoading ? "flex" : "none"} minH={"100%"}>
           <Box
             pos={"absolute"}
             alignItems="center"
