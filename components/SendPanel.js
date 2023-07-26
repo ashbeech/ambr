@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Box,
   Collapse,
@@ -19,6 +19,7 @@ import {
   Fade,
   Img,
 } from "@chakra-ui/react";
+import CustomText from "./CustomText";
 import { WarningIcon } from "./icons/WarningIcon";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -166,56 +167,48 @@ export const SendPanel = ({
     };
   }, [shouldWarn]);
 
+  const boxRef = useRef(null);
+  const [hasBottomBorder, setHasBottomBorder] = useState(false);
+  const [update, setUpdate] = useState(false);
+
+  useEffect(() => {
+    // Check if the child's height is greater than the parent's height
+    if (boxRef.current) {
+      const parentHeight = boxRef.current.clientHeight;
+      const childHeight = boxRef.current.scrollHeight;
+      const shouldHaveBorder = childHeight - 21 >= parentHeight;
+      setHasBottomBorder(shouldHaveBorder);
+    }
+  }, [boxRef, update]);
+
   return (
     <>
-      <Fade
-        in={mode === SHARE_MODE}
-        h={"auto"}
-        w={["100%", "100%"]}
-        pos={"relative"}
-        style={{ height: "auto", width: "100%" }}
-        unmountOnExit
-      >
-        <Text
-          w={"100%"}
-          fontSize={"2xl"}
-          fontWeight={"semibold !important"}
-          align={"left"}
-          noOfLines={[2, 1]}
-          wordBreak="break-word"
-          pb={[0, 2]}
-        >
-          {fileName}
-        </Text>
-      </Fade>
       <HStack
         w={"100%"}
-        h={"100%"}
-        display={["block", "grid"]}
+        h={["100%", "22rem"]}
+        display={["block", "flex"]}
+        direction={[null, "row"]}
+        spacing={[2, 4]}
         minH={
           mode === SHARE_MODE
             ? ["100%", "20rem", "20rem"]
-            : ["100%", "22rem", "22rem"]
+            : ["100%", "100%", "100%"]
         }
         minW={["100%", "77vw", "40rem"]}
-        maxH={["100%", "24rem"]}
-        direction={[null, "row"]}
-        spacing={[2, 4]}
         position="relative"
         style={{
           transition: "width 0.1s ease-in, height 0.1s ease-in",
         }}
       >
         <VStack
-          w={mode === SHARE_MODE ? ["100%", "50%"] : ["100%", "45%"]}
+          w={mode === SHARE_MODE ? ["100%", "45%"] : ["100%", "45%"]}
+          justifyContent={"flex-start"}
+          gap={mode === SHARE_MODE ? [0, 0] : 0}
           h={["auto", "100%"]}
-          gap={0}
         >
           <Fade
-            in={mode === CREATE_MODE}
+            in={mode !== null}
             style={{ height: "auto", width: "100%" }}
-            h={"auto"}
-            w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
             pos={"relative"}
             unmountOnExit
           >
@@ -223,42 +216,41 @@ export const SendPanel = ({
               position="relative"
               w={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
               h={["100%", "auto"]}
-              pt={"0.5em"}
               zIndex={2}
             >
-              <Text
+              <CustomText
+                maxCharacters={41}
                 w={"100%"}
+                fontSize={"xl"}
+                fontWeight={"medium !important"}
+                align={"left"}
+                noOfLines={3}
+                wordBreak="break-word"
+                letterSpacing={"0.009em !important"}
                 style={{
                   transition: "width 0.1s ease-in, height 0.1s ease-in",
                 }}
-                fontSize={mode === SHARE_MODE ? ["2xl", "2xl"] : "2xl"}
-                fontWeight={
-                  mode === SHARE_MODE
-                    ? ["semibold !important", "semibold !important"]
-                    : "medium !important"
-                }
-                align={"left"}
-                noOfLines={1}
-                wordBreak="break-word"
               >
-                {cloudState === "Uploading" && <>{"Uploading " + fileName}</>}
-                {peerState !== "Active" && <>{"Encrypting " + fileName}</>}
-                {cloudState === "Uploaded" && (
-                  <>{mode === SHARE_MODE ? fileName : "Uploaded " + fileName}</>
-                )}
-              </Text>
+                <>{fileName}</>
+              </CustomText>
             </Box>
+            <Text fontSize={"sm"} pt={2}>
+              {cloudState === "Uploading" && <>{"Uploading…"}</>}
+              {peerState !== "Active" && <>{"Encrypting…"}</>}
+              {cloudState === "Uploaded" && <>{"Uploaded."}</>}
+            </Text>
           </Fade>
           <Box
             display={"flex"}
+            flex={[null, 5]}
             alignItems="center"
             justifyContent="center"
-            position={["relative", "absolute"]}
-            w={mode === SHARE_MODE ? ["full", "50%"] : ["full", "45%"]}
+            position={["relative", "relative"]}
+            w={mode === SHARE_MODE ? ["full", "100%"] : ["full", "100%"]}
             h={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
-            pt={mode !== CREATE_MODE ? [0, 0] : [0, 12]}
-            pl={mode === SHARE_MODE ? [0, 6] : [0, 0]}
-            mb={[0, 0]}
+            pt={mode !== CREATE_MODE ? [0, 0] : [0, 2]}
+            pl={mode === SHARE_MODE ? [0, 0] : [0, 0]}
+            mb={mode !== CREATE_MODE ? [-2, 0] : [0, 0]}
           >
             <Flex
               direction="column"
@@ -377,13 +369,18 @@ export const SendPanel = ({
                 >
                   <Box
                     overflow={"visible"}
-                    w={mode === SHARE_MODE ? "100%" : ["100%", "112%"]}
-                    h={mode === SHARE_MODE ? "100%" : ["100%", "112%"]}
+                    w={
+                      mode === SHARE_MODE ? ["100%", "112%"] : ["100%", "112%"]
+                    }
+                    h={
+                      mode === SHARE_MODE ? ["100%", "112%"] : ["100%", "112%"]
+                    }
                     pos={"absolute"}
                     style={{
                       filter: isImageLoaded
-                        ? `blur(${Math.round(6.66 - createProgress * 6.66)}px)`
-                        : `blur(333px)`,
+                        ? `blur(${Math.round(16 - createProgress * 16)}px)` //`blur(${Math.round(6.66 - createProgress * 6.66)}px)`
+                        : `blur(33px)`,
+                      animation: "blurAnimation 0.15s infinite alternate", // Apply the animation
                       transition: "filter 0.76s ease-in",
                     }}
                   >
@@ -391,7 +388,7 @@ export const SendPanel = ({
                       w={["100%", "100%"]}
                       h={"100%"}
                       ml={[0, 0]}
-                      objectFit={["contain !important", "contain !important"]}
+                      objectFit={"contain !important"}
                       src={randomAmbr}
                       position={"relative"}
                       alt={`Ambr Stone`}
@@ -404,21 +401,44 @@ export const SendPanel = ({
           </Box>
         </VStack>
         <Box
+          ref={boxRef}
+          w={["full", "55%"]}
           h={"100%"}
-          overflowY={"scroll"}
-          overflowX={"hidden"}
-          w={mode === SHARE_MODE ? ["full", "50%"] : ["full", "55%"]}
-          position={["relative", "absolute"]}
-          top={[null, 0]}
-          left={[null, "45%"]}
-          pl={mode === SHARE_MODE ? [0, 0] : [0, 2]}
+          flex={[null, 5]}
+          display={mode === SHARE_MODE ? "flex" : null}
+          flexDir={mode === SHARE_MODE ? "column" : null}
+          gap={mode === SHARE_MODE ? [6, 8] : ["full", "55%"]}
+          position={"relative"}
+          pl={mode === SHARE_MODE ? [0, "5%"] : [0, 0]}
+          top={[null, null]}
+          left={[null, null]}
           sx={{ marginInlineStart: "0 !important" }}
           zIndex={999}
+          overflowY={"scroll"}
+          overflowX={"hidden"}
+          borderBottom={
+            hasBottomBorder && mode !== SHARE_MODE
+              ? [null, "1px solid"]
+              : "none"
+          }
         >
-          <Box h={"100%"}>
+          <Box
+            w={"100%"}
+            h={mode === SHARE_MODE ? ["100%", "67%"] : "100%"}
+            pt={
+              mode === SHARE_MODE
+                ? [0, fileName.length >= 41 ? "5.2em" : "1.5em"]
+                : 0
+            }
+            display={"flex"}
+            alignItems={"baseline"}
+            justifyContent={"center"}
+            flexDir={mode === SHARE_MODE ? ["column", null] : null}
+            gap={mode === SHARE_MODE ? ["2.25em", null] : null}
+          >
             <Fade
               in={mode !== SHARE_MODE}
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: "auto", width: "100%" }}
               unmountOnExit
             >
               <Formik
@@ -495,9 +515,10 @@ export const SendPanel = ({
                                         ml={4}
                                         type="button"
                                         variant={"rounded"}
-                                        onClick={() =>
-                                          arrayHelpers.remove(index)
-                                        }
+                                        onClick={() => {
+                                          arrayHelpers.remove(index);
+                                          setUpdate(update ? false : true);
+                                        }}
                                         className={"m-btn p-m-btn"}
                                       >
                                         −
@@ -508,9 +529,10 @@ export const SendPanel = ({
                                     <Button
                                       type="button"
                                       variant={"rounded"}
-                                      onClick={() =>
-                                        arrayHelpers.insert(index, "")
-                                      }
+                                      onClick={() => {
+                                        arrayHelpers.insert(index, "");
+                                        setUpdate(update ? false : true);
+                                      }}
                                       className={"p-btn p-m-btn"}
                                     >
                                       +
@@ -529,7 +551,7 @@ export const SendPanel = ({
                       </FormControl>
                       <FormControl
                         isInvalid={
-                          formModeLink && !!errors.emails && touched.emails
+                          !formModeLink && !!errors.emails && touched.emails
                         }
                       >
                         <Collapse
@@ -558,9 +580,10 @@ export const SendPanel = ({
                                           ml={1}
                                           type="button"
                                           variant={"rounded"}
-                                          onClick={() =>
-                                            arrayHelpers.remove(index)
-                                          } // remove a creator from the list
+                                          onClick={() => {
+                                            arrayHelpers.remove(index);
+                                            setUpdate(update ? false : true);
+                                          }} // remove a creator from the list
                                           className={"m-btn p-m-btn"}
                                         >
                                           −
@@ -571,19 +594,20 @@ export const SendPanel = ({
                                       <Button
                                         type="button"
                                         variant={"rounded"}
-                                        onClick={() =>
-                                          arrayHelpers.insert(index, "")
-                                        } // insert an empty string at a position
+                                        onClick={() => {
+                                          arrayHelpers.insert(index, "");
+                                          setUpdate(update ? false : true);
+                                        }} // insert an empty string at a position
                                         className={"p-btn p-m-btn"}
                                       >
                                         +
                                       </Button>
                                     </Flex>
-                                    <ErrorMessage
+                                    {/*                                     <ErrorMessage
                                       name={`emails.${index}.email`}
                                       component="div"
                                       className="invalid-feedback"
-                                    />
+                                    /> */}
                                   </Box>
                                 ))}
                               </Box>
@@ -608,7 +632,7 @@ export const SendPanel = ({
                         </Button>
                       </Box>
                     </VStack>
-                    <Box mb={[4, 0]}>
+                    <Box mb={[4, 0]} pb={hasBottomBorder ? [0, 4] : 0}>
                       <HStack>
                         <Field
                           as={Switch}
@@ -619,6 +643,7 @@ export const SendPanel = ({
                           isChecked={formModeLink}
                           onChange={async () => {
                             await handleChange();
+                            // TODO: If the email is marked required, do not interupt/stop the switch in order to validate the now previous formModeLink state
                             validateForm();
                           }}
                         />
@@ -642,7 +667,7 @@ export const SendPanel = ({
                 className="center-box"
                 h={"100%"}
                 w={["100%", "100%"]}
-                justifyContent={["left", "center"]}
+                justifyContent={["left", "flex-start"]}
                 alignItems={["left", "center"]}
                 display={["", "flex"]}
                 pt={mode === SHARE_MODE ? [0, 0] : [0, 0]}
@@ -658,52 +683,83 @@ export const SendPanel = ({
               </Box>
             </Fade>
           </Box>
+          <Box h={mode === SHARE_MODE ? ["auto", "33%"] : "auto"}>
+            <Collapse
+              in={mode === SHARE_MODE && mintState !== "Sealed"}
+              style={{ height: "100%", width: "100%" }}
+              unmountOnExit
+            >
+              <HStack
+                mt={[4, 4]}
+                w="full"
+                h={mode === SHARE_MODE ? ["auto", "33%"] : "auto"}
+                align="center"
+                spacing={2}
+              >
+                <Icon
+                  as={WarningIcon}
+                  color={"blackAlpha.900"}
+                  boxSize={8}
+                  mr={3}
+                />
+                <Text
+                  fontSize={["sm", "md"]}
+                  zIndex={999}
+                  textAlign={"left"}
+                  color={"blackAlpha.900"}
+                  noOfLines={3}
+                  w={"full"}
+                >
+                  Please keep this window open until your file is signed and
+                  sealed.
+                </Text>
+              </HStack>
+            </Collapse>
+            <Collapse
+              in={mode === SHARE_MODE && mintState === "Sealed"}
+              style={{ height: "100%", width: "100%" }}
+              endingHeight={"100%"}
+              unmountOnExit
+            >
+              <Stack
+                w="full"
+                h={"100%"}
+                spacing={[3, 3]}
+                alignItems={"flex-start"}
+                justifyContent={"end"}
+              >
+                <Heading
+                  h={"auto"}
+                  as={"h4"}
+                  fontSize={"lg !important"}
+                  fontWeight={"normal !important"}
+                  lineHeight={"1.44em"}
+                  zIndex={999}
+                  textAlign={"left"}
+                  noOfLines={2}
+                  w={"full"}
+                >
+                  {formModeLink ? (
+                    <>
+                      You can also securely share <br /> your file via this
+                      link:
+                    </>
+                  ) : (
+                    <>Securely share your file via this link:</>
+                  )}
+                </Heading>
+                <Share
+                  url={shareUrl}
+                  w="full"
+                  maxW="3xl"
+                  size={["md", "lg"]}
+                  justify="center"
+                />
+              </Stack>
+            </Collapse>
+          </Box>
         </Box>
       </HStack>
-      <Collapse
-        in={mode === SHARE_MODE && mintState !== "Sealed"}
-        unmountOnExit
-      >
-        <HStack mt={[4, 4]} w="full" align="center" spacing={2}>
-          <Icon as={WarningIcon} boxSize={10} mr={3} />
-          <Text
-            fontSize={["sm", "md"]}
-            zIndex={999}
-            textAlign={"left"}
-            noOfLines={3}
-            w={"full"}
-          >
-            Please keep this window open until your file is signed and sealed.
-          </Text>
-        </HStack>
-      </Collapse>
-      <Collapse
-        in={mode === SHARE_MODE && mintState === "Sealed"}
-        endingHeight={"auto"}
-        unmountOnExit
-      >
-        <Stack mt={[8, 3]} w="full" spacing={2} h={"auto"} maxH={"6rem"}>
-          <Heading
-            as={"h4"}
-            zIndex={999}
-            textAlign={"left"}
-            noOfLines={1}
-            w={"full"}
-            pb={[0, 1]}
-          >
-            {formModeLink
-              ? "You can also share this link to your secure download:"
-              : "Your secure download link ready to share:"}
-          </Heading>
-          <Share
-            url={shareUrl}
-            w="full"
-            maxW="3xl"
-            size={["md", "lg"]}
-            justify="center"
-          />
-        </Stack>
-      </Collapse>
     </>
   );
 };
@@ -826,7 +882,7 @@ const CreateMintProgress = ({
     <VStack align="left" spacing={0} pl={[null, null, null]}>
       <Box>
         <Check
-          mb={["1.88em", "2.6em"]}
+          mb={["1.66em", "1.88em"]}
           disabled={peerState === "Active" ? false : true}
           title={peerState === "Inactive" ? "Encrypting" : "Encrypted"}
           size={["lg", "lg"]}
@@ -836,7 +892,7 @@ const CreateMintProgress = ({
       </Box>
       <Box>
         <Check
-          mb={["1.88em", "2.6em"]}
+          mb={["1.66em", "1.88em"]}
           disabled={cloudState === "Uploaded" ? false : true}
           title={cloudState}
           size={["lg", "lg"]}

@@ -41,7 +41,7 @@ export const Check = forwardRef(
         spacing: 4,
       },
       lg: {
-        checkmarkSize: 9,
+        checkmarkSize: 8,
         headingFontSize: "lg",
         descriptionFontSize: "md",
         spacing: 4,
@@ -66,11 +66,11 @@ export const Check = forwardRef(
           color={`${colorScheme}.500`}
         />
         <SlideFade in offsetX={-30} offsetY={0} delay={0.1}>
-          <Stack spacing={1}>
+          <Stack spacing={"0.05em"}>
             <Heading
               as={"h4"}
               fontWeight={
-                disabled ? "semibold !important" : "medium !important"
+                disabled ? "semibold !important" : "semibold !important"
               }
               color={disabled ? "orange.400" : "black.500"}
               position="relative"

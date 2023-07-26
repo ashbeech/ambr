@@ -75,9 +75,9 @@ export const styles = {
       fontWeight: "medium !important",
     },
     h4: {
-      fontSize: "xl !important",
+      fontSize: "lg !important",
       letterSpacing: "normal !important",
-      fontWeight: "medium !important",
+      fontWeight: "normal !important",
     },
     p: {
       fontSize: "md",
@@ -129,7 +129,8 @@ export const styles = {
     },
 
     ".invalid-feedback": {
-      fontSize: "md",
+      fontSize: "sm",
+      color: "gray.800",
       textAlign: "left",
       padding: "0px 0px 0px 0px",
       margin: "0px 0px 4px 0px",
@@ -185,7 +186,7 @@ export const styles = {
       borderRadius: "lg !important",
       shadow: "none !important",
       _focus: {
-        borderColor: "red !important",
+        borderColor: "black.800 !",
         shadow: "none !important",
       },
     },
