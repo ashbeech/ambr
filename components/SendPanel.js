@@ -67,19 +67,6 @@ export const SendPanel = ({
   const [shouldReset, shouldResetBoolean] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  console.log("formModeLink", formModeLink);
-
-  /*   const initialFormValues = useMemo(
-    () => ({
-      client: "",
-      concept: "",
-      creators: [""],
-      emails: [""],
-      mode: formModeLink,
-    }),
-    [formModeLink]
-  ); */
-
   useEffect(() => {
     console.log("RESEEET");
     setRandomAmbr(`/images/amber-${(nowTimestamp % 7) + 1}.png`);
@@ -194,8 +181,9 @@ export const SendPanel = ({
           fontSize={"2xl"}
           fontWeight={"semibold !important"}
           align={"left"}
-          noOfLines={1}
+          noOfLines={[2, 1]}
           wordBreak="break-word"
+          pb={[0, 2]}
         >
           {fileName}
         </Text>
@@ -268,12 +256,9 @@ export const SendPanel = ({
             position={["relative", "absolute"]}
             w={mode === SHARE_MODE ? ["full", "50%"] : ["full", "45%"]}
             h={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
-            //top={mode === CREATE_MODE ? [0, "15%"] : [0, 0]}
-            //maxW={mode === SHARE_MODE ? [null, "24rem"] : [null, "17rem"]}
-            //pt={mode === CREATE_MODE ? [0, 0] : [0, 8]}
-            pt={mode === SHARE_MODE ? [2, 2] : [0, 0]}
-            pl={mode === SHARE_MODE ? [0, 0] : [0, 0]}
-            mb={[2, 0]}
+            pt={mode !== CREATE_MODE ? [0, 0] : [0, 12]}
+            pl={mode === SHARE_MODE ? [0, 6] : [0, 0]}
+            mb={[0, 0]}
           >
             <Flex
               direction="column"
@@ -307,7 +292,7 @@ export const SendPanel = ({
                     unmountOnExit
                   >
                     <FilePicker
-                      mr={mode === CREATE_MODE ? [0, 3] : [0, 3]}
+                      mr={mode === CREATE_MODE ? [0, 0] : [0, 0]}
                       onFiles={handleFiles}
                       description={"Select a file"}
                     />
@@ -426,6 +411,7 @@ export const SendPanel = ({
           position={["relative", "absolute"]}
           top={[null, 0]}
           left={[null, "45%"]}
+          pl={mode === SHARE_MODE ? [0, 0] : [0, 2]}
           sx={{ marginInlineStart: "0 !important" }}
           zIndex={999}
         >
@@ -667,6 +653,7 @@ export const SendPanel = ({
                   chainState={chainState}
                   mintState={mintState}
                   progress={createMintProgress}
+                  formModeLink={formModeLink}
                 />
               </Box>
             </Fade>
@@ -678,9 +665,9 @@ export const SendPanel = ({
         unmountOnExit
       >
         <HStack mt={[4, 4]} w="full" align="center" spacing={2}>
-          <Icon as={WarningIcon} boxSize={10} mr={2} />
+          <Icon as={WarningIcon} boxSize={10} mr={3} />
           <Text
-            fontSize={["md", "lg"]}
+            fontSize={["sm", "md"]}
             zIndex={999}
             textAlign={"left"}
             noOfLines={3}
@@ -702,8 +689,11 @@ export const SendPanel = ({
             textAlign={"left"}
             noOfLines={1}
             w={"full"}
+            pb={[0, 1]}
           >
-            {"Ready to Share"}
+            {formModeLink
+              ? "You can also share this link to your secure download:"
+              : "Your secure download link ready to share:"}
           </Heading>
           <Share
             url={shareUrl}
@@ -735,6 +725,12 @@ const CreateProgress = ({ mode, progress }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (progress > 0.99 && mode === CREATE_MODE) {
+      setIsIndeterminate(true);
+    }
+  }, [mode, progress]);
+
   return (
     <VStack
       display={"flex"}
@@ -751,7 +747,7 @@ const CreateProgress = ({ mode, progress }) => {
             position={"relative"}
             alignItems="center"
             justifyContent="center"
-            top={[2, 2]}
+            top={[0, 0]}
             left={[0, 0]}
           >
             <CircularProgress
@@ -759,19 +755,18 @@ const CreateProgress = ({ mode, progress }) => {
               isIndeterminate={isIndeterminate}
               value={progress * 100}
               color="black.500"
-              trackColor="orange.400"
+              trackColor="orange.800"
               thickness="0.4px"
               capIsRound={true}
               min={1}
-              w={mode === SHARE_MODE ? ["68%", "65%"] : ["33%", "60%"]}
-              minW={["8rem", null]}
-              maxW={["9.5rem", "9.5rem"]}
+              w={mode === SHARE_MODE ? ["40%", "50%"] : ["40%", "50%"]}
+              minW={["5rem", "8rem"]}
               mt={[0, 0]}
             >
               <CircularProgressLabel
                 color="black.500"
-                fontSize="2xl"
-                fontWeight={"normal"}
+                fontSize="xl"
+                fontWeight={"light"}
               >
                 {Math.round(progress * 100) + "%"}
               </CircularProgressLabel>
@@ -785,7 +780,13 @@ const CreateProgress = ({ mode, progress }) => {
 
 let interval = undefined;
 
-const CreateMintProgress = ({ peerState, cloudState, mintState, progress }) => {
+const CreateMintProgress = ({
+  peerState,
+  cloudState,
+  mintState,
+  progress,
+  formModeLink,
+}) => {
   if (progress == null) progress = 0;
 
   const [isMintIndeterminate, setIsMintIndeterminate] = useState(true);
@@ -846,7 +847,11 @@ const CreateMintProgress = ({ peerState, cloudState, mintState, progress }) => {
       <Box>
         <Check
           disabled={mintState === "Sealed" ? false : true}
-          title={mintState}
+          title={
+            formModeLink && mintState === "Sealed"
+              ? `${mintState + " & Sent"}`
+              : mintState
+          }
           size={["lg", "lg"]}
           description={""}
           colorScheme="gray"

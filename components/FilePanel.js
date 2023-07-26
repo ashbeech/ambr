@@ -173,11 +173,15 @@ export const FilePanel = ({
       ", " +
       d.toDateString();
 
-    if (roomMeta.readableMetadata.key_concept != null) {
+    if (roomMeta.readableMetadata.key_concept !== "") {
       key_concept = roomMeta.readableMetadata.key_concept;
+    } else {
+      key_concept = "None listed";
     }
-    if (roomMeta.readableMetadata.client != null) {
+    if (roomMeta.readableMetadata.client !== "") {
       client = roomMeta.readableMetadata.client;
+    } else {
+      client = "None listed";
     }
     if (
       roomMeta.readableMetadata.creators != null &&
@@ -341,8 +345,8 @@ export const FilePanel = ({
                           alignItems="center"
                           justifyContent="center"
                           position={"relative"}
-                          w={["85%", "125%"]}
-                          h={["85%", "125%"]}
+                          w={["100%", "125%"]}
+                          h={["100%", "125%"]}
                           filter={"contrast(0) grayscale(100%)"}
                           opacity={"0.5"}
                         >
@@ -781,7 +785,7 @@ const TopRightPanel = React.memo(
     }, [roomMeta]);
 
     return (
-      <Stack spacing={[2, 4]} h={isExPublic ? [null, "auto"] : [null, "auto"]}>
+      <Stack spacing={[3, 4]} h={isExPublic ? [null, "auto"] : [null, "auto"]}>
         {roomMeta && (
           <Heading
             as={"h2"}
