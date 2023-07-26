@@ -31,7 +31,6 @@ import { Share } from "./Share.js";
 import { CustomText } from "./CustomText.js";
 
 const nowTimestamp = Date.now();
-//const randomAmbr = `/images/amber-${(nowTimestamp % 7) + 1}.png`;
 const initialFormValues = {
   client: "",
   concept: "",
