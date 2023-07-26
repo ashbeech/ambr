@@ -19,7 +19,7 @@ import {
   Fade,
   Img,
 } from "@chakra-ui/react";
-import CustomText from "./CustomText.js";
+import { CustomText } from "./CustomText.js";
 import { WarningIcon } from "./icons/WarningIcon";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
