@@ -19,7 +19,6 @@ import {
   Fade,
   Img,
 } from "@chakra-ui/react";
-import { CustomText } from "./CustomText.js";
 import { WarningIcon } from "./icons/WarningIcon";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -29,6 +28,7 @@ import { FilePicker } from "./FilePicker.js";
 import { Arrow } from "./Arrow.js";
 import { Check } from "./Check.js";
 import { Share } from "./Share.js";
+import { CustomText } from "./CustomText.js";
 
 const nowTimestamp = Date.now();
 //const randomAmbr = `/images/amber-${(nowTimestamp % 7) + 1}.png`;
@@ -184,6 +184,7 @@ export const SendPanel = ({
   return (
     <>
       <HStack
+        className={mode === SHARE_MODE ? "share-state" : null}
         w={"100%"}
         h={["100%", "22rem"]}
         display={["block", "flex"]}
@@ -219,7 +220,7 @@ export const SendPanel = ({
               zIndex={2}
             >
               <CustomText
-                maxCharacters={41}
+                maxCharacters={38}
                 w={"100%"}
                 fontSize={"xl"}
                 fontWeight={"medium !important"}
@@ -427,7 +428,7 @@ export const SendPanel = ({
             h={mode === SHARE_MODE ? ["100%", "67%"] : "100%"}
             pt={
               mode === SHARE_MODE
-                ? [0, fileName.length >= 41 ? "5.2em" : "1.5em"]
+                ? [0, fileName.length >= 37 ? "5em" : "1.5em"]
                 : 0
             }
             display={"flex"}

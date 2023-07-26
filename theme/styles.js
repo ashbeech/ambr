@@ -112,6 +112,9 @@ export const styles = {
       width: "100%",
       height: "100%",
     },
+    ".share-state .chakra-input": {
+      margin: "0px 0px 0px 0px !important",
+    },
     ".bg::after": {
       mixBlendMode: "color-burn",
       content: '""',
