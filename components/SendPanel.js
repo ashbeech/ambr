@@ -249,8 +249,9 @@ export const SendPanel = ({
             w={mode === SHARE_MODE ? ["full", "100%"] : ["full", "100%"]}
             h={mode === SHARE_MODE ? ["100%", "100%"] : ["100%", "100%"]}
             pt={mode !== CREATE_MODE ? [0, 0] : [0, 2]}
+            pb={mode === SHARE_MODE ? [0, 0] : [, 0]}
             pl={mode === SHARE_MODE ? [0, 0] : [0, 0]}
-            mb={mode !== CREATE_MODE ? [-2, 0] : [0, 0]}
+            mb={mode === SHARE_MODE ? [-2, 0] : [3, 0]}
           >
             <Flex
               direction="column"
@@ -703,12 +704,13 @@ export const SendPanel = ({
                   mr={3}
                 />
                 <Text
-                  fontSize={["sm", "md"]}
+                  fontSize={["md", "sm"]}
                   zIndex={999}
                   textAlign={"left"}
                   color={"blackAlpha.900"}
                   noOfLines={3}
                   w={"full"}
+                  pr={[0, "2.1rem"]}
                 >
                   Please keep this window open until your file is signed and
                   sealed.
