@@ -903,6 +903,7 @@ const CreateMintProgress = ({
       </Box>
       <Box>
         <Check
+          // TODO: add state to handle failure with cross when mintState Signing Failed
           disabled={mintState === "Sealed" ? false : true}
           title={
             formModeLink && mintState === "Sealed"
