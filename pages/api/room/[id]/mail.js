@@ -267,7 +267,7 @@ export default async function handler(req, res) {
               border-width: 2px 4px 4px 2px;
               border-radius: 12px;
             "
-            >Go to secure download</a
+            >Go to download</a
           >
         </div>
   
