@@ -86,7 +86,6 @@ export const SendPanel = ({
     return () => {
       image.onload = null;
     };
-    console.log("RESET AMBR: ", randomAmbr);
   }, [randomAmbr]);
 
   const handleChange = async () => {
