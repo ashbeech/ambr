@@ -88,8 +88,8 @@ function Login() {
               }}
               placeholder={
                 !visitedBefore
-                  ? "Enter Your Email Address"
-                  : "Your Email Address"
+                  ? "Enter your email address"
+                  : "Your email address"
               }
               mr={[0, 2]}
               _placeholder={
