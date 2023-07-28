@@ -49,6 +49,10 @@ html, body {
             animation: dash 1.75s linear 0s forwards infinite;
   }
 
+  @media (hover: none) {
+    a:hover { color: inherit; }
+  }
+
   /* Safari 7.1+ */
   
   _::-webkit-full-page-media, _:future, :root .p-m-btn {
