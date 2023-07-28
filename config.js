@@ -131,7 +131,7 @@ export const rtcConfig = {
 // Backblaze B2 bucket information
 let b2Config;
 if (isRender) {
-  if (isPr) {
+  if (isProd) {
     // The service name is a unique slug per PR
     b2Config = {
       bucketName: "ambr-prod",
