@@ -39,7 +39,7 @@ const REFRESH_RATE = 300_000; // 5 minutes
 
 const getFileFromIPFS = async (_url) => {
   try {
-    console.log("getFileFromIPFS: ", _url);
+    //console.log("getFileFromIPFS: ", _url);
     return await fetch(_url, {
       method: "GET",
     })

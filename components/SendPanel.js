@@ -571,6 +571,11 @@ export const SendPanel = ({
                                         name={`emails.${index}.email`}
                                         type="email"
                                         variant="outline"
+                                        className={
+                                          errors.emails
+                                            ? "invalid-feedback"
+                                            : ""
+                                        }
                                         placeholder={"Email file to"}
                                         value={email.email || ""} // Ensure a default value is set
                                         p={3}

@@ -23,7 +23,7 @@ import LogoLoader from "./icons/LogoLoader";
 import { makeHash } from "../lib/make-hash.js";
 import { stripeProducts } from "../config.js";
 
-console.log("Stripe will be being loaded.");
+//console.log("Stripe will be being loaded.");
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );

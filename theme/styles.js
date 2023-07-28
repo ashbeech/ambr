@@ -133,10 +133,14 @@ export const styles = {
 
     ".invalid-feedback": {
       fontSize: "sm",
-      color: "gray.800",
+      color: "white !important",
+      backgroundColor: "orange.400 !important",
       textAlign: "left",
       padding: "0px 0px 0px 0px",
       margin: "0px 0px 4px 0px",
+      "::placeholder": {
+        color: "white",
+      },
     },
     ".chakra-switch__track": {
       height: "28px !important",

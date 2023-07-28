@@ -214,7 +214,7 @@ export const FilePanel = ({
         w={"100%"}
         h={"100%"}
         display={["block", "flex"]}
-        minH={["100%", "24rem", "24rem"]}
+        minH={["24rem", "24rem", "24rem"]}
         minW={["100%", "82vw", "40rem"]}
         maxW={["17rem", "40rem"]}
         direction={[null, "row"]}
@@ -226,6 +226,7 @@ export const FilePanel = ({
           h={"100%"}
           overflow={"visible"}
           position={["static", "absolute"]}
+          minH={["17rem", "17rem"]}
         >
           {!fullyLoaded && isExpired && (
             <Box w={"100%"} h={"100%"}>

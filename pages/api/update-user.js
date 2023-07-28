@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  console.log("Updating User with… ", parseInt(fileTransfersRemaining));
+  //console.log("Updating User with… ", parseInt(fileTransfersRemaining));
 
   try {
     const user = await prisma.user.update({

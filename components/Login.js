@@ -96,7 +96,7 @@ function Login() {
                 isValidEmail ? { color: "black.500" } : { color: "white" }
               }
               color={isValidEmail ? "black.500" : "white"}
-              backgroundColor={isValidEmail ? "gray.500" : "red.500"}
+              backgroundColor={isValidEmail ? "gray.500" : "orange.400"}
             />
             <Button
               flex={!visitedBefore ? ["", 6] : ["", 4]}

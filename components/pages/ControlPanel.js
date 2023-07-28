@@ -137,7 +137,7 @@ export function ControlPanel() {
   };
   // Must ensure that the user is logged in before loading the page
   useEffect(() => {
-    console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
+    //console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
 
     // Check existence of Magic, if not, don't load the page
     if (magic === null) return;
@@ -193,7 +193,7 @@ export function ControlPanel() {
       setPath("/top-up");
     }
 
-    console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
+    //console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
   }, [fileTransfersRemaining, pathname, _mode]);
 
   /*   const handleChangeRooms = (rooms) => {
@@ -278,13 +278,13 @@ export function ControlPanel() {
       _path === "/files" ||
       (_path === "/" && _mode === JOIN_MODE)
     ) {
-      console.log("Setting mode to: null");
+      //console.log("Setting mode to: null");
       setMode(null);
     }
   }, [_path, _mode]);
 
   const updateUser = async (publicAddress) => {
-    console.log("UPDATING USER: ", publicAddress);
+    //console.log("UPDATING USER: ", publicAddress);
     const user = await getUser(publicAddress)
       .then((user) => setSharesRemaining(user.fileTransfersRemaining))
       .catch((error) => console.error(error));
