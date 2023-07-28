@@ -12,10 +12,23 @@ export const theme = extendTheme(
   {
     colors: {
       background: {
-        500: "#EEEEEE",
+        100: "#FEFEFE",
+        500: "#F4F4F4",
       },
       brand: {
         500: "#FF4809",
+      },
+      yellow: {
+        50: "#FFFDE7",
+        100: "#FFF9C4",
+        200: "#FFF59D",
+        300: "#FFF176",
+        400: "#FFAC00",
+        500: "#FFC107",
+        600: "#FFB300",
+        700: "#FFA000",
+        800: "#FF8F00",
+        900: "#FF6F00",
       },
       orange: {
         50: "#FFEBE5",
@@ -28,14 +41,6 @@ export const theme = extendTheme(
         700: "#FF3E00",
         800: "#FF3400",
         900: "#6D2F00",
-      },
-      orangeAlpha: {
-        50: "RGBA(255, 72, 9, 0.08)",
-        100: "RGBA(255, 72, 9, 0.16)",
-        200: "RGBA(255, 72, 9, 0.24)",
-        300: "RGBA(255, 72, 9, 0.32)",
-        400: "RGBA(255, 72, 9, 0.48)",
-        500: "RGBA(255, 72, 9, 0.64)",
       },
       orangeAlpha: {
         50: "rgb(255, 235, 229, 0.08)",
@@ -63,6 +68,7 @@ export const theme = extendTheme(
       },
       gray: {
         100: "RGBA(252, 252, 248, 1)",
+        300: "RGBA(239, 239, 239, 1)",
         500: "RGBA(224, 224, 220, 1)",
         600: "RGBA(210, 210, 200,  1)",
         800: "RGBA(108, 108, 96,  1)",
@@ -195,13 +201,13 @@ export const theme = extendTheme(
             },
             _hover: {
               borderWidth: "1px 3px 3px 1px",
-              color: "orange.400",
-              borderColor: "orange.400",
+              backgroundColor: "yellow.400",
               _disabled: {
                 borderWidth: "1px 3px 3px 1px",
                 color: "blackAlpha.300",
                 opacity: "1",
                 borderColor: "blackAlpha.300",
+                backgroundColor: "transparent",
               },
             },
             _focus: {},
@@ -226,8 +232,7 @@ export const theme = extendTheme(
             },
             _hover: {
               borderWidth: "1px 3px 3px 1px",
-              color: "orange.400",
-              borderColor: "orange.400",
+              backgroundColor: "yellow.400 !important",
               _disabled: {
                 color: "gray.600",
                 borderColor: "gray.600",
@@ -258,10 +263,19 @@ export const theme = extendTheme(
               color: "gray.600",
               borderColor: "gray.600",
             },
-            _focus: {},
+            _focus: {
+              backgroundColor: "#FFB800 !important",
+            },
             _active: {
               borderWidth: "2px 1px 1px 2px",
               color: "orange.400",
+            },
+            _hover: {
+              backgroundColor: "yellow.400 !important",
+              _disabled: {
+                color: "gray.600",
+                borderColor: "gray.600",
+              },
             },
           },
         },

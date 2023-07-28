@@ -572,7 +572,10 @@ export const SendPanel = ({
                                         type="email"
                                         variant="outline"
                                         className={
-                                          errors.emails
+                                          errors.emails &&
+                                          touched.emails &&
+                                          errors.emails[index]?.email &&
+                                          touched.emails[index]?.email
                                             ? "invalid-feedback"
                                             : ""
                                         }

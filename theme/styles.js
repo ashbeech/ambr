@@ -147,7 +147,7 @@ export const styles = {
       width: "50px !important",
       border: "solid #1E1E1E",
       borderWidth: "1px",
-      background: "transparent !important",
+      background: "transparent",
       padding: "0px !important",
       margin: "1px 2px 1px 0px !important",
     },
@@ -159,23 +159,44 @@ export const styles = {
       position: "relative !important",
       left: "-1px !important",
       top: "-1px !important",
-      background: `#ffffff url(/images/icons/PlusIcon.svg) 5px 5px no-repeat !important`,
+      background: `url(/images/icons/PlusIcon.svg) 5px 5px no-repeat !important`,
     },
-    ".important .chakra-switch__track": {
-      _checked: {
-        backgroundColor: "#ff2b00 !important",
-        shadow: "none !important",
-      },
-    },
-    ".important span.chakra-switch__thumb": {
-      _checked: {
-        backgroundColor: "#ffffff !important",
-      },
-    },
-    ".chakra-switch__track[aria-checked=true], .chakra-switch__track[data-checked]":
+    ".chakra-switch__track[data-checked], .chakra-switch__track[aria-checked=true]":
       {
-        background: "transparent !important",
+        backgroundColor: "gray.300 !important",
+        _checked: {
+          backgroundColor: "gray.300 !important",
+          shadow: "none !important",
+        },
       },
+    ".important .chakra-switch__track[data-checked], .important .chakra-switch__track":
+      {
+        backgroundColor: "gray.300 !important",
+        _checked: {
+          backgroundColor: "orange.400 !important",
+          shadow: "none !important",
+        },
+      },
+    ".important span.chakra-switch__thumb, .chakra-switch__track span.chakra-switch__thumb":
+      {
+        backgroundColor: "background.100 !important",
+        _checked: {
+          backgroundColor: "background.100",
+        },
+      },
+    "span.chakra-switch__thumb:hover, .important span.chakra-switch__thumb:hover":
+      {
+        backgroundColor: "yellow.400 !important",
+        _checked: {
+          backgroundColor: "yellow.400 !important",
+        },
+      },
+    ".chakra-switch__track[data-disabled]": {
+      background: "transparent !important",
+    },
+    ".chakra-switch__track[data-disabled] span.chakra-switch__thumb:hover": {
+      backgroundColor: "#ffffff !important",
+    },
     ".chakra-input, .chakra-textarea": {
       fontWeight: "light",
       color: "black.500",
