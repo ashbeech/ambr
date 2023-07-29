@@ -68,7 +68,7 @@ export const SendPanel = ({
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-    console.log("RESEEET");
+    //console.log("RESEEET");
     setRandomAmbr(`/images/amber-${(nowTimestamp % 7) + 1}.png`);
   }, []);
 

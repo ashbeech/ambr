@@ -21,7 +21,7 @@ import PaymentForm from "./PaymentForm.js";
 import { Arrow } from "./Arrow.js";
 import LogoLoader from "./icons/LogoLoader";
 import { makeHash } from "../lib/make-hash.js";
-import { stripeProducts } from "../config.js";
+import { products } from "../config.js";
 
 //console.log("Stripe will be being loaded.");
 const stripePromise = loadStripe(
@@ -94,7 +94,7 @@ export const PayPanel = ({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             idHash: makeHash(publicAddress),
-            items: [{ id: stripeProducts[0] }],
+            items: [{ id: products[0] }],
           }),
           retry: false,
         })
