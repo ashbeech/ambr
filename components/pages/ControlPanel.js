@@ -44,7 +44,6 @@ export function ControlPanel() {
   // Display logo if not logged in
   let lockedState = (_key && !isLoggedIn) || isLoggedIn;
 
-  // Magic Context
   const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
   const [loading, setLoading] = useState(true);
   const [showFiles, setShowFiles] = useState(false);
@@ -83,7 +82,6 @@ export function ControlPanel() {
   } = useSend(roomId, key);
 
   const handleFileTransfersRemainingUpdate = (value) => {
-    console.log("USERRRR: ", value);
     setSharesRemaining(value);
   };
 
@@ -105,8 +103,6 @@ export function ControlPanel() {
   const verifyFiles = useCallback(
     async (files) => {
       if (verify == null) return;
-      //setShowFiles(false);
-
       try {
         await verify(files);
       } catch (err) {
@@ -120,7 +116,6 @@ export function ControlPanel() {
   const handleMint = useCallback(
     async (_finalMetadata) => {
       if (mint == null) return;
-      //setShowFiles(false);
       try {
         await mint(_finalMetadata);
       } catch (err) {
@@ -137,8 +132,6 @@ export function ControlPanel() {
   };
   // Must ensure that the user is logged in before loading the page
   useEffect(() => {
-    //console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
-
     // Check existence of Magic, if not, don't load the page
     if (magic === null) return;
     if (magic !== null && isLoggedIn && publicAddress === "") return;
@@ -192,8 +185,6 @@ export function ControlPanel() {
       setMode(null);
       setPath("/top-up");
     }
-
-    //console.log("FILE TRANSFERS REMAINING: ", fileTransfersRemaining);
   }, [fileTransfersRemaining, pathname, _mode]);
 
   /*   const handleChangeRooms = (rooms) => {
@@ -278,7 +269,7 @@ export function ControlPanel() {
       _path === "/files" ||
       (_path === "/" && _mode === JOIN_MODE)
     ) {
-      //console.log("Setting mode to: null");
+      // Resetting mode
       setMode(null);
     }
   }, [_path, _mode]);
@@ -348,7 +339,6 @@ export function ControlPanel() {
     //console.log("Downloading all: ", files);
     // Special case for 1 file download
     if (files.length === 1) {
-      //console.log("Downloading: ", files[0]);
       handleDownload(files[0].path);
       return;
     }
@@ -416,8 +406,8 @@ export function ControlPanel() {
       _path !== "/top-up" &&
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
-      //mode !== JOIN_MODE &&
-      _mode !== VERIFY_MODE;
+      _mode !== VERIFY_MODE &&
+      key === null;
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
         _mode === JOIN_MODE &&

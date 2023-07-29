@@ -379,7 +379,7 @@ export const SendPanel = ({
                     style={{
                       filter: isImageLoaded
                         ? `blur(${Math.round(16 - createProgress * 16)}px)` //`blur(${Math.round(6.66 - createProgress * 6.66)}px)`
-                        : `blur(33px)`,
+                        : `blur(38px)`,
                       animation: "blurAnimation 0.15s infinite alternate", // Apply the animation
                       transition: "filter 0.76s ease-in",
                     }}

@@ -11,7 +11,7 @@ export const isPr = process.env.REACT_APP_IS_PULL_REQUEST === "true";
 export const isRender = process.env.REACT_APP_RENDER === "true";
 
 // Stripe products
-export const stripeProducts = !isProd
+export const products = !isProd
   ? ["prod_O1IwO8cwxTjNGp"]
   : ["prod_O98lNwyT3aRI9u"];
 
