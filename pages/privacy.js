@@ -600,8 +600,7 @@ export default function PrivacyPanel() {
               pt={8}
             >
               <Text className={"copyright"} fontWeight={"lighter"}>
-                &copy; {new Date().getFullYear()} This is Bullish Ltd. All
-                rights reserved.
+                &copy; {new Date().getFullYear()} Ambr. All rights reserved.
               </Text>
             </Box>
           </VStack>

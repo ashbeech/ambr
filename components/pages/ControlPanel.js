@@ -1056,12 +1056,31 @@ export function ControlPanel() {
                   {!showHomeStone && (
                     <>
                       <Link
+                        href={"faq"}
+                        target="_blank"
+                        fontSize={"sm"}
+                        title="Take a read of Ambr's frequently asked questions"
+                        fontWeight={"lighter"}
+                      >
+                        FAQ
+                      </Link>
+                      <Link
+                        href={"security"}
+                        target="_blank"
+                        fontSize={"sm"}
+                        title="Take a read of Ambr's Security Statement"
+                        fontWeight={"lighter"}
+                        pl={3}
+                      >
+                        Security
+                      </Link>
+                      <Link
                         href={"terms"}
                         target="_blank"
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontSize={"sm"}
                         fontWeight={"lighter"}
-                        pr={2}
+                        pl={2}
                       >
                         Terms
                       </Link>
@@ -1071,31 +1090,20 @@ export function ControlPanel() {
                         fontSize={"sm"}
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontWeight={"lighter"}
-                        px={2}
-                      >
-                        Privacy
-                      </Link>
-                      <Link
-                        href={"security"}
-                        target="_blank"
-                        fontSize={"sm"}
-                        title="Take a read of Ambr's Security Statement"
-                        fontWeight={"lighter"}
                         pl={2}
                       >
-                        Security
+                        Privacy
                       </Link>
                     </>
                   )}
                   <Text
                     display={["inline", "inline"]}
-                    pl={[0, 4]}
+                    pl={[3, 4]}
                     pt={[2, 0]}
                     fontSize={"sm"}
                     fontWeight={"lighter"}
                   >
-                    &copy; {new Date().getFullYear()} This is Bullish Ltd. All
-                    rights reserved.
+                    &copy; {new Date().getFullYear()} Ambr. All rights reserved.
                   </Text>
                 </Box>
               </Box>

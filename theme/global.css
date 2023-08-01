@@ -15,6 +15,21 @@ html, body {
   display: none !important;
 }
 
+/* Custom CSS for Stripe Payment Element Tabs */
+.stripe-payment-element .Tabs {
+  background-color: #FF5C00;
+}
+
+.stripe-payment-element .TabList .Tab {
+  background-color: #FF5C00;
+
+}
+
+.stripe-payment-element .TabPanel {
+  background-color: #FF5C00;
+
+}
+
  @-webkit-keyframes dash {
     0% {
       stroke-dasharray: 375,089;

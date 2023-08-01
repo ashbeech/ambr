@@ -83,8 +83,8 @@ export const PayPanel = ({
     },
   };
   const options = {
-    clientSecret,
     appearance,
+    clientSecret,
   };
 
   /*   useEffect(() => {
@@ -176,15 +176,17 @@ export const PayPanel = ({
     setSelectedProduct(productId);
   };
 
-  function formatDesc(desc) {
-    //console.log("PayPanel desc: ", desc);
-    if (desc) {
-      const match = desc.match(/\+(\d+(\.\d+)?)/);
-      if (match) {
-        return parseFloat(match[1]);
-      } else {
-        return console.error("No match found.");
-      }
+  function extractTransfersFromDescription(description) {
+    // Use a regular expression to find the number followed by "Transfers"
+    const regex = /\b(\d+)\s+Transfers\b/i;
+    const match = description.match(regex);
+
+    if (match && match[1]) {
+      // Convert the extracted number to an integer and return it
+      return parseInt(match[1]);
+    } else {
+      // Return a default value or handle the case when no number is found
+      return 0;
     }
   }
 
@@ -201,10 +203,19 @@ export const PayPanel = ({
   const handlePaymentSuccess = async (paymentIntent) => {
     // Handle successful payment
     try {
+      if (paymentIntent.description === "") {
+        console.error("Payment failed: No description.");
+        return;
+      }
       console.log(`Payment successful. ID: ${paymentIntent.id}`);
       console.log("PaymentIntent Returned:", paymentIntent);
       setPaymentSuccess(true); // Set the payment success state to true
-      onUpdateFileTransfersRemaining(fileTransfersRemaining + 25);
+      const numberOfTransfers = extractTransfersFromDescription(
+        paymentIntent.description
+      );
+      onUpdateFileTransfersRemaining(
+        fileTransfersRemaining + numberOfTransfers
+      );
       setReceiptID(paymentIntent.id);
       setPaymentError(null);
     } catch (error) {
