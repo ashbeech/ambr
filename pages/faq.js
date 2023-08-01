@@ -250,7 +250,7 @@ export default function TermsPanel() {
               pt={8}
             >
               <Text className={"copyright"} fontWeight={"lighter"}>
-                &copy; {new Date().getFullYear()} Ambr. All rights reserved.
+                &copy; {new Date().getFullYear()} Ambr
               </Text>
             </Box>
           </VStack>

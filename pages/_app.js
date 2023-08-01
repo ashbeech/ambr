@@ -39,7 +39,7 @@ console.log("  ▄   ▄▓▓▀▓▌    ▓▓      ▐▓      ▓▌  ▓�
 console.log(" ▀  ▄▓▀    ▓▌   ▓▓      ▐▓      ▓▌  ▓▓          ▓▓  ▓▌");
 console.log("▐▄▄▓▀      ▐▓▌  ▓▓      ▐▓      ▓▌  ▓▓█▄▄  ▄▄▄▓▀    ▓▌");
 console.log(" ");
-console.log("© 2023 Ambr. All rights reserved.");
+console.log("© 2023 Ambr");
 console.log(" ");
 
 export default function AmbrApp({ Component, pageProps, err }) {
@@ -95,8 +95,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
               fontSize={"sm"}
               fontWeight={"lighter"}
             >
-              &copy; {new Date().getFullYear()} Ambr. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Ambr
             </Text> */}
           </Box>
         </Box>

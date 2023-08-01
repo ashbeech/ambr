@@ -1103,7 +1103,7 @@ export function ControlPanel() {
                         target="_blank"
                         fontSize={"sm"}
                         title="Take a read of Ambr's frequently asked questions"
-                        fontWeight={"lighter"}
+                        fontWeight={"normal"}
                         _hover={{ textDecoration: "none", color: "white" }}
                       >
                         What is Ambr?
@@ -1111,13 +1111,13 @@ export function ControlPanel() {
                     </>
                   )}
                   <Text
-                    display={["inline", "inline"]}
+                    display={["block", "inline"]}
                     pl={[3, 4]}
-                    pt={[2, 0]}
+                    pt={[1, 0]}
                     fontSize={"sm"}
                     fontWeight={"lighter"}
                   >
-                    &copy; {new Date().getFullYear()} Ambr. All rights reserved.
+                    &copy; {new Date().getFullYear()} Ambr
                   </Text>
                 </Box>
               </Box>

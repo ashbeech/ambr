@@ -16,7 +16,7 @@ export default function SmallWithSocial() {
       <Container pt={6} pb={6} pl={0} pr={0} w={"100%"} maxW={"100%"}>
         <Center mr={0}>
           <Text fontSize="sm" color="subtle">
-            &copy; {new Date().getFullYear()} Ambr. All rights reserved.
+            &copy; {new Date().getFullYear()} Ambr
           </Text>
         </Center>
       </Container>
