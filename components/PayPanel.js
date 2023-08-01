@@ -126,7 +126,8 @@ export const PayPanel = ({
           }),
         });
         const prods = await response.json();
-        console.log("response: ", prods);
+        // DEBUG:
+        //console.log("response: ", prods);
         setProductInfo(prods);
       } catch (error) {
         console.error("Error fetching clientSecret:", error);
@@ -138,9 +139,10 @@ export const PayPanel = ({
     fetchProductInfo(products);
   }, []);
 
-  useEffect(() => {
+  // DEBUG:
+  /*   useEffect(() => {
     console.log("productsInfo: ", productsInfo);
-  }, [productsInfo]);
+  }, [productsInfo]); */
 
   useEffect(() => {
     const fetchClientSecret = async () => {
@@ -157,7 +159,8 @@ export const PayPanel = ({
             }),
           });
           const data = await response.json();
-          console.log("Frontend PaymentIntent Feedback: ", data);
+          // DEBUG:
+          //console.log("Frontend PaymentIntent Feedback: ", data);
           setClientSecret(data.client_secret);
         } catch (error) {
           console.error("Error fetching clientSecret:", error);
@@ -171,7 +174,8 @@ export const PayPanel = ({
   }, [selectedProduct, publicAddress]);
 
   const handleProductSelection = (productId) => {
-    console.log("productId: ", productId);
+    // DEBUG:
+    //console.log("productId: ", productId);
     setRefreshing(true);
     setSelectedProduct(productId);
   };
@@ -207,8 +211,8 @@ export const PayPanel = ({
         console.error("Payment failed: No description.");
         return;
       }
-      console.log(`Payment successful. ID: ${paymentIntent.id}`);
-      console.log("PaymentIntent Returned:", paymentIntent);
+      // DEBUG:
+      //console.log("PaymentIntent Returned:", paymentIntent);
       setPaymentSuccess(true); // Set the payment success state to true
       const numberOfTransfers = extractTransfersFromDescription(
         paymentIntent.description
@@ -286,10 +290,12 @@ export const PayPanel = ({
                   <Heading
                     as={"h1"}
                     className="fancy"
-                    fontSize={["4xl", "4xl"]}
+                    fontSize={["2.15rem !important", "4xl !important"]}
+                    lineHeight={["1.25em !important", "normal"]}
                     marginBottom={"0em !important"}
                     noOfLines={2}
                     mt={0}
+                    mb={["1 !important", 0]}
                     textAlign={["center !important", "left !important"]}
                   >
                     Top up your file transfers
@@ -305,7 +311,7 @@ export const PayPanel = ({
                   alignItems={"center"}
                   justifyContent={["inherit", "inherit"]}
                   pt={[4, 4]}
-                  pb={[4, 0]}
+                  pb={[0, 0]}
                 >
                   {/* Map over products and render product boxes */}
                   {selectedProduct &&

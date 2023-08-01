@@ -1057,17 +1057,9 @@ export function ControlPanel() {
                   {!showHomeStone && (
                     <>
                       <Link
-                        href={"faq"}
-                        target="_blank"
-                        fontSize={"sm"}
-                        title="Take a read of Ambr's frequently asked questions"
-                        fontWeight={"lighter"}
-                      >
-                        FAQ
-                      </Link>
-                      <Link
                         href={"security"}
-                        target="_blank"
+                        target={"_blank"}
+                        rel={"noopener"}
                         fontSize={"sm"}
                         title="Take a read of Ambr's Security Statement"
                         fontWeight={"lighter"}
@@ -1077,7 +1069,8 @@ export function ControlPanel() {
                       </Link>
                       <Link
                         href={"terms"}
-                        target="_blank"
+                        target={"_blank"}
+                        rel={"noopener"}
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontSize={"sm"}
                         fontWeight={"lighter"}
@@ -1087,7 +1080,8 @@ export function ControlPanel() {
                       </Link>
                       <Link
                         href={"privacy"}
-                        target="_blank"
+                        target={"_blank"}
+                        rel={"noopener"}
                         fontSize={"sm"}
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontWeight={"lighter"}
@@ -1097,7 +1091,7 @@ export function ControlPanel() {
                       </Link>
                     </>
                   )}
-                  {showHomeStone && (
+                  {/*                   {showHomeStone && (
                     <>
                       <Link
                         href={"faq"}
@@ -1110,7 +1104,7 @@ export function ControlPanel() {
                         What is Ambr?
                       </Link>
                     </>
-                  )}
+                  )} */}
                   <Text
                     display={["block", "inline"]}
                     pl={[3, 4]}

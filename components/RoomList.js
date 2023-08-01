@@ -218,6 +218,7 @@ export const RoomList = ({ onChange = () => {} }) => {
         as={"h2"}
         className="fancy"
         lineHeight={["1.48rem !important"]}
+        fontWeight={"light !important"}
         letterSpacing={["normal !important", null]}
       >
         Your Files

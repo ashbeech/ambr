@@ -11,8 +11,8 @@ import {
   ColorModeScript,
   VStack,
   Grid,
-  Text,
-  Link,
+  //Text,
+  //Link,
   Box,
   Center,
 } from "@chakra-ui/react";
@@ -39,7 +39,7 @@ console.log("  ▄   ▄▓▓▀▓▌    ▓▓      ▐▓      ▓▌  ▓�
 console.log(" ▀  ▄▓▀    ▓▌   ▓▓      ▐▓      ▓▌  ▓▓          ▓▓  ▓▌");
 console.log("▐▄▄▓▀      ▐▓▌  ▓▓      ▐▓      ▓▌  ▓▓█▄▄  ▄▄▄▓▀    ▓▌");
 console.log(" ");
-console.log("© 2023 Ambr");
+console.log("Share ideas worth protecting.");
 console.log(" ");
 
 export default function AmbrApp({ Component, pageProps, err }) {
@@ -53,11 +53,13 @@ export default function AmbrApp({ Component, pageProps, err }) {
   const [loading, setLoading] = useState(true);
   const [scrollDisabled, setScrollDisabled] = useState(true);
 
+  // NOTE: Suffix must be added here if page requires scrolling beyond viewport.
   useEffect(() => {
     setLoading(false);
     if (
       globalThis.location?.pathname === "/privacy" &&
-      globalThis.location?.pathname === "/terms"
+      globalThis.location?.pathname === "/terms" &&
+      globalThis.location?.pathname === "/faq"
     ) {
       setScrollDisabled(false);
     }

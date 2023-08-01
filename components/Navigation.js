@@ -193,12 +193,36 @@ export default function Navigation({
                                 : `(${fileTransfersRemaining})`}
                             </MenuItem>
                           )}
+                          {currentPage !== "faq" && (
+                            <MenuItem
+                              isDisabled={disabled}
+                              fontSize={"md"}
+                              className={disabled ? "faq disabled" : "faq"}
+                              p={0}
+                            >
+                              <Link
+                                href={"faq"}
+                                target={"_blank"}
+                                rel={"noopener"}
+                                fontSize={"sm"}
+                                title="Take a read of Ambr's frequently asked questions"
+                                fontWeight={"normal"}
+                                w={"100%"}
+                                h={"100%"}
+                                px={6}
+                                py={4}
+                              >
+                                FAQ
+                              </Link>
+                            </MenuItem>
+                          )}
                           <MenuItem
                             isDisabled={disabled}
                             fontSize={"md"}
                             onClick={() => {
                               handleUser();
                             }}
+                            target={"_blank"}
                           >
                             {!isLoggedIn ? "Login" : "Logout"}
                             {
@@ -272,6 +296,20 @@ export default function Navigation({
                           fileTransfersRemaining === -999
                             ? ``
                             : `(${fileTransfersRemaining})`}
+                        </Link>
+                        <Link
+                          pr={6}
+                          className={
+                            disabled || currentPage === "faq"
+                              ? "faq disabled"
+                              : "faq"
+                          }
+                          href={"faq"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                          disabled={currentPage === "faq"}
+                        >
+                          FAQ
                         </Link>
                         <Button
                           onClick={() => handleUser()}
