@@ -26,6 +26,7 @@ contract Ambr is ERC721URIStorage, AccessControl {
 
     address public admin;
     address public distributor;
+    mapping(uint256 => bytes20) public fingerprints;
 
     using Counters for Counters.Counter;
     Counters.Counter private ids;
@@ -37,14 +38,22 @@ contract Ambr is ERC721URIStorage, AccessControl {
         _setRoleAdmin(DISTRIBUTOR_ROLE, ADMIN_ROLE);
     }
 
-    function issue(address to, string memory link)
-        public
-        onlyRole(DISTRIBUTOR_ROLE)
-    {
+    //function issue(address to, string memory link)
+    function issue(
+        address to,
+        string memory link,
+        bytes20 hash
+    ) public onlyRole(DISTRIBUTOR_ROLE) {
         ids.increment();
         uint256 id = ids.current();
         _mint(to, id);
         _setTokenURI(id, link);
+        fingerprints[id] = hash;
+    }
+
+    function getFingerprint(uint256 tokenId) public view returns (bytes20) {
+        require(_exists(tokenId), "Ambr: token does not exist");
+        return fingerprints[tokenId];
     }
 
     function burn(uint256 tokenId) public {
@@ -54,16 +63,16 @@ contract Ambr is ERC721URIStorage, AccessControl {
         );
 
         _burn(tokenId);
+        delete fingerprints[tokenId];
     }
 
     function setAdmin(address newAdmin) public onlyRole(ADMIN_ROLE) {
         admin = newAdmin;
     }
 
-    function setDistributor(address newDistributor)
-        public
-        onlyRole(ADMIN_ROLE)
-    {
+    function setDistributor(
+        address newDistributor
+    ) public onlyRole(ADMIN_ROLE) {
         distributor = newDistributor;
         grantRole(DISTRIBUTOR_ROLE, distributor);
     }
@@ -73,13 +82,9 @@ contract Ambr is ERC721URIStorage, AccessControl {
         distributor = address(0);
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC721, AccessControl)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(ERC721, AccessControl) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }

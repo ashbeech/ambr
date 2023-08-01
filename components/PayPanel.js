@@ -16,7 +16,7 @@ import {
 import { useRouter } from "next/router";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { fetcher } from "../lib/fetcher";
+//import { fetcher } from "../lib/fetcher";
 import PaymentForm from "./PaymentForm.js";
 import { Arrow } from "./Arrow.js";
 import LogoLoader from "./icons/LogoLoader";

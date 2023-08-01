@@ -212,7 +212,10 @@ export default async function handler(req, res) {
         </a>
       </div>
   
-      <div class="inner-wrapper" style="padding: 2em 0; background-color: #fff">
+      <div
+        class="inner-wrapper"
+        style="padding: 3.5em 0 3.5em 0; background-color: #fff"
+      >
         <div
           class="title"
           style="color: #1e1e1e; margin-top: 1em; text-align: center"
@@ -275,7 +278,9 @@ export default async function handler(req, res) {
           class="download-header"
           style="text-align: center; margin-top: 3.5em"
         >
-          <p style="padding: 0 3em 0em 3em;">If the button above is not visible, here is the secure download link:</p>
+          <p style="padding: 0 3em 0em 3em">
+            If the button above is not visible, here is the secure download link:
+          </p>
         </div>
   
         <div class="download-link" style="margin-top: 0.5em; text-align: center">
@@ -349,7 +354,7 @@ export default async function handler(req, res) {
         </div>
       </div>
     </body>
-  </html>
+  </html>  
   `;
 
   try {
