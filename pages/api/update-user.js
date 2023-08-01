@@ -26,6 +26,7 @@ export default async function handler(req, res) {
     return;
   }
 
+  // TODO: Comment out.
   //console.log("Updating User with… ", parseInt(fileTransfersRemaining));
 
   try {

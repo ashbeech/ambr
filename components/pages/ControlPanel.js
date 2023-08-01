@@ -81,6 +81,7 @@ export function ControlPanel() {
     handleMaxRoomDownloadsChange,
   } = useSend(roomId, key);
 
+  // NOTE: Frontend logic for UX; update to file transfer record happens at payment-outcome
   const handleFileTransfersRemainingUpdate = (value) => {
     setSharesRemaining(value);
   };
