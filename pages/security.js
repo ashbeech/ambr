@@ -567,7 +567,15 @@ export default function securityPanel() {
               pt={8}
             >
               <Text className={"copyright"} fontWeight={"lighter"}>
-                &copy; {new Date().getFullYear()} Ambr
+                &copy; {new Date().getFullYear()}{" "}
+                <Link
+                  fontWeight={"lighter"}
+                  href={"https://ambr.link"}
+                  target="_self"
+                  title="Ambr — Share ideas worth protecting."
+                >
+                  Ambr
+                </Link>
               </Text>
             </Box>
           </VStack>

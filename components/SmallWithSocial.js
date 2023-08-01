@@ -1,4 +1,4 @@
-import { Box, Container, Text, Center } from "@chakra-ui/react";
+import { Box, Container, Text, Center, Link } from "@chakra-ui/react";
 //import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
 
 export default function SmallWithSocial() {
@@ -16,7 +16,15 @@ export default function SmallWithSocial() {
       <Container pt={6} pb={6} pl={0} pr={0} w={"100%"} maxW={"100%"}>
         <Center mr={0}>
           <Text fontSize="sm" color="subtle">
-            &copy; {new Date().getFullYear()} Ambr
+            &copy; {new Date().getFullYear()}{" "}
+            <Link
+              fontWeight={"lighter"}
+              href={"https://ambr.link"}
+              target="_self"
+              title="Ambr — Share ideas worth protecting."
+            >
+              Ambr
+            </Link>
           </Text>
         </Center>
       </Container>

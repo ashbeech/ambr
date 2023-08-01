@@ -214,7 +214,7 @@ export default async function handler(req, res) {
   
       <div
         class="inner-wrapper"
-        style="padding: 3.5em 0 3.5em 0; background-color: #fff"
+        style="padding: 4.5em 0 4.5em 0; background-color: #fff"
       >
         <div
           class="title"

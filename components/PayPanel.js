@@ -44,8 +44,7 @@ export const PayPanel = ({
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(null);
   const [recieptID, setReceiptID] = useState("");
-  const [currency, setCurrency] = useState("USD");
-  const [cost, setCost] = useState(0);
+  const [trasnsfersReceived, setFileTrasnsfersReceived] = useState(0);
   const [refreshing, setRefreshing] = useState(true);
   const loaded = false;
   const fullyLoaded = loaded === false && productsInfo && clientSecret;
@@ -220,6 +219,7 @@ export const PayPanel = ({
       onUpdateFileTransfersRemaining(
         fileTransfersRemaining + numberOfTransfers
       );
+      setFileTrasnsfersReceived(numberOfTransfers);
       setReceiptID(paymentIntent.id);
       setPaymentError(null);
     } catch (error) {
@@ -232,6 +232,7 @@ export const PayPanel = ({
   const resetPaymentForm = async () => {
     // Reset the payment form
     setClientSecret("");
+    setFileTrasnsfersReceived(0);
     setPaymentSuccess(false);
     setPaymentError(null);
   };
@@ -561,9 +562,12 @@ export const PayPanel = ({
                       fontWeight={"light !important"}
                       maxW={"75%"}
                     >
-                      You&apos;ve unlocked 25 additional file transfers to use
-                      sharing your amazing work with {fileTransfersRemaining}{" "}
-                      file transfers total.
+                      You&apos;ve unlocked{" "}
+                      {trasnsfersReceived
+                        ? trasnsfersReceived + " additional "
+                        : "more "}
+                      file transfers to use sharing your amazing work with{" "}
+                      {fileTransfersRemaining} file transfers total.
                     </Text>
                     <Box w={"100%"} h={"100%"}>
                       <Flex
@@ -614,8 +618,8 @@ export const PayPanel = ({
                     </Box>
                     <VStack spacing={[4, 4]}>
                       <HStack spacing={[2, 4]}>
-                        <Button onClick={sendAFile}>Share a File</Button>
-                        <Button onClick={resetPaymentForm}>+ Add More</Button>
+                        <Button onClick={sendAFile}>Transfer a File</Button>
+                        {/* <Button onClick={resetPaymentForm}>+ Add More</Button> */}
                       </HStack>
                       <Text className={"reciept-id"}>
                         Receipt ID: {recieptID}
