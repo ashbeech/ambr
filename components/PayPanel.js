@@ -39,24 +39,25 @@ export const PayPanel = ({
   publicAddress,
 }) => {
   const [clientSecret, setClientSecret] = useState("");
+  const [productsInfo, setProductInfo] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(products[0]);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(null);
   const [recieptID, setReceiptID] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [cost, setCost] = useState(0);
-  const [description, setDescription] = useState("");
+  const [refreshing, setRefreshing] = useState(true);
   const loaded = false;
-  const fullyLoaded = loaded === false && cost;
+  const fullyLoaded = loaded === false && productsInfo && clientSecret;
 
   const router = useRouter();
 
   const appearance = {
     theme: "flat",
     variables: {
-      colorPrimary: "#FF5C00",
       fontSizeBase: "0.85rem",
       colorBackground: "#F8F8F8",
-      colorDanger: "#FF5C00",
+      colorDanger: "#FF4809",
       colorText: "#929292",
       spacingUnit: "0.23rem",
       borderRadius: "10px",
@@ -86,7 +87,7 @@ export const PayPanel = ({
     appearance,
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (!clientSecret) {
       // Create PaymentIntent as soon as user loads
       fetcher
@@ -94,7 +95,7 @@ export const PayPanel = ({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             idHash: makeHash(publicAddress),
-            items: [{ id: products[0] }],
+            items: [{ id: "prod_O1IwO8cwxTjNGp" }],
           }),
           retry: false,
         })
@@ -112,15 +113,77 @@ export const PayPanel = ({
         });
     }
   }, [clientSecret, publicAddress]);
+ */
+
+  useEffect(() => {
+    const fetchProductInfo = async (ids) => {
+      try {
+        const response = await fetch("/api/get-products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ids: ids,
+          }),
+        });
+        const prods = await response.json();
+        console.log("response: ", prods);
+        setProductInfo(prods);
+      } catch (error) {
+        console.error("Error fetching clientSecret:", error);
+        // Handle the error
+      }
+      setRefreshing(false);
+    };
+
+    fetchProductInfo(products);
+  }, []);
+
+  useEffect(() => {
+    console.log("productsInfo: ", productsInfo);
+  }, [productsInfo]);
+
+  useEffect(() => {
+    const fetchClientSecret = async () => {
+      if (selectedProduct) {
+        try {
+          // Fetch the clientSecret from the server using the selected product ID
+          const response = await fetch("/api/create-payment-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              idHash: makeHash(publicAddress),
+              items: [selectedProduct],
+              currency: "gbp", // Replace with the desired currency
+            }),
+          });
+          const data = await response.json();
+          console.log("Frontend PaymentIntent Feedback: ", data);
+          setClientSecret(data.client_secret);
+        } catch (error) {
+          console.error("Error fetching clientSecret:", error);
+          // Handle the error
+        }
+        setRefreshing(false);
+      }
+    };
+
+    fetchClientSecret();
+  }, [selectedProduct, publicAddress]);
+
+  const handleProductSelection = (productId) => {
+    console.log("productId: ", productId);
+    setRefreshing(true);
+    setSelectedProduct(productId);
+  };
 
   function formatDesc(desc) {
+    //console.log("PayPanel desc: ", desc);
     if (desc) {
-      // Match any number, integer, or decimal in the desc string
-      const match = desc.match(/(\d+(\.\d+)?)/);
+      const match = desc.match(/\+(\d+(\.\d+)?)/);
       if (match) {
         return parseFloat(match[1]);
       } else {
-        return console.error("No number found.");
+        return console.error("No match found.");
       }
     }
   }
@@ -167,8 +230,8 @@ export const PayPanel = ({
     router.reload();
   };
 
-  const costRender = formatAmount(cost, currency);
-  const descRender = formatDesc(description);
+  /*   const costRender = formatAmount(cost, currency);
+  const descRender = formatDesc(description); */
 
   return (
     <>
@@ -199,6 +262,145 @@ export const PayPanel = ({
           spacing={[2, 4]}
           position="relative"
         >
+          {fullyLoaded && !paymentSuccess && !paymentError && (
+            <>
+              <Box
+                w={["full", "50%"]}
+                h={"100%"}
+                overflow={"visible"}
+                pos={["relative", "relative"]}
+                zIndex={998}
+              >
+                <Box h={"12%"}>
+                  <Heading
+                    as={"h1"}
+                    className="fancy"
+                    fontSize={["4xl", "4xl"]}
+                    marginBottom={"0em !important"}
+                    noOfLines={2}
+                    mt={0}
+                    textAlign={["center !important", "left !important"]}
+                  >
+                    Top up your file transfers
+                  </Heading>
+                </Box>
+                <Box
+                  display={"grid"}
+                  w={["100%"]}
+                  h={["100%", "100%"]}
+                  minH={["18rem", "18rem"]}
+                  flexDir={"column"}
+                  gap={[2, 4]}
+                  alignItems={"center"}
+                  justifyContent={["inherit", "inherit"]}
+                  pt={[4, 4]}
+                  pb={[4, 0]}
+                >
+                  {/* Map over products and render product boxes */}
+                  {selectedProduct &&
+                    productsInfo !== null &&
+                    productsInfo.map(
+                      ({ id, price, transfers, currency }, index) => (
+                        <Button
+                          w={["100%"]}
+                          h={["100%", "100%"]}
+                          pos={"relative"}
+                          display={"flex"}
+                          maxH={["10rem", "10rem"]}
+                          key={index}
+                          variant={
+                            selectedProduct.includes(id) ? "active" : "outline"
+                          }
+                          colorScheme={"outline"}
+                          onClick={() => handleProductSelection(id)}
+                          isDisabled={refreshing}
+                          disabled={refreshing}
+                          paddingInlineStart={"0 !important"}
+                          paddingInlineEnd={"0 !important"}
+                        >
+                          <Box
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            position={"relative"}
+                            w={["100%"]}
+                            h={["100%"]}
+                          >
+                            <Img
+                              src={"images/amber-7.png"}
+                              position={"relative"}
+                              w={["33%", "33%"]}
+                              h={["100%", "100%"]}
+                              objectFit={["contain !important"]}
+                              backgroundSize={"100%"}
+                              alt={`Ambr Stone`}
+                              className="file-stone"
+                              top={-1}
+                              pl={3}
+                              pr={0}
+                              py={3}
+                            />
+                            <Text
+                              w={["33%", "33%"]}
+                              as={"h1"}
+                              fontSize={"3.3em !important"}
+                              top={1}
+                              pos={"relative"}
+                              mb={"0 !important"}
+                              className="fancy"
+                            >
+                              {`x${transfers}`}
+                            </Text>
+                            <Text
+                              fontSize={["2xl", "2xl"]}
+                              fontWeight={"medium"}
+                              w={["33%", "33%"]}
+                            >
+                              {`${formatAmount(price, currency)}`}
+                            </Text>
+                          </Box>
+                        </Button>
+                      )
+                    )}
+                </Box>
+              </Box>
+              {!paymentSuccess && (
+                <Box
+                  h={"100%"}
+                  w={["full", "50%"]}
+                  position={["relative", "relative"]}
+                  top={[null, 0]}
+                  sx={{ marginInlineStart: "0 !important" }}
+                >
+                  <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>
+                    <Box px={"0"} position={"relative"} w={"100%"} h={"100%"}>
+                      <Box
+                        pos={"relative"}
+                        overflowY={["auto", "scroll"]}
+                        overflowX={"hidden"}
+                        h={"100%"}
+                        w={"100%"}
+                        px={"3px"}
+                      >
+                        {clientSecret && (
+                          <Elements
+                            options={options}
+                            stripe={stripePromise}
+                            key={clientSecret}
+                          >
+                            <PaymentForm
+                              clientSecret={clientSecret}
+                              onSuccess={handlePaymentSuccess}
+                            />
+                          </Elements>
+                        )}
+                      </Box>
+                    </Box>
+                  </VStack>
+                </Box>
+              )}
+            </>
+          )}
           {!fullyLoaded && (
             <Stack
               direction={["column", "row"]}
@@ -405,177 +607,6 @@ export const PayPanel = ({
                   </Flex>
                 </Fade>
               </Box>
-            )}
-          {fullyLoaded &&
-            !paymentSuccess &&
-            !paymentError &&
-            descRender !== undefined && (
-              <>
-                <Box
-                  w={["full", "42%"]}
-                  h={"100%"}
-                  overflow={"visible"}
-                  pos={["relative", "absolute"]}
-                  zIndex={998}
-                >
-                  <Box h={"12%"}>
-                    <Heading
-                      as={"h1"}
-                      className="fancy"
-                      fontSize={["4xl", "4xl"]}
-                      marginBottom={"0em !important"}
-                      noOfLines={1}
-                      mt={0}
-                      textAlign={["center !important", "left !important"]}
-                    >
-                      Top Up
-                    </Heading>
-                  </Box>
-                  <Flex
-                    flexDir={"column"}
-                    dir={"column"}
-                    alignItems={"flex-start"}
-                    justifyContent={["space-around", "center"]}
-                    w={"100%"}
-                    h={["100%", "88%"]}
-                    minH={["20rem", null]}
-                  >
-                    <Box
-                      w={"100%"}
-                      h={"auto"}
-                      display={"flex"}
-                      flexDir={"column"}
-                      gap={"0.15em"}
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                      pr={["5%", "10%"]}
-                    >
-                      {descRender === undefined ? (
-                        ""
-                      ) : (
-                        <Box
-                          display={"flex"}
-                          justifyContent={"center"}
-                          h={["7.5em", "8em"]}
-                        >
-                          <Text
-                            fontWeight={"medium"}
-                            fontSize={"5.4em"}
-                            h={"100%"}
-                          >
-                            +
-                          </Text>
-                          <Heading
-                            as={"h1"}
-                            className="fancy"
-                            fontSize={"8xl !important"}
-                            marginBottom={"0 !important"}
-                            textAlign={"center !important"}
-                            fontWeight={"light !important"}
-                            m={"0 !important"}
-                            noOfLines={1}
-                          >
-                            {descRender}
-                          </Heading>
-                        </Box>
-                      )}
-                      <Box>
-                        <Text
-                          fontWeight="medium"
-                          position="relative"
-                          align="center"
-                          fontSize={["lg", "xl"]}
-                          noOfLines={1}
-                        >
-                          File transfers
-                        </Text>
-                        <Text
-                          fontWeight="medium"
-                          position="relative"
-                          align="center"
-                          fontSize={["lg", "xl"]}
-                          noOfLines={1}
-                        >
-                          for only
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text
-                          fontWeight={"medium"}
-                          fontSize={"4xl"}
-                          alignItems={"flex-start"}
-                        >
-                          {!costRender ? "" : costRender}
-                        </Text>
-                      </Box>
-                    </Box>
-                    <Flex
-                      direction="column"
-                      alignItems="center"
-                      justifyContent="center"
-                      w={["100%", ""]}
-                      h={["100%", "100%"]}
-                      pos={"absolute"}
-                      top={[null, 0]}
-                      overflow={"visible !important"}
-                    >
-                      <Box
-                        overflow={"visible"}
-                        width={["100%", "115%"]}
-                        height={["100%", "115%"]}
-                        pos={"absolute"}
-                        pt={[0, "0.33em"]}
-                        pl={["1.25em", 0]}
-                        style={{
-                          filter: `blur(${Math.round(6.66)}px)`,
-                          transition: "filter 0.76s ease-in",
-                        }}
-                        zIndex={-1}
-                      >
-                        <Img
-                          w={["100%", "100%"]}
-                          h={"100%"}
-                          objectFit={"contain !important"}
-                          src={`/images/amber-7.png`}
-                          position={"relative"}
-                          alt={`Ambr Stone`}
-                          className="file-stone"
-                        />
-                      </Box>
-                    </Flex>
-                  </Flex>
-                </Box>
-                {!paymentSuccess && clientSecret && (
-                  <Box
-                    h={"100%"}
-                    w={["full", "58%"]}
-                    position={["relative", "absolute"]}
-                    top={[null, 0]}
-                    left={[null, "42%"]}
-                    sx={{ marginInlineStart: "0 !important" }}
-                  >
-                    <VStack h={"100%"} maxWidth={"100%"} w={"100%"}>
-                      <Box px={"0"} position={"relative"} w={"100%"} h={"100%"}>
-                        <Box
-                          pos={"relative"}
-                          overflowY={["auto", "scroll"]}
-                          overflowX={"hidden"}
-                          h={"100%"}
-                          w={"100%"}
-                          px={"3px"}
-                        >
-                          <Elements options={options} stripe={stripePromise}>
-                            <PaymentForm
-                              clientSecret={clientSecret}
-                              onSuccess={handlePaymentSuccess}
-                            />
-                          </Elements>
-                        </Box>
-                      </Box>
-                    </VStack>
-                  </Box>
-                )}
-              </>
             )}
         </HStack>
       )}

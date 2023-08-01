@@ -38,7 +38,7 @@ const handler = async (req, res) => {
     try {
       switch (event.type) {
         case "payment_intent.created":
-          console.log("payment_intent.created:", event.data.object.id);
+          /*           console.log("payment_intent.created:", event.data.object.id);
           console.log("DEBUG:", event.data.object);
 
           await prisma.$transaction([
@@ -54,13 +54,33 @@ const handler = async (req, res) => {
             }),
           ]);
 
-          console.log("Payment created in database:", event.data.object.id);
+          console.log("Payment created in database:", event.data.object.id); */
           break;
 
         case "payment_intent.succeeded":
           console.log(event.type, event.data.object.id);
 
+          console.log("payment_intent.created:", event.data.object.id);
+          console.log("DEBUG:", event.data.object);
+
           await prisma.$transaction([
+            prisma.payment.create({
+              data: {
+                paymentId: event.data.object.id,
+                amount: event.data.object.amount,
+                status: event.data.object.status,
+                description: event.data.object.description,
+                idHash: event.data.object.metadata.idHash,
+                transfers: parseInt(event.data.object.metadata.transfers),
+              },
+            }),
+
+            // NOTE: I don't believe we need to handle payment_intent.created from the webhook,
+            // it creates database bloat.
+            // I think we only need to handle payment_intent.succeeded/failure as this will be the 0/1 states we care about
+            // BUT TODO: need to test this works as expected.
+
+            /*           await prisma.$transaction([
             prisma.payment.update({
               where: {
                 paymentId: event.data.object.id,
@@ -68,7 +88,7 @@ const handler = async (req, res) => {
               data: {
                 status: event.data.object.status,
               },
-            }),
+            }), */
             prisma.user.update({
               where: {
                 idHash: event.data.object.metadata.idHash,
@@ -80,7 +100,7 @@ const handler = async (req, res) => {
               },
             }),
           ]);
-
+          console.log("Payment created in database:", event.data.object.id);
           console.log("Payment updated in database:", event.data.object.id);
           break;
 

@@ -257,7 +257,14 @@ export const FilePanel = ({
               in={roomMeta != null && cid != null}
               style={{ height: "100%", width: "100%" }}
             >
-              <Box overflow={"visible"} h={"100%"} spacing={0}>
+              <Box
+                minH={"18rem"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                overflow={"visible"}
+                h={"100%"}
+                spacing={0}
+              >
                 {!isExpired && (
                   <Box
                     overflow="visible"
@@ -364,10 +371,12 @@ export const FilePanel = ({
                   >
                     <Box w={"100%"} h={"100%"}>
                       <Flex
-                        direction={"column"}
+                        w={"100%"}
+                        h={"100%"}
+                        minH={"18rem"}
                         alignItems={"center"}
                         justifyContent={"center"}
-                        h={"100%"}
+                        direction={"column"}
                       >
                         <VStack>
                           <Spinner size="xl" speed="0.33s" />

@@ -192,7 +192,7 @@ export const theme = extendTheme(
             border: "1px solid",
             borderColor: "black.500",
             color: "none",
-            borderRadius: "lg",
+            borderRadius: "xl",
             borderWidth: "1px 3px 3px 1px",
             _disabled: {
               opacity: "1",
@@ -242,6 +242,31 @@ export const theme = extendTheme(
               borderWidth: "2px 1px 1px 2px",
               color: "orange.400",
               borderColor: "orange.400",
+            },
+          },
+          active: {
+            borderWidth: "1px 3px 3px 1px",
+            backgroundColor: "yellow.400",
+            borderColor: "black.500",
+            borderRadius: "xl",
+
+            _disabled: {
+              borderWidth: "1px 3px 3px 1px",
+              color: "blackAlpha.300",
+              opacity: "1",
+              borderColor: "blackAlpha.300",
+              backgroundColor: "transparent",
+            },
+            _disabled: {
+              opacity: "1",
+              color: "blackAlpha.300",
+              borderColor: "blackAlpha.300",
+            },
+            _hover: {},
+            _focus: {},
+            _active: {
+              borderWidth: "2px 1px 1px 2px",
+              color: "orange.400",
             },
           },
         },

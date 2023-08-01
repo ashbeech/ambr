@@ -2,7 +2,7 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const calculateItemCost = async (itemId) => {
+const getProduct = async (itemId) => {
   if (!itemId) {
     throw new Error("Invalid item: no ID provided");
   }
@@ -18,6 +18,7 @@ const calculateItemCost = async (itemId) => {
 
     const price = await stripe.prices.retrieve(product.default_price);
     return {
+      id: itemId,
       price: price.unit_amount,
       currency: price.currency,
       description: product.name,
@@ -36,41 +37,16 @@ const calculateItemCost = async (itemId) => {
 
 export default async function handler(req, res) {
   try {
-    const { idHash, items } = req.body;
-
-    const costs = await Promise.all(
-      items.map((item) => calculateItemCost(item.id))
-    );
-
-    let totalCost = 0;
-    let transfers = 0;
-    let currency = "";
-    let description = "";
-
-    costs.forEach((cost) => {
-      totalCost += cost.price;
-      transfers += cost.transfers;
-      currency = cost.currency;
-      description = cost.description;
-    });
-
-    const paymentIntent = await stripe.paymentIntents.create({
-      metadata: {
-        idHash: idHash,
-        transfers: transfers,
-      },
-      amount: totalCost,
-      currency: currency,
-      description: description,
-      automatic_payment_methods: {
-        enabled: true,
-      },
-    });
-
-    res.setHeader("Content-Type", "application/json");
-    res.send(paymentIntent);
+    if (req.body) {
+      const { ids } = req.body;
+      const products = await Promise.all(ids.map((id) => getProduct(id)));
+      res.setHeader("Content-Type", "application/json");
+      res.send(products);
+    } else {
+      res.status(500).send({ error: "No ids provided." });
+    }
   } catch (err) {
-    console.error("Error creating payment intent:", err.message);
+    console.error("Error fetching products:", err.message);
     res.status(500).send({ error: "Something went wrong" });
   }
 }

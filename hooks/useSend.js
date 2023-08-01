@@ -134,7 +134,7 @@ export const useSend = (id, key) => {
       try {
         await send?.join(id, key);
       } catch (err) {
-        console.log("ERROR:", err);
+        console.error("ERROR:", err);
         if (err) {
           toastError(err, { title: err.message });
         }
@@ -227,7 +227,7 @@ export const useSend = (id, key) => {
 
   const verify = useCallback(
     async (uploadFiles) => {
-      console.log("VERIFY ROOM META: ", roomMeta);
+      //console.log("VERIFY ROOM META: ", roomMeta);
       try {
         if (roomMeta !== null && roomMeta?.fileHash) {
           await send.verify(

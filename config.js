@@ -10,10 +10,10 @@ export const isPr = process.env.REACT_APP_IS_PULL_REQUEST === "true";
 // Is the site running on Render?
 export const isRender = process.env.REACT_APP_RENDER === "true";
 
-// Stripe products
+// Stripe products, manually generated
 export const products = !isProd
-  ? ["prod_O1IwO8cwxTjNGp"]
-  : ["prod_O98lNwyT3aRI9u"];
+  ? ["prod_O1IwO8cwxTjNGp", "prod_OMyHdTn6MkfMGr"]
+  : ["prod_O98lNwyT3aRI9u", "prod_OMyEM1HJ6vRmUf"];
 
 // The git commit of the running site
 export const release = process.env.REACT_APP_RENDER_GIT_COMMIT || "development";

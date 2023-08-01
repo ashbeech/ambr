@@ -90,7 +90,7 @@ export const SendPanel = ({
 
   const handleChange = async () => {
     setIsLoading(true);
-    console.log("randomAmbr 1: ", randomAmbr);
+    //console.log("randomAmbr 1: ", randomAmbr);
     try {
       formMode(formModeLink ? false : true);
     } catch (err) {
@@ -476,7 +476,7 @@ export const SendPanel = ({
                           type="text"
                           variant="outline"
                           placeholder={
-                            "Short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
+                            "Add a short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
                           }
                           mt={1}
                           p={3}

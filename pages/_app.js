@@ -88,7 +88,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
             textAlign={"center"}
             justifyContent={"center"}
           >
-            <Text
+            {/*             <Text
               display={["block", "inline"]}
               pl={[0, 4]}
               pt={[2, 0]}
@@ -97,7 +97,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
             >
               &copy; {new Date().getFullYear()} This is Bullish Ltd. All rights
               reserved.
-            </Text>
+            </Text> */}
           </Box>
         </Box>
       )}
