@@ -1096,6 +1096,20 @@ export function ControlPanel() {
                       </Link>
                     </>
                   )}
+                  {showHomeStone && (
+                    <>
+                      <Link
+                        href={"faq"}
+                        target="_blank"
+                        fontSize={"sm"}
+                        title="Take a read of Ambr's frequently asked questions"
+                        fontWeight={"lighter"}
+                        _hover={{ textDecoration: "none", color: "white" }}
+                      >
+                        What is Ambr?
+                      </Link>
+                    </>
+                  )}
                   <Text
                     display={["inline", "inline"]}
                     pl={[3, 4]}
