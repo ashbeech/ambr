@@ -14,12 +14,12 @@ export default async function handler(req, res) {
   const timeRemaining = expires - now;
 
   // Format time remaining in human-readable format
-  const millisecondsPerDay = 72 * 60 * 60 * 1000;
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
   const millisecondsPerHour = 60 * 60 * 1000;
 
   let expiresText;
   if (timeRemaining >= millisecondsPerDay) {
-    const days = Math.floor(timeRemaining / millisecondsPerDay);
+    const days = Math.ceil(timeRemaining / millisecondsPerDay);
     expiresText = `${days} day${days > 1 ? "s" : ""}`;
   } else {
     const hours = Math.ceil(timeRemaining / millisecondsPerHour);
