@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function TermsPanel() {
-  const termsPanel = () => {
+  const faqPanel = () => {
     return (
       <Flex
         w={"100%"}
@@ -148,14 +148,11 @@ export default function TermsPanel() {
                 {"Is my file on the blockchain?"}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                The file&apos;s unique certificate, yes, but the full file
-                itself, no.
-                <br />
-                <br />
-                Recording an encrypted version of your original file on a
-                blockchain would not only be impractical, but also provide no
-                real value above the information Ambr already records in the
-                file&apos;s certificate.
+                Your file&apos;s unique hash fingerprint is stored on the
+                blockchain, but storing the full file in an encrypted form on a
+                blockchain would not be practical and wouldn&apos;t add any
+                extra benefit because Ambr already records all the necessary
+                information in the file&apos;s certificate.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Is blockchain technology bad for the environment?"}
@@ -179,7 +176,7 @@ export default function TermsPanel() {
                   target="_blank"
                   title="Top up your Ambr file transfers"
                 >
-                  here
+                  here{" "}
                 </Link>
                 via one-time payments.
               </Text>
@@ -206,11 +203,9 @@ export default function TermsPanel() {
               </Text>
               <Text pt={3} pb={[3, 8]}>
                 Our commitment to your privacy and data security is at the core
-                of Ambr&apos;s guiding principles. We&apos;ve designed and built
-                Ambr so that all sensitive data is encrypted before
-                transmission, in transit, as well as at rest when in storage.
-                This ensures nothing you wouldn&apos;t want others snooping on
-                leaves your side in a readable format, without your consent.
+                of Ambr&apos;s guiding principles. Any important information you
+                share with us is encrypted to ensure nothing leaves you in a
+                readable format, without your consent.
                 <br />
                 <br /> Despite our{" "}
                 <Link
@@ -236,7 +231,7 @@ export default function TermsPanel() {
                 >
                   privacy
                 </Link>{" "}
-                policy. Also feel free to reach out to{" "}
+                policies. Also feel free to reach out to{" "}
                 <Link
                   href={"mailto:privacy@ambr.link"}
                   target="_blank"
@@ -247,30 +242,26 @@ export default function TermsPanel() {
                 with any questions.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
-                {
-                  "Do you offer any kind of user education or resources to help me maximise my use of Ambr?"
-                }
-              </Text>
-              <Text pt={3} pb={[3, 8]}>
-                Certainly! We provide helpful guides and resources to help you
-                make the most of Ambr. These resources are designed to be
-                beginner-friendly and will assist you in getting the most out of
-                our platform. Whether you are new to Ambr or need some tips and
-                tricks to enhance your experience, we&apos;ve got you covered
-                with user education and resources!
-              </Text>
-
-              <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Who can I contact if I have more questions about Ambr?"}
               </Text>
               <Text pt={3} pb={[3, 8]}>
                 If you have further questions about Ambr, feel free to contact
-                our customer service team through the &apos;Contact Us&apos;
-                page on our website. We&apos;re here to help!
+                us via email{" "}
+                <Link
+                  href={"mailto:support@ambr.link"}
+                  target="_blank"
+                  title="Contact Ambr's support team"
+                >
+                  support@ambr.link
+                </Link>
+                . We&apos;re here to help!
               </Text>
             </Box>
             <Box
               w={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              textAlign={"center"}
               borderTop={"1px solid"}
               borderColor={"black.500"}
               pt={8}
@@ -294,7 +285,7 @@ export default function TermsPanel() {
   };
   return (
     <Box className="" mt={[12, 20]} mb={8} w={"100%"}>
-      <Box>{termsPanel()}</Box>
+      <Box>{faqPanel()}</Box>
     </Box>
   );
 }

@@ -562,6 +562,9 @@ export default function securityPanel() {
             </Box>
             <Box
               w={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              textAlign={"center"}
               borderTop={"1px solid"}
               borderColor={"black.500"}
               pt={8}

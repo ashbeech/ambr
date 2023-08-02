@@ -136,7 +136,9 @@ export const useSend = (id, key) => {
       } catch (err) {
         console.error("ERROR:", err);
         if (err) {
-          toastError(err, { title: err.message });
+          toastError(err, {
+            title: err.message ? err.message : "Joining Error",
+          });
         }
         if (shouldReportError(err)) throw err;
       }
@@ -204,7 +206,9 @@ export const useSend = (id, key) => {
       try {
         await send.create(uploadFiles);
       } catch (err) {
-        toastError(err, { title: "useSend.createError" });
+        toastError(err, {
+          title: err.message ? err.message : "Creation Error",
+        });
         throw err;
       }
     },
@@ -218,7 +222,9 @@ export const useSend = (id, key) => {
 
         await send.mint(_finalMetadata);
       } catch (err) {
-        toastError(err, { title: "useSend.createError" });
+        toastError(err, {
+          title: err.message ? err.message : "Creation Error",
+        });
         throw err;
       }
     },
@@ -240,7 +246,9 @@ export const useSend = (id, key) => {
         }
       } catch (err) {
         if (err) {
-          toastError(err, { title: err.message });
+          toastError(err, {
+            title: err.message ? err.message : "Verification Error",
+          });
         }
         if (shouldReportError(err)) throw err;
       }

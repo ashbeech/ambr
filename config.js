@@ -79,7 +79,7 @@ export const siteSocialImage = `/images/social-share-home.png`; //${origin}
 // Root path of project
 export const rootPath = process.cwd();
 
-// Maximum room size displayed to user
+/* // Maximum room size displayed to user
 export const maxRoomSizeGb = 10;
 
 // Maximum cloud room size displayed to user
@@ -89,7 +89,19 @@ export const maxRoomCloudSizeGb = 5;
 export const maxRoomSize = maxRoomSizeGb * 1e9;
 
 // Maximum room size in bytes for cloud upload
-export const maxRoomCloudSize = maxRoomCloudSizeGb * 1e9 * 1.1;
+export const maxRoomCloudSize = maxRoomCloudSizeGb * 1e9 * 1.1; */
+
+// Maximum room size displayed to user
+export const maxRoomSizeMb = 100;
+
+// Maximum cloud room size displayed to user
+export const maxRoomCloudSizeMb = 100;
+
+// Maximum room size in bytes
+export const maxRoomSize = maxRoomSizeMb * 1e6;
+
+// Maximum room size in bytes for cloud upload
+export const maxRoomCloudSize = maxRoomCloudSizeMb * 1e6;
 
 // Room lifetime by default
 export const defaultRoomLifetimeSeconds = 24 * 3600; // One day

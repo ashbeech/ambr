@@ -148,7 +148,7 @@ export function FileRecordPanel({
                 whiteSpace={"nowrap"}
                 flex={1}
               >
-                {"Fingerprint: "}
+                {"Hash: "}
               </Text>
               <Text noOfLines={1}>{fileHash}</Text>
               <CopyButton

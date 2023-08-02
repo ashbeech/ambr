@@ -1057,15 +1057,6 @@ export function ControlPanel() {
                   {!showHomeStone && (
                     <>
                       <Link
-                        href={"faq"}
-                        target="_blank"
-                        fontSize={"sm"}
-                        title="Take a read of Ambr's frequently asked questions"
-                        fontWeight={"lighter"}
-                      >
-                        FAQ
-                      </Link>
-                      <Link
                         href={"security"}
                         target="_blank"
                         fontSize={"sm"}

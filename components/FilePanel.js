@@ -25,7 +25,7 @@ import { Formik, Form, Field } from "formik";
 //import { FileList } from "./FileList.js";
 import { FilePicker } from "./FilePicker.js";
 import { Share } from "./Share.js";
-import { Panel } from "./Panel.js";
+//import { Panel } from "./Panel.js";
 import { FileRecordPanel } from "./FileRecordPanel.js";
 import { RelativeTime } from "./RelativeTime.js";
 import { Arrow } from "./Arrow.js";
@@ -165,13 +165,17 @@ export const FilePanel = ({
     //const isUserMatch = roomMeta.isUserMatch ? roomMeta.isUserMatch : false;
 
     const d = new Date(roomMeta.readableMetadata.timestamp);
-    readableTimeStamp =
+    /*     readableTimeStamp =
       d.getHours() +
       ":" +
       (d.getMinutes() < 10 ? "0" : "") +
       d.getMinutes() +
       ", " +
-      d.toDateString();
+      d.toDateString(); */
+
+    const hours = String(d.getHours()).padStart(2, "0");
+    const minutes = String(d.getMinutes()).padStart(2, "0");
+    readableTimeStamp = `${hours}:${minutes}, ${d.toDateString()}`;
 
     if (roomMeta.readableMetadata.key_concept !== "") {
       key_concept = roomMeta.readableMetadata.key_concept;
