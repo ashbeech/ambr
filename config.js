@@ -104,14 +104,15 @@ export const maxRoomSize = maxRoomSizeMb * 1e6;
 export const maxRoomCloudSize = maxRoomCloudSizeMb * 1e6;
 
 // Room lifetime by default
-export const defaultRoomLifetimeSeconds = 24 * 3600; // One day
-export const defaultRoomLifetimeMs = 86400000; // One day
+export const defaultRoomLifetimeSeconds = 72 * 3600; // One day
+export const defaultRoomLifetimeMs = 259200000; // One day //86400000
 
 // Maximum downloads per room by default
 export const defaultMaxRoomDownloads = 100;
 
-// Values for lifetime (1 hour, 2 hours, 6 hours, 12 hours, 24 hours)
-export const roomLifetimeValues = [1, 2, 6, 12, 24].map((h) => h * 3600);
+// Values for lifetime (72 hours), but could add others into array if valuble to users
+// e.g. for security, only allow download window of 1 hour.
+export const roomLifetimeValues = [72].map((h) => h * 3600);
 
 // Values for max downloads
 export const maxRoomDownloadsValues = [1, 5, 10, 20, 50, 100];

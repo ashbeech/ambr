@@ -7,9 +7,9 @@ export default async function handler(req, res) {
 
   const roomId = req.query.id;
   const { idHash } = req.body;
-  // Sets the lifetime of the room to 86400 seconds (24 hours)
-  const lifetime = 86400000;
-  // Calculates the expiration timestamp by subtracting 86400000 ms (24 hours) from the current timestamp
+  // Sets the lifetime of the room to 86400 seconds (24 hours) / 259200 seconds (72 hours)
+  const lifetime = 259200000; //86400000;
+  // Calculates the expiration timestamp by subtracting 86400000 ms (24 hours) / 259200000 ms (72 hours) from the current timestamp
   const expiresAtTimestampMs = new Date(Date.now() + lifetime).getTime();
 
   if (req.method !== "PATCH") {
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         },
       },
       data: {
-        expiresAtTimestampMs: expiresAtTimestampMs.toString(), // Set the timestamp to current date + 24 hours
+        expiresAtTimestampMs: expiresAtTimestampMs.toString(), // Set the timestamp to current date + lifetime
       },
     });
 

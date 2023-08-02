@@ -392,7 +392,7 @@ export default function PrivacyPanel() {
               </Text>
               <Text pb={[4, 6]}>
                 When using Ambr File Sharing your Content will be deleted after
-                24 hours, unless you have an Enterprise account in which case
+                72 hours, unless you have an Enterprise account in which case
                 your transfer data is stored by default for 28 days or until the
                 expiry date you set manually. After this period, a stored
                 original file (encrypted) is automatically deleted from our

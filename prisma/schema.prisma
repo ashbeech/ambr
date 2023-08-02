@@ -16,9 +16,9 @@ model Room {
   public               Boolean?
   readerToken          String?
   salt                 String?
-  expiresAtTimestampMs String?  @default(dbgenerated("cast(extract(epoch from now() + interval '1 day') * 1000 as string)"))
+  expiresAtTimestampMs String?  @default(dbgenerated("cast(extract(epoch from now() + interval '3 days') * 1000 as string)"))
   maxDownloads         Int?     @default(100)
-  lifetime             Int?     @default(86400)
+  lifetime             Int?     @default(259200)
   remainingDownloads   Int?     @default(100)
   encryptedTorrentFile String?
   sizeMb               Float?
@@ -65,9 +65,9 @@ model Payment {
 //   public               Boolean?
 //   readerToken          String?
 //   salt                 String?
-//   expiresAtTimestampMs String?   @default(dbgenerated("cast(extract(epoch from now() + interval '1 day') * 1000 as string)"))
+//   expiresAtTimestampMs String?   @default(dbgenerated("cast(extract(epoch from now() + interval '3 days') * 1000 as string)"))
 //   maxDownloads         Int?      @default(100)
-//   lifetime             Int?      @default(86400)
+//   lifetime             Int?      @default(259200)
 //   remainingDownloads   Int?      @default(100)
 //   encryptedTorrentFile String?
 //   sizeMb               Float?

@@ -191,9 +191,9 @@ async function deleteExpiredFiles(roomId) {
       const fileName = file.fileName;
       const uploadTimestamp = file.uploadTimestamp;
 
-      // Calculate expiration date (e.g., 1 day ago)
+      // Calculate expiration date (e.g., 3 days ago)
       const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() - 1);
+      expirationDate.setDate(expirationDate.getDate() - 3); // TODO: Check this is 72hr
 
       // If the uploadTimestamp is before the expiration date, add the file to the deletion list
       if (uploadTimestamp < expirationDate) {

@@ -8,7 +8,7 @@
   "readerToken": "CTi/xxYMXQQXBvv5Ns+noQ==",
   "timestamp": 1659023835978,
   "expiresAtTimestampMs": 1659023726399,
-  "lifetime": 86400,
+  "lifetime": 259200,
   "maxDownloads": 100,
   "description": "This token contains the permentant, immutable, and encrypted record of a file shared via Ambr.link.",
   "type": "Ambr — Share ideas worth protecting.",

@@ -115,7 +115,7 @@ export default function TermsPanel() {
               </Text>
               <Text pt={3} pb={[3, 8]}>
                 You can see your history by going to “Your files”. Note that a
-                file&apos;s download link expires after 24 hours from upload,
+                file&apos;s download link expires after 72 hours from upload,
                 but you can re-upload the original file to the link after that
                 to extend the download window once more.
               </Text>

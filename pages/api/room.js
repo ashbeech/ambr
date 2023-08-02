@@ -51,9 +51,9 @@ export default async function handler(request, response) {
 
   //console.log("ID: ", id);
 
-  // Sets the lifetime of the room to 86400 seconds (24 hours)
-  const lifetime = 86400000;
-  // Calculates the expiration timestamp by subtracting 86400000 ms (24 hours) from the current timestamp
+  // Sets the lifetime of the room to 86400 seconds (24 hours) 259200 ms (72 hours)
+  const lifetime = 259200000; //86400000;
+  // Calculates the expiration timestamp by subtracting 86400000 ms (24 hours) / 259200000 ms (72 hours) from the current timestamp
   const expiresAtTimestampMs = new Date(Date.now() + lifetime).getTime();
   // Sets the maximum number of downloads for the room to 100
   const maxDownloads = 100;
@@ -99,9 +99,9 @@ export default async function handler(request, response) {
   public               Boolean?
   readerToken          String?
   salt                 String?
-  expiresAtTimestampMs String?  @default(dbgenerated("cast(extract(epoch from now() + interval '1 day') * 1000 as string)"))
+  expiresAtTimestampMs String?  @default(dbgenerated("cast(extract(epoch from now() + interval '3 days') * 1000 as string)"))
   maxDownloads         Int?     @default(100)
-  lifetime             Int?     @default(86400)
+  lifetime             Int?     @default(259200)
   remainingDownloads   Int?     @default(100)
   encryptedTorrentFile String?
   sizeMb               Float?

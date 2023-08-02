@@ -840,7 +840,13 @@ export function ControlPanel() {
                                     <Text fontSize={"md"}>
                                       This file&apos;s been shared with you,
                                       <br />
-                                      ready to download.
+                                      ready to download. <br />
+                                      <br />
+                                      You acknowledge the confidential nature of
+                                      the contents and agree not to misuse,
+                                      reproduce, distribute, or steal the ideas
+                                      within. All rights, including intellectual
+                                      property, belong to the original creator.
                                     </Text>
                                   </SlideFade>
                                 )}
