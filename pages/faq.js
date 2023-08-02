@@ -123,10 +123,13 @@ export default function TermsPanel() {
                 {"How long does Ambr store my files? "}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                Ambr currently stores your files for 72 hours (3 days). After
-                that period, your original file will act as a key to unlock the
-                stored information, so it&apos;s important for you to keep the
-                original, unedited file to hand.
+                Ambr stores your files for 72 hours (3 days). After that period,
+                you can re-upload any exact copy of the file to the same link
+                and have the download period extend for an additional 72 hours.
+                Re-uploading a file also acts as verification thatb your file
+                matches the original recorded by the certificate. This can act
+                as evidence of the work within down th line, so it&apos;s
+                important for you to keep an original, unedited file to hand.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {

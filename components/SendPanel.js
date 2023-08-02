@@ -790,11 +790,11 @@ const CreateProgress = ({ mode, progress }) => {
     };
   }, []);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (progress > 0.99 && mode === CREATE_MODE) {
       setIsIndeterminate(true);
     }
-  }, [mode, progress]);
+  }, [mode, progress]); */
 
   return (
     <VStack

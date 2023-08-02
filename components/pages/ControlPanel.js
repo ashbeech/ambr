@@ -863,7 +863,9 @@ export function ControlPanel() {
                                       All rights, including intellectual
                                       property, belong to the content&apos;s
                                       original{" "}
-                                      {roomMeta.readableMetadata.creators
+                                      {roomMeta &&
+                                      roomMeta.readableMetadata !== null &&
+                                      roomMeta.readableMetadata.creators
                                         .length > 1
                                         ? "creators"
                                         : "creator"}
