@@ -872,6 +872,30 @@ export function ControlPanel() {
                                     </Text>
                                   </SlideFade>
                                 )}
+                              {!_isAuthenticated &&
+                                isExpired &&
+                                !isUserMatch && (
+                                  <SlideFade
+                                    in={showDownloadPanel}
+                                    offsetX={"-10%"}
+                                    offsetY={"0"}
+                                  >
+                                    <Text as={"h1"} className={"fancy"}>
+                                      Permanent
+                                      <br />
+                                      file record
+                                    </Text>
+                                    <Text fontSize={"md"}>
+                                      This file&apos;s download link has
+                                      expired, but the certificate detailing its
+                                      historic record of transfer and contents
+                                      remains. If you hold the orginal file, you
+                                      can re-upload it here. It will act as
+                                      verifiaction of the certifiacted contents
+                                      as well as extending the download link.
+                                    </Text>
+                                  </SlideFade>
+                                )}
                             </Box>
                           </HStack>
                         </SafeContainer>
