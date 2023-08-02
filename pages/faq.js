@@ -42,7 +42,7 @@ export default function TermsPanel() {
               </Text>
               <Text pt={3} pb={[3, 8]}>
                 Ambr is a secure file transfer service that lets you send files
-                to anyone in the world with a simple link, whilst simultaeously
+                to anyone in the world with a simple link, whilst simultaneously
                 providing verifiable proof of origin and authenticity for your
                 hard work in the backgound when you need it.
               </Text>
