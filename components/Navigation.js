@@ -116,6 +116,18 @@ export default function Navigation({
               )}
               {filePage && (
                 <Box>
+                  <Link
+                    pr={6}
+                    className={
+                      disabled || currentPage === "faq" ? "faq disabled" : "faq"
+                    }
+                    href={"faq"}
+                    target={"_blank"}
+                    rel={"noopener"}
+                    disabled={currentPage === "faq"}
+                  >
+                    What is Ambr?
+                  </Link>
                   <Button
                     onClick={() => {
                       handlePageChange("");
@@ -123,6 +135,28 @@ export default function Navigation({
                   >
                     {"Login"}
                   </Button>
+                </Box>
+              )}
+              {!filePage && !isLoggedIn && (
+                <Box
+                  w={"100%"}
+                  display={"flex"}
+                  flexDir={"right"}
+                  textAlign={"right"}
+                  justifyContent={"flex-end"}
+                >
+                  <Link
+                    pr={6}
+                    className={
+                      disabled || currentPage === "faq" ? "faq disabled" : "faq"
+                    }
+                    href={"faq"}
+                    target={"_blank"}
+                    rel={"noopener"}
+                    disabled={currentPage === "faq"}
+                  >
+                    What is Ambr?
+                  </Link>
                 </Box>
               )}
               {isMobile ? (
@@ -225,9 +259,6 @@ export default function Navigation({
                             target={"_blank"}
                           >
                             {!isLoggedIn ? "Login" : "Logout"}
-                            {
-                              // TODO: Add `Sign up, Free` as display when user is completely new, un-reconised
-                            }
                           </MenuItem>
                         </MenuList>
                       </Menu>

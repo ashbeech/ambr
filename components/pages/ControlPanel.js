@@ -893,7 +893,7 @@ export function ControlPanel() {
                                       remains. If you hold the orginal file, you
                                       can re-upload it here. It will act as
                                       verifiaction of the certifiacted contents
-                                      as well as extending the download link.
+                                      as well as to extend the download link.
                                     </Text>
                                   </SlideFade>
                                 )}
