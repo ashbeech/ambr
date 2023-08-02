@@ -44,17 +44,18 @@ export default function TermsPanel() {
                 Ambr is a secure file transfer service that lets you send files
                 to anyone in the world with a simple link, whilst simultaneously
                 providing verifiable proof of origin and authenticity for your
-                hard work in the backgound when you need it.
+                hard work in the backgound when you need it most.
               </Text>
 
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Who should use Ambr?"}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                Ambr is made for creatives to share their work with confidence,
-                which could be working files with clients, but Ambr can also be
-                used by anyone concerned with the unauthorised use of their work
-                by third parties, including artificial intelligence (AI).
+                Ambr is made for creatives to share their work with confidence.
+                This could be passing around working files with clients, but it
+                can also be used by anyone concerned with the unauthorised use
+                of their work by third parties, including artificial
+                intelligence (AI).
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {
@@ -64,17 +65,18 @@ export default function TermsPanel() {
               <Text pt={3} pb={[3, 8]}>
                 No, no account is required to download a file. They will be able
                 to access the file either by the emailed link if you selected
-                the &quot;Transfer&quot; option at upload, or via the link you
-                share with them yourself, however you choose.
+                the &quot;Transfer&quot; option at upload, or alternatievly via
+                the link you share with them yourself—however you choose.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How does Ambr work?"}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                Ambr employs blockchain technology to embed a digital timestamp
-                in each file you transfer. This provides verifiable proof of
-                origin and authenticity, enabling you to confidently share your
-                work.
+                When you share a file through Ambr it securely and immutably
+                records a unique, encrypted fingerprint of the file and the
+                transfer event to a blockchain. Sharing a file thorugh Ambr
+                ensures you have easy access to the highest level of verifiable
+                proof of origin, and authenticity.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How do I sign in to Ambr?"}
