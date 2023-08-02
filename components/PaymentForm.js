@@ -104,7 +104,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
         <Formik initialValues={{}} onSubmit={handleSubmit}>
           {({ isSubmitting }) => (
             <Form id="payment-form">
-              {message && (
+              {/*               {message && (
                 <Box
                   color={"orange.400"}
                   fontSize={["lg", "md"]}
@@ -112,7 +112,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
                 >
                   {message}
                 </Box>
-              )}
+              )} */}
               <Box mt={4}>
                 <PaymentElement
                   id="payment-element"

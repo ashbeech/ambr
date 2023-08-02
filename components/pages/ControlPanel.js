@@ -407,8 +407,18 @@ export function ControlPanel() {
       _path !== "/top-up" &&
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
-      _mode !== VERIFY_MODE;
-    //&& key === null;
+      _mode !== VERIFY_MODE &&
+      key === null;
+    const showPanel2 =
+      fileTransfersRemaining !== -999 &&
+      fileTransfersRemaining >= 1 &&
+      _path !== "/files" &&
+      _path !== "/top-up" &&
+      _isAuthenticated &&
+      _mode !== JOIN_MODE &&
+      _mode !== VERIFY_MODE &&
+      _mode === SHARE_MODE;
+
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
         _mode === JOIN_MODE &&
@@ -436,6 +446,7 @@ export function ControlPanel() {
       (roomMeta !== null && roomMeta.remainingDownloads < 1);
     const allFailedIntermission =
       !showPanel &&
+      !showPanel2 &&
       !showDownloadPanel &&
       !showFilePanel &&
       !showSubFilePanel1 &&
@@ -547,8 +558,8 @@ export function ControlPanel() {
                       </HStack>
                     </Box>
                   )}
-                  {showPanel && (
-                    <Fade in={showPanel}>
+                  {(showPanel || showPanel2) && (
+                    <Fade in={showPanel || showPanel2}>
                       <Box
                         w={"100%"}
                         h={"100%"}
@@ -621,7 +632,7 @@ export function ControlPanel() {
                               maxW={"33%"}
                             >
                               <SlideFade
-                                in={showPanel}
+                                in={showPanel || showPanel2}
                                 offsetX={"-10%"}
                                 offsetY={"0"}
                                 transition={{
@@ -840,12 +851,16 @@ export function ControlPanel() {
                                     <Text fontSize={"md"}>
                                       This file&apos;s been shared with you,
                                       <br />
-                                      ready to download. <br />
+                                      ready to download.
                                       <br />
-                                      You acknowledge the confidential nature of
-                                      the contents and agree not to misuse,
-                                      reproduce, distribute, or steal the ideas
-                                      within. All rights, including intellectual
+                                      <br />
+                                      By doing so, you acknowledge the
+                                      confidential nature of the contents and
+                                      agree not to misuse, reproduce,
+                                      distribute, or steal the ideas within.
+                                      <br />
+                                      <br />
+                                      All rights, including intellectual
                                       property, belong to the original creator.
                                     </Text>
                                   </SlideFade>
@@ -1117,6 +1132,7 @@ export function ControlPanel() {
                   >
                     &copy; {new Date().getFullYear()}{" "}
                     <Link
+                      fontSize={"sm !important"}
                       fontWeight={"lighter"}
                       href={"https://ambr.link"}
                       target="_self"

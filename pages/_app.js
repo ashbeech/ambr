@@ -97,7 +97,9 @@ export default function AmbrApp({ Component, pageProps, err }) {
               fontSize={"sm"}
               fontWeight={"lighter"}
             >
-              &copy; {new Date().getFullYear()}             <Link
+              &copy; {new Date().getFullYear()}
+              <Link
+              fontSize={"sm !important"}
               fontWeight={"lighter"}
               href={"https://ambr.link"}
               target="_self"
