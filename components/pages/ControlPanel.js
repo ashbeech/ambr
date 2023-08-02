@@ -849,7 +849,7 @@ export function ControlPanel() {
                                       got a file
                                     </Text>
                                     <Text fontSize={"md"}>
-                                      This file&apos;s been shared with you,
+                                      This file has been shared with you,
                                       <br />
                                       ready to download.
                                       <br />
@@ -869,6 +869,7 @@ export function ControlPanel() {
                                         .length > 1
                                         ? "creators"
                                         : "creator"}
+                                      .
                                     </Text>
                                   </SlideFade>
                                 )}
