@@ -138,15 +138,17 @@ export default function Navigation({
                 </Box>
               )}
               {!filePage && !isLoggedIn && (
-                <Box
+                <HStack
                   w={"100%"}
                   display={"flex"}
                   flexDir={"right"}
-                  textAlign={"right"}
+                  alignItems={"center"}
                   justifyContent={"flex-end"}
+                  textAlign={"right"}
+                  pt={[4, null]}
+                  px={[6, null]}
                 >
                   <Link
-                    pr={6}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }
@@ -157,7 +159,7 @@ export default function Navigation({
                   >
                     What is Ambr?
                   </Link>
-                </Box>
+                </HStack>
               )}
               {isMobile ? (
                 <>

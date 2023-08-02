@@ -892,8 +892,8 @@ export function ControlPanel() {
                                       historic record of transfer and contents
                                       remains. If you hold the orginal file, you
                                       can re-upload it here. It will act as
-                                      verifiaction of the certifiacted contents
-                                      as well as to extend the download link.
+                                      verifiaction of the certified contents as
+                                      well as to extend the download link.
                                     </Text>
                                   </SlideFade>
                                 )}
