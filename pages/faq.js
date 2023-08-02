@@ -40,7 +40,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"What is Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Ambr is a secure file transfer service that lets you send files
                 to anyone in the world with a simple link, whilst simultaneously
                 providing verifiable proof of origin and authenticity for your
@@ -50,7 +50,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Who should use Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Ambr is made for creatives to share their work with confidence.
                 This could be passing around working files with clients, but it
                 can also be used by anyone concerned with the unauthorised use
@@ -62,7 +62,7 @@ export default function TermsPanel() {
                   "If I share a file with a client, will they need to create an account with Ambr to access it?"
                 }
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 No, no account is required to download a file. They will be able
                 to access the file either by the emailed link if you selected
                 the &quot;Transfer&quot; option at upload, or alternatievly via
@@ -71,7 +71,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How does Ambr work?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 When you share a file through Ambr it securely and immutably
                 records a unique, encrypted fingerprint of the file and the
                 transfer event to a blockchain. Sharing a file thorugh Ambr
@@ -81,7 +81,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How do I sign in to Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 You don&apos;t need to register a new account to use Ambr.
                 Simply sign in with your email and use our two-factor
                 authentication process to ensure your security when using
@@ -90,7 +90,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Why do you use two-factor authentication?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 We use two-factor authentication (2FA) for easy and secure
                 access to Ambr. All you need is an email; there is no need to
                 create a password. 2FA is also more secure than traditional
@@ -103,7 +103,7 @@ export default function TermsPanel() {
                   "Can Ambr prevent my work from being used by artificial intelligence or third parties?"
                 }
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 While no system can entirely prevent unauthorised use,
                 Ambr&apos;s data provenance capabilities make unauthorised use
                 much less likely. Should your work be used without consent, the
@@ -115,7 +115,7 @@ export default function TermsPanel() {
                   "Can I track the files I've sent or see a history of my transfers?"
                 }
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 You can see your history by going to &quot;Your files&quot;.
                 Note that a file&apos;s download link expires after 72 hours (3
                 days) from upload, but you can re-upload the original file to
@@ -124,7 +124,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How long does Ambr store my files? "}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Ambr stores your files for 72 hours (3 days). After that period,
                 you can re-upload any exact copy of the file to the same link
                 and have the download period extend for an additional 72 hours.
@@ -138,7 +138,7 @@ export default function TermsPanel() {
                   "What happens if I lose my original file? Is there any way to recover the information?"
                 }
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 After sharing a file, and once the download link expires, Ambr
                 only permanently retains the key evidential information about
                 the file and its transfer, like the file&apos;s unique
@@ -152,7 +152,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Is my file on the blockchain?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Your file&apos;s unique hash fingerprint is stored on the
                 blockchain, but storing the full file in an encrypted form on a
                 blockchain would not be practical and wouldn&apos;t add any
@@ -162,7 +162,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Is blockchain technology bad for the environment?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Ambr is deeply committed to sustainability. We use the Polygon
                 network, a carbon-neutral blockchain, in our operations. It
                 provides secure, scalable, and environmentally friendly
@@ -173,7 +173,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How much does Ambr cost?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Ambr offers your first 5 file transfers for free. After that, we
                 offer x25 or x50 file transfers to top up, available{" "}
                 <Link
@@ -188,14 +188,14 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Are enterprise solutions available at Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 We are currently working on developing enterprise solutions.
                 Stay tuned for updates and new feature releases.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"I have a feature request. How can I share it with Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 We&apos;re always keen to hear your experience of Ambr. If you
                 have a feature request or suggestion, please share it with us{" "}
                 <Link
@@ -213,7 +213,7 @@ export default function TermsPanel() {
                   "If I have concerns about privacy, how can I be sure that my files are safe and that only the intended recipient will have access to them?"
                 }
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 Our commitment to your privacy and data security is at the core
                 of Ambr&apos;s guiding principles. Any important information you
                 share with us is encrypted to ensure nothing leaves you in a
@@ -256,7 +256,7 @@ export default function TermsPanel() {
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Who can I contact if I have more questions about Ambr?"}
               </Text>
-              <Text pt={3} pb={[3, 8]}>
+              <Text pt={3} pb={[6, 8]}>
                 If you have further questions about Ambr, feel free to contact
                 us via email{" "}
                 <Link
