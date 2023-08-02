@@ -1031,7 +1031,7 @@ export function ControlPanel() {
                                     >
                                       We&apos;d love
                                       <br />
-                                      to share
+                                      you to share
                                       <br />
                                       more.
                                     </Text>
@@ -1054,7 +1054,7 @@ export function ControlPanel() {
                                     work is made easy with Ambr.
                                     <br />
                                     Feel confident sharing valuable ideas with
-                                    clients.
+                                    clients every time you transfer your work.
                                   </Text>
                                 </SlideFade>
                               )}
