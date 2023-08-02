@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   const timeRemaining = expires - now;
 
   // Format time remaining in human-readable format
-  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  const millisecondsPerDay = 72 * 60 * 60 * 1000;
   const millisecondsPerHour = 60 * 60 * 1000;
 
   let expiresText;
