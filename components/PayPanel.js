@@ -77,11 +77,9 @@ export const PayPanel = ({
         margin: "0 0.25em",
       },
       ".Tab:hover": {
-        color: "#FFFFFF",
         backgroundColor: "#FFAC00",
       },
       ".Tab--selected": {
-        color: "#FFFFFF",
         backgroundColor: "#FFAC00",
       },
       ".Tab--selected:hover": {
@@ -93,11 +91,14 @@ export const PayPanel = ({
       ".Icon": {
         fill: "#FFAC00",
       },
+      ".Icon--selected:hover": {
+        color: "#1E1E1E",
+      },
       ".Icon:hover": {
-        fill: "#FFFFFF",
+        fill: "#1E1E1E",
       },
       ".TabLabel:hover": {
-        color: "#FFFFFF",
+        color: "#1E1E1E",
       },
       ".Label": {
         color: "#929292",
@@ -346,7 +347,7 @@ export const PayPanel = ({
                   display={"grid"}
                   w={["100%"]}
                   h={["100%", "100%"]}
-                  minH={["18rem", "18rem"]}
+                  minH={["15rem", "15rem"]}
                   flexDir={"column"}
                   gap={[2, 4]}
                   alignItems={"center"}
@@ -388,7 +389,7 @@ export const PayPanel = ({
                               src={"images/amber-7.png"}
                               position={"relative"}
                               w={["33%", "33%"]}
-                              h={["100%", "100%"]}
+                              h={["60%", "60%"]}
                               objectFit={["contain !important"]}
                               backgroundSize={"100%"}
                               alt={`Ambr Stone`}
@@ -396,7 +397,7 @@ export const PayPanel = ({
                               top={-1}
                               pl={3}
                               pr={0}
-                              py={3}
+                              //py={3}
                             />
                             <Text
                               w={["33%", "33%"]}
