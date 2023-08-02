@@ -316,7 +316,6 @@ export const PayPanel = ({
           w={"100%"}
           h={"100%"}
           display={["block", "flex"]}
-          maxH={["28rem", "26rem", "22.7rem"]}
           minH={["28rem", "26rem", "22.7rem"]}
           minW={["100%", "82vw", "40rem"]}
           direction={[null, "row"]}

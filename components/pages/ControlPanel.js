@@ -1029,11 +1029,11 @@ export function ControlPanel() {
                                       className={"fancy"}
                                       noOfLines={3}
                                     >
-                                      We&apos;d love
+                                      Share
                                       <br />
-                                      you to share
+                                      more ideas
                                       <br />
-                                      more.
+                                      fearlessly.
                                     </Text>
                                   )}
                                   {fileTransfersRemaining >= 1 && (

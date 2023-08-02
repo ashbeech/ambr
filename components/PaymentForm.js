@@ -25,7 +25,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      console.log("paymentIntent.status: ", paymentIntent.status);
+      //console.log("paymentIntent.status: ", paymentIntent.status);
       setIsLoading(false);
 
       switch (paymentIntent.status) {
@@ -100,11 +100,18 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
         </Box>
       </Fade>
 
-      <Box pt={2}>
+      <Box
+        justifyContent={"center"}
+        display={"flex"}
+        w={"100%"}
+        alignItems={"center"}
+        h={"auto"}
+        pt={[2, 0]}
+      >
         <Formik initialValues={{}} onSubmit={handleSubmit}>
           {({ isSubmitting }) => (
-            <Form id="payment-form">
-              {/*               {message && (
+            <Form id="payment-form" style={{ height: "100%", width: "100%" }}>
+              {/* {message && (
                 <Box
                   color={"orange.400"}
                   fontSize={["lg", "md"]}
@@ -113,7 +120,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
                   {message}
                 </Box>
               )} */}
-              <Box mt={4}>
+              <Box w={"100%"} mt={[4, 0]}>
                 <PaymentElement
                   id="payment-element"
                   options={paymentElementOptions}
