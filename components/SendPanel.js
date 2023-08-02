@@ -427,7 +427,7 @@ export const SendPanel = ({
             h={mode === SHARE_MODE ? ["100%", "67%"] : "100%"}
             pt={
               mode === SHARE_MODE
-                ? [0, fileName.length >= 37 ? "5em" : "1.5em"]
+                ? [0, fileName.length >= 36 ? "5em" : "1.5em"]
                 : 0
             }
             display={"flex"}

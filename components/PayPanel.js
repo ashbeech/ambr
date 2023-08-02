@@ -91,8 +91,11 @@ export const PayPanel = ({
       ".Icon": {
         fill: "#FFAC00",
       },
+      ".Icon--selected": {
+        fill: "#1E1E1E",
+      },
       ".Icon--selected:hover": {
-        color: "#1E1E1E",
+        fill: "#1E1E1E",
       },
       ".Icon:hover": {
         fill: "#1E1E1E",
@@ -313,7 +316,8 @@ export const PayPanel = ({
           w={"100%"}
           h={"100%"}
           display={["block", "flex"]}
-          minH={["28rem", "26rem", "24rem"]}
+          maxH={["28rem", "26rem", "22.7rem"]}
+          minH={["28rem", "26rem", "22.7rem"]}
           minW={["100%", "82vw", "40rem"]}
           direction={[null, "row"]}
           spacing={[2, 4]}

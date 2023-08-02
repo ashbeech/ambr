@@ -463,10 +463,10 @@ export function ControlPanel() {
     {
       /* <-- DEV USE START --> */
     }
-    const dev_readout =
+    /*     const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
-        : "";
+        : ""; */
     {
       /* <-- DEV USE END --> */
     }
@@ -474,7 +474,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        <Box
+        {/*         <Box
           pos={"relative"}
           top={0}
           display={"flex"}
@@ -482,7 +482,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box>
+        </Box> */}
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>
@@ -953,9 +953,9 @@ export function ControlPanel() {
                                   alignItems="center"
                                   justifyContent="flex-start"
                                   minW={"100%"}
-                                  minH={"24rem"}
+                                  minH={"22.8rem"}
                                   maxW={["100%", "100%"]}
-                                  maxH={[null, "24rem"]}
+                                  maxH={[null, "22.8rem"]}
                                   pt={[0]}
                                 >
                                   <RoomList />
