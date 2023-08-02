@@ -758,7 +758,7 @@ export default function TermsPanel() {
               <Text className={"copyright"} fontWeight={"lighter"}>
                 &copy; {new Date().getFullYear()}{" "}
                 <Link
-                  fontSize={"sm !important"}
+                  fontSize={"sm"}
                   fontWeight={"lighter"}
                   href={"https://ambr.link"}
                   target="_self"
