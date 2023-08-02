@@ -857,11 +857,16 @@ export function ControlPanel() {
                                       By doing so, you acknowledge the
                                       confidential nature of the contents and
                                       agree not to misuse, reproduce,
-                                      distribute, or steal the ideas within.
+                                      distribute, or steal the work within.
                                       <br />
                                       <br />
                                       All rights, including intellectual
-                                      property, belong to the original creator.
+                                      property, belong to the content&apos;s
+                                      original{" "}
+                                      {roomMeta.readableMetadata.creators
+                                        .length > 1
+                                        ? "creators"
+                                        : "creator"}
                                     </Text>
                                   </SlideFade>
                                 )}
@@ -1109,20 +1114,20 @@ export function ControlPanel() {
                       </Link>
                     </>
                   )}
-                  {showHomeStone && (
+                  {/*                   {showHomeStone && (
                     <>
                       <Link
                         href={"faq"}
                         target="_blank"
                         fontSize={"sm"}
                         title="Take a read of Ambr's frequently asked questions"
-                        fontWeight={"normal"}
+                        fontWeight={"lighter"}
                         _hover={{ textDecoration: "none", color: "white" }}
                       >
                         What is Ambr?
                       </Link>
                     </>
-                  )}
+                  )} */}
                   <Text
                     display={["block", "inline"]}
                     pl={[3, 4]}

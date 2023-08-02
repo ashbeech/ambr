@@ -57,7 +57,7 @@ export const PayPanel = ({
     labels: "floating",
     variables: {
       fontFamily: `'Montserrat', 'Balbes', sans-serif, Menlo, monospace`,
-      fontSizeBase: "0.93rem",
+      fontSizeBase: "0.95rem",
       fontWeight: "lighter",
       colorBackground: "#F8F8F8",
       colorDanger: "#FF4809",
@@ -67,14 +67,14 @@ export const PayPanel = ({
     },
     rules: {
       ".Tab": {
-        // Customize the tab styles here
         color: "#1E1E1E",
-        backgroundColor: "#FFAC00",
+        backgroundColor: "transparent",
         borderRadius: "10px",
+        borderWidth: "1px 3px 3px 1px",
         border: "1px solid #1E1E1E",
         padding: "8px 16px",
         cursor: "pointer",
-        margin: "0 8px",
+        margin: "0 0.25em",
       },
       ".Tab:hover": {
         color: "#FFFFFF",
@@ -84,8 +84,17 @@ export const PayPanel = ({
         color: "#FFFFFF",
         backgroundColor: "#FFAC00",
       },
+      ".Tab--selected:hover": {
+        color: "#FFFFFF",
+      },
       ".TabLabel": {
         color: "#1E1E1E",
+      },
+      ".Icon": {
+        fill: "#FFAC00",
+      },
+      ".Icon:hover": {
+        fill: "#FFFFFF",
       },
       ".TabLabel:hover": {
         color: "#FFFFFF",
@@ -93,7 +102,7 @@ export const PayPanel = ({
       ".Label": {
         color: "#929292",
         fontFamily: `'Montserrat', 'Balbes', sans-serif, Menlo, monospace`,
-        fontSizeBase: "0.93rem",
+        fontSizeBase: "0.95rem",
         fontWeight: "light",
       },
       ".Input": {
@@ -106,7 +115,9 @@ export const PayPanel = ({
         margin: "0.16em 0",
       },
       ".Input--invalid": {
+        borderColor: "#FF4809",
         border: "1px",
+        boxShadow: "0 0 0 1px var(--colorDanger)",
       },
     },
   };

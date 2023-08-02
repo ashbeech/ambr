@@ -121,7 +121,7 @@ const PaymentForm = ({ onSuccess, clientSecret }) => {
                 <Button
                   type="submit"
                   w="full"
-                  mt={4}
+                  mt={2}
                   isLoading={isSubmitting || isLoading}
                   isDisabled={isSubmitting || isLoading || !stripe || !elements}
                   id="submit"

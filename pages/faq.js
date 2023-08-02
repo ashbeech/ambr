@@ -64,8 +64,8 @@ export default function TermsPanel() {
               <Text pt={3} pb={[3, 8]}>
                 No, no account is required to download a file. They will be able
                 to access the file either by the emailed link if you selected
-                the “Transfer” option at upload, or via the link you share with
-                them yourself, however you choose.
+                the &quot;Transfer&quot; option at upload, or via the link you
+                share with them yourself, however you choose.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How does Ambr work?"}
@@ -114,19 +114,19 @@ export default function TermsPanel() {
                 }
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                You can see your history by going to “Your files”. Note that a
-                file&apos;s download link expires after 72 hours from upload,
-                but you can re-upload the original file to the link after that
-                to extend the download window once more.
+                You can see your history by going to &quot;Your files&quot;.
+                Note that a file&apos;s download link expires after 72 hours (3
+                days) from upload, but you can re-upload the original file to
+                the link after that to extend the download window once more.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"How long does Ambr store my files? "}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                Ambr stores your files for 48 hours. After that period, your
-                original file will act as a key to unlock the stored
-                information, so it&apos;s important for you to keep the
-                original, unedited file safe
+                Ambr currently stores your files for 72 hours (3 days). After
+                that period, your original file will act as a key to unlock the
+                stored information, so it&apos;s important for you to keep the
+                original, unedited file to hand.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {
@@ -134,14 +134,14 @@ export default function TermsPanel() {
                 }
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                After sharing a file, and once the downlaod link expires, Ambr
-                only permantaly retains the key evidential information about the
-                file and its transfer, like the file&apos;s unique fingerprint,
-                and timestamp of the transfer, etc, but not the actual original
-                file itself.
+                After sharing a file, and once the download link expires, Ambr
+                only permanently retains the key evidential information about
+                the file and its transfer, like the file&apos;s unique
+                fingerprint, and timestamp of the transfer, etc, but not the
+                actual original file itself.
                 <br />
                 <br />
-                We are actively developing this feature however, but in the
+                We are actively developing this feature, however. In the
                 meantime we recommend you keep a copy of your original files.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
@@ -191,10 +191,17 @@ export default function TermsPanel() {
                 {"I have a feature request. How can I share it with Ambr?"}
               </Text>
               <Text pt={3} pb={[3, 8]}>
-                We&apos;re always keen to hear from our users. If you have a
-                feature request or suggestion, please share it with us through
-                our &apos;Contact Us&apos; page. Your feedback is essential to
-                us in improving and expanding our services.{" "}
+                We&apos;re always keen to hear your experience of Ambr. If you
+                have a feature request or suggestion, please share it with us{" "}
+                <Link
+                  href={"mailto:feedback@ambr.link"}
+                  target="_blank"
+                  title="Contact us with your feedback to help improve Ambr"
+                >
+                  feedback@ambr.link
+                </Link>
+                . Your feedback is essential to us in improving and expanding
+                our services.{" "}
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {
