@@ -463,6 +463,7 @@ export const SendPanel = ({
                         name="client"
                         type="text"
                         variant="outline"
+                        maxLength={256}
                         placeholder={"Client's name"}
                         p={3}
                       />
@@ -475,6 +476,7 @@ export const SendPanel = ({
                           name="concept"
                           type="text"
                           variant="outline"
+                          maxLength={2048}
                           placeholder={
                             "Add a short description of the file's key concept e.g.'Pitch for super bowl half-time ad spot'"
                           }
@@ -502,6 +504,7 @@ export const SendPanel = ({
                                       name={`creators.${index}.creator`}
                                       type="creator"
                                       variant="outline"
+                                      maxLength={256}
                                       placeholder={
                                         index === values.creators.length - 1
                                           ? `Creator's name`
@@ -579,6 +582,7 @@ export const SendPanel = ({
                                             ? "invalid-feedback"
                                             : ""
                                         }
+                                        maxLength={256}
                                         placeholder={"Email file to"}
                                         value={email.email || ""} // Ensure a default value is set
                                         p={3}

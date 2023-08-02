@@ -86,6 +86,7 @@ function Login() {
                 setEmail(e.target.value);
                 setIsValidEmail(true); // Reset validation on input change
               }}
+              maxLength={256}
               placeholder={
                 !visitedBefore
                   ? "Enter your email address"
