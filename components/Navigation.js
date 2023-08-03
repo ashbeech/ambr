@@ -155,7 +155,7 @@ export default function Navigation({
                   textAlign={"right"}
                   pt={[2, null]}
                   pb={[0, 0]}
-                  px={[".5%", null]}
+                  px={["2.5%", null]}
                 >
                   <Link
                     className={

@@ -112,7 +112,7 @@ function Login() {
             </Button>
           </Flex>
           <HStack>
-            <Box mt={[3, 0]}>
+            <Box mt={[5, 0]}>
               <Text fontSize={"sm"}>
                 By clicking to enter, you agree to our{" "}
                 <Link

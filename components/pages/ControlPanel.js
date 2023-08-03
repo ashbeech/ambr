@@ -472,10 +472,10 @@ export function ControlPanel() {
     {
       /* <-- DEV USE START --> */
     }
-    const dev_readout =
+    /*     const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
-        : "";
+        : ""; */
 
     {
       /* <-- DEV USE END --> */
@@ -484,7 +484,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        <Box
+        {/*         <Box
           zIndex={999}
           pos={"relative"}
           top={0}
@@ -493,7 +493,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box>
+        </Box> */}
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>
@@ -1081,7 +1081,7 @@ export function ControlPanel() {
                     <Fade in={showHomeStone} unmountOnExit>
                       <VStack
                         w={"95%"}
-                        h={220}
+                        h={260}
                         position="absolute"
                         px={8}
                         top={0}
@@ -1089,11 +1089,12 @@ export function ControlPanel() {
                         left={0}
                         bottom={0}
                         margin="auto"
-                        spacing={[3, 5]}
+                        spacing={[0, 3]}
                         zIndex={999}
                       >
-                        <Img src={`images/ambr.svg`} />
+                        <Img pb={[6, 3]} src={`images/ambr.svg`} />
                         <Text
+                          pb={[3, 3]}
                           letterSpacing={["normal", "wide"]}
                           fontSize={["lg", "xl"]}
                         >
@@ -1156,7 +1157,7 @@ export function ControlPanel() {
                   )}
                   <Text
                     display={["block", "inline"]}
-                    pl={[3, 4]}
+                    pl={!isLoggedIn ? [0, 0] : [3, 4]}
                     pt={[1, 0]}
                     fontSize={"sm"}
                     fontWeight={"lighter"}
