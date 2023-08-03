@@ -1070,7 +1070,7 @@ export function ControlPanel() {
                   {showHomeStone && (
                     <Fade in={showHomeStone} unmountOnExit>
                       <VStack
-                        w={"96%"}
+                        w={"95%"}
                         h={220}
                         position="absolute"
                         px={8}

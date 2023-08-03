@@ -28,7 +28,7 @@ export default function Navigation({
   const [currentPage, setCurrentPage] = useState("");
   const { isLoggedIn, logout, login } = useContext(MagicContext);
   const [isMobile] = useMediaQuery("(max-width: 40em)");
-  const [filePage, setFilePage] = useState("");
+  const [filePage, setFilePage] = useState(false);
 
   const disabled =
     chainState == "Active" &&
@@ -73,12 +73,12 @@ export default function Navigation({
     <Box zIndex={999} position={"relative"}>
       <Container
         w={["100%"]}
-        pt={[3, 8]}
+        pt={[4, 8]}
         pb={[3, 6]}
-        maxW={["90%", "90%"]}
+        maxW={["95%", "93%", "90%"]}
         sx={{
-          paddingInlineStart: [0, 0, 0],
-          paddingInlineEnd: [0, 0, 0],
+          paddingInlineStart: !isLoggedIn && filePage ? [3, 0, 0] : [8, 0, 0],
+          paddingInlineEnd: !isLoggedIn && filePage ? [3, 0, 0] : [8, 0, 0],
         }}
       >
         <Flex as="header" justify={{ md: "space-between" }} w={"100%"}>
