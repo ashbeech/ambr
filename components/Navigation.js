@@ -22,19 +22,13 @@ export default function Navigation({
   fileTransfersRemaining,
   chainState,
   mintState,
-  _key = null,
+  customKey = null,
 }) {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState("");
   const { isLoggedIn, logout, login } = useContext(MagicContext);
-  const router = useRouter();
   const [isMobile] = useMediaQuery("(max-width: 40em)");
-
-  const filePage =
-    !isLoggedIn &&
-    currentPage !== "files" &&
-    currentPage !== "top-up" &&
-    currentPage !== "" &&
-    _key !== null;
+  const [filePage, setFilePage] = useState("");
 
   const disabled =
     chainState == "Active" &&
@@ -47,8 +41,7 @@ export default function Navigation({
       fileTransfersRemaining <= 0) ||
     (currentPage !== "top-up" && fileTransfersRemaining >= 1);
 
-  const showLogo =
-    isLoggedIn || (currentPage !== "" && !isLoggedIn && _key !== null);
+  const showLogo = isLoggedIn || (!isLoggedIn && filePage);
 
   const handlePageChange = (page) => {
     if (!disabled) {
@@ -56,6 +49,16 @@ export default function Navigation({
       router.push(`/${page}`, undefined, { shallow: true });
     }
   };
+
+  useEffect(() => {
+    setFilePage(
+      !isLoggedIn &&
+        currentPage !== "files" &&
+        currentPage !== "top-up" &&
+        currentPage !== "" &&
+        customKey !== null
+    );
+  }, [customKey, currentPage, isLoggedIn]);
 
   useEffect(() => {
     const path = router.asPath.toString() || "/";
@@ -71,7 +74,7 @@ export default function Navigation({
       <Container
         w={["100%"]}
         pt={[3, 8]}
-        pb={[6, 6]}
+        pb={[3, 6]}
         maxW={["90%", "90%"]}
         sx={{
           paddingInlineStart: [0, 0, 0],
@@ -120,7 +123,7 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    pb={[3, 0]}
+                    pb={[0, 0]}
                     pr={4}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
@@ -149,8 +152,9 @@ export default function Navigation({
                   alignItems={"center"}
                   justifyContent={"flex-end"}
                   textAlign={"right"}
-                  pt={[4, null]}
-                  px={[4, null]}
+                  pt={[2, null]}
+                  pb={[0, 0]}
+                  px={[".5%", null]}
                 >
                   <Link
                     className={

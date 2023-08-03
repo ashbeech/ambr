@@ -466,7 +466,8 @@ export function ControlPanel() {
     /*     const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
-        : ""; */
+        : "";
+        */
     {
       /* <-- DEV USE END --> */
     }
@@ -475,6 +476,7 @@ export function ControlPanel() {
       <>
         {/* <-- DEV USE START --> */}
         {/*         <Box
+          zIndex={999}
           pos={"relative"}
           top={0}
           display={"flex"}
@@ -520,7 +522,7 @@ export function ControlPanel() {
                   fileTransfersRemaining={fileTransfersRemaining}
                   mintState={mintState}
                   chainState={chainState}
-                  key={_key ? _key : null}
+                  customKey={_key ? _key : null}
                 />
                 <Box
                   pb={[8, 0]}
