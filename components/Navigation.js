@@ -71,7 +71,7 @@ export default function Navigation({
       <Container
         w={["100%"]}
         pt={[3, 8]}
-        pb={[3, 6]}
+        pb={[6, 6]}
         maxW={["90%", "90%"]}
         sx={{
           paddingInlineStart: [0, 0, 0],
@@ -120,6 +120,7 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
+                    pb={[3, 0]}
                     pr={4}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
