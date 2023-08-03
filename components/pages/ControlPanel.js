@@ -540,7 +540,7 @@ export function ControlPanel() {
                   justifyContent={[null, "center"]}
                   alignItems={[null, "center"]}
                   h={[null, "73%"]}
-                  minH={["75dvh", null]}
+                  minH={["75dvh", "73%"]}
                 >
                   {lockedState && (
                     <Box display={""} pr={4} spacing={4} w={"100%"}>
