@@ -408,7 +408,7 @@ export function ControlPanel() {
       _isAuthenticated &&
       _mode !== JOIN_MODE &&
       _mode !== VERIFY_MODE &&
-      key === null;
+      _key === null;
     const showPanel2 =
       fileTransfersRemaining !== -999 &&
       fileTransfersRemaining >= 1 &&
@@ -418,7 +418,6 @@ export function ControlPanel() {
       _mode !== JOIN_MODE &&
       _mode !== VERIFY_MODE &&
       _mode === SHARE_MODE;
-
     const showDownloadPanel =
       (_mode !== CREATE_MODE &&
         _mode === JOIN_MODE &&
@@ -463,11 +462,11 @@ export function ControlPanel() {
     {
       /* <-- DEV USE START --> */
     }
-    /*     const dev_readout =
+    const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
         : "";
-        */
+
     {
       /* <-- DEV USE END --> */
     }
@@ -475,7 +474,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        {/*         <Box
+        <Box
           zIndex={999}
           pos={"relative"}
           top={0}
@@ -484,7 +483,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box> */}
+        </Box>
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>
@@ -531,6 +530,7 @@ export function ControlPanel() {
                   justifyContent={[null, "center"]}
                   alignItems={[null, "center"]}
                   h={[null, "73%"]}
+                  minH={["75dvh", null]}
                 >
                   {lockedState && (
                     <Box display={""} pr={4} spacing={4} w={"100%"}>
@@ -858,7 +858,7 @@ export function ControlPanel() {
                                       <br />
                                       <br />
                                       By doing so, you acknowledge the
-                                      confidential nature of the contents and
+                                      confidential nature of its contents and
                                       agree not to misuse, reproduce,
                                       distribute, or steal the work within.
                                       <br />
@@ -1144,20 +1144,6 @@ export function ControlPanel() {
                       </Link>
                     </>
                   )}
-                  {/*                   {showHomeStone && (
-                    <>
-                      <Link
-                        href={"faq"}
-                        target="_blank"
-                        fontSize={"sm"}
-                        title="Take a read of Ambr's frequently asked questions"
-                        fontWeight={"lighter"}
-                        _hover={{ textDecoration: "none", color: "white" }}
-                      >
-                        What is Ambr?
-                      </Link>
-                    </>
-                  )} */}
                   <Text
                     display={["block", "inline"]}
                     pl={[3, 4]}

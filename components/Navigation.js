@@ -77,8 +77,10 @@ export default function Navigation({
         pb={[3, 6]}
         maxW={["95%", "93%", "90%"]}
         sx={{
-          paddingInlineStart: !isLoggedIn && filePage ? [3, 0, 0] : [8, 0, 0],
-          paddingInlineEnd: !isLoggedIn && filePage ? [3, 0, 0] : [8, 0, 0],
+          paddingInlineStart:
+            !isLoggedIn && filePage ? [3, 0, 0] : ["2.5%", 0, 0],
+          paddingInlineEnd:
+            !isLoggedIn && filePage ? [3, 0, 0] : ["2.5%", 0, 0],
         }}
       >
         <Flex as="header" justify={{ md: "space-between" }} w={"100%"}>
@@ -123,8 +125,7 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    pb={[0, 0]}
-                    pr={4}
+                    pr={[4, 6]}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }

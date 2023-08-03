@@ -89,26 +89,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
             position={["absolute", "absolute"]}
             textAlign={"center"}
             justifyContent={"center"}
-          >
-            {/*             <Text
-              display={["block", "inline"]}
-              pl={[0, 4]}
-              pt={[2, 0]}
-              fontSize={"sm"}
-              fontWeight={"lighter"}
-            >
-              &copy; {new Date().getFullYear()}
-              <Link
-              fontSize={"sm"}
-              fontWeight={"lighter"}
-              href={"https://ambr.link"}
-              target="_self"
-              title="Ambr — Share ideas worth protecting."
-            >
-              Ambr
-            </Link>
-            </Text> */}
-          </Box>
+          ></Box>
         </Box>
       )}
       {!loading && (
