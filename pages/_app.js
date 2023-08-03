@@ -232,14 +232,14 @@ const App = (props) => {
   useEffect(() => {
     if (browser.isUnsupported) {
       toast({
-        title: "app.unsupportedBrowserToastTitle",
-        description: "app.unsupportedBrowserToastDescription",
+        title: "Unsupported Browser",
+        description: "Ambr will likely not function as expected.",
         status: "error",
       });
     } else if (browser.isOutdated) {
       toast({
-        title: "app.oldBrowserToastTitle",
-        description: "app.oldBrowserToastDescription",
+        title: "Old Browser",
+        description: "Ambr will likely not function as expected.",
         status: "error",
       });
     }

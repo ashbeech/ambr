@@ -22,6 +22,7 @@ export default function Navigation({
   fileTransfersRemaining,
   chainState,
   mintState,
+  _key = null,
 }) {
   const [currentPage, setCurrentPage] = useState("");
   const { isLoggedIn, logout, login } = useContext(MagicContext);
@@ -32,7 +33,8 @@ export default function Navigation({
     !isLoggedIn &&
     currentPage !== "files" &&
     currentPage !== "top-up" &&
-    currentPage !== "";
+    currentPage !== "" &&
+    _key !== null;
 
   const disabled =
     chainState == "Active" &&

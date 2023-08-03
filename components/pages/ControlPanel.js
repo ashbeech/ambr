@@ -520,6 +520,7 @@ export function ControlPanel() {
                   fileTransfersRemaining={fileTransfersRemaining}
                   mintState={mintState}
                   chainState={chainState}
+                  key={_key ? _key : null}
                 />
                 <Box
                   pb={[8, 0]}
