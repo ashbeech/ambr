@@ -128,6 +128,7 @@ export function ControlPanel() {
   );
 
   const initLoader = async (user) => {
+    console.log("initLoader", user);
     setSharesRemaining(user.fileTransfersRemaining);
     setLoading(false);
   };
@@ -143,8 +144,9 @@ export function ControlPanel() {
       magic !== null &&
       isLoggedIn &&
       publicAddress &&
-      fileTransfersRemaining === -999
+      (fileTransfersRemaining === -999 || fileTransfersRemaining === undefined)
     ) {
+      console.log("Getting user", publicAddress);
       getUser(publicAddress)
         .then((user) => initLoader(user))
         .catch((error) => console.error(error));
