@@ -47,7 +47,8 @@ export default function Navigation({
       fileTransfersRemaining <= 0) ||
     (currentPage !== "top-up" && fileTransfersRemaining >= 1);
 
-  const showLogo = isLoggedIn || (currentPage !== "" && !isLoggedIn);
+  const showLogo =
+    isLoggedIn || (currentPage !== "" && !isLoggedIn && _key !== null);
 
   const handlePageChange = (page) => {
     if (!disabled) {
@@ -119,7 +120,7 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    pr={6}
+                    pr={4}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }
@@ -148,7 +149,7 @@ export default function Navigation({
                   justifyContent={"flex-end"}
                   textAlign={"right"}
                   pt={[4, null]}
-                  px={[6, null]}
+                  px={[4, null]}
                 >
                   <Link
                     className={
