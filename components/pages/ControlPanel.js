@@ -128,10 +128,18 @@ export function ControlPanel() {
   );
 
   const initLoader = async (user) => {
-    console.log("initLoader", user);
-    setSharesRemaining(user.fileTransfersRemaining);
-    setLoading(false);
+    //console.log("Getting user: ", user);
+
+    if (!user || !user?.id) {
+      await getUser(publicAddress)
+        .then((user) => initLoader(user))
+        .catch((error) => console.error(error));
+    } else {
+      setSharesRemaining(user.fileTransfersRemaining);
+      setLoading(false);
+    }
   };
+
   // Must ensure that the user is logged in before loading the page
   useEffect(() => {
     // Check existence of Magic, if not, don't load the page
@@ -146,7 +154,7 @@ export function ControlPanel() {
       publicAddress &&
       (fileTransfersRemaining === -999 || fileTransfersRemaining === undefined)
     ) {
-      console.log("Getting user", publicAddress);
+      //console.log("Getting user", publicAddress);
       getUser(publicAddress)
         .then((user) => initLoader(user))
         .catch((error) => console.error(error));
