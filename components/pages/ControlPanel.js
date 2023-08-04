@@ -1157,7 +1157,7 @@ export function ControlPanel() {
                   )}
                   <Text
                     display={["block", "inline"]}
-                    pl={!isLoggedIn ? [0, 0] : [3, 4]}
+                    pl={!isLoggedIn ? [3, 4] : [3, 4]}
                     pt={[1, 0]}
                     fontSize={"sm"}
                     fontWeight={"lighter"}
