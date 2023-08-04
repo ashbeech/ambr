@@ -229,9 +229,9 @@ export default function TermsPanel() {
                 </Link>{" "}
                 we encourage you to verify for yourself, our comprehesive{" "}
                 <Link
-                  href={"privacy"}
+                  href={"security"}
                   target="_blank"
-                  title="Take a read of Ambr's Privacy Policy"
+                  title="Take a read of Ambr's Security Statement"
                 >
                   security
                 </Link>
