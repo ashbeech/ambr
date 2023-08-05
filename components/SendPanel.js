@@ -116,7 +116,8 @@ export const SendPanel = ({
         ..._values, // spread the values object
         mode: formModeLink, // add mode property with formModeLink value
       },
-      creator: creator,
+      creator: creator[0] ? creator[0] : null,
+      email: creator[1] ? creator[1] : null,
       stone: randomAmbr,
     };
     onMint(mint);
@@ -828,7 +829,7 @@ const CreateProgress = ({ mode, progress }) => {
               thickness="0.4px"
               capIsRound={true}
               min={1}
-              w={mode === SHARE_MODE ? ["40%", "50%"] : ["40%", "50%"]}
+              w={mode === SHARE_MODE ? ["38%", "50%"] : ["38%", "50%"]}
               minW={["5rem", "8rem"]}
               mt={[0, 0]}
             >

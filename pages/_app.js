@@ -11,15 +11,12 @@ import {
   ColorModeScript,
   VStack,
   Grid,
-  //Text,
-  //Link,
   Box,
   Center,
 } from "@chakra-ui/react";
 import LogoLoader from "../components/icons/LogoLoader";
 import Fonts from "../theme/fonts";
 import { theme } from "../theme/index";
-//import SmallWithSocial from "../components/SmallWithSocial";
 import "../theme/global.css";
 import {
   origin,

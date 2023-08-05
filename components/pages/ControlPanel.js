@@ -45,6 +45,7 @@ export function ControlPanel() {
   let lockedState = (_key && !isLoggedIn) || isLoggedIn;
 
   const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
+  const [email, setEmail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showFiles, setShowFiles] = useState(false);
   //const [showRoomList, setShowRoomList] = useState(false);
@@ -128,7 +129,7 @@ export function ControlPanel() {
   );
 
   const initLoader = async (user) => {
-    //console.log("Getting user: ", user);
+    console.log("Getting user: ", user);
 
     if (!user || !user?.id) {
       await getUser(publicAddress)
@@ -136,6 +137,8 @@ export function ControlPanel() {
         .catch((error) => console.error(error));
     } else {
       setSharesRemaining(user.fileTransfersRemaining);
+      setEmail(user.email ? user.email : "");
+      //console.log("Email: ", email);
       setLoading(false);
     }
   };
@@ -159,7 +162,7 @@ export function ControlPanel() {
         .then((user) => initLoader(user))
         .catch((error) => console.error(error));
     }
-  }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]);
+  }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]); // eslint-disable-line
 
   useEffect(() => {
     setKey(globalThis.location?.hash.slice(1) || null);
@@ -185,7 +188,8 @@ export function ControlPanel() {
       // Designed to udate how many file shares a user has in the UI
       updateUser(publicAddress);
     }
-  }, [key, mode, _mode, pathname, roomId, publicAddress]);
+  }, [key, mode, _mode, pathname, roomId, publicAddress]); // eslint-disable-line
+  // <-- eslint insert that stops updateUser dep' warning needs testing
 
   useEffect(() => {
     if (
@@ -288,7 +292,7 @@ export function ControlPanel() {
   const updateUser = async (publicAddress) => {
     //console.log("UPDATING USER: ", publicAddress);
     const user = await getUser(publicAddress)
-      .then((user) => setSharesRemaining(user.fileTransfersRemaining))
+      .then((user) => initLoader(user)) //setSharesRemaining(user.fileTransfersRemaining)) <-- old code, needs testing
       .catch((error) => console.error(error));
   };
 
@@ -484,7 +488,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        {/*         <Box
+        <Box
           zIndex={999}
           pos={"relative"}
           top={0}
@@ -492,8 +496,8 @@ export function ControlPanel() {
           alignItems={"center"}
           w={"100%"}
         >
-          <Text>{dev_readout}</Text>
-        </Box> */}
+          <Text>{email ? email : "Loading..."}</Text>
+        </Box>
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>
@@ -615,7 +619,7 @@ export function ControlPanel() {
                               >
                                 <SendPanel
                                   mode={_mode}
-                                  creator={publicAddress}
+                                  creator={[publicAddress, email]}
                                   handleFiles={handleFiles}
                                   cloudState={cloudState}
                                   peerState={peerState}

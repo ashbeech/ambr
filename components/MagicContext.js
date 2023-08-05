@@ -118,6 +118,7 @@ export function MagicProvider({ children }) {
     login: handleLogin,
     logout: handleLogout,
     publicAddress,
+    email,
   };
 
   return (

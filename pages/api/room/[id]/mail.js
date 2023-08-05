@@ -8,6 +8,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing required parameters" });
   }
 
+  const _from = from
+    ? "<a href='mailto:" +
+      from +
+      " target='_blank' alt='Send " +
+      from +
+      " an message'>" +
+      from +
+      "</a> sent you"
+    : "You've got a file";
+
   // Calculate time remaining
   const now = Date.now();
   const expires = parseInt(time);
@@ -220,7 +230,7 @@ export default async function handler(req, res) {
           class="title"
           style="color: #1e1e1e; margin-top: 1em; text-align: center"
         >
-          <h1>You've got a file</h1>
+          <h1>${_from}</h1>
         </div>
   
         <div class="filename" style="color: #1e1e1e; text-align: center">
@@ -284,7 +294,7 @@ export default async function handler(req, res) {
         </div>
   
         <div class="download-link" style="margin-top: 0.5em; text-align: center">
-          <p>
+          <p style="padding: 0 3em 0em 3em">
             <a href="${link}" style="color: #1e1e1e; text-decoration: none"
               >${link}</a
             >
