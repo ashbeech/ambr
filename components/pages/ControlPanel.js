@@ -129,7 +129,7 @@ export function ControlPanel() {
   );
 
   const initLoader = async (user) => {
-    console.log("Getting user: ", user);
+    //console.log("Getting user: ", user);
 
     if (!user || !user?.id) {
       await getUser(publicAddress)
@@ -488,7 +488,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        <Box
+        {/*         <Box
           zIndex={999}
           pos={"relative"}
           top={0}
@@ -496,8 +496,8 @@ export function ControlPanel() {
           alignItems={"center"}
           w={"100%"}
         >
-          <Text>{email ? email : "Loading..."}</Text>
-        </Box>
+          <Text>{dev_readout}</Text>
+        </Box> */}
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>

@@ -118,7 +118,7 @@ export function MagicProvider({ children }) {
     login: handleLogin,
     logout: handleLogout,
     publicAddress,
-    email,
+    //email, <-- TODO: would like to be able to pass email into context
   };
 
   return (
