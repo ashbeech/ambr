@@ -230,11 +230,11 @@ export default async function handler(req, res) {
           class="title"
           style="color: #1e1e1e; margin-top: 1em; text-align: center"
         >
-          <h1>${_from}</h1>
+          <h1 style="padding: 0 1.5em 0em 1.5em">${_from}</h1>
         </div>
   
         <div class="filename" style="color: #1e1e1e; text-align: center">
-          <h2>${filename}</h2>
+          <h2 style="padding: 0 1.5em 0em 1.5em">${filename}</h2>
         </div>
   
         <div

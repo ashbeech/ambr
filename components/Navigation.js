@@ -183,11 +183,7 @@ export default function Navigation({
                         >
                           Menu
                         </MenuButton>
-                        <MenuList
-                          pos={"relative"}
-                          zIndex={999}
-                          //inset={"0em auto auto -1.5em"}
-                        >
+                        <MenuList pos={"relative"} zIndex={999}>
                           {currentPage !== "" && (
                             <MenuItem
                               isDisabled={disabled}

@@ -24,9 +24,12 @@ export const styles = {
       fontFamily: `'Montserrat', 'Balbes', sans-serif, Menlo, monospace`,
       letterSpacing: "wide",
     },
-    a: {
+    "a, a:hover h4": {
       color: "inherit",
       textDecoration: "none",
+    },
+    "a h4:hover": {
+      color: "orange.400",
     },
     "a.disabled, a.disabled:hover": {
       color: "gray",

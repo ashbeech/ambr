@@ -18,12 +18,13 @@ import {
   Icon,
   Fade,
   Img,
+  Link,
 } from "@chakra-ui/react";
 import { WarningIcon } from "./icons/WarningIcon";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //import { maxRoomCloudSizeGb, maxRoomSizeGb } from "../config.js";
-import { CREATE_MODE, JOIN_MODE, SHARE_MODE } from "../lib/Send.js";
+import { Send, CREATE_MODE, JOIN_MODE, SHARE_MODE } from "../lib/Send.js";
 import { FilePicker } from "./FilePicker.js";
 import { Arrow } from "./Arrow.js";
 import { Check } from "./Check.js";
@@ -61,14 +62,13 @@ export const SendPanel = ({
   const [formModeLink, formMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldWarn, setShouldWarn] = useState(false);
+  const [shouldReset, shouldResetBoolean] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [randomAmbr, setRandomAmbr] = useState(
     `/images/amber-${(nowTimestamp % 7) + 1}.png`
   );
-  const [shouldReset, shouldResetBoolean] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-    //console.log("RESEEET");
     setRandomAmbr(`/images/amber-${(nowTimestamp % 7) + 1}.png`);
   }, []);
 
@@ -109,6 +109,7 @@ export const SendPanel = ({
     cloudState === "Uploading";
 
   const handleSubmit = async (_values) => {
+    console.log("handleSubmit _values: ", _values);
     const mint = {
       //key: key,
       roomMeta: roomMeta,
@@ -237,7 +238,16 @@ export const SendPanel = ({
             <Text fontSize={"sm"} pt={2}>
               {cloudState === "Uploading" && <>{"Uploading…"}</>}
               {peerState !== "Active" && <>{"Encrypting…"}</>}
-              {cloudState === "Uploaded" && <>{"Uploaded."}</>}
+              {cloudState === "Uploaded" && mintState !== "Sealed" && (
+                <>{"Uploaded."}</>
+              )}
+              {cloudState === "Uploaded" && mintState === "Sealed" && (
+                <>
+                  {formModeLink
+                    ? "You're all set."
+                    : "You're all set to share your link."}
+                </>
+              )}
             </Text>
           </Fade>
           <Box
@@ -428,7 +438,7 @@ export const SendPanel = ({
             h={mode === SHARE_MODE ? ["100%", "67%"] : "100%"}
             pt={
               mode === SHARE_MODE
-                ? [0, fileName.length >= 36 ? "5em" : "1.5em"]
+                ? [0, fileName.length >= 36 ? "5em" : "1em"]
                 : 0
             }
             display={"flex"}
@@ -656,7 +666,6 @@ export const SendPanel = ({
                           isChecked={formModeLink}
                           onChange={async () => {
                             await handleChange();
-                            // TODO: If the email is marked required, do not interupt/stop the switch in order to validate the now previous formModeLink state
                             validateForm();
                           }}
                         />
@@ -692,6 +701,7 @@ export const SendPanel = ({
                   mintState={mintState}
                   progress={createMintProgress}
                   formModeLink={formModeLink}
+                  shareUrl={shareUrl}
                 />
               </Box>
             </Fade>
@@ -755,8 +765,7 @@ export const SendPanel = ({
                 >
                   {formModeLink ? (
                     <>
-                      You can also securely share <br /> your file via this
-                      link:
+                      You can also securely share <br /> your file via its link:
                     </>
                   ) : (
                     <>Securely share your file via this link:</>
@@ -856,11 +865,11 @@ const CreateMintProgress = ({
   mintState,
   progress,
   formModeLink,
+  shareUrl,
 }) => {
   if (progress == null) progress = 0;
 
   const [isMintIndeterminate, setIsMintIndeterminate] = useState(true);
-
   const [running, setRunning] = useState(false);
   const [_progress, setProgress] = useState(0);
 
@@ -915,18 +924,33 @@ const CreateMintProgress = ({
         />
       </Box>
       <Box>
-        <Check
-          // TODO: add state to handle failure with cross when mintState Signing Failed
-          disabled={mintState === "Sealed" ? false : true}
-          title={
-            formModeLink && mintState === "Sealed"
-              ? `${mintState + " & Sent"}`
-              : mintState
-          }
-          size={["lg", "lg"]}
-          description={""}
-          colorScheme="gray"
-        />
+        <>
+          <Link
+            href={shareUrl ? shareUrl : ""}
+            onClick={() => {
+              location.reload();
+              return false;
+            }}
+            target={"_top"}
+            isDisabled={mintState === "Sealed" ? false : true}
+            alt="Verify your file's certificate"
+            textDecoration={
+              mintState === "Sealed" ? "underline !important" : "none"
+            }
+          >
+            <Check
+              disabled={mintState === "Sealed" ? false : true}
+              title={
+                formModeLink && mintState === "Sealed"
+                  ? `${mintState + " & Sent"}`
+                  : mintState
+              }
+              size={["lg", "lg"]}
+              description={""}
+              colorScheme="gray"
+            />
+          </Link>
+        </>
       </Box>
     </VStack>
   );
