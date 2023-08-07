@@ -84,7 +84,7 @@ function Login() {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                setIsValidEmail(true); // Reset validation on input change
+                setIsValidEmail(true);
               }}
               maxLength={256}
               placeholder={
