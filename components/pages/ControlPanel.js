@@ -34,7 +34,10 @@ import Navigation from "../Navigation.js";
 import Login from "../Login.js";
 import { MagicContext } from "../MagicContext.js";
 import { makeHash } from "../../lib/make-hash.js";
-import { tagline, environment } from "../../config.js";
+import {
+  tagline,
+  //environment
+} from "../../config.js";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -476,10 +479,10 @@ export function ControlPanel() {
     {
       /* <-- DEV USE START --> */
     }
-    const dev_readout =
+    /*     const dev_readout =
       environment === "development"
         ? `All Failed: ${allFailedIntermission} | ID: ${_roomId} | KEY: ${_key} | fileTransRem: ${fileTransfersRemaining} | _path: ${_path} | mode: ${mode} | _mode: ${_mode}`
-        : "";
+        : ""; */
 
     {
       /* <-- DEV USE END --> */
@@ -488,7 +491,7 @@ export function ControlPanel() {
     return (
       <>
         {/* <-- DEV USE START --> */}
-        <Box
+        {/*         <Box
           zIndex={999}
           pos={"relative"}
           top={0}
@@ -497,7 +500,7 @@ export function ControlPanel() {
           w={"100%"}
         >
           <Text>{dev_readout}</Text>
-        </Box>
+        </Box> */}
         {/* <-- DEV USE END --> */}
         {(loading || allFailedIntermission) && (
           <Fade in={loading || allFailedIntermission}>

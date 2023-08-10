@@ -932,8 +932,9 @@ const CreateMintProgress = ({
               return false;
             }}
             target={"_top"}
-            isDisabled={mintState === "Sealed" ? false : true}
+            className={mintState === "Sealed" ? "" : "disabled-link"}
             alt="Verify your file's certificate"
+            tabIndex={mintState === "Sealed" ? 0 : -1}
             textDecoration={
               mintState === "Sealed" ? "underline !important" : "none"
             }

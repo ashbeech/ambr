@@ -64,6 +64,11 @@ html, body {
             animation: dash 1.75s linear 0s forwards infinite;
   }
 
+
+  .disabled-link {
+    pointer-events: none !important;
+  }
+
   @media (hover: none) {
     a:hover { color: inherit; }
   }
