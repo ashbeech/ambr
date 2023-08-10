@@ -450,7 +450,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
                   .
                 </>
               ) : (
-                <>Historic record.</>
+                <>Permanent record.</>
               )}
             </Text>
           </VStack>

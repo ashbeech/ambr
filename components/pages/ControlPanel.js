@@ -834,7 +834,9 @@ export function ControlPanel() {
                                         className={"fancy"}
                                         noOfLines={2}
                                       >
-                                        Ready to share
+                                        Ready
+                                        <br />
+                                        to share
                                       </Text>
                                       <UnorderedList>
                                         <ListItem>
