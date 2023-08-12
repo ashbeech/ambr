@@ -11,7 +11,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { Formik, Form, Field } from "formik";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+//import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { SealIcon } from "./icons/SealIcon";
 //import { DownloadIcon } from "./icons/DownloadIcon";
 import { PublicIcon } from "./icons/PublicIcon";
@@ -115,6 +115,12 @@ export function FileRecordPanel({
                 </Text>
               </HStack>
             )}
+            <HStack w="full" alignItems="baseline" minH={"1.5rem"}>
+              <Text whiteSpace={"nowrap"} flex={1} fontWeight={"semibold"}>
+                {"Desc: "}
+              </Text>
+              <Text flex={8}>{key_concept}</Text>
+            </HStack>
             <HStack
               w="full"
               alignItems={publicView ? "center" : "top"}
@@ -126,12 +132,6 @@ export function FileRecordPanel({
               <Text noOfLines={2} flex={8}>
                 {client}
               </Text>
-            </HStack>
-            <HStack w="full" alignItems="baseline" minH={"1.5rem"}>
-              <Text whiteSpace={"nowrap"} flex={1} fontWeight={"semibold"}>
-                {"Desc: "}
-              </Text>
-              <Text flex={8}>{key_concept}</Text>
             </HStack>
             <HStack w="full" minH={"1.8rem"}>
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
