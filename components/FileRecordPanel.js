@@ -148,12 +148,34 @@ export function FileRecordPanel({
                 whiteSpace={"nowrap"}
                 flex={1}
               >
-                {"Hash: "}
+                {"Fingerprint: "}
               </Text>
               <Text noOfLines={1}>{fileHash}</Text>
               <CopyButton
                 onClick={handleClickCopy}
                 text={fileHash}
+                colorScheme="black"
+                size="sm"
+                flex={1}
+              />
+            </HStack>
+            <HStack w="full">
+              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
+                {"Blockchain Tx: "}
+              </Text>
+              <Link
+                w="full"
+                href={txHash}
+                noOfLines={1}
+                target={"_blank"}
+                isExternal
+              >
+                {txHashRaw}
+              </Link>
+              {/* <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} /> */}
+              <CopyButton
+                onClick={handleClickCopy}
+                text={txHashRaw}
                 colorScheme="black"
                 size="sm"
                 flex={1}
@@ -179,28 +201,6 @@ export function FileRecordPanel({
                 colorScheme="black"
                 size="sm"
                 //flex={1}
-              />
-            </HStack>
-            <HStack w="full">
-              <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
-                {"Transaction: "}
-              </Text>
-              <Link
-                w="full"
-                href={txHash}
-                noOfLines={1}
-                target={"_blank"}
-                isExternal
-              >
-                {txHashRaw}
-              </Link>
-              {/* <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} /> */}
-              <CopyButton
-                onClick={handleClickCopy}
-                text={txHashRaw}
-                colorScheme="black"
-                size="sm"
-                flex={1}
               />
             </HStack>
           </VStack>
