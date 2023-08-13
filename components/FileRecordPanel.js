@@ -106,7 +106,7 @@ export function FileRecordPanel({
               </Text>
             </HStack>
             {publicView && (
-              <HStack w="full" alignItems="center" minH={"0.8rem"}>
+              <HStack w="full" alignItems="center" minH={"1.8rem"}>
                 <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
                   {"File: "}
                 </Text>
@@ -115,7 +115,12 @@ export function FileRecordPanel({
                 </Text>
               </HStack>
             )}
-            <HStack w="full" alignItems="baseline" minH={"1.5rem"}>
+            <HStack
+              w="full"
+              alignItems={key_concept.length > 37 ? "baseline" : "center"}
+              pt={key_concept.length > 37 ? "0.33em" : "0"}
+              minH={"1.8rem"}
+            >
               <Text whiteSpace={"nowrap"} flex={1} fontWeight={"semibold"}>
                 {"Desc: "}
               </Text>
@@ -124,7 +129,7 @@ export function FileRecordPanel({
             <HStack
               w="full"
               alignItems={publicView ? "center" : "top"}
-              minH={publicView ? "2.1rem" : "1.8rem"}
+              minH={publicView ? "1.8rem" : "1.8rem"}
             >
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
                 {"Client: "}
