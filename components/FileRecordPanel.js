@@ -186,7 +186,7 @@ export function FileRecordPanel({
                 flex={1}
               />
             </HStack>
-            <HStack w="full">
+            {/*             <HStack w="full">
               <Text whiteSpace={"nowrap"} fontWeight={"semibold"} flex={1}>
                 {"Source: "}
               </Text>
@@ -199,15 +199,13 @@ export function FileRecordPanel({
               >
                 {cid}
               </Link>
-              {/* <ExternalLinkIcon pos={"relative"} top={"-1px"} w={4} h={4} /> */}
               <CopyButton
                 onClick={handleClickCopy}
                 text={cidLink}
                 colorScheme="black"
                 size="sm"
-                //flex={1}
               />
-            </HStack>
+            </HStack> */}
           </VStack>
         </Box>
       </VStack>
