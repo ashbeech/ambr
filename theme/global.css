@@ -6,7 +6,8 @@
   overscroll-behavior: none;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   min-height: 100%;
 }
@@ -17,72 +18,75 @@ html, body {
 
 /* Custom CSS for Stripe Payment Element Tabs */
 .stripe-payment-element .Tabs {
-  background-color: #FF5C00;
+  background-color: #ff5c00;
 }
 
 .stripe-payment-element .TabList .Tab {
-  background-color: #FF5C00;
-
+  background-color: #ff5c00;
 }
 
 .stripe-payment-element .TabPanel {
-  background-color: #FF5C00;
-
+  background-color: #ff5c00;
 }
 
- @-webkit-keyframes dash {
-    0% {
-      stroke-dasharray: 375,089;
-      stroke-dashoffset: 133;
-    }
-    50% {
-      stroke-dasharray: 375,333;
-      stroke-dashoffset: -266;
-    }
-    100% {
-      stroke-dasharray: 375,089;
-      stroke-dashoffset: -777;  
-    }
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 375, 089;
+    stroke-dashoffset: 133;
   }
-  @keyframes dash {
-    0% {
-        stroke-dasharray: 375,089;
-        stroke-dashoffset: 128;
-      }
-      50% {
-        stroke-dasharray: 375,333;
-        stroke-dashoffset: -233;
-      }
-      100% {
-        stroke-dasharray: 375,089;
-        stroke-dashoffset: -806;
-      }
+  50% {
+    stroke-dasharray: 375, 333;
+    stroke-dashoffset: -266;
   }
-  
-  .loader-border {
-    -webkit-animation: dash 1.75s linear 0s forwards infinite;
-            animation: dash 1.75s linear 0s forwards infinite;
+  100% {
+    stroke-dasharray: 375, 089;
+    stroke-dashoffset: -777;
   }
-
-
-  .disabled-link {
-    pointer-events: none !important;
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 375, 089;
+    stroke-dashoffset: 128;
   }
-
-  @media (hover: none) {
-    a:hover { color: inherit; }
+  50% {
+    stroke-dasharray: 375, 333;
+    stroke-dashoffset: -233;
   }
-
-  /* Safari 7.1+ */
-  
-  _::-webkit-full-page-media, _:future, :root .p-m-btn {
-    padding: 0px 0px 0px 0px !important;
+  100% {
+    stroke-dasharray: 375, 089;
+    stroke-dashoffset: -806;
   }
+}
 
-  /* Safari 10.1+ */
+.loader-border {
+  -webkit-animation: dash 1.75s linear 0s forwards infinite;
+  animation: dash 1.75s linear 0s forwards infinite;
+}
 
-  @media not all and (min-resolution:.001dpcm) { @media {
-    .p-m-btn { 
+.disabled-link {
+  pointer-events: none !important;
+}
+
+@media (hover: none) {
+  a:hover {
+    color: inherit;
+  }
+}
+
+/* Safari 7.1+ */
+
+_::-webkit-full-page-media,
+_:future,
+:root .p-m-btn {
+  padding: 0px 0px 0px 0px !important;
+}
+
+/* Safari 10.1+ */
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @media {
+    .p-m-btn {
       padding: 0px 0px 0px 0px !important;
     }
-  }}
+  }
+}

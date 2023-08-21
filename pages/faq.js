@@ -1,13 +1,5 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Heading,
-  UnorderedList,
-  ListItem,
-  VStack,
-  Link,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, Heading, VStack, Link } from "@chakra-ui/react";
+import VideoPlayer from "../components/YouTube";
 
 export default function TermsPanel() {
   const faqPanel = () => {
@@ -36,6 +28,9 @@ export default function TermsPanel() {
             maxW={["", "", "40rem"]}
             spacing={[4, 8]}
           >
+            <Box w={"100%"} px={"1px"}>
+              <VideoPlayer videoId={"TuIlBDg9Zho"} />
+            </Box>
             <Box mb={[4, 6]}>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"What is Ambr?"}
