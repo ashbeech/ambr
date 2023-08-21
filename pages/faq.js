@@ -135,10 +135,10 @@ export default function TermsPanel() {
               </Text>
               <Text pt={3} pb={[8, 8]}>
                 After sharing a file, and once the download link expires, Ambr
-                only permanently retains the key evidential information about
-                the file and its transfer, like the file&apos;s unique
-                fingerprint, and timestamp of the transfer, etc, but not the
-                actual original file itself.
+                only retains the key evidential information about the file and
+                its transfer, like the file&apos;s unique fingerprint, and
+                timestamp of the transfer, etc, but not the actual original file
+                itself.
                 <br />
                 <br />
                 We are actively developing this feature, however. In the
