@@ -904,7 +904,7 @@ export function ControlPanel() {
                                     offsetY={"0"}
                                   >
                                     <Text as={"h1"} className={"fancy"}>
-                                      Permanent
+                                      Immutable
                                       <br />
                                       file record
                                     </Text>
