@@ -45,7 +45,7 @@ export default async function handler(request, response) {
 
   async function updateRecord(body, query) {
     // Create an array with the names of required fields.
-    const requiredFields = ["sha1sum", "sizeMb", "multiFile"];
+    const requiredFields = ["shasum", "sizeMb", "multiFile"];
 
     // Check if each required field is present in the request body. If not, throw an error.
     for (const field of requiredFields) {
@@ -57,7 +57,7 @@ export default async function handler(request, response) {
     // Create an object with data to update the database.
     const data = {
       roomId: query.id,
-      fileHash: body.sha1sum,
+      fileHash: body.shasum,
       sizeMb: body.sizeMb,
       multiFile: body.multiFile,
       encryptedTorrentFile: body.encryptedTorrentFile,
