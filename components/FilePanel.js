@@ -844,7 +844,7 @@ const TopRightPanel = React.memo(
                     <>
                       {" "}
                       Download window has expired, but the immutable certificate
-                      will always remain accessible.
+                      will remain accessible.
                     </>
                   )}
                 </Text>
