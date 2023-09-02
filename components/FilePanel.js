@@ -843,8 +843,8 @@ const TopRightPanel = React.memo(
                   {isExpired && (
                     <>
                       {" "}
-                      File downloads have temporaryly expired, but the immutable
-                      record remains permantant for you.
+                      Downloads have expired temporarily, but the immutable
+                      certificate remains permantant for you.
                     </>
                   )}
                 </Text>
