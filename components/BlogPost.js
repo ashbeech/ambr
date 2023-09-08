@@ -1,13 +1,37 @@
-// components/BlogPost.js
-import grayMatter from "gray-matter";
-import remark from "remark";
-import html from "remark-html";
+import { Box, Flex, Text, Heading, VStack, Link } from "@chakra-ui/react";
 
 export default function BlogPost({ content, data }) {
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
+    <Box className="" mt={[12, 20]} mb={8} w={"100%"}>
+      <Flex
+        w={"100%"}
+        h={"100%"}
+        pos={"relative"}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        align="center"
+        className="article"
+      >
+        <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
+          <Heading
+            pb={[1, 3]}
+            as={"h1"}
+            className="fancy"
+            letterSpacing={["normal !important", "wider !important"]}
+          >
+            {data.title}
+          </Heading>
+          <VStack
+            w={["full", "80vw", "86vw", "50vw"]}
+            minW={["", "", "38rem"]}
+            maxW={["", "", "38rem"]}
+            spacing={[4, 8]}
+          >
+            <Box mb={[4, 6]} dangerouslySetInnerHTML={{ __html: content }} />
+          </VStack>
+        </Box>
+      </Flex>
+    </Box>
   );
 }
