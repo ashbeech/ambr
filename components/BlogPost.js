@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Heading, VStack, Link } from "@chakra-ui/react";
+import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
 
 export default function BlogPost({ content, data }) {
   return (
