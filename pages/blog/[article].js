@@ -28,11 +28,10 @@ export async function getStaticProps({ params }) {
   const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = grayMatter(fileContent);
 
-  // Convert the Date object to a string
-  const dateAsString = data.date.toISOString(); // or any other suitable format
-
-  // Update the data with the serialized date
-  data.date = dateAsString;
+  // Ensure that data.date is a valid Date object
+  if (data.date && typeof data.date === "string") {
+    data.date = new Date(data.date); // Convert the string to a Date object
+  }
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
