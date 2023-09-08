@@ -228,7 +228,7 @@ const App = (props) => {
     if (!("serviceWorker" in navigator)) return;
 
     navigator.serviceWorker
-      .register("./service-worker.js", { updateViaCache: "none" })
+      .register("/service-worker.js", { updateViaCache: "none" })
       .then(
         function (registration) {
           /*           console.log(

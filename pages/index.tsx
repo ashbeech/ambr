@@ -1,3 +1,3 @@
-import { ControlPanel } from '../components/pages/ControlPanel.js'
+import { ControlPanel } from "../components/pages/ControlPanel.js";
 
-export default ControlPanel
+export default ControlPanel;
