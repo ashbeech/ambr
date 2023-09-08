@@ -33,6 +33,9 @@ export async function getStaticProps({ params }) {
     data.date = new Date(data.date); // Convert the string to a Date object
   }
 
+  // Convert the Date object to a string representation
+  data.date = data.date.toISOString();
+
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
