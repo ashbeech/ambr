@@ -15,7 +15,7 @@ export default function BlogPost({ content, data }) {
       >
         <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
           <Heading
-            pb={[1, 3]}
+            pb={[2, 8]}
             as={"h1"}
             className="fancy"
             letterSpacing={["normal !important", "wider !important"]}
