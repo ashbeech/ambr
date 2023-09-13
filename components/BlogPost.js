@@ -13,7 +13,15 @@ export default function BlogPost({ content, data }) {
         align="center"
         className="article"
       >
-        <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
+        <Box
+          w={"full"}
+          minW={["", "38rem", "38rem"]}
+          maxW={["", "38rem", "38rem"]}
+          spacing={[4, 8]}
+          h={"100%"}
+          pl={[8, 0]}
+          pr={[8, 0]}
+        >
           <Heading
             pb={[2, 8]}
             as={"h1"}
@@ -22,12 +30,7 @@ export default function BlogPost({ content, data }) {
           >
             {data.title}
           </Heading>
-          <VStack
-            w={["full", "80vw", "86vw", "50vw"]}
-            minW={["", "", "38rem"]}
-            maxW={["", "", "38rem"]}
-            spacing={[4, 8]}
-          >
+          <VStack>
             <Box mb={[4, 6]} dangerouslySetInnerHTML={{ __html: content }} />
           </VStack>
         </Box>

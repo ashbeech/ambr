@@ -98,7 +98,7 @@ export default function AmbrApp({ Component, pageProps, err }) {
               <Grid>
                 <VStack>
                   <AmbrContext.Provider value={{ ...initialContext }}>
-                    <App>
+                    <App w={"100%"}>
                       <Component {...props} err={err} />
                     </App>
                     <Head>
@@ -114,10 +114,10 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       ></meta>
                       <meta name="description" content={description} />
                       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                      <meta
+                      {/*                       <meta
                         httpEquiv="Content-Security-Policy"
                         content="upgrade-insecure-requests"
-                      />
+                      /> */}
                       <meta
                         name="apple-mobile-web-app-status-bar-style"
                         content="black-translucent"
