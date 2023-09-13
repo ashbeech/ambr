@@ -129,7 +129,7 @@ const EmailButton = ({ url, onClick = () => {}, size, ...rest }) => {
       href={href}
       //size={isMobileBreakpoint ? "lg" : "md"}
       size={"lg"}
-      target="_blank"
+      target="_self"
       {...rest}
     >
       {"Email"}

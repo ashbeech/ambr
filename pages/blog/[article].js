@@ -1,13 +1,86 @@
+import { useEffect, useState, useContext } from "react";
 import fs from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-
 import BlogPost from "../../components/BlogPost";
+import { Fade, Box, Center } from "@chakra-ui/react";
+import { getUser } from "../../lib/UserManager";
+import LogoLoader from "../../components/icons/LogoLoader";
+import { MagicContext } from "../../components/MagicContext.js";
+import Navigation from "../../components/Navigation.js";
 
 export default function BlogArticle({ content, data }) {
-  return <BlogPost content={content} data={data} />;
+  const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
+  const [fileTransfersRemaining, setSharesRemaining] = useState(-999);
+  const [loading, setLoading] = useState(true);
+
+  const initLoader = async (user) => {
+    //console.log("Getting user: ", user);
+
+    if (!user || !user?.id) {
+      await getUser(publicAddress)
+        .then((user) => initLoader(user))
+        .catch((error) => console.error(error));
+    } else {
+      setSharesRemaining(user.fileTransfersRemaining);
+      setLoading(false);
+    }
+  };
+  // Must ensure that the user is logged in before loading the page
+  useEffect(() => {
+    // Check existence of Magic, if not, don't load the page
+    if (magic === null) return;
+    if (magic !== null && isLoggedIn && publicAddress === "") return;
+    if (magic !== null && !isLoggedIn && publicAddress === "")
+      setLoading(false);
+
+    if (
+      magic !== null &&
+      isLoggedIn &&
+      publicAddress &&
+      (fileTransfersRemaining === -999 || fileTransfersRemaining === undefined)
+    ) {
+      //console.log("Getting user", publicAddress);
+      getUser(publicAddress)
+        .then((user) => initLoader(user))
+        .catch((error) => console.error(error));
+    }
+  }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]); // eslint-disable-line
+
+  return (
+    <Box w={"100%"}>
+      {loading && (
+        <Fade in={loading}>
+          <Box
+            h={"100dvh"}
+            minH={"100%"}
+            pos={"fixed"}
+            inset={0}
+            overflow={"hidden"}
+            display={"grid"}
+            place-items={"center"}
+          >
+            <Center h="100%">
+              <LogoLoader />
+            </Center>
+          </Box>
+        </Fade>
+      )}
+      {!loading && (
+        <>
+          <Navigation
+            fileTransfersRemaining={fileTransfersRemaining}
+            mintState={null}
+            chainState={null}
+            customKey={null}
+          />
+          <BlogPost content={content} data={data} />
+        </>
+      )}
+    </Box>
+  );
 }
 
 export async function getStaticPaths() {

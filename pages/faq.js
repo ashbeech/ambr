@@ -1,11 +1,62 @@
-import { Box, Flex, Text, Heading, VStack, Link } from "@chakra-ui/react";
+import { useEffect, useState, useContext } from "react";
+import {
+  Fade,
+  Box,
+  Flex,
+  Center,
+  Text,
+  Heading,
+  VStack,
+  Link,
+} from "@chakra-ui/react";
+import { getUser } from "../lib/UserManager";
+import LogoLoader from "../components/icons/LogoLoader";
+import { MagicContext } from "../components/MagicContext.js";
+import Navigation from "../components/Navigation.js";
 import VideoPlayer from "../components/YouTube";
 
-export default function TermsPanel() {
+export default function FaqPanel() {
+  const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
+  const [fileTransfersRemaining, setSharesRemaining] = useState(-999);
+  const [loading, setLoading] = useState(true);
+
+  const initLoader = async (user) => {
+    //console.log("Getting user: ", user);
+
+    if (!user || !user?.id) {
+      await getUser(publicAddress)
+        .then((user) => initLoader(user))
+        .catch((error) => console.error(error));
+    } else {
+      setSharesRemaining(user.fileTransfersRemaining);
+      setLoading(false);
+    }
+  };
+  // Must ensure that the user is logged in before loading the page
+  useEffect(() => {
+    // Check existence of Magic, if not, don't load the page
+    if (magic === null) return;
+    if (magic !== null && isLoggedIn && publicAddress === "") return;
+    if (magic !== null && !isLoggedIn && publicAddress === "")
+      setLoading(false);
+
+    if (
+      magic !== null &&
+      isLoggedIn &&
+      publicAddress &&
+      (fileTransfersRemaining === -999 || fileTransfersRemaining === undefined)
+    ) {
+      //console.log("Getting user", publicAddress);
+      getUser(publicAddress)
+        .then((user) => initLoader(user))
+        .catch((error) => console.error(error));
+    }
+  }, [magic, publicAddress, isLoggedIn, fileTransfersRemaining]); // eslint-disable-line
+
   const faqPanel = () => {
     return (
       <Flex
-        w={"100%"}
+        w={"full"}
         h={"100%"}
         pos={"relative"}
         direction="column"
@@ -22,15 +73,7 @@ export default function TermsPanel() {
           >
             Frequently asked questions
           </Heading>
-          <VStack
-            w={["full", "80vw", "86vw", "50vw"]}
-            minW={["", "", "43rem"]}
-            maxW={["", "", "40rem"]}
-            spacing={[4, 8]}
-          >
-            <Box w={"100%"} px={"1px"}>
-              <VideoPlayer videoId={"TuIlBDg9Zho"} />
-            </Box>
+          <VStack spacing={[4, 8]}>
             <Box mb={[4, 6]}>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"What is Ambr?"}
@@ -41,6 +84,9 @@ export default function TermsPanel() {
                 providing verifiable proof of origin and authenticity for your
                 hard work in the backgound when you need it most.
               </Text>
+              <Box w={"100%"} px={"1px"} pb={[8, 8]}>
+                <VideoPlayer videoId={"TuIlBDg9Zho"} />
+              </Box>
 
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
                 {"Who should use Ambr?"}
@@ -292,8 +338,44 @@ export default function TermsPanel() {
     );
   };
   return (
-    <Box className="" mt={[12, 20]} mb={8} w={"100%"}>
-      <Box>{faqPanel()}</Box>
+    <Box w={"100%"}>
+      {loading && (
+        <Fade in={loading}>
+          <Box
+            h={"100dvh"}
+            minH={"100%"}
+            pos={"fixed"}
+            inset={0}
+            overflow={"hidden"}
+            display={"grid"}
+            place-items={"center"}
+          >
+            <Center h="100%">
+              <LogoLoader />
+            </Center>
+          </Box>
+        </Fade>
+      )}
+      {!loading && (
+        <>
+          <Navigation
+            fileTransfersRemaining={fileTransfersRemaining}
+            mintState={null}
+            chainState={null}
+            customKey={null}
+          />
+          <Box
+            w={["full", "80vw", "86vw", "full"]}
+            minW={["", "", "43rem"]}
+            maxW={["", "", "43rem"]}
+            mt={[12, 20]}
+            mx={[0, "auto"]}
+            mb={8}
+          >
+            {faqPanel()}
+          </Box>
+        </>
+      )}
     </Box>
   );
 }

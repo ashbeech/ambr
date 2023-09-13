@@ -197,12 +197,14 @@ export function ControlPanel() {
   useEffect(() => {
     if (
       fileTransfersRemaining <= 0 &&
+      fileTransfersRemaining !== -999 &&
       pathname === "/" &&
       _mode !== SHARE_MODE
     ) {
       setMode(null);
       setPath("/top-up");
     }
+    console.log("FILES TRANSFER REEMMM:", fileTransfersRemaining);
   }, [fileTransfersRemaining, pathname, _mode]);
 
   /*   const handleChangeRooms = (rooms) => {
@@ -1134,7 +1136,7 @@ export function ControlPanel() {
                     <>
                       <Link
                         href={"security"}
-                        target="_blank"
+                        target="_self"
                         fontSize={"sm"}
                         title="Take a read of Ambr's Security Statement"
                         fontWeight={"lighter"}
@@ -1144,7 +1146,7 @@ export function ControlPanel() {
                       </Link>
                       <Link
                         href={"terms"}
-                        target="_blank"
+                        target="_self"
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontSize={"sm"}
                         fontWeight={"lighter"}
@@ -1154,7 +1156,7 @@ export function ControlPanel() {
                       </Link>
                       <Link
                         href={"privacy"}
-                        target="_blank"
+                        target="_self"
                         fontSize={"sm"}
                         title="Make sure you've read Ambr's Privacy Policy"
                         fontWeight={"lighter"}

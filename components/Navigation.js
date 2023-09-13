@@ -129,8 +129,8 @@ export default function Navigation({
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }
-                    href={"faq"}
-                    target={"_blank"}
+                    href={"/faq"}
+                    target={"_self"}
                     rel={"noopener"}
                     disabled={currentPage === "faq"}
                   >
@@ -161,8 +161,8 @@ export default function Navigation({
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }
-                    href={"faq"}
-                    target={"_blank"}
+                    href={"/faq"}
+                    target={"_self"}
                     rel={"noopener"}
                     disabled={currentPage === "faq"}
                   >
@@ -242,8 +242,8 @@ export default function Navigation({
                               p={0}
                             >
                               <Link
-                                href={"faq"}
-                                target={"_blank"}
+                                href={"/faq"}
+                                target={"_self"}
                                 rel={"noopener"}
                                 fontSize={"sm"}
                                 title="Take a read of Ambr's frequently asked questions"
@@ -342,8 +342,8 @@ export default function Navigation({
                               ? "faq disabled"
                               : "faq"
                           }
-                          href={"faq"}
-                          target={"_blank"}
+                          href={"/faq"}
+                          target={"_self"}
                           rel={"noopener"}
                           disabled={currentPage === "faq"}
                         >
