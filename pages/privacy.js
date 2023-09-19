@@ -20,8 +20,6 @@ export default function PrivacyPanel() {
   const [loading, setLoading] = useState(true);
 
   const initLoader = async (user) => {
-    //console.log("Getting user: ", user);
-
     if (!user || !user?.id) {
       await getUser(publicAddress)
         .then((user) => initLoader(user))
@@ -702,7 +700,7 @@ export default function PrivacyPanel() {
             w={["full", "80vw", "86vw", "full"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "43rem"]}
-            mt={[12, 20]}
+            mt={[8, "4.5em"]}
             mx={[0, "auto"]}
             mb={8}
           >

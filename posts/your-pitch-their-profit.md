@@ -1,6 +1,7 @@
 ---
 title: "Your pitch, their profit."
 date: "2023-09-08"
+image: "/images/posts/your-pitch-their-profit-post-001.jpg"
 ---
 
 Five years ago, I found myself nervously sat on a train, en route to what would become a pivotal moment in my career as a young female graphic designer in the creative industry. My destination held the promise of my first pitch to a potential client, representing the agency I worked for at the time. The core of my mission was simple: to present my brainchild, a marketing campaign based around an idea with a unique take in a traditionally quite conservative and, dare I say, downright dull B2B sector. This endeavour wasn't just about generating revenue for the agency; it was about carving a path for my own professional growth and secure recognition from my managers as a creative thinker with valuable ideas. I walked into that meeting room greeted by handshakes and smiles, and as they turned into laughter and excitement while my team presented the idea, I felt my nerves melt away into optimism as I looked forward to a promising future.

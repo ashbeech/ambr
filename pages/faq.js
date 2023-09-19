@@ -64,7 +64,7 @@ export default function FaqPanel() {
         justifyContent="center"
         align="center"
       >
-        <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
+        <Box w={["90%", "100%"]} h={"100%"}>
           <Heading
             pb={[1, 6]}
             as={"h1"}
@@ -76,13 +76,18 @@ export default function FaqPanel() {
           <VStack spacing={[4, 8]}>
             <Box mb={[4, 6]}>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
-                {"What is Ambr?"}
+                {"What's Ambr?"}
               </Text>
               <Text pt={3} pb={[8, 8]}>
-                Ambr is a secure file transfer service that lets you send files
-                to anyone in the world with a simple link, whilst simultaneously
-                providing verifiable proof of origin and authenticity for your
-                hard work in the backgound when you need it most.
+                Nobody should have the power to take credit for your creative
+                work, diverting its value away from you. Ambr is the only way to
+                send files, simultaneously placing you, the creator, in
+                unparalleled control of the work you&apos;re sharing. Every
+                shared file through Ambr is equipped with a tamper-proof,
+                time-stamped digital fingerprint of your work, along with who
+                you shared it with, all securely tied to you. Ambr strengthens
+                your claim to creative ownership and your right to the value of
+                your hard work.
               </Text>
               <Box w={"100%"} px={"1px"} pb={[8, 8]}>
                 <VideoPlayer videoId={"TuIlBDg9Zho"} />
@@ -114,8 +119,8 @@ export default function FaqPanel() {
               </Text>
               <Text pt={3} pb={[8, 8]}>
                 When you share a file through Ambr it securely and immutably
-                records a unique, encrypted fingerprint of the file and the
-                transfer event to a blockchain. Sharing a file thorugh Ambr
+                records a unique, encrypted `fingerprint` of the file and the
+                transfer event to a blockchain. Sharing a file through Ambr
                 ensures you have easy access to the highest level of verifiable
                 proof of origin, and authenticity.
               </Text>
@@ -368,7 +373,7 @@ export default function FaqPanel() {
             w={["full", "80vw", "86vw", "full"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "43rem"]}
-            mt={[12, 20]}
+            mt={[8, "4.5em"]}
             mx={[0, "auto"]}
             mb={8}
           >

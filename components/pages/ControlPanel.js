@@ -911,13 +911,14 @@ export function ControlPanel() {
                                       file record
                                     </Text>
                                     <Text fontSize={"md"}>
-                                      This file&apos;s download link has
-                                      expired, but the certificate detailing its
-                                      historic record of transfer and contents
-                                      remains. If you hold the orginal file, you
-                                      can re-upload it here. It will act as
-                                      verifiaction of the certified contents as
-                                      well as to extend the download link.
+                                      The file&apos;s download link has expired,
+                                      but evidence of its transfer and contents
+                                      remains.
+                                      <br />
+                                      <br />
+                                      If you hold the orginal file, re-upload it
+                                      here to extend the download link as well
+                                      as verify its certificated evidence.
                                     </Text>
                                   </SlideFade>
                                 )}
@@ -1177,9 +1178,10 @@ export function ControlPanel() {
                     <Link
                       fontSize={"sm"}
                       fontWeight={"lighter"}
-                      href={"https://ambr.link"}
+                      href={!showHomeStone ? "https://ambr.link" : null}
                       target="_self"
                       title="Ambr — Share ideas worth protecting."
+                      isDisabled={showHomeStone}
                     >
                       Ambr
                     </Link>
