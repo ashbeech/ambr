@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuButton,
   Icon,
+  Text,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { LogoIcon } from "./icons/LogoIcon";
@@ -35,13 +36,20 @@ export default function Navigation({
     mintState !== "Sealed" &&
     mintState !== "Signing Failed";
 
+  const subPage =
+    currentPage === "faq" ||
+    currentPage === "terms" ||
+    currentPage === "privacy" ||
+    currentPage === "security" ||
+    router.pathname === "/blog/[article]";
+
   const showTopup =
     (currentPage !== "top-up" &&
       currentPage !== "" &&
       fileTransfersRemaining <= 0) ||
     (currentPage !== "top-up" && fileTransfersRemaining >= 1);
 
-  const showLogo = isLoggedIn || (!isLoggedIn && filePage);
+  const showLogo = isLoggedIn || (!isLoggedIn && filePage) || subPage;
 
   const handlePageChange = (page) => {
     if (!disabled) {
@@ -125,7 +133,7 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    pr={[4, 6]}
+                    gap={[4, 4]}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }
@@ -134,14 +142,14 @@ export default function Navigation({
                     rel={"noopener"}
                     disabled={currentPage === "faq"}
                   >
-                    What is Ambr?
+                    What&apos;s Ambr?
                   </Link>
                   <Button
                     onClick={() => {
                       handlePageChange("");
                     }}
                   >
-                    {"Login"}
+                    {"Send a File"}
                   </Button>
                 </Box>
               )}
@@ -153,9 +161,9 @@ export default function Navigation({
                   alignItems={"center"}
                   justifyContent={"flex-end"}
                   textAlign={"right"}
-                  pt={[2, null]}
+                  pt={[1, null]}
                   pb={[0, 0]}
-                  px={["2.5%", null]}
+                  gap={[4, 4]}
                 >
                   <Link
                     className={
@@ -166,8 +174,17 @@ export default function Navigation({
                     rel={"noopener"}
                     disabled={currentPage === "faq"}
                   >
-                    What is Ambr?
+                    What&apos;s Ambr?
                   </Link>
+                  {currentPage !== "" && (
+                    <Button
+                      onClick={() => {
+                        handlePageChange("");
+                      }}
+                    >
+                      {"Send a File"}
+                    </Button>
+                  )}
                 </HStack>
               )}
               {isMobile ? (

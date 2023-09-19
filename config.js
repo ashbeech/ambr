@@ -57,11 +57,11 @@ export const wsUrl = `${wsOrigin}/websocket`;
 // Title of the site
 export const siteTitle = "Ambr";
 
-export const tagline = "Share ideas worth protecting.";
+export const tagline = "Share work fearlessly.";
 
 // Description of the site
 export const siteDescription =
-  "If you share your work with clients or are perhaps concerned that your work may be used without consent by artificial intelligence, Ambr is for you. Ambr provides a file transfer service with verifiable proof of origin and authenticity built-in. No extra steps, complexity, or third parties—just share your work with the confidence that you have state-of-the-art data provenance on your side.";
+  "Nobody else should have the power to take credit for your hard work, siphoning away its value from you. Ambr stands as the sole way to send files that puts you, the creator, in control of the work you're sharing. Every shared file through Ambr is equipped with a tamper-proof, time-stamped digital fingerprint of the work, along with who you shared it with, securely tied to you. Ambr strengthens your undeniable claim to creative ownership and entitlement to your work's value.";
 // Twitter username of the site
 export const socialHandle = "ambrlink";
 

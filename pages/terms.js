@@ -65,7 +65,7 @@ export default function TermsPanel() {
         justifyContent="center"
         align="center"
       >
-        <Box w={"100%"} h={"100%"} pl={[8, 0]} pr={[8, 0]}>
+        <Box w={["90%", "100%"]} h={"100%"}>
           <Heading
             pb={[1, 6]}
             as={"h1"}
@@ -848,7 +848,7 @@ export default function TermsPanel() {
             w={["full", "80vw", "86vw", "full"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "43rem"]}
-            mt={[12, 20]}
+            mt={[8, "4.5em"]}
             mx={[0, "auto"]}
             mb={8}
           >

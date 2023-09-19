@@ -1,8 +1,8 @@
-import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, VStack } from "@chakra-ui/react";
 
 export default function BlogPost({ content, data }) {
   return (
-    <Box className="" mt={[12, 20]} mb={8} w={"100%"}>
+    <Box className="" mt={[8, "4.5em"]} mb={8} w={"100%"}>
       <Flex
         w={"100%"}
         h={"100%"}
@@ -14,16 +14,22 @@ export default function BlogPost({ content, data }) {
         className="article"
       >
         <Box
-          w={"full"}
+          w={"90%"}
           minW={["", "38rem", "38rem"]}
           maxW={["", "38rem", "38rem"]}
           spacing={[4, 8]}
           h={"100%"}
-          pl={[8, 0]}
-          pr={[8, 0]}
         >
+          <Image
+            w={["100%", "100%"]}
+            src={data.image}
+            alt={data.title}
+            pb={[6, 10]}
+            objectFit={"cover"}
+          />
           <Heading
-            pb={[2, 8]}
+            pb={[5, 8]}
+            m={"0 !important"}
             as={"h1"}
             className="fancy"
             letterSpacing={["normal !important", "wider !important"]}
