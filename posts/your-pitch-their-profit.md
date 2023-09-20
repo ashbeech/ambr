@@ -5,7 +5,7 @@ author: "Maria K"
 avatar: "/images/posts/authors/maria.jpg"
 position: "Creative Director"
 image: "/images/posts/your-pitch-their-profit-post-001.jpg"
-intro: "A pivotal moment dramatically altered the trajectory of my career, and unexpectedly revealed a serious, pervasive problem within the creative industry, propelling me on the journey to craft a solution."
+intro: "A pivotal moment dramatically altered the trajectory of my career, and unexpectedly revealed a serious and pervasive problem within the creative industry, propelling me on the journey to craft a solution."
 ---
 
 Five years ago, I found myself nervously sat on a train, en route to what would become a pivotal moment in my career as a young female graphic designer in the creative industry. My destination held the promise of my first pitch to a potential client, representing the agency I worked for at the time. The core of my mission was simple: to present my brainchild, a marketing campaign based around an idea with a unique take in a traditionally quite conservative and, dare I say, downright dull B2B sector. This endeavour wasn't just about generating revenue for the agency; it was about carving a path for my own professional growth and secure recognition from my managers as a creative thinker with valuable ideas. I walked into that meeting room greeted by handshakes and smiles, and as they turned into laughter and excitement while my team presented the idea, I felt my nerves melt away into optimism as I looked forward to a promising future.
@@ -38,8 +38,6 @@ I saw this as my opportunity to manifest a response, born from my own negative e
 
 As creatives, we don’t want to be bogged-down in worries our work will be stolen, we just want to create and do our best work. I created Ambr to give others the evidence I didn’t have, and to fill the gap while solidarity across the industry lags. It’s a practical step that we can all take today towards garnering an industry culture that values your creative ownership, rather than disregarding it. Sadly, as and many others have learnt the hard way, if you’re not capturing the value from your work, someone else will.
 
-Ambr isn’t where my commitment ends, this is simply one example of a tool we can use today that automatically provides the level of working standards your hard work demands, placing the power firmly in the creator’s control. I want to open a dialog with you and the wider creative community to suggest other tools like Ambr we can add to our arsenal, and collectively decide upon which best practices we can enact today to improve the “client x creative” working relationship. If this has resonated with you, I’d love for you to introduce yourself, and leave a comment down below.
-
-Thanks for reading, share your work fearlessly.
+Ambr isn’t where my commitment ends, this is simply one example of a tool we can use today that automatically provides the level of working standards your hard work demands, placing the power firmly in the creator’s control. I want to open a dialog with you and the wider creative community to suggest other tools like Ambr we can add to our arsenal, and collectively decide upon which best practices we can enact today to improve the “client x creative” working relationship.
 
 Maria

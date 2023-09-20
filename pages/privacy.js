@@ -649,9 +649,13 @@ export default function PrivacyPanel() {
               textAlign={"center"}
               borderTop={"1px solid"}
               borderColor={"black.500"}
-              pt={8}
+              pt={[4, 8]}
             >
-              <Text className={"copyright"} fontWeight={"lighter"}>
+              <Text
+                className={"copyright"}
+                fontSize={"sm !important"}
+                fontWeight={"lighter !important"}
+              >
                 &copy; {new Date().getFullYear()}{" "}
                 <Link
                   fontSize={"sm"}

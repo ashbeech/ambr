@@ -85,6 +85,15 @@ body {
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .article p {
+    line-height: 1.56rem; /* Adjust the line height for mobile */
+  }
+  .article .intro {
+    line-height: 1.56rem; /* Adjust the line height for mobile */
+  }
+}
+
 @media (hover: none) {
   a:hover {
     color: inherit;
