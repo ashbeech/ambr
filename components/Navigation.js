@@ -164,6 +164,7 @@ export default function Navigation({
                   pt={[1, null]}
                   pb={[0, 0]}
                   gap={[4, 4]}
+                  minH={"50px !important"}
                 >
                   <Link
                     className={

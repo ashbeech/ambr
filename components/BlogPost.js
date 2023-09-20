@@ -147,7 +147,7 @@ export default function BlogPost({ content, data }) {
           zIndex={-999}
           src={"/images/blurred-ambr-001.png"}
           alt={data.title + " | Ambr"}
-          objectFit={"none"}
+          objectFit={"contain"}
           overflow={"visible"}
         />
       </Flex>
