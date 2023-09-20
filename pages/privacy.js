@@ -700,7 +700,7 @@ export default function PrivacyPanel() {
             w={["full", "80vw", "86vw", "full"]}
             minW={["", "", "43rem"]}
             maxW={["", "", "43rem"]}
-            mt={[8, "4.5em"]}
+            mt={[8, "5.5em"]}
             mx={[0, "auto"]}
             mb={8}
           >

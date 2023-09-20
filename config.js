@@ -57,7 +57,7 @@ export const wsUrl = `${wsOrigin}/websocket`;
 // Title of the site
 export const siteTitle = "Ambr";
 
-export const tagline = "Share work fearlessly.";
+export const tagline = "Share ideas worth protecting.";
 
 // Description of the site
 export const siteDescription =
