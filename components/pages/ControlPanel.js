@@ -1168,11 +1168,12 @@ export function ControlPanel() {
                     </>
                   )}
                   <Text
+                    className={"copyright"}
                     display={["block", "inline"]}
                     pl={!isLoggedIn ? [3, 4] : [3, 4]}
                     pt={[1, 0]}
-                    fontSize={"sm"}
-                    fontWeight={"lighter"}
+                    fontSize={"sm !important"}
+                    fontWeight={"lighter !important"}
                   >
                     &copy; {new Date().getFullYear()}{" "}
                     <Link

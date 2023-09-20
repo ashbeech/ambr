@@ -1,12 +1,13 @@
 import {
   Box,
-  Span,
+  Link,
   Flex,
   Text,
   Image,
   Heading,
   VStack,
   HStack,
+  Button,
 } from "@chakra-ui/react";
 
 export default function BlogPost({ content, data }) {
@@ -93,17 +94,55 @@ export default function BlogPost({ content, data }) {
                   m={"0 !important"}
                   alignSelf={"center"}
                 >
-                  <span className="name">By {data.author}</span> |{" "}
-                  <span className="pos">{data.position}</span>
+                  <Box as="span" className="name">
+                    By {data.author}
+                  </Box>{" "}
+                  |{" "}
+                  <Box as="span" className="pos">
+                    {data.position}
+                  </Box>
                 </Text>
               </HStack>
               <Box dangerouslySetInnerHTML={{ __html: content }} />
+              <HStack gap={1} m={"0em 0 1.65em 0"}>
+                <Link fontSize={"lg"} lineHeight={"base"} m={0} href="/">
+                  {
+                    "Thanks for reading, if it resonated you can join us in sharing work fearlessly through Ambr today, it's free to start."
+                  }
+                </Link>
+              </HStack>
+              <Box
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                textAlign={"center"}
+                borderTop={"1px solid"}
+                borderColor={"black.500"}
+                pt={[4, 8]}
+              >
+                <Text
+                  className={"copyright"}
+                  fontSize={"sm !important"}
+                  fontWeight={"lighter !important"}
+                >
+                  &copy; {new Date().getFullYear()}{" "}
+                  <Link
+                    fontSize={"sm"}
+                    fontWeight={"lighter"}
+                    href={"https://ambr.link"}
+                    target="_self"
+                    title="Ambr — Share ideas worth protecting."
+                  >
+                    Ambr
+                  </Link>
+                </Text>
+              </Box>
             </VStack>
           </Box>
         </Box>
         <Image
           pos={"absolute"}
-          top={0}
+          top={["9em", 0]}
           left={0}
           zIndex={-999}
           src={"/images/blurred-ambr-001.png"}
