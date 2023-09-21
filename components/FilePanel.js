@@ -262,6 +262,7 @@ export const FilePanel = ({
               style={{ height: "100%", width: "100%" }}
             >
               <Box
+                display={"flex"}
                 minH={"18rem"}
                 alignItems={"center"}
                 justifyContent={"center"}
@@ -454,7 +455,11 @@ export const FilePanel = ({
           <VStack
             display="flex"
             alignItems="flex-start"
-            justifyContent={["flex-start", "center"]}
+            justifyContent={
+              !isUserMatch
+                ? ["flex-start", "center"]
+                : ["flex-start", "flex-start"]
+            }
             overflow="visible"
             maxWidth="100%"
             w="100%"
@@ -548,7 +553,7 @@ export const FilePanel = ({
                 w={"100%"}
                 h={[null, "auto"]}
                 maxH={[null, "100%"]}
-                mt={[0, 0]}
+                mt={isExPublic ? [2, 0] : [2, 0]}
                 mb={isExPublic ? 0 : 2}
               >
                 <TopRightPanel
@@ -571,6 +576,9 @@ export const FilePanel = ({
                       mb={[2, 0]}
                       w="full"
                       overflow="hidden"
+                      borderTop={"1px solid"}
+                      borderBottom={"1px solid"}
+                      py={4}
                     >
                       <Box flex="1" minW="0" maxW="50%">
                         <Button
@@ -637,6 +645,7 @@ export const FilePanel = ({
                   w={["100%", "100%"]}
                   pt={isExPublic ? [0, 4] : [4, 0]}
                   overflow={"visible"}
+                  pb={isExPublic ? [2, 2] : [2, 2]}
                 >
                   <SealIcon color={"orange.400"} boxSize={"1.4rem"} />
                   <Heading
@@ -656,6 +665,7 @@ export const FilePanel = ({
                   w={"100%"}
                   h={["100%", "auto"]}
                   overflow={["auto", "hidden"]}
+                  borderTop={"1px solid"}
                 >
                   <Box
                     position={"relative"}
@@ -819,14 +829,15 @@ const TopRightPanel = React.memo(
             <Fade in>
               <Box
                 overflow={"hidden"}
-                mb={!isExPublic ? [3, 0] : [3, 0]}
+                mb={!isExPublic ? [5, 0] : [5, 0]}
                 spacing={0}
               >
-                <Text fontSize={"sm"} zIndex={999} noOfLines={[3, 2]}>
-                  Shared <RelativeTime to={d} />.{" "}
+                <Text fontSize={"md"} zIndex={999} noOfLines={[4, 3]}>
+                  File shared <RelativeTime to={d} />.{" "}
                   {!isExpired && (
                     <>
-                      Available for{" "}
+                      <br />
+                      Download available for{" "}
                       <RelativeTime
                         to={
                           refresh
@@ -843,8 +854,8 @@ const TopRightPanel = React.memo(
                   {isExpired && (
                     <>
                       {" "}
-                      Download window has expired, but the immutable certificate
-                      will remain accessible.
+                      Its download link has expired, but signed and sealed
+                      evidence of its contents and transfer remain.
                     </>
                   )}
                 </Text>
@@ -856,7 +867,7 @@ const TopRightPanel = React.memo(
             <Stack
               overflow={"hidden"}
               spacing={2}
-              mb={[0, 3]}
+              mb={[4, 8]}
               mt={!isExpired ? [0, 3] : [4, 0]}
             >
               {downloadAllSupported && (

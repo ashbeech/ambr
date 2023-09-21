@@ -133,7 +133,8 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    gap={[4, 4]}
+                    //gap={[4, 4]}
+                    pr={[4, 4]}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
                     }

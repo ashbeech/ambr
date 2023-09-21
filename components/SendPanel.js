@@ -245,7 +245,7 @@ export const SendPanel = ({
                 <>
                   {formModeLink
                     ? "You're all set."
-                    : "You're all set to share your link."}
+                    : "You're all set to share."}
                 </>
               )}
             </Text>
@@ -706,14 +706,19 @@ export const SendPanel = ({
               </Box>
             </Fade>
           </Box>
-          <Box h={mode === SHARE_MODE ? ["auto", "33%"] : "auto"}>
+          <Box
+            display={"flex"}
+            justifyContent={"end"}
+            alignItems={"end"}
+            h={mode === SHARE_MODE ? ["auto", "33%"] : "auto"}
+          >
             <Collapse
               in={mode === SHARE_MODE && mintState !== "Sealed"}
               style={{ height: "100%", width: "100%" }}
               unmountOnExit
             >
               <HStack
-                mt={[4, 4]}
+                mt={[4, 0]}
                 w="full"
                 h={mode === SHARE_MODE ? ["auto", "33%"] : "auto"}
                 align="center"
@@ -732,7 +737,7 @@ export const SendPanel = ({
                   color={"blackAlpha.900"}
                   noOfLines={3}
                   w={"full"}
-                  pr={[0, "2.1rem"]}
+                  pr={[0, 0]}
                 >
                   Please keep this window open until your file is signed and
                   sealed.

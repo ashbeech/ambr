@@ -70,6 +70,7 @@ export const styles = {
     h2: {
       fontSize: "2xl !important",
       letterSpacing: "wide !important",
+      lineHeight: "base !important",
       fontWeight: "semibold !important",
     },
     h3: {

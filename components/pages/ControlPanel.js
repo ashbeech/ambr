@@ -204,7 +204,6 @@ export function ControlPanel() {
       setMode(null);
       setPath("/top-up");
     }
-    console.log("FILES TRANSFER REEMMM:", fileTransfersRemaining);
   }, [fileTransfersRemaining, pathname, _mode]);
 
   /*   const handleChangeRooms = (rooms) => {
@@ -912,13 +911,14 @@ export function ControlPanel() {
                                     </Text>
                                     <Text fontSize={"md"}>
                                       The file&apos;s download link has expired,
-                                      but evidence of its transfer and contents
-                                      remains.
+                                      but the signed and sealed evidence of its
+                                      contents and transfer remain.
                                       <br />
                                       <br />
                                       If you hold the orginal file, re-upload it
                                       here to extend the download link as well
-                                      as verify its certificated evidence.
+                                      as verify its certificated historic
+                                      record.
                                     </Text>
                                   </SlideFade>
                                 )}
@@ -1182,7 +1182,6 @@ export function ControlPanel() {
                       href={!showHomeStone ? "https://ambr.link" : null}
                       target="_self"
                       title="Ambr — Share ideas worth protecting."
-                      isDisabled={showHomeStone}
                     >
                       Ambr
                     </Link>

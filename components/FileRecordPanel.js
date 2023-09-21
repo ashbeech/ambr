@@ -44,7 +44,7 @@ export function FileRecordPanel({
       <VStack
         mb={publicView ? [1, 0] : [0, 0]}
         w={"full"}
-        h={publicView ? "85%" : "100%"}
+        h={publicView ? "88%" : "100%"}
         borderRadius={"md"}
         overflow={"visible"}
       >
@@ -99,7 +99,7 @@ export function FileRecordPanel({
           <VStack w="full" alignItems="start">
             <HStack w="full" minH={"1.8rem"}>
               <Text className={"title"} fontWeight={"semibold"} flex={1}>
-                {"Timestamp: "}
+                {"Date: "}
               </Text>
               <Text className={"content"} w="full" noOfLines={1} flex={8}>
                 {readableTimeStamp}
@@ -212,7 +212,7 @@ export function FileRecordPanel({
       {publicView && (
         <VStack
           w={"full"}
-          h={[null, "15%"]}
+          h={[null, "12%"]}
           pos={["", "relative"]}
           bottom={[null, null]}
           mb={[4, 0]}
