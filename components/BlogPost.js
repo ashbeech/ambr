@@ -120,7 +120,7 @@ export default function BlogPost({ content, data, link }) {
               <Box className="body">
                 <Box dangerouslySetInnerHTML={createMarkup(content)} />
                 <Box as={"p"}>
-                  <Text as={"a"} href={siteTwitterUrl}>
+                  <Text as={"a"} href={siteTwitterUrl} target="_blank">
                     <Box as={"span"} sx={{ fontStyle: "italic" }}>
                       {data.author}
                     </Box>
