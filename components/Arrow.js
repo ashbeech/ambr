@@ -1,14 +1,14 @@
 import {
   chakra,
   Box,
-  Stack,
+  //Stack,
   Text,
   Spinner,
   VStack,
-  HStack,
+  //HStack,
   Flex,
-  SlideFade,
-  Heading,
+  //SlideFade,
+  //Heading,
   forwardRef,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";

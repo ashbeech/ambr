@@ -2,13 +2,11 @@
 import {
   Box,
   Text,
-  //Flex,
   Button,
   Skeleton,
   Spinner,
   Stack,
   useDisclosure,
-  //Img,
 } from "@chakra-ui/react";
 import { truncateString } from "../lib/truncateString.js";
 import { useState, useEffect } from "react";

@@ -4,21 +4,20 @@ import path from "path";
 import grayMatter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import BlogPost from "../../components/BlogPost";
 import { Fade, Box, Center } from "@chakra-ui/react";
+import BlogPost from "../../components/BlogPost";
 import { getUser } from "../../lib/UserManager";
 import LogoLoader from "../../components/icons/LogoLoader";
 import { MagicContext } from "../../components/MagicContext.js";
 import Navigation from "../../components/Navigation.js";
+import { origin } from "../../config.js";
 
-export default function BlogArticle({ content, data }) {
+export default function BlogArticle({ content, data, link }) {
   const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
   const [fileTransfersRemaining, setSharesRemaining] = useState(-999);
   const [loading, setLoading] = useState(true);
 
   const initLoader = async (user) => {
-    //console.log("Getting user: ", user);
-
     if (!user || !user?.id) {
       await getUser(publicAddress)
         .then((user) => initLoader(user))
@@ -76,7 +75,7 @@ export default function BlogArticle({ content, data }) {
             chainState={null}
             customKey={null}
           />
-          <BlogPost content={content} data={data} />
+          <BlogPost content={content} data={data} link={link} />
         </>
       )}
     </Box>
@@ -115,6 +114,7 @@ export async function getStaticProps({ params }) {
     props: {
       content: contentHtml,
       data,
+      link: `${origin}/blog/${article}`,
     },
   };
 }

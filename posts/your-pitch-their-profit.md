@@ -38,6 +38,6 @@ I saw this as my opportunity to manifest a response, born from my own negative e
 
 As creatives, we don’t want to be bogged-down in worries our work will be stolen, we just want to create and do our best work. I created Ambr to give others the evidence I didn’t have, and to fill the gap while solidarity across the industry lags. It’s a practical step that we can all take today towards garnering an industry culture that values your creative ownership, rather than disregarding it. Sadly, as and many others have learnt the hard way, if you’re not capturing the value from your work, someone else will.
 
-Ambr isn’t where my commitment ends, this is simply one example of a tool we can use today that automatically provides the level of working standards your hard work demands, placing the power firmly in the creator’s control. I want to open a dialog with you and the wider creative community to suggest other tools like Ambr we can add to our arsenal, and collectively decide upon which best practices we can enact today to improve the “client x creative” working relationship.
+Ambr isn’t where my commitment ends, this is simply one example of a tool we can use today that automatically provides the level of working standards your hard work demands, placing the power firmly in the creator’s control. I want to open a dialogue with you and the wider creative community to suggest other tools like Ambr we can add to our arsenal, and collectively decide upon which best practices we can enact today to improve the “client x creative” working relationship.
 
-Maria
+Thanks for reading, if it resonated you can join us, [it's free to start](https://ambr.link/) sharing your work fearlessly through [Ambr](https://ambr.link/) today.

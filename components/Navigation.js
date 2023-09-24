@@ -11,7 +11,6 @@ import {
   MenuList,
   MenuButton,
   Icon,
-  Text,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { LogoIcon } from "./icons/LogoIcon";
@@ -133,7 +132,6 @@ export default function Navigation({
               {filePage && (
                 <Box>
                   <Link
-                    //gap={[4, 4]}
                     pr={[4, 4]}
                     className={
                       disabled || currentPage === "faq" ? "faq disabled" : "faq"
@@ -144,6 +142,19 @@ export default function Navigation({
                     disabled={currentPage === "faq"}
                   >
                     What&apos;s Ambr?
+                  </Link>
+                  <Link
+                    className={
+                      disabled || currentPage === "blog"
+                        ? "blog disabled"
+                        : "blog"
+                    }
+                    href={"/blog/your-pitch-their-profit"}
+                    target={"_self"}
+                    rel={"noopener"}
+                    disabled={currentPage === "blog/your-pitch-their-profit"}
+                  >
+                    Blog
                   </Link>
                   <Button
                     onClick={() => {
@@ -177,6 +188,19 @@ export default function Navigation({
                     disabled={currentPage === "faq"}
                   >
                     What&apos;s Ambr?
+                  </Link>
+                  <Link
+                    className={
+                      disabled || currentPage === "blog"
+                        ? "blog disabled"
+                        : "blog"
+                    }
+                    href={"/blog/your-pitch-their-profit"}
+                    target={"_self"}
+                    rel={"noopener"}
+                    disabled={currentPage === "blog/your-pitch-their-profit"}
+                  >
+                    Blog
                   </Link>
                   {currentPage !== "" && (
                     <Button
@@ -253,27 +277,30 @@ export default function Navigation({
                                 : `(${fileTransfersRemaining})`}
                             </MenuItem>
                           )}
+                          {currentPage !== "blog/your-pitch-their-profit" && (
+                            <MenuItem
+                              isDisabled={disabled}
+                              fontSize={"md"}
+                              className={disabled ? "blog disabled" : "blog"}
+                              onClick={() => {
+                                handlePageChange(
+                                  "blog/your-pitch-their-profit"
+                                );
+                              }}
+                            >
+                              Blog
+                            </MenuItem>
+                          )}
                           {currentPage !== "faq" && (
                             <MenuItem
                               isDisabled={disabled}
                               fontSize={"md"}
                               className={disabled ? "faq disabled" : "faq"}
-                              p={0}
+                              onClick={() => {
+                                handlePageChange("faq");
+                              }}
                             >
-                              <Link
-                                href={"/faq"}
-                                target={"_self"}
-                                rel={"noopener"}
-                                fontSize={"sm"}
-                                title="Take a read of Ambr's frequently asked questions"
-                                fontWeight={"normal"}
-                                w={"100%"}
-                                h={"100%"}
-                                px={6}
-                                py={4}
-                              >
-                                FAQ
-                              </Link>
+                              FAQ
                             </MenuItem>
                           )}
                           <MenuItem
@@ -353,6 +380,23 @@ export default function Navigation({
                           fileTransfersRemaining === -999
                             ? ``
                             : `(${fileTransfersRemaining})`}
+                        </Link>
+                        <Link
+                          //pr={[4, 4]}
+                          className={
+                            disabled ||
+                            currentPage === "blog/your-pitch-their-profit"
+                              ? "blog disabled"
+                              : "blog"
+                          }
+                          href={"/blog/your-pitch-their-profit"}
+                          target={"_self"}
+                          rel={"noopener"}
+                          disabled={
+                            currentPage === "blog/your-pitch-their-profit"
+                          }
+                        >
+                          Blog
                         </Link>
                         <Link
                           pr={6}

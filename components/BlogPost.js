@@ -7,10 +7,16 @@ import {
   Heading,
   VStack,
   HStack,
-  Button,
 } from "@chakra-ui/react";
+import { Share } from "./Share.js";
+import { siteTwitterUrl } from "../config.js";
 
-export default function BlogPost({ content, data }) {
+export default function BlogPost({ content, data, link }) {
+  // Function to render hyperlinks from raw HTML string
+  const createMarkup = (htmlString) => {
+    return { __html: htmlString };
+  };
+
   return (
     <Box mt={[8, "5.5em"]} mb={8} w={"100%"}>
       <Flex
@@ -23,7 +29,7 @@ export default function BlogPost({ content, data }) {
         align="center"
         className="article"
       >
-        <Box w={["90%", "80%"]} maxW={"82rem"} pb={[5, 8]} h={"100%"}>
+        <Box w={["90%", "75%"]} maxW={"82rem"} pb={[5, 8]} h={"100%"}>
           <Flex w={"100%"} m={"0 !important"}>
             <Heading
               textIndent={["0", "-20%", "-15%", "-15%", "-15%"]}
@@ -33,16 +39,24 @@ export default function BlogPost({ content, data }) {
               mb={[0, "0.33em !important"]}
               fontSize={[
                 "6xl !important",
-                "5.5em !important",
-                "6.5em !important",
-                "7.5em !important",
-                "9em !important",
+                "4.8em !important",
+                "5.8em !important",
+                "6.8em !important",
+                "8.5em !important",
               ]}
               className="fancy"
               letterSpacing={["normal !important", "normal !important"]}
               lineHeight={["shorter", "short !important", "1.12em"]} // Adjust line height as needed
             >
-              {data.title}
+              {data.title.split(" ").length === 4 ? (
+                <>
+                  {data.title.split(" ").slice(0, 2).join(" ")}
+                  <br />
+                  {data.title.split(" ").slice(2).join(" ")}
+                </>
+              ) : (
+                data.title
+              )}
             </Heading>
           </Flex>
           <Box
@@ -71,7 +85,7 @@ export default function BlogPost({ content, data }) {
             <VStack
               w={["100%", "100%", "100%", "67%"]}
               h={"100%"}
-              pr={[0, 0, 0, "20%"]}
+              pr={[0, 0, 0, "10%"]}
               alignItems={"baseline"}
             >
               <Box
@@ -103,14 +117,34 @@ export default function BlogPost({ content, data }) {
                   </Box>
                 </Text>
               </HStack>
-              <Box dangerouslySetInnerHTML={{ __html: content }} />
-              <HStack gap={1} m={"0em 0 1.65em 0"}>
-                <Link fontSize={"lg"} lineHeight={"base"} m={0} href="/">
-                  {
-                    "Thanks for reading, if it resonated you can join us in sharing work fearlessly through Ambr today, it's free to start."
-                  }
-                </Link>
-              </HStack>
+              <Box className="body">
+                <Box dangerouslySetInnerHTML={createMarkup(content)} />
+                <Box as={"p"}>
+                  <Text as={"a"} href={siteTwitterUrl}>
+                    <Box as={"span"} sx={{ fontStyle: "italic" }}>
+                      {data.author}
+                    </Box>
+                  </Text>
+                </Box>
+              </Box>
+              <Heading
+                as={"h3"}
+                fontWeight={"medium !important"}
+                zIndex={999}
+                textAlign={"left"}
+                noOfLines={1}
+                w={"full"}
+                pb={2}
+              >
+                {"Link to this article"}
+              </Heading>
+              <Share
+                url={link}
+                w="full"
+                maxW="3xl"
+                size={["md", "lg"]}
+                justify="center"
+              />
               <Box
                 w={"100%"}
                 alignItems={"center"}
