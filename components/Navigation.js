@@ -328,7 +328,7 @@ export default function Navigation({
                         justifyContent={"start"}
                       >
                         <Link
-                          pr={6}
+                          pr={[0, 3, 6]}
                           className={
                             disabled || currentPage === ""
                               ? "share disabled"
@@ -342,7 +342,7 @@ export default function Navigation({
                           Transfer a File
                         </Link>
                         <Link
-                          pr={6}
+                          pr={[0, 3, 6]}
                           className={
                             disabled || currentPage === "files"
                               ? "files disabled"
@@ -356,7 +356,7 @@ export default function Navigation({
                           Your Files
                         </Link>
                         <Link
-                          pr={6}
+                          pr={[0, 3, 6]}
                           className={
                             disabled || !showTopup
                               ? "top-up disabled"
@@ -382,7 +382,7 @@ export default function Navigation({
                             : `(${fileTransfersRemaining})`}
                         </Link>
                         <Link
-                          //pr={[4, 4]}
+                          pr={[0, 3, 6]}
                           className={
                             disabled ||
                             currentPage === "blog/your-pitch-their-profit"
@@ -399,7 +399,7 @@ export default function Navigation({
                           Blog
                         </Link>
                         <Link
-                          pr={6}
+                          pr={[0, 3, 6]}
                           className={
                             disabled || currentPage === "faq"
                               ? "faq disabled"
