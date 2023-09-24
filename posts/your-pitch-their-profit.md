@@ -1,6 +1,6 @@
 ---
 title: "Your pitch, their profit."
-date: "2023-09-08"
+date: "2023-09-25"
 author: "Maria K"
 avatar: "/images/posts/authors/maria.jpg"
 position: "Creative Director"
