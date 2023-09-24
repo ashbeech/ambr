@@ -853,7 +853,7 @@ const TopRightPanel = React.memo(
                   {isExpired && (
                     <>
                       {" "}
-                      Its download link has expired, but signed and sealed
+                      Its download link has expired, but the signed and sealed
                       evidence of its contents and transfer remain.
                     </>
                   )}
