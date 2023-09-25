@@ -41,4 +41,4 @@ As creatives, we don’t want to be bogged down in worries our work will be stol
 
 Ambr isn’t where my commitment ends, this is simply one example of a tool we can use today that automatically provides the level of working standards your hard work demands, placing the power firmly in the creator’s control. I want to open a dialogue with you and the wider creative community to suggest other tools like Ambr that we can add to our arsenal, and collectively decide upon which best practices we can enact today to improve the “client x creative” working relationship.
 
-Thanks for reading, and if it resonates, you can join us! [It's free to start sharing your work fearlessly](https://ambr.link/) through [Ambr](https://ambr.link/) today.
+Thanks for reading, and if it resonates, you can join us! It's free to start sharing your work fearlessly through [Ambr](https://ambr.link/) today.
