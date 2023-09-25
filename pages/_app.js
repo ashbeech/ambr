@@ -162,12 +162,18 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta name="theme-color" content={primaryColor} />
                       {!globalThis.location?.pathname.startsWith("/blog/") && (
                         <>
-                          <meta property="og:title" content={title} />
                           <meta
+                            name="title"
+                            property="og:title"
+                            content={title}
+                          />
+                          <meta
+                            name="description"
                             property="og:description"
                             content={description}
                           />
                           <meta
+                            name="image"
                             property="og:image"
                             content={origin + "/images/social-share-home.png"}
                           />
