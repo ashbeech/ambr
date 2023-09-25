@@ -85,7 +85,7 @@ export const styles = {
     },
     p: {
       fontSize: "md",
-      lineHeight: "tall",
+      lineHeight: "short",
     },
     ol: {
       listStyle: "number",
