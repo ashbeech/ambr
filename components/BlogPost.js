@@ -182,7 +182,6 @@ export default function BlogPost({ content, data, link }) {
           src={"/images/blurred-ambr-001.png"}
           alt={data.title + " | Ambr"}
           objectFit={"contain"}
-          overflow={"visible"}
         />
       </Flex>
     </Box>
