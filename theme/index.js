@@ -132,8 +132,8 @@ export const theme = extendTheme(
     lineHeights: {
       normal: "normal",
       none: 1.4,
-      shorter: 1.24,
-      short: 1.34,
+      shorter: 1.26,
+      short: 1.36,
       base: 1.44,
       tall: 1.58,
       taller: 2,
