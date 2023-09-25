@@ -1,7 +1,7 @@
 ---
 title: "Your pitch, their profit."
 date: "2023-09-25"
-author: "Maria K"
+author: "Maria"
 avatar: "/images/posts/authors/maria.jpg"
 position: "Creative Director"
 image: "/images/posts/your-pitch-their-profit-post-001.jpg"
