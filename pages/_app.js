@@ -121,6 +121,10 @@ export default function AmbrApp({ Component, pageProps, err }) {
                         name="apple-mobile-web-app-status-bar-style"
                         content="black-translucent"
                       />
+                      <meta
+                        name="apple-mobile-web-app-title"
+                        content={siteTitle}
+                      />
                       <meta name="application-name" content={siteTitle} />
                       <link
                         rel="shortcut icon"
@@ -152,8 +156,8 @@ export default function AmbrApp({ Component, pageProps, err }) {
                     rel="mask-icon"
                     href="/safari-pinned-tab.svg"
                     color={primaryColor}
-                  />
-                   */}
+                      />
+                      */}
                       <meta
                         name="msapplication-TileColor"
                         content={primaryColor}

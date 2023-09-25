@@ -52,11 +52,12 @@ export default function BlogArticle({ content, data, link }) {
   return (
     <Box w={"100%"}>
       <Head>
-        <meta name="title" content={siteTitle + " - " + data.title} />
-        <meta name="description" content={data.intro} />
-        <meta property="og:title" content={siteTitle + " - " + data.title} />
-        <meta property="og:description" content={data.intro} />
-        <meta property="og:image" content={origin + data.preview} />
+        <meta
+          property="og:title"
+          content={siteTitle + " - " + data.title}
+        ></meta>
+        <meta property="og:description" content={data.intro}></meta>
+        <meta property="og:image" content={origin + data.preview}></meta>
         <meta property="og:url" content={link} />
         <meta property="og:type" content="article" />
         <meta
@@ -64,7 +65,8 @@ export default function BlogArticle({ content, data, link }) {
           property="og:author"
           content={data.author + ", " + siteTitle + " co-founder"}
         />
-        <meta name="site_name" property="og:site_name" content={siteTitle} />
+        <meta property="og:site_name" content={siteTitle} />
+        <meta property="og:determiner" content="a" />
         <meta name="twitter:title" content={siteTitle + " - " + data.title} />
         <meta name="twitter:image" content={origin + data.preview} />
         <meta name="twitter:image:alt" content={data.intro} />
