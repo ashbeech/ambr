@@ -6,7 +6,7 @@ avatar: "/images/posts/authors/maria.jpg"
 position: "Creative Director"
 image: "/images/posts/your-pitch-their-profit-post-001.jpg"
 preview: "/images/posts/your-pitch-their-profit-post-001-preview.jpg"
-intro: "A pivotal moment dramatically altered the trajectory of my career, unexpectedly, revealing a serious issue, pervasive within the creative industry. The experience was the spark that propelled me to craft a solution."
+intro: "A pivotal moment dramatically altered the trajectory of my career by unexpectedly revealing a serious issue pervasive within the creative industry. The experience was the spark that propelled me to craft a solution."
 ---
 
 Five years ago, I found myself nervously sat on a train, en route to what would become a pivotal moment in my career as a young female graphic designer in the creative industry. My destination held the promise of my first pitch to a potential client, representing the agency I worked for at the time. The core of my mission was simple: to present my brainchild, a marketing campaign based around an idea with a unique take in a traditionally quite conservative and, dare I say, downright dull B2B sector. This endeavour wasn't just about generating revenue for the agency; it was about carving a path for my own professional growth and securing recognition from my managers as a creative thinker with valuable ideas. I walked into that meeting room greeted by handshakes and smiles, and as they turned into laughter and excitement while my team presented the idea, I felt my nerves melt away into optimism as I looked forward to a promising future.
