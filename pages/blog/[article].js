@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
@@ -10,7 +11,7 @@ import { getUser } from "../../lib/UserManager";
 import LogoLoader from "../../components/icons/LogoLoader";
 import { MagicContext } from "../../components/MagicContext.js";
 import Navigation from "../../components/Navigation.js";
-import { origin } from "../../config.js";
+import { origin, siteTitle } from "../../config.js";
 
 export default function BlogArticle({ content, data, link }) {
   const { magic, publicAddress, isLoggedIn } = useContext(MagicContext);
@@ -50,6 +51,18 @@ export default function BlogArticle({ content, data, link }) {
 
   return (
     <Box w={"100%"}>
+      <Head>
+        <meta property="og:title" content={siteTitle + " - " + data.title} />
+        <meta property="og:description" content={data.intro} />
+        <meta property="og:image" content={origin + data.preview} />
+        <meta property="og:url" content={link} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content={siteTitle} />
+        <meta name="twitter:title" content={siteTitle + " - " + data.title} />
+        <meta name="twitter:image" content={origin + data.preview} />
+        <meta name="twitter:image:alt" content={data.intro} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       {loading && (
         <Fade in={loading}>
           <Box

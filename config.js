@@ -61,7 +61,7 @@ export const tagline = "Share ideas worth protecting.";
 
 // Description of the site
 export const siteDescription =
-  "Nobody else should have the power to take credit for your hard work, siphoning away its value from you. Ambr stands as the sole way to send files that puts you, the creator, in control of the work you're sharing. Every shared file through Ambr is equipped with a tamper-proof, time-stamped digital fingerprint of the work, along with who you shared it with, securely tied to you. Ambr strengthens your undeniable claim to creative ownership and entitlement to your work's value.";
+  "Ambr stands as the only file transfer to send files that puts you, the creator, in control of the work you're sharing. Every shared file through Ambr is equipped with a tamper-proof, time-stamped digital fingerprint of the work, along with who you shared it with, securely tied to you. Ambr strengthens your undeniable claim to creative ownership and entitlement to your work's value.";
 // Twitter username of the site
 export const socialHandle = "ambrlink";
 

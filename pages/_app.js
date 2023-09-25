@@ -160,23 +160,36 @@ export default function AmbrApp({ Component, pageProps, err }) {
                         content={primaryColor}
                       />
                       <meta name="theme-color" content={primaryColor} />
-                      <meta property="og:title" content={title} />
-                      <meta property="og:description" content={description} />
-                      <meta
-                        property="og:image"
-                        content={origin + "/images/social-share-home.png"}
-                      />
-                      <meta property="og:site_name" content={siteTitle} />
-                      <meta property="og:type" content="website" />
+                      {!globalThis.location?.pathname.startsWith("/blog/") && (
+                        <>
+                          <meta property="og:title" content={title} />
+                          <meta
+                            property="og:description"
+                            content={description}
+                          />
+                          <meta
+                            property="og:image"
+                            content={origin + "/images/social-share-home.png"}
+                          />
+                          <meta property="og:site_name" content={siteTitle} />
+                          <meta property="og:type" content="website" />
+                          <meta name="twitter:title" content={title} />
+                          <meta
+                            name="twitter:image"
+                            content={origin + "/images/social-share-home.png"}
+                          />
+                          <meta
+                            name="twitter:image:alt"
+                            content={description}
+                          />
+                          <meta
+                            name="twitter:card"
+                            content="summary_large_image"
+                          />
+                        </>
+                      )}
                       <meta name="twitter:site" content={socialHandle} />
                       <meta name="twitter:creator" content={socialHandle} />
-                      <meta name="twitter:title" content={title} />
-                      <meta
-                        name="twitter:image"
-                        content={origin + "/images/social-share-home.png"}
-                      />
-                      <meta name="twitter:image:alt" content={description} />
-                      <meta name="twitter:card" content="summary_large_image" />
                       <link rel="icon" href={origin + "/favicon.ico"} />
                     </Head>
                   </AmbrContext.Provider>
