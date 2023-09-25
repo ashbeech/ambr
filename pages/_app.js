@@ -112,7 +112,6 @@ export default function AmbrApp({ Component, pageProps, err }) {
                         httpEquiv="ScreenOrientation"
                         content="autoRotate:disabled"
                       ></meta>
-                      <meta name="description" content={description} />
                       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                       {/*                       <meta
                         httpEquiv="Content-Security-Policy"
@@ -162,18 +161,14 @@ export default function AmbrApp({ Component, pageProps, err }) {
                       <meta name="theme-color" content={primaryColor} />
                       {!globalThis.location?.pathname.startsWith("/blog/") && (
                         <>
+                          <meta name="title" content={title} />
+                          <meta name="description" content={description} />
+                          <meta property="og:title" content={title} />
                           <meta
-                            name="title"
-                            property="og:title"
-                            content={title}
-                          />
-                          <meta
-                            name="description"
                             property="og:description"
                             content={description}
                           />
                           <meta
-                            name="image"
                             property="og:image"
                             content={origin + "/images/social-share-home.png"}
                           />

@@ -76,9 +76,9 @@ body {
 }
 
 .article .intro {
-  line-height: 1.42rem;
+  line-height: 1.46rem;
   font-weight: 600;
-  letter-spacing: 0.001rem;
+  letter-spacing: 0.002rem;
 }
 
 .article .body a {

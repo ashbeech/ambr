@@ -177,7 +177,7 @@ export default function BlogPost({ content, data, link }) {
         <Image
           pos={"absolute"}
           top={["9em", 0]}
-          left={0}
+          left={"-150px"}
           zIndex={-999}
           src={"/images/blurred-ambr-001.png"}
           alt={data.title + " | Ambr"}
