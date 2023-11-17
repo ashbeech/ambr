@@ -71,13 +71,13 @@ body {
 .article .intro {
   letter-spacing: 0.009em;
   padding: 0em 0 1.65em 0;
-  line-height: 1.36rem;
+  line-height: 1.58rem;
   font-size: 1.33em;
   font-weight: 400;
 }
 
 .article .intro {
-  line-height: 1.56em;
+  line-height: 1.48em;
   font-weight: 600;
   letter-spacing: 0.002rem;
 }
