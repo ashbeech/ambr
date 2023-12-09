@@ -752,7 +752,7 @@ export const FilePanel = ({
                 <Box
                   w={"full"}
                   pos={["relative", "relative"]}
-                  pt={[0, 4]}
+                  pt={[0, 2]}
                   bottom={0}
                 >
                   <SharePanel
