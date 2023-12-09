@@ -835,7 +835,6 @@ const TopRightPanel = React.memo(
                   File shared <RelativeTime to={d} />.{" "}
                   {!isExpired && (
                     <>
-                      <br />
                       Download available for{" "}
                       <RelativeTime
                         to={
