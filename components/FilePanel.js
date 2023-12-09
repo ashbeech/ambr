@@ -866,7 +866,7 @@ const TopRightPanel = React.memo(
             <Stack
               overflow={"hidden"}
               spacing={2}
-              mb={[4, 8]}
+              mb={[4, 6]}
               mt={!isExpired ? [0, 3] : [4, 0]}
             >
               {downloadAllSupported && (
