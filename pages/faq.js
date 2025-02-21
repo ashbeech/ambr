@@ -245,7 +245,7 @@ export default function FaqPanel() {
                 We&apos;re always keen to hear your experience of Ambr. If you
                 have a feature request or suggestion, please share it with us{" "}
                 <Link
-                  href={"mailto:thisis@bullish.design"}
+                  href={"mailto:feedback@bullish.design"}
                   target="_blank"
                   title="Contact us with your feedback to help improve Ambr"
                 >
