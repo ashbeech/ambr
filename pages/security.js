@@ -110,7 +110,7 @@ export default function SecurityPanel() {
                 &quot;just trust me, bro&quot;, so here&apos;s a transparent
                 guide to Ambr&apos;s security design. If you have any questions,
                 feel free to contact us{" "}
-                <Link href="mailto:opsec@ambr.link" target="_blank">
+                <Link href="mailto:opsec@bullish.design" target="_blank">
                   opsec@ambr.link
                 </Link>
                 , and we&apos;ll be happy to help.
@@ -593,7 +593,7 @@ export default function SecurityPanel() {
                 If you&apos;ve found a security vulnerability in Ambr, please
                 report it to{" "}
                 <Link
-                  href="mailto:ifoundabugin@ambr.link"
+                  href="mailto:ifoundabugin@bullish.design"
                   target="_blank"
                   title="Hi, I found a bug in Ambr!"
                 >

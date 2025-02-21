@@ -90,7 +90,7 @@ export default function TermsPanel() {
                 general idea of what&apos;s included. If you have any questions
                 or concerns, feel free to contact us{" "}
                 <Link
-                  href={"mailto:legal@ambr.link"}
+                  href={"mailto:legal@bullish.design"}
                   target="_blank"
                   title="Mail Ambr's legal department here"
                 >

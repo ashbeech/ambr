@@ -557,7 +557,7 @@ export default function PrivacyPanel() {
               <Text pb={[6, 8]}>
                 You can do this by sending an email to{" "}
                 <Link
-                  href={"mailto:privacy@ambr.link"}
+                  href={"mailto:privacy@bullish.design"}
                   target="_blank"
                   title="Mail Ambr's privacy department here"
                 >
@@ -585,7 +585,7 @@ export default function PrivacyPanel() {
                 encrypted data stored on IPFS; deletion is unfeasible. You can
                 request this via{" "}
                 <Link
-                  href={"mailto:privacy@ambr.link"}
+                  href={"mailto:privacy@bullish.design"}
                   target="_blank"
                   title="Mail Ambr's privacy department here"
                 >
@@ -633,7 +633,7 @@ export default function PrivacyPanel() {
                 Please reach out to us regarding any privacy-related questions,
                 via{" "}
                 <Link
-                  href={"mailto:privacy@ambr.link"}
+                  href={"mailto:privacy@bullish.design"}
                   target="_blank"
                   title="Mail Ambr's privacy department here"
                 >

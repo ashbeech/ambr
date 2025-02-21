@@ -245,7 +245,7 @@ export default function FaqPanel() {
                 We&apos;re always keen to hear your experience of Ambr. If you
                 have a feature request or suggestion, please share it with us{" "}
                 <Link
-                  href={"mailto:feedback@ambr.link"}
+                  href={"mailto:feedback@bullish.design"}
                   target="_blank"
                   title="Contact us with your feedback to help improve Ambr"
                 >
@@ -291,7 +291,7 @@ export default function FaqPanel() {
                 </Link>{" "}
                 policies. Also feel free to reach out to{" "}
                 <Link
-                  href={"mailto:privacy@ambr.link"}
+                  href={"mailto:privacy@bullish.design"}
                   target="_blank"
                   title="Contact Ambr's privacy team"
                 >
@@ -306,7 +306,7 @@ export default function FaqPanel() {
                 If you have further questions about Ambr, feel free to contact
                 us via email{" "}
                 <Link
-                  href={"mailto:support@ambr.link"}
+                  href={"mailto:support@bullish.design"}
                   target="_blank"
                   title="Contact Ambr's support team"
                 >
