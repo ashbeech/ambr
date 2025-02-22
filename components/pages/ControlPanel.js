@@ -706,9 +706,11 @@ export function ControlPanel() {
                                   className={"fancy"}
                                   noOfLines={3}
                                 >
-                                  Send a file.
+                                  Send a file
                                   <br />
-                                  Prove it&nbsp;s yours.
+                                  you can prove&apos;s
+                                  <br />
+                                  yours.
                                 </Text>
                                 <OrderedList>
                                   <ListItem>Upload your file.</ListItem>
