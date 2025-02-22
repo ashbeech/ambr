@@ -768,13 +768,7 @@ export const SendPanel = ({
                   noOfLines={2}
                   w={"full"}
                 >
-                  {formModeLink ? (
-                    <>
-                      You can also securely share <br /> your file via its link:
-                    </>
-                  ) : (
-                    <>Securely share your file via this link:</>
-                  )}
+                  Securely share your file via this link:
                 </Heading>
                 <Share
                   url={shareUrl}
