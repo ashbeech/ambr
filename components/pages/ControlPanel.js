@@ -38,7 +38,7 @@ import {
   tagline,
   //environment
 } from "../../config.js";
-import { hasVisitedBefore } from "../lib/hasVisitedBefore";
+import { hasVisitedBefore } from "../../lib/hasVisitedBefore";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
