@@ -38,6 +38,7 @@ import {
   tagline,
   //environment
 } from "../../config.js";
+import { hasVisitedBefore } from "../lib/hasVisitedBefore";
 
 export function ControlPanel() {
   const { hash, pathname } = globalThis.location;
@@ -60,6 +61,7 @@ export function ControlPanel() {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [fileName, setFileName] = useState("");
   const [fileTransfersRemaining, setSharesRemaining] = useState(-999);
+  const [visitedBefore, setVisitedBefore] = useState(false);
 
   const showFileTransfer =
     (fileTransfersRemaining !== -999 && fileTransfersRemaining <= 0) ||
@@ -89,6 +91,43 @@ export function ControlPanel() {
   const handleFileTransfersRemainingUpdate = (value) => {
     setSharesRemaining(value);
   };
+
+  useEffect(() => {
+    async function checkVisitedStatus() {
+      try {
+        const visitedBefore = await hasVisitedBefore();
+        setVisitedBefore(visitedBefore);
+
+        if (!visitedBefore) {
+          const request = window.indexedDB.open("appDB", 1);
+
+          request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(["visits"], "readwrite");
+            const objectStore = transaction.objectStore("visits");
+            objectStore.add({ timestamp: Date.now() });
+
+            transaction.oncomplete = () => {
+              db.close();
+            };
+          };
+
+          request.onerror = (event) => {
+            console.error("IndexedDB error:", event.target.error);
+          };
+
+          request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore("visits", { autoIncrement: true });
+          };
+        }
+      } catch (error) {
+        console.error("IndexedDB error:", error);
+      }
+    }
+
+    checkVisitedStatus();
+  }, []);
 
   const handleFiles = useCallback(
     async (files) => {
@@ -667,11 +706,17 @@ export function ControlPanel() {
                                   className={"fancy"}
                                   noOfLines={3}
                                 >
-                                  Share
+                                  {!visitedBefore
+                                    ? `Send a file
+                                  <br />
+                                  with proof of
+                                  <br />
+                                  authenticity.`
+                                    : `Share
                                   <br />
                                   your pitch
                                   <br />
-                                  in a pinch.
+                                  in a pinch`}
                                 </Text>
                                 <OrderedList>
                                   <ListItem>Upload your file.</ListItem>

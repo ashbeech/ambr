@@ -108,7 +108,7 @@ function Login() {
               size={"md"}
               onClick={handleLogin}
             >
-              {!visitedBefore ? "Start Sharing (It's FREE)" : "Start Sharing"}
+              {!visitedBefore ? "Send a File (It's FREE)" : "Send a File"}
             </Button>
           </Flex>
           <HStack>
