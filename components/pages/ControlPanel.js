@@ -708,7 +708,7 @@ export function ControlPanel() {
                                 >
                                   Send a file
                                   <br />
-                                  and prove&apos;s
+                                  with proof
                                   <br />
                                   it&apos;s yours.
                                 </Text>
