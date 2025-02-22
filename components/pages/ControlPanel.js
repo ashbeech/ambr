@@ -706,23 +706,17 @@ export function ControlPanel() {
                                   className={"fancy"}
                                   noOfLines={3}
                                 >
-                                  {!visitedBefore
-                                    ? `Send a file
+                                  Send a file
                                   <br />
                                   with proof of
                                   <br />
-                                  authenticity.`
-                                    : `Share
-                                  <br />
-                                  your pitch
-                                  <br />
-                                  in a pinch`}
+                                  authenticity.
                                 </Text>
                                 <OrderedList>
                                   <ListItem>Upload your file.</ListItem>
                                   <ListItem>
-                                    Describe the file&apos;s contents (this will
-                                    be private unless you decide to make it
+                                    Describe what the file is (this will be
+                                    private unless you decide to make it
                                     public).
                                   </ListItem>
                                   <ListItem>Share your download link.</ListItem>
