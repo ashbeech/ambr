@@ -708,9 +708,9 @@ export function ControlPanel() {
                                 >
                                   Send a file
                                   <br />
-                                  you can prove&apos;s
+                                  and prove&apos;s
                                   <br />
-                                  yours.
+                                  it&apos;s yours.
                                 </Text>
                                 <OrderedList>
                                   <ListItem>Upload your file.</ListItem>
