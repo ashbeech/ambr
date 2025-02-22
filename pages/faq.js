@@ -79,15 +79,13 @@ export default function FaqPanel() {
                 {"What's Ambr?"}
               </Text>
               <Text pt={3} pb={[8, 10]}>
-                Nobody should have the power to take credit for your creative
-                work, diverting its value away from you. Ambr is the only way to
-                send files, simultaneously placing you, the creator, in
-                unparalleled control of the work you&apos;re sharing. Every
-                shared file through Ambr is equipped with a tamper-proof,
+                Every shared file through Ambr is equipped with a tamper-proof,
                 time-stamped digital fingerprint of your work, along with who
-                you shared it with, all securely tied to you. Ambr strengthens
-                your claim to creative ownership and your right to the value of
-                your hard work.
+                you shared it with, all securely tied to you. Ambr is the only
+                way to send files, simultaneously placing you, the creator, in
+                unparalleled control of the work you&apos;re sharing. Ambr
+                strengthens your claim to creative ownership and your right to
+                the value of your hard work.
               </Text>
               <Box w={"100%"} px={"1px"} pb={[8, 10]}>
                 <VideoPlayer videoId={"TuIlBDg9Zho"} />
@@ -171,12 +169,12 @@ export default function FaqPanel() {
                 {"How long does Ambr store my files? "}
               </Text>
               <Text pt={3} pb={[8, 10]}>
-                Ambr stores your files for 72 hours (3 days). After that period,
-                you can re-upload any exact copy of the file to the same link
-                and have the download period extend for an additional 72 hours.
-                Re-uploading a file also acts as verification thatb your file
-                matches the original recorded by the certificate. This can act
-                as evidence of the work within down th line, so it&apos;s
+                Ambr stores your oiginal files for 72 hours (3 days). After that
+                period, you can re-upload any exact copy of the file to the same
+                link and have the download period extend for an additional 72
+                hours. Re-uploading a file also acts as verification that your
+                file matches the original recorded by the certificate. This can
+                act as evidence of the work within down th line, so it&apos;s
                 important for you to keep an original, unedited file to hand.
               </Text>
               <Text fontSize={"xl"} fontWeight={"medium"} mb={[1, 0]}>
