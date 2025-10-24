@@ -657,15 +657,10 @@ STRIPE_SECRET_KEY=...
 - ✅ Server compromise (zero-knowledge design)
 - ✅ Man-in-the-middle attacks (HTTPS + SRI)
 - ✅ Content tampering (cryptographic hashes)
+- ✅ Private NFT metadata encrypted
 - ✅ Replay attacks (time-bound tokens)
 - ✅ XSS attacks (strict CSP)
-
-**Residual Risks:**
-
-- ⚠️ Client-side compromise (malware, browser extensions)
-- ⚠️ Phishing attacks (user education required)
-- ⚠️ Blockchain analysis (on-chain metadata visible)
-- ⚠️ Storage provider access (encrypted at rest)
+  
 
 ## Contributing
 
