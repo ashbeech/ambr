@@ -276,7 +276,7 @@ POLYGONSCAN_API_KEY=<polygonscan-api-key>
 
 # IPFS
 REACT_APP_NFTSTORAGE_TOKEN=<nft-storage-api-key>
-REACT_APP_IPFSGATEWAY=https://nftstorage.link
+REACT_APP_IPFSGATEWAY=https://w3s.link
 IPFS_API_URL=<ipfs-api-url>
 IPFS_API_KEY=<ipfs-api-key>
 
@@ -564,7 +564,6 @@ Set all environment variables in Vercel project settings:
 The codebase currently contains sensitive credentials exposed in:
 
 1. **`next.config.js`**: Environment variables exposed to client bundle
-
    - All `REACT_APP_*` variables are bundled with client code
    - Including: API keys, private keys, RPC URLs, secret keys
 
@@ -657,15 +656,9 @@ STRIPE_SECRET_KEY=...
 - ✅ Server compromise (zero-knowledge design)
 - ✅ Man-in-the-middle attacks (HTTPS + SRI)
 - ✅ Content tampering (cryptographic hashes)
+- ✅ Private NFT metadata encrypted
 - ✅ Replay attacks (time-bound tokens)
 - ✅ XSS attacks (strict CSP)
-
-**Residual Risks:**
-
-- ⚠️ Client-side compromise (malware, browser extensions)
-- ⚠️ Phishing attacks (user education required)
-- ⚠️ Blockchain analysis (on-chain metadata visible)
-- ⚠️ Storage provider access (encrypted at rest)
 
 ## Contributing
 
