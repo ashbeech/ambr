@@ -7,7 +7,14 @@ const nextConfig = {
     minimize: false,
   }, */
   images: {
-    domains: ["nftstorage.link", "w3s.link", "dweb.link"],
+    domains: [
+      "nftstorage.link",
+      "w3s.link",
+      "dweb.link",
+      "gateway.pinata.cloud",
+      "ipfs.io",
+      "cloudflare-ipfs.com",
+    ],
   },
   reactStrictMode: false,
   env: {
