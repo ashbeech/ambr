@@ -36,13 +36,14 @@ import {
 } from "../config.js";
 
 const IPFSImage = ({ image_src }) => {
-  return image_src ? (
+  const src = image_src || `${origin}/images/amber-1.png`;
+  return (
     <Img
       position={"relative"}
       w={["100%", "100%"]}
       h={["100%", "100%"]}
       left={[0, 0]}
-      src={image_src}
+      src={src}
       objectFit={[
         "cover !important",
         "contain !important",
@@ -54,8 +55,6 @@ const IPFSImage = ({ image_src }) => {
       alt={`Ambr Stone`}
       className="file-stone"
     />
-  ) : (
-    <>{"Fetching..."}</>
   );
 };
 
@@ -75,6 +74,12 @@ export const FilePanel = ({
   let loaded = false;
   const fullyLoaded =
     loaded == false && roomMeta != null && roomMeta.readableMetadata != null;
+
+  // Check if IPFS metadata actually contains data (not just an empty object)
+  const hasIpfsData =
+    fullyLoaded &&
+    roomMeta.readableMetadata &&
+    Object.keys(roomMeta.readableMetadata).length > 0;
 
   let fileHash = "Preparing ...";
   let txHashRaw = "";
@@ -147,67 +152,54 @@ export const FilePanel = ({
   };
 
   if (fullyLoaded) {
-    fileHash = `${roomMeta.readableMetadata.fileHash}`;
-    txHashRaw = roomMeta.txHash;
-    txHash = `${blockExplorer}/tx/${txHashRaw}`;
-    //contractAddressExt = `${blockExplorer}/address/${contractAddress}`;
+    txHashRaw = roomMeta.txHash || "";
+    txHash = txHashRaw ? `${blockExplorer}/tx/${txHashRaw}` : "";
     cid = roomMeta.cid ? roomMeta.cid : null;
     cidLink = `${ipfsViewer}${cid}`;
-    // TODO: Make this dynamic; not localhost, hard-coded.
-    // THIS IS TEMP FOR LOCALHOST DEV ONLY PRE-BETA
-    _image_src = roomMeta.image_src.replace(
-      /http:\/\/localhost:3000\//g,
-      origin + "/"
-    );
 
-    //console.log(roomMeta);
-    //const isUserMatch = roomMeta.isUserMatch ? roomMeta.isUserMatch : false;
+    // Safely handle image_src (may be null when IPFS data is unavailable)
+    _image_src = roomMeta.image_src
+      ? roomMeta.image_src.replace(/http:\/\/localhost:3000\//g, origin + "/")
+      : null;
 
-    const d = new Date(roomMeta.readableMetadata.timestamp);
-    /*     readableTimeStamp =
-      d.getHours() +
-      ":" +
-      (d.getMinutes() < 10 ? "0" : "") +
-      d.getMinutes() +
-      ", " +
-      d.toDateString(); */
+    if (hasIpfsData) {
+      fileHash = `${roomMeta.readableMetadata.fileHash}`;
 
-    const hours = String(d.getHours()).padStart(2, "0");
-    const minutes = String(d.getMinutes()).padStart(2, "0");
-    readableTimeStamp = `${hours}:${minutes}, ${d.toDateString()}`;
+      const d = new Date(roomMeta.readableMetadata.timestamp);
+      const hours = String(d.getHours()).padStart(2, "0");
+      const minutes = String(d.getMinutes()).padStart(2, "0");
+      readableTimeStamp = `${hours}:${minutes}, ${d.toDateString()}`;
 
-    if (roomMeta.readableMetadata.key_concept !== "") {
-      key_concept = roomMeta.readableMetadata.key_concept;
-    } else {
-      key_concept = "None listed";
-    }
-    if (roomMeta.readableMetadata.client !== "") {
-      client = roomMeta.readableMetadata.client;
-    } else {
-      client = "None listed";
-    }
-    if (
-      roomMeta.readableMetadata.creators != null &&
-      roomMeta.readableMetadata.creators.length > 0 &&
-      roomMeta.readableMetadata.creators[0] != undefined
-    ) {
-      for (let i = 0; i < roomMeta.readableMetadata.creators.length; i++) {
-        creators = roomMeta.readableMetadata.creators.join(", ");
+      if (roomMeta.readableMetadata.key_concept !== "") {
+        key_concept = roomMeta.readableMetadata.key_concept;
+      } else {
+        key_concept = "None listed";
+      }
+      if (roomMeta.readableMetadata.client !== "") {
+        client = roomMeta.readableMetadata.client;
+      } else {
+        client = "None listed";
+      }
+      if (
+        roomMeta.readableMetadata.creators != null &&
+        roomMeta.readableMetadata.creators.length > 0 &&
+        roomMeta.readableMetadata.creators[0] != undefined
+      ) {
+        for (let i = 0; i < roomMeta.readableMetadata.creators.length; i++) {
+          creators = roomMeta.readableMetadata.creators.join(", ");
+        }
+      } else {
+        creators = "None listed";
       }
     } else {
-      creators = "None listed";
+      // IPFS metadata unavailable — set sensible defaults
+      fileHash = roomMeta.fileHash || "Unavailable";
+      readableTimeStamp = "Unavailable";
+      key_concept = "Unavailable";
+      client = "Unavailable";
+      creators = "Unavailable";
     }
-    /*     if (
-      roomMeta.readableMetadata.recipients != null &&
-      roomMeta.readableMetadata.recipients.length > 0 &&
-      roomMeta.readableMetadata.recipients[0] != undefined
-    ) {
-      for (let i = 0; i < roomMeta.readableMetadata.recipients.length; i++) {
-        recipients = roomMeta.readableMetadata.recipients.join(", ");
-      }
-    } else {
-      recipients = "None listed";
-    } */
+
     loaded = true;
   }
 
@@ -638,7 +630,7 @@ export const FilePanel = ({
               </Box>
             )}
 
-            {roomMeta && !isUserMatch && roomMeta.isPublic && (
+            {roomMeta && !isUserMatch && roomMeta.isPublic && hasIpfsData && (
               <>
                 <HStack
                   w={["100%", "100%"]}
@@ -682,7 +674,7 @@ export const FilePanel = ({
                     >
                       <FileRecordPanel
                         title={
-                          roomMeta?.readableMetadata.title
+                          roomMeta?.readableMetadata?.title
                             ? roomMeta.readableMetadata.title
                             : ""
                         }
@@ -690,7 +682,7 @@ export const FilePanel = ({
                         key_concept={key_concept ? key_concept : ""}
                         creators={creators ? creators : ""}
                         numCreators={
-                          roomMeta.readableMetadata.creators.length
+                          roomMeta?.readableMetadata?.creators?.length
                             ? roomMeta.readableMetadata.creators.length
                             : 0
                         }
@@ -708,15 +700,41 @@ export const FilePanel = ({
                 </Box>
               </>
             )}
+            {fullyLoaded && !hasIpfsData && !isUserMatch && (
+              <Box
+                w={"100%"}
+                mt={[4, 4]}
+                pt={[4, 4]}
+                pb={[4, 4]}
+                borderTop={"1px solid"}
+                borderColor={"blackAlpha.300"}
+              >
+                <HStack mb={2}>
+                  <SealIcon color={"gray.400"} boxSize={"1.2rem"} />
+                  <Text
+                    fontSize={"sm"}
+                    fontWeight={"medium"}
+                    color={"blackAlpha.700"}
+                  >
+                    Certificate Unavailable
+                  </Text>
+                </HStack>
+                <Text fontSize={"sm"} color={"blackAlpha.600"} lineHeight={1.5}>
+                  The metadata record for this file is no longer available on
+                  IPFS. The file itself may still be downloadable if it
+                  hasn&apos;t expired.
+                </Text>
+              </Box>
+            )}
             {verifyOpen &&
               isAuthenticated &&
               roomMeta &&
-              roomMeta.readableMetadata &&
+              hasIpfsData &&
               isUserMatch && (
                 <Box w={"100%"} h={[null, "100%"]} mt={[0, 0]}>
                   <FileRecordPanel
                     title={
-                      roomMeta?.readableMetadata.title
+                      roomMeta?.readableMetadata?.title
                         ? roomMeta.readableMetadata.title
                         : ""
                     }
@@ -724,7 +742,7 @@ export const FilePanel = ({
                     key_concept={key_concept ? key_concept : ""}
                     creators={creators ? creators : ""}
                     numCreators={
-                      roomMeta.readableMetadata.creators.length
+                      roomMeta?.readableMetadata?.creators?.length
                         ? roomMeta.readableMetadata.creators.length
                         : 0
                     }
@@ -741,6 +759,48 @@ export const FilePanel = ({
                     handleClickVerify={handleClickVerify}
                     handleChange={handleChange}
                   />
+                </Box>
+              )}
+            {verifyOpen &&
+              isAuthenticated &&
+              roomMeta &&
+              !hasIpfsData &&
+              isUserMatch && (
+                <Box
+                  w={"100%"}
+                  h={[null, "100%"]}
+                  mt={[0, 0]}
+                  pt={[4, 4]}
+                  pb={[4, 4]}
+                >
+                  <HStack mb={2}>
+                    <SealIcon color={"gray.400"} boxSize={"1.2rem"} />
+                    <Text
+                      fontSize={"sm"}
+                      fontWeight={"medium"}
+                      color={"blackAlpha.700"}
+                    >
+                      Certificate Unavailable
+                    </Text>
+                  </HStack>
+                  <Text
+                    fontSize={"sm"}
+                    color={"blackAlpha.600"}
+                    lineHeight={1.5}
+                  >
+                    The metadata record for this file is no longer available on
+                    IPFS. The blockchain transaction
+                    {txHashRaw ? " and fingerprint remain" : " remains"} as
+                    proof of the original transfer.
+                  </Text>
+                  {txHashRaw && (
+                    <Text fontSize={"xs"} color={"blackAlpha.500"} mt={2}>
+                      Tx:{" "}
+                      <Text as={"span"} noOfLines={1}>
+                        {txHashRaw}
+                      </Text>
+                    </Text>
+                  )}
                 </Box>
               )}
             {!verifyOpen &&
@@ -782,7 +842,7 @@ const TopRightPanel = React.memo(
     refresh,
   }) => {
     const [d, setD] = useState(new Date()); // initialize d to current date
-    const title = roomMeta?.readableMetadata.title;
+    const title = roomMeta?.readableMetadata?.title || "Ambr Secured File";
 
     // HACK: Disable download all button if there's a file greater than 4GB
     const downloadAllSupported =
@@ -800,12 +860,14 @@ const TopRightPanel = React.memo(
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     }
 
+    const hasIpfsTimestamp = !!roomMeta?.readableMetadata?.timestamp;
+
     useEffect(() => {
-      if (roomMeta?.readableMetadata?.timestamp) {
+      if (hasIpfsTimestamp) {
         const newD = new Date(roomMeta.readableMetadata.timestamp);
         setD(newD);
       }
-    }, [roomMeta]);
+    }, [roomMeta, hasIpfsTimestamp]);
 
     return (
       <Stack spacing={[3, 4]} h={isExPublic ? [null, "auto"] : [null, "auto"]}>
@@ -832,7 +894,11 @@ const TopRightPanel = React.memo(
                 spacing={0}
               >
                 <Text fontSize={"md"} zIndex={999} noOfLines={[4, 3]}>
-                  File shared <RelativeTime to={d} />.{" "}
+                  {hasIpfsTimestamp ? (
+                    <>File shared <RelativeTime to={d} />.{" "}</>
+                  ) : (
+                    <>File record.{" "}</>
+                  )}
                   {!isExpired && (
                     <>
                       Download available for{" "}

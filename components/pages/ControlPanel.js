@@ -927,6 +927,7 @@ export function ControlPanel() {
                                       original{" "}
                                       {roomMeta &&
                                       roomMeta.readableMetadata !== null &&
+                                      roomMeta.readableMetadata.creators &&
                                       roomMeta.readableMetadata.creators
                                         .length > 1
                                         ? "creators"
