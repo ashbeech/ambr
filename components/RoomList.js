@@ -33,25 +33,43 @@ import { ButtonLink } from "./ButtonLink.js";
 import { CopyButton } from "./buttons/CopyButton.js";
 import { RelativeTime } from "./RelativeTime.js";
 import { MagicContext } from "../components/MagicContext";
-import { ipfsGateway } from "../config.js";
-
 const REFRESH_RATE = 300_000; // 5 minutes
 
-const getFileFromIPFS = async (_url) => {
-  try {
-    //console.log("getFileFromIPFS: ", _url);
-    return await fetch(_url, {
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .catch(() => {
-        console.error("IPFS: Unable to fetch url");
+const getFileFromIPFS = async (cid) => {
+  const gateways = [
+    `https://gateway.pinata.cloud/ipfs/${cid}`,
+    `https://${cid}.ipfs.dweb.link`,
+    `https://ipfs.io/ipfs/${cid}`,
+    `https://cloudflare-ipfs.com/ipfs/${cid}`,
+  ];
+
+  for (const url of gateways) {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+
+      const response = await fetch(url, {
+        method: "GET",
+        signal: controller.signal,
       });
-  } catch (err) {
-    console.error("Room | Failed to read encrypted metadata.", err);
+      clearTimeout(timeout);
+
+      if (!response.ok) continue;
+
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        return typeof data === "string" ? JSON.parse(data) : data;
+      } catch {
+        continue;
+      }
+    } catch (err) {
+      console.warn(`IPFS gateway failed: ${url}`, err.message);
+      continue;
+    }
   }
+  console.error("All IPFS gateways failed for CID:", cid);
+  return null;
 };
 
 export const RoomList = ({ onChange = () => {} }) => {
@@ -135,9 +153,7 @@ export const RoomList = ({ onChange = () => {} }) => {
         try {
           setLoading(true);
 
-          const IPFSdata = await getFileFromIPFS(
-            `https://${room.cid}.ipfs.${ipfsGateway}`
-          );
+          const IPFSdata = await getFileFromIPFS(room.cid);
 
           const { remainingDownloads } = await fetcher.get(
             `/api/room/${room.roomId}/remaining-downloads`,
