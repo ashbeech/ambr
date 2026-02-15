@@ -353,13 +353,11 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
     (room !== null && room.expiresAtTimestampMs < Date.now()) ||
     (room !== null && room.remainingDownloads < 1);
 
-  /*   useEffect(() => {
+  /* useEffect(() => {
     // Fetch IPFS data and update the loading state
     const fetchIPFSData = async () => {
       try {
-        const IPFSdata = await getFileFromIPFS(
-          `https://${room.cid}.ipfs.${ipfsGateway}`
-        );
+        const IPFSdata = await getFileFromIPFS(room.cid);
 
         if (IPFSdata !== null && IPFSdata.image !== null) {
           room.image_src = IPFSdata.image ? IPFSdata.image : "";
@@ -370,7 +368,7 @@ export const RoomItem = ({ room, router, onClose = () => {} }) => {
       }
     };
 
-    fetchIPFSData(); // Fetch IPFS data when the component mounts
+    fetchIPFSData();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps */
 
   const handleClickCopy = () => {
